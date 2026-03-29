@@ -417,5 +417,311 @@ const questionsOfficial = [
     ],
     correct: [0, 2, 4],
     explanation: "Item.Reset() clears all existing filters and sort keys before applying new ones, ensuring a clean filter state. Item.SetRange(Type, Item.Type::Inventory) filters for items with Type = Inventory (SetRange is used for exact/range matches on enum values). Item.SetFilter(\"No.\", '<>S*') uses a wildcard pattern filter to exclude items whose number starts with 'S' — SetFilter supports pattern expressions while SetRange does not."
+  },
+  {
+    id: 532,
+    text: "A company has a Business Central online environment. You need to create an HTTP GET request that connects to an external REST service. Which solution should you use?",
+    type: "single",
+    choices: [
+      "A. HttpContent data type variable",
+      "B. Codeunit 1299 \"Web Request Helper\"",
+      "C. Codeunit 5459 \"JSON Management\"",
+      "D. Codeunit 1297 \"Http Web Request Mgt.\"",
+      "E. HttpClient data type variable"
+    ],
+    correct: [4],
+    explanation: "HttpClient is the modern AL data type for making HTTP requests, including GET requests to external REST services in Business Central online. The older Codeunit 1297 and 1299 approaches are legacy/deprecated for online environments. HttpContent is used for request/response body content, not for initiating HTTP requests."
+  },
+  {
+    id: 533,
+    text: "You need to create the configuration table and page for the non-conformity functionality. Which table configurations should you use? (Select THREE — one per requirement)\n\n1. Design pattern for the setup table\n2. Data type of the primary key field\n3. Property required to prevent users from adding records",
+    type: "multiple",
+    choices: [
+      "Singleton — design pattern for the setup table",
+      "No. Series — design pattern for the setup table",
+      "Adapter — design pattern for the setup table",
+      "BigInteger — data type of the primary key field",
+      "Code — data type of the primary key field",
+      "Integer — data type of the primary key field",
+      "InsertAllowed = false — property to prevent users from adding records",
+      "InitValue — property to prevent users from adding records",
+      "UnBound — property to prevent users from adding records"
+    ],
+    correct: [0, 4, 6],
+    explanation: "A setup/configuration table uses the Singleton design pattern so only one record can exist. The primary key of a singleton setup table uses Code data type (typically a single Code field with a constant value). The InsertAllowed property set to false prevents users from manually adding new records to the table, enforcing the singleton constraint."
+  },
+  {
+    id: 534,
+    text: "You are creating a view for a Business Central app. The view requires a custom layout that displays only customer records with a balance greater than 500 in local currency. You need to configure the view to specify that it has a custom layout. Which property combination should you use?",
+    type: "single",
+    choices: [
+      "A. SharedLayout = false; Filters = where (Balance = filter (> 500), \"Currency Code\" = filter ('LCY'));",
+      "B. SharedLayout = true; Filters = where (Balance = filter (> 500), \"Currency Code\" = filter (LCY'));",
+      "C. SharedLayout = false; Filters = where (\"Balance (LCY)\" = filter (> 500));",
+      "D. SharedLayout = true; Filters = where (\"Balance (LCY)\" = filter (> 500));"
+    ],
+    correct: [2],
+    explanation: "Setting SharedLayout = false specifies that the view has its own custom layout, independent of other views. The correct field for filtering customers by local currency balance is 'Balance (LCY)', not 'Balance' with a currency code filter. Option C correctly uses SharedLayout = false for a custom layout and filters on the 'Balance (LCY)' field."
+  },
+  {
+    id: 535,
+    text: "A company uses Business Central. You plan to help users through the installation process by using Assisted Setup. You need to create a wizard page. Which two actions should you perform? Each correct answer presents a complete solution. (Select TWO)",
+    type: "multiple",
+    choices: [
+      "A. Set the PageType property to NavigatePage.",
+      "B. For each step needed in the guide, add a group() control to the root-level of the layout > area(Content) control.",
+      "C. Set the PageType property to Worksheet.",
+      "D. For each step needed in the guide, add a repeater() control to the root-level of the layout > area(Content) control."
+    ],
+    correct: [0, 1],
+    explanation: "To create a wizard page in Business Central, set the PageType property to NavigatePage — this is the page type specifically designed for step-by-step wizard/guide interfaces. For each step in the guide, add a group() control directly under area(Content); each group represents one step that can be shown or hidden based on the current step variable. A repeater() control is used for list views, not wizard steps."
+  },
+  {
+    id: 536,
+    text: "A company uses four objects in development in Business Central. The company plans to make changes to the objects. You need to identify the application layer for each object in Visual Studio Code.\n\nWhich application layer does each object belong to? (Match each object to its layer)\n\nObjects:\n1. Activities Cue table\n2. Extension Management codeunit\n3. Business Unit Card page\n4. Report Selection page",
+    type: "multiple",
+    choices: [
+      "Activities Cue table — System layer",
+      "Activities Cue table — Base Application layer",
+      "Extension Management codeunit — System layer",
+      "Extension Management codeunit — Base Application layer",
+      "Business Unit Card page — System layer",
+      "Business Unit Card page — Base Application layer",
+      "Report Selection page — System layer",
+      "Report Selection page — Base Application layer"
+    ],
+    correct: [0, 2, 4, 7],
+    explanation: "In Business Central, application objects are organized into layers: System (platform-level objects shipped by Microsoft as part of the runtime) and Base Application (standard business functionality built on top of the System layer). According to the exam answer key: Activities Cue table belongs to the System layer; Extension Management codeunit belongs to the System layer; Business Unit Card page belongs to the System layer; Report Selection page belongs to the Base Application layer."
+  },
+  {
+    id: 537,
+    text: "You are creating an app for Business Central. You plan to specify the following parameters and properties of the server and app:\n\n1. Startup object type and object ID\n2. Runtime\n3. Dependencies\n\nYou need to configure the JSON file for the specified parameters and properties. Which JSON files should you configure for each purpose?",
+    type: "multiple",
+    choices: [
+      "Startup object type and object ID — configure in launch.json",
+      "Startup object type and object ID — configure in app.json",
+      "Runtime — configure in launch.json",
+      "Runtime — configure in app.json",
+      "Dependencies — configure in launch.json",
+      "Dependencies — configure in app.json"
+    ],
+    correct: [0, 3, 5],
+    explanation: "launch.json contains server connection and startup configuration, including startupObjectType and startupObjectId which determine which object opens after publishing. app.json contains the extension manifest including the 'runtime' property (specifying the minimum AL runtime version) and 'dependencies' (listing other extensions this app depends on)."
+  },
+  {
+    id: 538,
+    text: "You have an XMLport that exports items from a database to an XML file. You need to change the export format from XML to CSV. What should you do?",
+    type: "single",
+    choices: [
+      "A. Change the Direction property to Both.",
+      "B. Change the FormatEvaluate property to Legacy.",
+      "C. Change the XmlVersionNo property to 1.1.",
+      "D. Fill the FileName property with the Items.csv value.",
+      "E. Change the Format property to VariableText."
+    ],
+    correct: [4],
+    explanation: "The Format property of an XMLport controls the file format. Setting it to VariableText changes the output from XML to a text-based delimited format (CSV). Simply changing the file name extension (option D) does not change the actual format of the output. The Direction property controls import/export direction, not the file format."
+  },
+  {
+    id: 539,
+    text: "A company uses a Vendor - List report from the Base Application. The company has new requirements that cannot be met by extending the Vendor - List report. You create a new report named My Customized Vendor - List. You need to replace the Vendor - List report with My Customized Vendor - List.\n\nHow should you complete the code segment? Select the correct options for each blank:\n\ncodeunit 50100 \"Substitute Report\"\n{\n  [EventSubscriber(ObjectType::Codeunit, Codeunit::[BLANK1], '[BLANK2]', '', false, false)]\n  local procedure OnSubstituteReport(ReportId: Integer; var NewReportId: Integer)\n  begin\n    if ReportId = Report::[BLANK3] then\n      NewReportId := Report::[BLANK4];\n  end;\n}\n\n(Select FOUR — one per blank)",
+    type: "multiple",
+    choices: [
+      "BLANK1: Report Distribution Management",
+      "BLANK1: ReportManagement",
+      "BLANK1: Report Selection Mgt.",
+      "BLANK2: OnAfterSubstituteReport",
+      "BLANK2: OnSelectReportLayout",
+      "BLANK2: OnAfterDocumentReady",
+      "BLANK3: \"My Customized Vendor - List\"",
+      "BLANK3: \"Vendor - List\"",
+      "BLANK4: \"My Customized Vendor - List\"",
+      "BLANK4: \"Vendor - List\""
+    ],
+    correct: [1, 3, 7, 8],
+    explanation: "To substitute one report for another, subscribe to the OnAfterSubstituteReport event on the ReportManagement codeunit. In the handler, check if ReportId equals the original report (Vendor - List) and if so, set NewReportId to the replacement report (My Customized Vendor - List). This event fires whenever Business Central is about to run a report, allowing extensions to redirect to a different report."
+  },
+  {
+    id: 540,
+    text: "You create a 'Contoso Post' procedure to send an HTTP POST request in JSON format. The procedure does not work as expected. You need to find and fix all errors in HTTP class usage.\n\nFor each statement, select Yes if the statement is true, otherwise select No:\n\n1. Replace line 16 (Content.ReadAs(ResponseText)) with ResponseText := ResponseMessage\n2. In line 13, change the 'text/plain' value to 'application/json'\n3. Replace line 14 (Headers.Add('Authorization', 'Bearer ' + Token)) with Client.DefaultRequestHeaders.Add('Authorization', 'Bearer ' + Token)\n4. In line 10, replace WriteFrom with ReadAs\n\n(Select the statements that are TRUE / should be answered YES)",
+    type: "multiple",
+    choices: [
+      "Statement 1 is YES: Replace line 16 with ResponseText := ResponseMessage",
+      "Statement 2 is YES: In line 13, change 'text/plain' to 'application/json'",
+      "Statement 3 is YES: Replace line 14 with Client.DefaultRequestHeaders.Add('Authorization', 'Bearer ' + Token)",
+      "Statement 4 is YES: In line 10, replace WriteFrom with ReadAs"
+    ],
+    correct: [1],
+    explanation: "Only Statement 2 is correct (YES): The Content-Type header must be 'application/json' when sending JSON data, not 'text/plain'. Statement 1 is NO — ResponseMessage is an HttpResponseMessage object, not text; the fix should be ResponseMessage.Content.ReadAs(ResponseText). Statement 3 is NO — the Authorization header is correctly placed via Content.GetHeaders in this context. Statement 4 is NO — WriteFrom is correct for writing the request body text into the HttpContent object; ReadAs is used for reading response content."
+  },
+  {
+    id: 541,
+    text: "You must simulate the user interaction of selecting a posting option. The options must include:\n- Ship\n- Invoice\n- Ship & Invoice\n\nYou need to create a test codeunit to run the test. What should you use?",
+    type: "single",
+    choices: [
+      "A. Normal attribute",
+      "B. Handler method",
+      "C. Test attribute"
+    ],
+    correct: [1],
+    explanation: "A Handler method (using attributes like [ConfirmHandler], [MessageHandler], [StrMenuHandler], etc.) is used in test codeunits to simulate user interactions such as selecting options from a dialog or menu. For posting options like Ship, Invoice, and Ship & Invoice presented via a StrMenu dialog, a StrMenuHandler is required. The Test attribute marks a function as a test function, and Normal attribute marks a regular helper function."
+  },
+  {
+    id: 542,
+    text: "A company plans to customize its per-tenant extension reports. The company has the following requirements:\n\n1. Child data items must not have the ability to be filtered on the request page for some master-detail reports.\n2. Selecting key filter fields takes users too much time — the customization must decrease the amount of time to select the fields for all users.\n\nYou need to optimize the report request page. Which action should you configure for each requirement? (Select TWO — one per requirement)",
+    type: "multiple",
+    choices: [
+      "Requirement 1: Set the PrintOnlyIfDetail property to true",
+      "Requirement 1: Set the UseRequestPage property to true",
+      "Requirement 1: Set the DataItemTableView sorting property",
+      "Requirement 1: Set the DataItemLinkReference property to the parent data item",
+      "Requirement 2: Set the SaveValues property to true",
+      "Requirement 2: Specify the RequestFilterFields property",
+      "Requirement 2: Specify the request page options",
+      "Requirement 2: Set the UseRequestPageFieldsHeading property"
+    ],
+    correct: [3, 5],
+    explanation: "Setting the DataItemLinkReference property on a child data item to its parent data item establishes the link between parent and child — this causes the child data item's filter row to be hidden from the request page, preventing users from filtering child records independently. Specifying the RequestFilterFields property on a data item pre-defines exactly which fields appear as filter options on the request page, reducing the time users spend searching for relevant filter fields."
+  },
+  {
+    id: 543,
+    text: "A company uses Azure Application Insights for Business Central online in its production environment. A user observes that some job queues go into the failed state and require manual intervention. You need to analyze job queue lifecycle telemetry.\n\nHow should you complete the KQL code segment? Select the correct options for each blank:\n\ntraces\n| [BLANK1] 100\n| where customDimensions.eventId == 'YOUREVENTID'\n| [BLANK2]\n  timestamp,\n  jobQueueObjectId = customDimensions.alJobQueueObjectId,\n  jobQueueObjectType = customDimensions.alJobQueueObjectType,\n  jobQueueExecutionNumberOfAttemptsToRun = customDimensions.alJobQueueNumberOfAttemptsToRun\n\n(Select TWO — one per blank)",
+    type: "multiple",
+    choices: [
+      "BLANK1: take",
+      "BLANK1: top",
+      "BLANK1: project",
+      "BLANK1: extend",
+      "BLANK2: take",
+      "BLANK2: top",
+      "BLANK2: project",
+      "BLANK2: extend"
+    ],
+    correct: [0, 6],
+    explanation: "In Kusto Query Language (KQL), 'take N' returns N arbitrary rows from the result set — used here to limit results to 100 rows. 'project' selects and renames specific columns from the result, which is used here to extract the relevant job queue fields from customDimensions. 'top' requires an order-by expression, and 'extend' adds calculated columns without removing existing ones."
+  },
+  {
+    id: 544,
+    text: "You are customizing Business Central by using Visual Studio Code. You create a project that will extend Business Central. For testing purposes, you plan to add the following changes to the files:\n- Specify that page 27 must be opened after publishing.\n- Enable debugging.\n- Disable the capability to download the source code.\n\nYou need to add the configurations to the JSON files. Which two configurations should you add? Each correct answer presents a complete solution. (Select TWO)",
+    type: "multiple",
+    choices: [
+      "A. Set \"startupObjectId\": 27 on launch.json.",
+      "B. In the \"resourceExposurePolicy\" tag, set \"allowDebugging\": true and \"allowDownloadingSource\": false on launch.json.",
+      "C. Set \"startupObjectId\": 27 on app.json.",
+      "D. In the \"resourceExposurePolicy\" tag, set \"allowDebugging\": true and \"allowDownloadingSource\": true on app.json.",
+      "E. In the \"resourceExposurePolicy\" tag, set \"allowDebugging\": true and \"allowDownloadingSource\": false on app.json."
+    ],
+    correct: [0, 4],
+    explanation: "startupObjectId is a property in launch.json that specifies which object (by ID) to open after publishing the extension — setting it to 27 opens page 27. The resourceExposurePolicy in app.json controls debugging and source access permissions for the extension: allowDebugging: true enables debugging, and allowDownloadingSource: false disables source code downloads. Both settings belong in their respective files (launch.json for startup, app.json for resource exposure policy)."
+  },
+  {
+    id: 545,
+    text: "A company plans to change a field on the Resource Card page in a Base Application. You need to hide the field 'Unit Price' from the Resource Card page. Which code snippet should you use?",
+    type: "single",
+    choices: [
+      "A. addlast(\"Unit Price\") { Visible = false; }",
+      "B. modify(\"Unit Price\") { Enabled = false; }",
+      "C. addlast(\"Unit Price\") { Enabled = false; }",
+      "D. modify(\"Unit Price\") { Visible = false; }"
+    ],
+    correct: [3],
+    explanation: "To hide an existing field from a page in the Base Application, use modify() to reference the existing field and set its Visible property to false. addlast() is used to add new fields to a page, not modify existing ones. Enabled = false makes a field non-interactive but still visible, whereas Visible = false completely hides the field from the page."
+  },
+  {
+    id: 546,
+    text: "A company uses Business Central. The company is generating a detailed custom report. A user observes that the generated report dataset contains more Delivery Line records than expected for one specific Delivery Header. You need to generate a report that contains the accurate number of records.\n\nFor each of the following statements, select Yes if the statement is true, otherwise select No:\n\n1. Configure the DataItemTableView property of the Delivery Header data item.\n2. Configure the RequestFilterFields property of both data items.\n3. Configure the DataItemLink property of the Delivery Line data item.\n\n(Select the statements that are TRUE / should be answered YES)",
+    type: "multiple",
+    choices: [
+      "Statement 1 is YES: Configure the DataItemTableView property of the Delivery Header data item",
+      "Statement 2 is YES: Configure the RequestFilterFields property of both data items",
+      "Statement 3 is YES: Configure the DataItemLink property of the Delivery Line data item"
+    ],
+    correct: [2],
+    explanation: "Only Statement 3 is correct (YES): The DataItemLink property on the child Delivery Line data item must be configured to link it to the parent Delivery Header data item (e.g., DataItemLink = \"Document No.\" = field(\"No.\")). Without this link, the child data item returns all records regardless of the parent, causing more records than expected. Statement 1 is NO — DataItemTableView applies a static filter/sort to the data item but does not establish the parent-child relationship. Statement 2 is NO — RequestFilterFields only controls which filter fields appear on the request page."
+  },
+  {
+    id: 547,
+    text: "You create a page with the PageType property set to RoleCenter. You navigate through the different sections of the page. You need to add functionalities to the page. What should you do?",
+    type: "single",
+    choices: [
+      "A. Define actions in the area(reporting) before actions in the area(creation).",
+      "B. Add an Activity page to display data in a graphical way.",
+      "C. Define the navigation bar in the area(embedding).",
+      "D. Add a source table on the Role Center page."
+    ],
+    correct: [2],
+    explanation: "On a RoleCenter page, the navigation bar (which contains navigation links and actions for the role) is defined in the area(embedding) section. Role Center pages do not have a source table. An Activity page (type = CardPart with cues) displays counts and KPIs, not graphical data (charts use Chart Parts). The area(embedding) is the correct place for the navigation bar on a RoleCenter."
+  },
+  {
+    id: 548,
+    text: "Note: This question is part of a series.\n\nA company plans to optimize its permission sets.\n\nPermission Set A: tabledata Job = RIMD\nPermission Set B: tabledata Job = IMD\n\nYou need to provide the following implementation for a third permission set:\n- Create a new Permission Set C that is a composite of Permission Set A and Permission Set B.\n- Assign Permission Set C to a user.\n- Ensure that the user has only read access to the Job table.\n\nSolution: Set the IncludedPermissionSets property to Permission Set A and the ExcludedPermissionSets property to Permission Set B.\n\nDoes the solution meet the goal?",
+    type: "single",
+    choices: [
+      "A. Yes",
+      "B. No"
+    ],
+    correct: [0],
+    explanation: "Yes, this solution meets the goal. Permission Set A has RIMD (Read, Insert, Modify, Delete) on the Job table. Permission Set B has IMD (Insert, Modify, Delete). By including A and excluding B: the composite set starts with RIMD (from A) and then removes the permissions that are in B (IMD). The result is RIMD minus IMD = R (Read only). The user will have only read access to the Job table."
+  },
+  {
+    id: 549,
+    text: "Note: This question is part of a series.\n\nA company plans to optimize its permission sets.\n\nPermission Set A: tabledata Job = RIMD\nPermission Set B: tabledata Job = IMD\n\nYou need to provide the following implementation for a third permission set:\n- Create a new Permission Set C that is a composite of Permission Set A and Permission Set B.\n- Assign Permission Set C to a user.\n- Ensure that the user has only read access to the Job table.\n\nSolution: Set the ExcludedPermissionSets property to Permission Set B.\n\nDoes the solution meet the goal?",
+    type: "single",
+    choices: [
+      "A. Yes",
+      "B. No"
+    ],
+    correct: [1],
+    explanation: "No, this solution does not meet the goal. Setting only ExcludedPermissionSets to Permission Set B without specifying an IncludedPermissionSets means the permission set has no base permissions to start from. Excluding B from nothing results in no permissions at all — the user would have no access to the Job table, not read-only access. A valid composite permission set requires at least one included permission set."
+  },
+  {
+    id: 550,
+    text: "Note: This question is part of a series.\n\nA company plans to optimize its permission sets.\n\nPermission Set A: tabledata Job = RIMD\nPermission Set B: tabledata Job = IMD\n\nYou need to provide the following implementation for a third permission set:\n- Create a new Permission Set C that is a composite of Permission Set A and Permission Set B.\n- Assign Permission Set C to a user.\n- Ensure that the user has only read access to the Job table.\n\nSolution: Set the IncludedPermissionSets property to Permission Set B and the ExcludedPermissionSets property to Permission Set A.\n\nDoes the solution meet the goal?",
+    type: "single",
+    choices: [
+      "A. Yes",
+      "B. No"
+    ],
+    correct: [1],
+    explanation: "No, this solution does not meet the goal. Permission Set B has IMD (Insert, Modify, Delete) — no Read permission. Including B and excluding A: the composite starts with IMD (from B) and removes permissions that are in A (RIMD). Since all of IMD is contained in RIMD, excluding A removes all of B's permissions. The result is no permissions on the Job table — not read-only access."
+  },
+  {
+    id: 551,
+    text: "A company uses Business Central. Users in DepartmentA are assigned a base application permission set. The company observes that DepartmentA can display a critical page that should be unavailable to the department. You need to resolve the system control issue. What should you do?",
+    type: "single",
+    choices: [
+      "A. Create a different role center page that excludes the critical page and assign it to the users.",
+      "B. Create a permission set object that excludes the critical table and assign it to the users.",
+      "C. Create an entitlement object that excludes the base application permission set.",
+      "D. Extend the base application permission set and configure the IncludedPermissionSets property.",
+      "E. Extend the base application permission set and configure the ExcludedPermissionSets property."
+    ],
+    correct: [4],
+    explanation: "To remove specific permissions from a base application permission set, extend the permission set and use the ExcludedPermissionSets property to exclude the permissions that grant access to the critical page or its underlying objects. This is the correct AL approach for removing permissions from an existing permission set in an extension without modifying the base application directly."
+  },
+  {
+    id: 552,
+    text: "A company has extended Business Central. You plan to submit the extension to AppSource. You need to ensure that an application meets the technical requirements before submitting it for validation. Which three actions should you perform? Each correct answer presents a complete solution. (Select THREE)",
+    type: "multiple",
+    choices: [
+      "A. Ensure the .app file is digitally signed.",
+      "B. Use the OnBeforeCompanyOpen event for improved sign in time.",
+      "C. Use data classification on all tables and extension fields.",
+      "D. Include extension translation files with the submission.",
+      "E. Code all date fields in the mm-dd-yyyy format."
+    ],
+    correct: [0, 2, 3],
+    explanation: "AppSource technical validation requires: (A) The .app file must be digitally signed with a valid certificate before submission. (C) All table fields and extension fields must have the DataClassification property set — this is required for GDPR compliance and AppSource validation. (D) Extension translation files (.xlf) must be included so the app can be localized. Using OnBeforeCompanyOpen (B) is a performance recommendation but not a technical requirement. Date format coding (E) is not a specific AppSource requirement."
+  },
+  {
+    id: 553,
+    text: "Note: This question is part of a series.\n\nA company creates a Business Central app and a table named MyTable to store records when sales orders are posted. Users report the following issues:\n- The users receive permission errors related to MyTable.\n- Users are no longer able to post sales orders since installing the new app.\n- The users cannot access the list page created in MyTable.\n\nYou need to resolve the user issues without creating new permission sets. You must use the principle of least privilege.\n\nSolution: Assign a SUPER permission set.\n\nDoes the solution meet the goal?",
+    type: "single",
+    choices: [
+      "A. Yes",
+      "B. No"
+    ],
+    correct: [1],
+    explanation: "No, this solution does not meet the goal. Assigning the SUPER permission set grants unrestricted access to all objects in the system, which violates the principle of least privilege. The correct approach is to grant only the minimum permissions required — for example, by using entitlements or by adding the necessary table and page permissions to the app's permission set objects included with the extension, so users get only what they need to interact with MyTable and post sales orders."
   }
 ];
