@@ -37,9 +37,31 @@
     }
   ];
 
+  // ── All-questions pool (used for Random Practice Quiz) ──────────────────
+  const ALL_QUESTIONS = (function () {
+    const seen = {};
+    const pool = [];
+    QUESTION_SETS.forEach(function (set) {
+      set.data.forEach(function (q) {
+        if (!seen[q.id]) { seen[q.id] = true; pool.push(q); }
+      });
+    });
+    return pool;
+  })();
+
+  const RANDOM_QUIZ_COUNT = 67;
+  const RANDOM_SET = {
+    key: "random",
+    label: "Random Practice Quiz",
+    difficulty: "random",
+    description: "67 randomly selected questions drawn from all available quizzes. Does not count towards preparation progress.",
+    data: ALL_QUESTIONS
+  };
+
   const TIMER_DURATION       = 120 * 60; // 120 minutes in seconds
   const TIMER_WARNING_MINS   = 30;       // yellow threshold
   const TIMER_CRITICAL_MINS  = 10;       // red threshold
+  const IDLE_TIMEOUT_SECS    = 120;      // 2 minutes — auto-pause after this long without user activity
 
   // MB-820 scoring thresholds (percentage, 0-100)
   const PASS_PCT     = 70; // 700/1000 points — minimum passing score for MB-820
@@ -54,6 +76,13 @@
   let results       = []; // {questionId, isCorrect, selected, correct}
   let timerSeconds  = TIMER_DURATION;
   let timerInterval = null;
+  let reviewMode    = false; // true when re-viewing a completed quiz (no re-save)
+
+  // ── Idle / auto-pause state ───────────────────────────────────────────────
+  let idleTimeout          = null;  // setTimeout handle for auto-pause
+  let isPaused             = false; // true when quiz is auto-paused
+  let quizIsActive         = false; // true when a question is displayed
+  let pauseTimerWasRunning = false; // remember if the quiz timer was running before pause
 
   // ── Test-case state ───────────────────────────────────────────────────────
   // caseStudyMode: null | "standalone" | "combined"
@@ -75,8 +104,13 @@
   const homeBtn        = document.getElementById("home-btn");
 
   homeBtn.addEventListener("click", function () {
+    clearIdleTimer();
+    quizIsActive = false;
+    isPaused     = false;
+    hidePauseOverlay();
     stopTimer();
-    if (shuffled.length > 0) saveProgress();
+    if (shuffled.length > 0 && current < shuffled.length && !reviewMode) saveProgress();
+    reviewMode     = false;
     activeSet      = null;
     caseStudyMode  = null;
     caseStudy      = null;
@@ -145,7 +179,72 @@
     return String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
   }
 
-  // ── Persistence ──────────────────────────────────────────────────────────
+  // ── Idle / auto-pause ────────────────────────────────────────────────────
+  // Throttle timestamp — avoid re-setting the idle timer on every pixel of
+  // mousemove (which fires dozens of times per second).
+  let lastActivityReset = 0;
+
+  function clearIdleTimer() {
+    if (idleTimeout) { clearTimeout(idleTimeout); idleTimeout = null; }
+  }
+
+  function startIdleTimer() {
+    clearIdleTimer();
+    if (!quizIsActive || isPaused) return;
+    idleTimeout = setTimeout(pauseQuiz, IDLE_TIMEOUT_SECS * 1000);
+  }
+
+  function onUserActivity() {
+    // quizIsActive is checked first — so this handler is effectively a no-op
+    // on the set-selection and summary screens even though it is always registered.
+    if (!quizIsActive || isPaused) return;
+    const now = Date.now();
+    if (now - lastActivityReset < 1000) return; // throttle: reset at most once per second
+    lastActivityReset = now;
+    startIdleTimer();
+  }
+
+  function showPauseOverlay() {
+    document.getElementById("pause-overlay").style.display = "flex";
+  }
+
+  function hidePauseOverlay() {
+    document.getElementById("pause-overlay").style.display = "none";
+  }
+
+  function pauseQuiz() {
+    if (!quizIsActive || isPaused) return;
+    isPaused             = true;
+    pauseTimerWasRunning = (timerInterval !== null);
+    clearIdleTimer();
+    stopTimer();
+    saveProgress();
+    showPauseOverlay();
+  }
+
+  function resumeFromPause() {
+    if (!isPaused) return;
+    isPaused = false;
+    hidePauseOverlay();
+    if (pauseTimerWasRunning) startTimer();
+    startIdleTimer();
+  }
+
+  // Register activity listeners — they are always present but onUserActivity()
+  // exits immediately when quizIsActive is false, keeping the cost negligible.
+  ["mousemove", "mousedown", "keydown", "touchstart", "scroll", "click"].forEach(function (evt) {
+    document.addEventListener(evt, onUserActivity, { passive: true });
+  });
+
+  // Wire up pause overlay buttons
+  document.getElementById("pause-resume-btn").addEventListener("click", resumeFromPause);
+  document.getElementById("pause-home-btn").addEventListener("click", function () {
+    isPaused = false;
+    hidePauseOverlay();
+    homeBtn.click(); // delegate to existing home-button handler
+  });
+
+
   function saveKey() {
     if (caseStudyMode === "standalone") {
       return "mb820_case_" + caseStudy.key;
@@ -252,6 +351,152 @@
     try { localStorage.removeItem(saveKey()); } catch (e) { /* ignore */ }
   }
 
+  // ── Completed-state persistence ────────────────────────────────────────────
+  function completedQuizKey(setKey) { return "mb820_completed_quiz_" + setKey; }
+  function completedCaseKey(caseKey) { return "mb820_completed_case_" + caseKey; }
+
+  function saveCompletedState() {
+    if (reviewMode) return; // never overwrite when re-viewing
+    try {
+      if (caseStudyMode === "combined") {
+        // Persist quiz portion
+        const quizTotal = savedQuizState.shuffledIds.length;
+        const quizPct   = quizTotal ? Math.round((savedQuizState.score / quizTotal) * 100) : 0;
+        localStorage.setItem(completedQuizKey(activeSet.key), JSON.stringify({
+          setKey: activeSet.key, pct: quizPct,
+          score: savedQuizState.score, shuffledIds: savedQuizState.shuffledIds,
+          results: savedQuizState.results, timerSeconds: savedQuizState.timerSeconds
+        }));
+        // Persist case portion
+        const caseTotal = shuffled.length;
+        const casePct   = caseTotal ? Math.round((score / caseTotal) * 100) : 0;
+        localStorage.setItem(completedCaseKey(caseStudy.key), JSON.stringify({
+          caseKey: caseStudy.key, pct: casePct, score: score,
+          shuffledIds: shuffled.map(function (q) { return q.id; }),
+          results: results, timerSeconds: timerSeconds
+        }));
+      } else if (caseStudyMode === "standalone") {
+        const total = shuffled.length;
+        const pct   = total ? Math.round((score / total) * 100) : 0;
+        localStorage.setItem(completedCaseKey(caseStudy.key), JSON.stringify({
+          caseKey: caseStudy.key, pct: pct, score: score,
+          shuffledIds: shuffled.map(function (q) { return q.id; }),
+          results: results, timerSeconds: timerSeconds
+        }));
+      } else if (activeSet && activeSet.key !== "random") {
+        // Random-practice quiz results are intentionally not persisted as
+        // "completed" state — the quiz serves only for ad-hoc practice and
+        // must not affect the preparation progress bar.
+        const total = shuffled.length;
+        const pct   = total ? Math.round((score / total) * 100) : 0;
+        localStorage.setItem(completedQuizKey(activeSet.key), JSON.stringify({
+          setKey: activeSet.key, pct: pct, score: score,
+          shuffledIds: shuffled.map(function (q) { return q.id; }),
+          results: results, timerSeconds: timerSeconds
+        }));
+      }
+    } catch (e) { /* storage unavailable */ }
+  }
+
+  function loadCompletedQuiz(set) {
+    try {
+      const raw = localStorage.getItem(completedQuizKey(set.key));
+      if (!raw) return null;
+      const saved = JSON.parse(raw);
+      if (!saved || typeof saved.pct !== "number") return null;
+      return saved;
+    } catch (e) { return null; }
+  }
+
+  function loadCompletedCase(tc) {
+    try {
+      const raw = localStorage.getItem(completedCaseKey(tc.key));
+      if (!raw) return null;
+      const saved = JSON.parse(raw);
+      if (!saved || typeof saved.pct !== "number") return null;
+      return saved;
+    } catch (e) { return null; }
+  }
+
+  // ── Preparation progress bar ───────────────────────────────────────────────
+  function buildProgressBar() {
+    const availableCases = TEST_CASES.filter(function (tc) { return tc.questions.length > 0; });
+    const totalItems = QUESTION_SETS.length + availableCases.length;
+    let completedItems = 0;
+
+    QUESTION_SETS.forEach(function (set) {
+      const c = loadCompletedQuiz(set);
+      if (c && c.pct >= PASS_PCT) completedItems++;
+    });
+    availableCases.forEach(function (tc) {
+      const c = loadCompletedCase(tc);
+      if (c && c.pct >= PASS_PCT) completedItems++;
+    });
+
+    const pct = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;
+    const fillCls = pct >= 100 ? "prep-fill-full" : pct >= PASS_PCT ? "prep-fill-good" : "";
+
+    return '<div class="prep-progress-bar-container">' +
+      '<div class="prep-progress-header">' +
+        '<span class="prep-progress-title">\uD83C\uDFAF MB-820 Preparation Progress</span>' +
+        '<span class="prep-progress-pct">' + completedItems + '\u202F/\u202F' + totalItems + ' &nbsp;(' + pct + '%)</span>' +
+      '</div>' +
+      '<div class="prep-progress-track">' +
+        '<div class="prep-progress-fill ' + fillCls + '" style="width:' + pct + '%"></div>' +
+      '</div>' +
+      '<p class="prep-progress-sub">Complete every quiz and case study with \u2265' + PASS_PCT + '% to reach 100% preparation.</p>' +
+    '</div>';
+  }
+
+  // ── Review completed quiz / case ───────────────────────────────────────────
+  function reviewCompletedQuiz(setKey) {
+    const set = QUESTION_SETS.find(function (s) { return s.key === setKey; });
+    if (!set) return;
+    const saved = loadCompletedQuiz(set);
+    if (!saved) return;
+    reviewMode     = true;
+    activeSet      = set;
+    caseStudyMode  = null;
+    caseStudy      = null;
+    savedQuizState = null;
+    casePhase      = "quiz";
+    const qMap = {};
+    set.data.forEach(function (q) { qMap[q.id] = q; });
+    shuffled     = saved.shuffledIds.map(function (id) { return qMap[id]; }).filter(Boolean);
+    score        = saved.score;
+    results      = saved.results;
+    timerSeconds = typeof saved.timerSeconds === "number" ? saved.timerSeconds : 0;
+    showHomeBtn();
+    setSelectionEl.style.display = "none";
+    summaryEl.style.display      = "none";
+    document.getElementById("quiz-container").classList.remove("finished");
+    showSummary();
+  }
+
+  function reviewCompletedCase(caseKey) {
+    const tc = TEST_CASES.find(function (t) { return t.key === caseKey; });
+    if (!tc) return;
+    const saved = loadCompletedCase(tc);
+    if (!saved) return;
+    reviewMode     = true;
+    activeSet      = null;
+    caseStudy      = tc;
+    caseStudyMode  = "standalone";
+    savedQuizState = null;
+    casePhase      = "quiz";
+    const qMap = {};
+    tc.questions.forEach(function (q) { qMap[q.id] = q; });
+    shuffled     = saved.shuffledIds.map(function (id) { return qMap[id]; }).filter(Boolean);
+    score        = saved.score;
+    results      = saved.results;
+    timerSeconds = typeof saved.timerSeconds === "number" ? saved.timerSeconds : 0;
+    showHomeBtn();
+    setSelectionEl.style.display = "none";
+    summaryEl.style.display      = "none";
+    document.getElementById("quiz-container").classList.remove("finished");
+    showSummary();
+  }
+
   // ── Helpers ──────────────────────────────────────────────────────────────
   function shuffle(arr) {
     const a = arr.slice();
@@ -268,6 +513,10 @@
 
   // ── Set selection screen ─────────────────────────────────────────────────
   function showSetSelection() {
+    reviewMode   = false;
+    quizIsActive = false;
+    clearIdleTimer();
+    hidePauseOverlay();
     hideHomeBtn();
     hideTimer();
     setSelectionEl.style.display = "block";
@@ -284,16 +533,20 @@
       official:     { icon: "\uD83D\uDCCB", label: "Official",     cls: "diff-official" }
     };
 
+    // ── Progress bar ─────────────────────────────────────────────────────
+    let html = '<div class="set-selection-wrapper">' + buildProgressBar();
+
     // ── Section 1: Practice Quizzes ──────────────────────────────────────
-    let html = '<div class="set-selection-wrapper">' +
+    html += '<div class="section-divider"></div>' +
       '<h2 class="set-selection-title">Practice Quizzes</h2>' +
       '<p class="set-selection-sub">Each quiz has a 120-minute countdown timer. Optionally attach a case study for a combined score.</p>' +
       '<div class="set-cards">';
 
     QUESTION_SETS.forEach(function (set) {
-      const saved   = loadProgress(set);
-      const hasSaved = saved && Array.isArray(saved.results) && saved.results.length > 0 && saved.results.length < saved.shuffled.length;
-      const meta    = difficultyMeta[set.difficulty] || {};
+      const saved      = loadProgress(set);
+      const hasSaved   = saved && Array.isArray(saved.results) && saved.results.length > 0 && saved.results.length < saved.shuffled.length;
+      const completed  = loadCompletedQuiz(set);
+      const meta       = difficultyMeta[set.difficulty] || {};
       const savedTimer = hasSaved ? saved.timerSeconds : null;
 
       // Build the case study selector options
@@ -304,6 +557,13 @@
         caseOptions += '<option value="' + tc.key + '"' + disabled + '>' + label + '</option>';
       });
 
+      const completedBadge = completed
+        ? '<div class="set-card-completed ' + (completed.pct >= PASS_PCT ? "completed-pass" : "completed-fail") + '">' +
+            (completed.pct >= PASS_PCT ? "\u2705" : "\u26A0\uFE0F") +
+            ' Last attempt: <strong>' + completed.pct + '%</strong>' +
+          '</div>'
+        : '';
+
       html +=
         '<div class="set-card" data-key="' + set.key + '">' +
           '<div class="set-card-header">' +
@@ -312,6 +572,7 @@
           '</div>' +
           '<span class="difficulty-badge ' + meta.cls + '">' + meta.icon + ' ' + meta.label + '</span>' +
           '<p class="set-card-desc">' + set.description + '</p>' +
+          completedBadge +
           (hasSaved
             ? '<p class="set-card-resume">\u23F8 Saved: question ' + (saved.results.length + 1) + ' of ' + saved.shuffled.length +
               ' \u2014 ' + Math.round((saved.score / saved.shuffled.length) * 100) + '% score' +
@@ -324,6 +585,9 @@
             '</select>' +
           '</div>' +
           '<div class="set-card-actions">' +
+            (completed
+              ? '<button class="set-btn review-btn" data-key="' + set.key + '">\uD83D\uDD0D Review Results</button>'
+              : '') +
             (hasSaved
               ? '<button class="set-btn resume-set-btn" data-key="' + set.key + '">Resume</button>'
               : '') +
@@ -343,9 +607,18 @@
       '<div class="set-cards">';
 
     TEST_CASES.forEach(function (tc) {
-      const available  = tc.questions.length > 0;
-      const savedCase  = available ? loadCaseProgress(tc) : null;
-      const hasSaved   = savedCase && Array.isArray(savedCase.results) && savedCase.results.length > 0 && savedCase.results.length < savedCase.shuffled.length;
+      const available   = tc.questions.length > 0;
+      const savedCase   = available ? loadCaseProgress(tc) : null;
+      const hasSaved    = savedCase && Array.isArray(savedCase.results) && savedCase.results.length > 0 && savedCase.results.length < savedCase.shuffled.length;
+      const completed   = available ? loadCompletedCase(tc) : null;
+
+      const completedBadge = completed
+        ? '<div class="set-card-completed ' + (completed.pct >= PASS_PCT ? "completed-pass" : "completed-fail") + '">' +
+            (completed.pct >= PASS_PCT ? "\u2705" : "\u26A0\uFE0F") +
+            ' Last attempt: <strong>' + completed.pct + '%</strong>' +
+          '</div>'
+        : '';
+
       html +=
         '<div class="set-card case-card' + (available ? '' : ' case-card-disabled') + '" data-case-key="' + tc.key + '">' +
           '<div class="set-card-header">' +
@@ -354,13 +627,17 @@
           '</div>' +
           '<span class="difficulty-badge diff-case">\uD83D\uDCCB Case Study</span>' +
           '<p class="set-card-desc">' + tc.description + '</p>' +
+          completedBadge +
           (hasSaved
             ? '<p class="set-card-resume">\u23F8 Saved: question ' + (savedCase.results.length + 1) + ' of ' + savedCase.shuffled.length +
               ' \u2014 ' + Math.round((savedCase.score / savedCase.shuffled.length) * 100) + '% score</p>'
             : '') +
           '<div class="set-card-actions">' +
             (available
-              ? (hasSaved
+              ? (completed
+                  ? '<button class="set-btn review-btn case-review-btn" data-case-key="' + tc.key + '">\uD83D\uDD0D Review Results</button>'
+                  : '') +
+                (hasSaved
                   ? '<button class="set-btn resume-set-btn case-resume-btn" data-case-key="' + tc.key + '">Resume</button>'
                   : '') +
                 '<button class="set-btn start-set-btn case-start-btn" data-case-key="' + tc.key + '">' +
@@ -371,13 +648,48 @@
         '</div>';
     });
 
-    html += '</div></div>';
+    html += '</div>';
+
+    // ── Section 3: Random Practice Quiz ─────────────────────────────────
+    const randomSaved = loadProgress(RANDOM_SET);
+    const randomHasSaved = randomSaved && Array.isArray(randomSaved.results) &&
+      randomSaved.results.length > 0 && randomSaved.results.length < randomSaved.shuffled.length;
+
+    html += '<div class="section-divider"></div>' +
+      '<h2 class="set-selection-title">Random Practice</h2>' +
+      '<p class="set-selection-sub">Test yourself with a random mix of questions — does not affect preparation progress.</p>' +
+      '<div class="set-cards">' +
+        '<div class="set-card" id="random-quiz-card">' +
+          '<div class="set-card-header">' +
+            '<span class="set-card-title">' + RANDOM_SET.label + '</span>' +
+            '<span class="set-card-count">' + RANDOM_QUIZ_COUNT + ' questions</span>' +
+          '</div>' +
+          '<span class="difficulty-badge diff-random">\uD83C\uDFB2 Random</span>' +
+          '<p class="set-card-desc">' + RANDOM_SET.description + '</p>' +
+          (randomHasSaved
+            ? '<p class="set-card-resume">\u23F8 Saved: question ' + (randomSaved.results.length + 1) + ' of ' + randomSaved.shuffled.length +
+              ' \u2014 ' + Math.round((randomSaved.score / randomSaved.shuffled.length) * 100) + '% score' +
+              (randomSaved.timerSeconds !== null ? ' \u2014 \u23F1 ' + formatTime(randomSaved.timerSeconds) + ' left' : '') + '</p>'
+            : '') +
+          '<div class="set-card-actions">' +
+            (randomHasSaved
+              ? '<button class="set-btn resume-set-btn" id="random-resume-btn">Resume</button>'
+              : '') +
+            '<button class="set-btn start-set-btn" id="random-start-btn">' +
+              (randomHasSaved ? 'New Random Quiz' : 'Start Random Quiz') +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</div></div>';
+
     setSelectionEl.innerHTML = html;
 
     // Quiz resume/start buttons
     setSelectionEl.querySelectorAll(".resume-set-btn:not(.case-resume-btn)").forEach(function (btn) {
+      if (btn.id === "random-resume-btn") return; // handled separately
       btn.addEventListener("click", function () {
         const key = btn.dataset.key;
+        reviewMode     = false;
         activeSet      = QUESTION_SETS.find(function (s) { return s.key === key; });
         caseStudyMode  = null;
         caseStudy      = null;
@@ -388,8 +700,10 @@
     });
 
     setSelectionEl.querySelectorAll(".start-set-btn:not(.case-start-btn)").forEach(function (btn) {
+      if (btn.id === "random-start-btn") return; // handled separately
       btn.addEventListener("click", function () {
         const key      = btn.dataset.key;
+        reviewMode     = false;
         activeSet      = QUESTION_SETS.find(function (s) { return s.key === key; });
         // Read selected test case from the sibling selector
         const card     = btn.closest(".set-card");
@@ -409,6 +723,7 @@
         const key   = btn.dataset.caseKey;
         const tc    = TEST_CASES.find(function (t) { return t.key === key; });
         if (!tc) return;
+        reviewMode     = false;
         activeSet      = null;
         caseStudy      = tc;
         caseStudyMode  = "standalone";
@@ -423,6 +738,7 @@
         const key   = btn.dataset.caseKey;
         const tc    = TEST_CASES.find(function (t) { return t.key === key; });
         if (!tc || tc.questions.length === 0) return;
+        reviewMode     = false;
         activeSet      = null;
         caseStudy      = tc;
         caseStudyMode  = "standalone";
@@ -431,10 +747,37 @@
         initStandaloneCase(false);
       });
     });
+
+    // Review Results buttons for quizzes
+    setSelectionEl.querySelectorAll(".review-btn:not(.case-review-btn)").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        reviewCompletedQuiz(btn.dataset.key);
+      });
+    });
+
+    // Review Results buttons for case studies
+    setSelectionEl.querySelectorAll(".case-review-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        reviewCompletedCase(btn.dataset.caseKey);
+      });
+    });
+
+    // Random quiz buttons
+    const randomResumeBtn = document.getElementById("random-resume-btn");
+    const randomStartBtn  = document.getElementById("random-start-btn");
+    if (randomResumeBtn) {
+      randomResumeBtn.addEventListener("click", function () { initRandomQuiz(true); });
+    }
+    if (randomStartBtn) {
+      randomStartBtn.addEventListener("click", function () { initRandomQuiz(false); });
+    }
   }
 
   // ── Init (quiz) ───────────────────────────────────────────────────────────
   function init(resume) {
+    reviewMode = false;
+    isPaused   = false;
+    hidePauseOverlay();
     showHomeBtn();
     setSelectionEl.style.display = "none";
     summaryEl.style.display      = "none";
@@ -475,6 +818,9 @@
 
   // ── Init (standalone test case) ───────────────────────────────────────────
   function initStandaloneCase(resume) {
+    reviewMode = false;
+    isPaused   = false;
+    hidePauseOverlay();
     showHomeBtn();
     setSelectionEl.style.display = "none";
     summaryEl.style.display      = "none";
@@ -510,8 +856,58 @@
     showCaseIntro();
   }
 
-  // ── Case study intro screen ───────────────────────────────────────────────
+  // ── Init (random practice quiz) ───────────────────────────────────────────
+  function initRandomQuiz(resume) {
+    reviewMode     = false;
+    isPaused       = false;
+    hidePauseOverlay();
+    activeSet      = RANDOM_SET;
+    caseStudyMode  = null;
+    caseStudy      = null;
+    savedQuizState = null;
+    casePhase      = "quiz";
+
+    showHomeBtn();
+    setSelectionEl.style.display = "none";
+    summaryEl.style.display      = "none";
+    document.getElementById("quiz-container").classList.remove("finished");
+    nextBtn.style.display        = "none";
+
+    if (resume) {
+      // loadProgress rebuilds the question array from shuffledIds by looking up
+      // each ID in set.data.  Because RANDOM_SET.data = ALL_QUESTIONS, every ID
+      // that was stored for a random-quiz session can be resolved correctly.
+      const saved = loadProgress(RANDOM_SET);
+      if (saved && saved.current < saved.shuffled.length) {
+        shuffled     = saved.shuffled;
+        current      = saved.current;
+        score        = saved.score;
+        results      = saved.results;
+        timerSeconds = saved.timerSeconds;
+        if (current < results.length) current = results.length;
+        if (current < shuffled.length) {
+          startTimer();
+          renderQuestion();
+          return;
+        }
+      }
+    }
+
+    // Fresh start — pick RANDOM_QUIZ_COUNT questions from the full pool
+    clearProgress();
+    shuffled     = shuffle(ALL_QUESTIONS).slice(0, RANDOM_QUIZ_COUNT);
+    current      = 0;
+    score        = 0;
+    results      = [];
+    timerSeconds = TIMER_DURATION;
+    startTimer();
+    renderQuestion();
+  }
+
+
   function showCaseIntro() {
+    quizIsActive = false;
+    clearIdleTimer();
     hideTimer();
     const scenario = caseStudy.scenario || caseStudy.description;
     questionEl.innerHTML =
@@ -537,6 +933,8 @@
 
   // ── Transition: quiz done → test case phase ───────────────────────────────
   function startTestCasePhase() {
+    quizIsActive = false;
+    clearIdleTimer();
     // Snapshot the completed quiz state
     savedQuizState = {
       shuffledIds: shuffled.map(function (q) { return q.id; }),
@@ -592,6 +990,8 @@
 
   // ── Resume prompt ─────────────────────────────────────────────────────────
   function showResumePrompt(saved) {
+    quizIsActive = false;
+    clearIdleTimer();
     showHomeBtn();
     const nextQuestion = saved.results.length + 1;
     const timerInfo = typeof saved.timerSeconds === "number"
@@ -624,7 +1024,9 @@
 
   // ── Render ───────────────────────────────────────────────────────────────
   function renderQuestion() {
-    answered = false;
+    answered      = false;
+    quizIsActive  = true;
+    startIdleTimer();
     nextBtn.style.display = "none";
 
     const q = shuffled[current];
@@ -844,6 +1246,8 @@
 
   // ── Summary ───────────────────────────────────────────────────────────────
   function showSummary() {
+    quizIsActive = false;
+    clearIdleTimer();
     hideTimer();
     questionEl.innerHTML  = "";
     choicesEl.innerHTML   = "";
@@ -938,20 +1342,27 @@
 
   // ── Standalone quiz summary (unchanged behaviour) ─────────────────────────
   function showQuizSummary() {
-    const total          = shuffled.length;
+    saveCompletedState();
+    const total          = shuffled.length || results.length;
     const rawScore       = score;
-    const pct            = Math.round((rawScore / total) * 100);
+    const pct            = total ? Math.round((rawScore / total) * 100) : 0;
     const mb820Points    = Math.round(pct * 10);
     const fullyCorrect   = results.filter(function (r) { return r.isCorrect; }).length;
     const partialResults = results.filter(function (r) { return !r.isCorrect && r.partialScore > 0; });
     const wrongCount     = results.filter(function (r) { return r.partialScore === 0; }).length;
 
+    const isRandom = activeSet.key === "random";
+
     const badge   = pct >= PASS_PCT ? "pass" : (pct >= MARGINAL_PCT ? "marginal" : "fail");
-    const verdict = pct >= PASS_PCT
-      ? "Great work \u2014 you scored " + mb820Points + "/1000 and passed the MB-820 threshold! \uD83C\uDF89"
-      : pct >= MARGINAL_PCT
-        ? "Almost there \u2014 you need " + (PASS_PCT * 10) + "/1000 to pass MB-820. Review the explanations and try again!"
-        : "Keep studying \u2014 you need " + (PASS_PCT * 10) + "/1000 to pass MB-820. Review the explanations and try again.";
+    const verdict = isRandom
+      ? (pct >= PASS_PCT
+          ? "Well done \u2014 " + pct + "% on the random practice quiz! \uD83C\uDF89"
+          : "Keep practising \u2014 " + pct + "% on the random practice quiz. Review the explanations below.")
+      : (pct >= PASS_PCT
+          ? "Great work \u2014 you scored " + mb820Points + "/1000 and passed the MB-820 threshold! \uD83C\uDF89"
+          : pct >= MARGINAL_PCT
+            ? "Almost there \u2014 you need " + (PASS_PCT * 10) + "/1000 to pass MB-820. Review the explanations and try again!"
+            : "Keep studying \u2014 you need " + (PASS_PCT * 10) + "/1000 to pass MB-820. Review the explanations and try again.");
 
     const timeTaken   = TIMER_DURATION - timerSeconds;
     const timeExpired = timerSeconds === 0;
@@ -969,7 +1380,8 @@
       beginner:     { icon: "\uD83D\uDFE2", label: "Beginner" },
       intermediate: { icon: "\uD83D\uDFE1", label: "Intermediate" },
       proficient:   { icon: "\uD83D\uDD34", label: "Proficient" },
-      official:     { icon: "\uD83D\uDCCB", label: "Official" }
+      official:     { icon: "\uD83D\uDCCB", label: "Official" },
+      random:       { icon: "\uD83C\uDFB2", label: "Random" }
     };
     const dmeta = difficultyMeta[activeSet.difficulty] || { icon: "", label: "" };
 
@@ -977,13 +1389,13 @@
 
     summaryEl.innerHTML =
       '<div class="summary-card ' + badge + '">' +
-        '<h2>Quiz Complete!</h2>' +
+        '<h2>' + (isRandom ? "Random Practice Complete!" : "Quiz Complete!") + '</h2>' +
         '<p class="summary-set-label">' +
           dmeta.icon + ' ' + activeSet.label + ' &nbsp;&middot;&nbsp; ' + perfLabel +
         '</p>' +
         '<div class="score-circle">' +
           '<span class="score-number">' + pct + '%</span>' +
-          '<span class="score-label">' + mb820Points + ' / 1000 MB-820 pts</span>' +
+          '<span class="score-label">' + (isRandom ? fullyCorrect + " / " + total + " correct" : mb820Points + ' / 1000 MB-820 pts') + '</span>' +
         '</div>' +
         '<p class="score-verdict">' + verdict + '</p>' +
         '<div class="summary-meta">' +
@@ -993,8 +1405,8 @@
           '<span class="meta-item">\u2717 ' + wrongCount + ' wrong</span>' +
         '</div>' +
         '<div class="summary-actions">' +
-          '<button class="restart-btn" id="restart-btn">Restart Quiz</button>' +
-          '<button class="change-set-btn" id="change-set-btn-summary">Change Level</button>' +
+          '<button class="restart-btn" id="restart-btn">' + (isRandom ? 'New Random Quiz' : 'Restart Quiz') + '</button>' +
+          '<button class="change-set-btn" id="change-set-btn-summary">Back to Menu</button>' +
         '</div>' +
       '</div>' +
       bd.reviewHtml +
@@ -1003,8 +1415,13 @@
     summaryEl.style.display = "block";
 
     document.getElementById("restart-btn").addEventListener("click", function () {
-      caseStudyMode = null; caseStudy = null; savedQuizState = null; casePhase = "quiz";
-      init(false);
+      reviewMode = false;
+      if (isRandom) {
+        initRandomQuiz(false);
+      } else {
+        caseStudyMode = null; caseStudy = null; savedQuizState = null; casePhase = "quiz";
+        init(false);
+      }
     });
     document.getElementById("change-set-btn-summary").addEventListener("click", function () {
       showSetSelection();
@@ -1013,9 +1430,10 @@
 
   // ── Standalone test case summary ─────────────────────────────────────────
   function showStandaloneCaseSummary() {
-    const total        = shuffled.length;
+    saveCompletedState();
+    const total        = shuffled.length || results.length;
     const rawScore     = score;
-    const pct          = Math.round((rawScore / total) * 100);
+    const pct          = total ? Math.round((rawScore / total) * 100) : 0;
     const fullyCorrect = results.filter(function (r) { return r.isCorrect; }).length;
     const partials     = results.filter(function (r) { return !r.isCorrect && r.partialScore > 0; });
     const wrongCount   = results.filter(function (r) { return r.partialScore === 0; }).length;
@@ -1067,6 +1485,7 @@
     summaryEl.style.display = "block";
 
     document.getElementById("restart-case-btn").addEventListener("click", function () {
+      reviewMode = false;
       initStandaloneCase(false);
     });
     document.getElementById("back-home-btn").addEventListener("click", function () {
@@ -1076,6 +1495,7 @@
 
   // ── Combined summary (70% quiz + 30% case study) ──────────────────────────
   function showCombinedSummary() {
+    saveCompletedState();
     // Current state holds test case results; savedQuizState holds quiz results
     const quizResultsArr = savedQuizState.results;
     const quizTotal      = savedQuizState.shuffledIds.length;
@@ -1166,6 +1586,7 @@
     summaryEl.style.display = "block";
 
     document.getElementById("combined-restart-btn").addEventListener("click", function () {
+      reviewMode     = false;
       const cs = caseStudy;
       caseStudyMode  = "combined";
       caseStudy      = cs;

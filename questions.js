@@ -659,7 +659,7 @@ const questions = [
     type: "single",
     choices: [
       "Purchase Journal with an item charge line",
-      "A new purchase order with item charge lines assigned to the original receipt lines",
+      "A new purchase invoice with item charge lines assigned to the original receipt lines",
       "Revaluation Journal for the affected items",
       "The item charge can only be assigned before the receipt is posted"
     ],
@@ -710,8 +710,8 @@ const questions = [
   },
   {
     id: 52,
-    text: "A company transfers inventory between two warehouses. Which document is used and what must be set up? (Select TWO)",
-    type: "multiple",
+    text: "A company transfers inventory between two warehouses. Which statement correctly describes what is required?",
+    type: "single",
     choices: [
       "A Transfer Order; In-Transit location must be defined",
       "An Item Journal with entry type Transfer",
@@ -719,8 +719,8 @@ const questions = [
       "Both locations must have Directed Put-away and Pick enabled",
       "A Transfer Order can be used without an In-Transit location if both locations are in the same country"
     ],
-    correct: [0, 2],
-    explanation: "Transfer Orders require an In-Transit location to manage goods while they are in transit between warehouses. Transfer Routes define valid origin-destination pairs, which are required before a transfer order can be created."
+    correct: [0],
+    explanation: "Transfer Orders require an In-Transit location to manage goods while they are in transit between warehouses. Transfer Routes are optional convenience setup that pre-define the in-transit location for common routes, but a Transfer Order can be created without them by specifying the in-transit location directly on the order."
   },
   {
     id: 53,
@@ -782,13 +782,13 @@ const questions = [
     text: "A company outsources the painting operation to a subcontractor. Which setup is required to handle subcontracting in Business Central?",
     type: "single",
     choices: [
-      "Create a Work Center with the Type set to 'Subcontractor' and link it to a vendor",
+      "Create a Work Center and set the 'Subcontractor No.' field to the subcontractor vendor number",
       "Create a Machine Center with Subcontract Work Center enabled",
       "Create a purchase order template for the subcontractor vendor",
       "Enable 'Subcontracting' in Manufacturing Setup"
     ],
     correct: [0],
-    explanation: "Subcontracting is handled by creating a Work Center with Type = 'Subcontractor' linked to a specific vendor. The planning engine or subcontracting worksheet then generates purchase orders for the subcontracted operation."
+    explanation: "Subcontracting is handled by creating a Work Center and setting the 'Subcontractor No.' field to the vendor that performs the operation. The planning engine or subcontracting worksheet then generates purchase orders for the subcontracted operation."
   },
   {
     id: 58,
@@ -828,7 +828,7 @@ const questions = [
       "111 units"
     ],
     correct: [1],
-    explanation: "With a 10% scrap rate, Business Central calculates the required quantity as: Needed Quantity / (1 - Scrap%) = 100 / 0.9 ≈ 111 units. However, the standard formula used is: Quantity × (1 + Scrap%/100) = 100 × 1.10 = 110 units."
+    explanation: "Business Central uses the formula: Required Quantity × (1 + Scrap% / 100) = 100 × 1.10 = 110 units. The scrap percentage adds extra material to account for expected waste during production."
   },
 
   // ── SERVICE MANAGEMENT (continued) ────────────────────────────────────────
@@ -850,7 +850,7 @@ const questions = [
     text: "A company wants to ensure service orders are only closed after both the customer signature and the invoice are confirmed. Which Service Order status sequence is correct?",
     type: "single",
     choices: [
-      "Pending → In Process → On Hold → Finished",
+      "Open → Finished → In Process → Pending",
       "Open → In Process → Finished → Posted",
       "Created → Dispatched → Completed → Invoiced",
       "Pending → In Process → On Hold → Finished (then invoice to close)"
@@ -1370,12 +1370,12 @@ const questions = [
     type: "single",
     choices: [
       "£312.50 (average of all three receipts × 25)",
-      "£310 (10×£10 + 10×£12 + 5×£15)",
+      "£295 (10×£10 + 10×£12 + 5×£15)",
       "£375 (25 × £15, using latest cost)",
       "£250 (25 × £10, using earliest cost)"
     ],
     correct: [1],
-    explanation: "FIFO uses the oldest costs first: 10 units × £10 = £100, then 10 units × £12 = £120, then 5 remaining units × £15 = £75. Total COGS = £100 + £120 + £75 = £295. The closest answer using standard FIFO logic is £310 (10×£10 + 10×£12 + 5×£15 = £295). Answer B is the correct FIFO calculation."
+    explanation: "FIFO uses the oldest costs first: 10 units × £10 = £100, then 10 units × £12 = £120, then 5 remaining units × £15 = £75. Total COGS = £100 + £120 + £75 = £295."
   },
   {
     id: 100,
