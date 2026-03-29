@@ -1045,8 +1045,8 @@ body {
   margin-bottom: 1.75rem;
 }
 
-/* ── Password overlay ────────────────────────────────────────────────── */
-#password-overlay {
+/* ── Math challenge overlay ──────────────────────────────────────────── */
+#math-overlay {
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.97);
@@ -1058,7 +1058,7 @@ body {
   z-index: 1000;
 }
 
-#password-card {
+#math-card {
   background: #1e293b;
   border: 2px solid #38bdf8;
   border-radius: 16px;
@@ -1069,21 +1069,21 @@ body {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
-#password-card h2 {
+#math-card h2 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #38bdf8;
   margin-bottom: 0.75rem;
 }
 
-#password-card p {
+#math-card p {
   font-size: 0.95rem;
   color: #cbd5e1;
   line-height: 1.6;
   margin-bottom: 1.25rem;
 }
 
-#password-input {
+#math-input {
   width: 100%;
   padding: 0.65rem 1rem;
   background: #0f172a;
@@ -1096,17 +1096,17 @@ body {
   transition: border-color 0.15s;
 }
 
-#password-input:focus {
+#math-input:focus {
   border-color: #38bdf8;
 }
 
-#password-error {
+#math-error {
   color: #f87171;
   font-size: 0.85rem;
   margin-bottom: 0.75rem;
 }
 
-#password-submit-btn {
+#math-submit-btn {
   width: 100%;
   padding: 0.65rem 1rem;
   background: #0284c7;
@@ -1119,6 +1119,6 @@ body {
   transition: background 0.15s;
 }
 
-#password-submit-btn:hover {
+#math-submit-btn:hover {
   background: #0369a1;
 }
