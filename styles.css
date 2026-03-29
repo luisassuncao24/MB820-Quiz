@@ -1100,6 +1100,13 @@ body {
   border-color: #38bdf8;
 }
 
+#math-question-display {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 1.25rem;
+}
+
 #math-error {
   color: #f87171;
   font-size: 0.85rem;

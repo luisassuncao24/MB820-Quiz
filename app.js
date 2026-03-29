@@ -1638,13 +1638,13 @@
   }
 
   function setupMathGate(onSuccess) {
-    var submitBtn  = document.getElementById("math-submit-btn");
-    var inputEl    = document.getElementById("math-input");
-    var errorEl    = document.getElementById("math-error");
-    var challengeEl = document.getElementById("math-challenge-text");
+    var submitBtn   = document.getElementById("math-submit-btn");
+    var inputEl     = document.getElementById("math-input");
+    var errorEl     = document.getElementById("math-error");
+    var questionEl  = document.getElementById("math-question-display");
 
     var challenge = generateMathChallenge();
-    challengeEl.textContent = challenge.question;
+    questionEl.textContent = challenge.question;
 
     function attempt() {
       var parsed = parseInt(inputEl.value, 10);
@@ -1656,7 +1656,7 @@
         errorEl.style.display = "block";
         inputEl.value = "";
         challenge = generateMathChallenge();
-        challengeEl.textContent = challenge.question;
+        questionEl.textContent = challenge.question;
         inputEl.focus();
       }
     }
@@ -1699,6 +1699,7 @@
     }
 
     if (isAuthenticated()) {
+      hideMathOverlay();
       startApp();
     } else {
       showMathOverlay();
