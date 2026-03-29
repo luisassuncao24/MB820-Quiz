@@ -396,9 +396,161 @@ const TEST_CASES = [
     ]
   },
   {
-    key: "case3",
-    label: "Case Study 3",
-    description: "Coming soon — this case study has not yet been added.",
-    questions: []
+    key: "fabrikam",
+    label: "Fabrikam Case Study",
+    description: "10 scenario-based questions from the Fabrikam Inc. case study, covering AL extension development, API design, XMLport, translations, report layouts, telemetry, and upgrade codeunits in Business Central.",
+    questions: [
+      {
+        id: 501,
+        text: "You need to evaluate the version values of the Quality Control extension (v1.0.0.1 installed, v1.0.0.2 being deployed) to decide how to update it. NavApp.GetCurrentModuleInfo(myInfo) is called in OnUpgradePerCompany. Which two values can you obtain? (Select TWO)",
+        type: "multiple",
+        choices: [
+          "A. AppVersion = 1.0.0.1",
+          "B. AppVersion = 1.0.0.2",
+          "C. DataVersion = 0.0.0.0",
+          "D. DataVersion = 1.0.0.1",
+          "E. DataVersion = 1.0.0.2"
+        ],
+        correct: [1, 3],
+        explanation: "In an Upgrade codeunit, NavApp.GetCurrentModuleInfo returns info about the version being installed (the new version). AppVersion is the version of the new app being deployed — 1.0.0.2. DataVersion is the version of the data currently in the database — the last successfully installed version, which is 1.0.0.1. This allows the upgrade code to determine what transformation is needed."
+      },
+      {
+        id: 502,
+        text: "You need to develop the Subcontract Documents Excel List report for the control department. The report must download as Excel only, with two worksheets (posted and unposted). For each statement, is it correct (Yes) or not (No)?",
+        type: "multiple",
+        choices: [
+          "A. Delete lines 31–35 (Word layout section). Change line 5 to DefaultLayout = Excel;",
+          "B. Delete lines 31–35 (Word layout section). Change line 5 to DefaultRenderingLayout = excelLayout; and add ExcelLayoutMultipleDataSheets = true; after line 6.",
+          "C. Change property on line 5 to DefaultRenderingLayout = excelLayout; and add ExcelLayoutMultipleDataSheets = true; after line 6 (keep existing lines)."
+        ],
+        correct: [1],
+        explanation: "Option B is the only correct approach. You must remove the Word layout rendering block (lines 31–35) because the report must only produce Excel output. The correct modern property is DefaultRenderingLayout = excelLayout (not DefaultLayout). To support two worksheets, ExcelLayoutMultipleDataSheets = true must be added. Option A uses the deprecated DefaultLayout property. Option C keeps the Word layout, which would still allow Word output."
+      },
+      {
+        id: 503,
+        text: "You need to create the Fabrikam Vendor API page for the accounting department. It must expose vendor information, use the replica database for performance, and be an API. Which three code segment completions are correct? (Select THREE)",
+        type: "multiple",
+        choices: [
+          "page 50101 \"Fabrikam Vendor API\"",
+          "query 51011 \"Fabrikam Vendor API\"",
+          "pageextension 50101 \"Fabrikam Vendor API\"",
+          "PageType = API;",
+          "QueryType = API;",
+          "PageType = List;",
+          "DataAccessIntent = ReadWrite;",
+          "DataAccessIntent = ReadOnly;",
+          "InsertAllowed = false;",
+          "ModifyAllowed = false;"
+        ],
+        correct: [0, 3, 7],
+        explanation: "A page object (not query or pageextension) must be created with PageType = API to define a custom API page. DataAccessIntent = ReadOnly routes queries to the read-only replica database to improve performance, which is a stated requirement. The object type must be 'page', as 'query' with QueryType = API is a different concept used for query-based APIs."
+      },
+      {
+        id: 504,
+        text: "You need to create the code for the Subcontract Documents table to meet the quality department requirement: when a vendor is deleted, remove non-posted Subcontract Document records; block deletion if posted records exist. Which three code segment completions are correct? (Select THREE)",
+        type: "multiple",
+        choices: [
+          "codeunit 50100 Vendor",
+          "table 50100 \"Vendor Control\"",
+          "tableextension 50100 \"Vendor Control\" extends Vendor",
+          "tableextension 50100 \"Vendor Control\" extends \"Subcontract Documents\"",
+          "trigger OnDelete()",
+          "trigger OnModify()",
+          "procedure OnDeleteSubcontractDocument()",
+          "Confirm(errLbl)",
+          "Error(errLbl)",
+          "Message(errLbl)"
+        ],
+        correct: [2, 4, 8],
+        explanation: "A tableextension of the Vendor table is the correct approach — this allows hooking into the standard Vendor table's triggers without modifying it directly. The OnDelete trigger fires when a Vendor record is deleted, which is when we want to cascade or block. Error(errLbl) is the correct function to block deletion and show a non-confirmable error message when posted subcontract documents exist (Confirm would allow the user to override; Message does not stop execution)."
+      },
+      {
+        id: 505,
+        text: "You need to add a property to the Description and Comments fields so that employees see a brief guide when the field is empty, and the guide disappears once they start entering values. Which property should you add?",
+        type: "single",
+        choices: [
+          "A. InstructionalText",
+          "B. ToolTip",
+          "C. Description",
+          "D. Caption"
+        ],
+        correct: [0],
+        explanation: "InstructionalText is the Business Central page field property that displays placeholder/hint text inside the field when it is empty, and automatically disappears once the user starts typing. ToolTip shows on hover but does not appear inside the field. Description is a developer comment property. Caption changes the field label, not the in-field hint."
+      },
+      {
+        id: 506,
+        text: "You need to apply the correct formatting to the Amount field on the Subcontract Document List page so that it appears in bold when the Posted field is true. Which field definition should you use?",
+        type: "single",
+        choices: [
+          "A. field(Amount; Rec.Amount) { Style = Strong; StyleExpr = true; }",
+          "B. field(PostedRec; Rec.Posted) { Style = None; StyleExpr = Rec.Amount > 0; }",
+          "C. field(PostedRec; Rec.Posted) { Style = Strong; StyleExpr = Rec.Posted = true; }",
+          "D. field(Amount; Rec.Amount) { Style = Strong; StyleExpr = Rec.Posted = true; }",
+          "E. field(Amount; Rec.Amount) { Style = None; StyleExpr = Rec.Posted = true; }"
+        ],
+        correct: [3],
+        explanation: "Option D is correct: the field being styled is Amount (Rec.Amount), Style = Strong applies bold formatting, and StyleExpr = Rec.Posted = true makes the bold conditional on the Posted field being true. Option A always applies bold (StyleExpr = true is not conditional). Option B/C apply the style to the Posted field itself rather than Amount. Option E uses Style = None which removes formatting rather than applying bold."
+      },
+      {
+        id: 507,
+        text: "You need to configure the Subcontract Docs extension to translate Description and Comments fields into English (US) and Spanish (Spain), stored in the table. Which three actions are required? (Select THREE)",
+        type: "multiple",
+        choices: [
+          "Complete the value for CaptionML for each field with eNU='...'; eSP='...';",
+          "Add the setting \"features\": [\"TranslationFile\"] in the app.json file.",
+          "Open the table Subcontract Documents.",
+          "Add the CaptionML property for each field.",
+          "Use the build command AL: Package in Visual Studio Code to generate the .xlf folder.",
+          "Open the Subcontract Document List page.",
+          "Translate the generated .xlf file."
+        ],
+        correct: [0, 2, 3],
+        explanation: "The correct sequence is: (1) Open the Subcontract Documents table — translations must be stored at the table level, not the page level. (2) Add the CaptionML property to each field that needs translation. (3) Complete the CaptionML value with the format eNU='English text'; eSP='Spanish text'; for each field. The TranslationFile feature and .xlf workflow are a different translation approach (XLIFF) and are not required here since CaptionML stores translations directly in the table."
+      },
+      {
+        id: 508,
+        text: "You need to configure the app.json file for the development department's extension. Telemetry must be monitored through Application Insights (without compile-time warnings), and the extension targets Business Central 2024 wave 1 online. Which two settings are correct? (Select TWO)",
+        type: "multiple",
+        choices: [
+          "applicationInsightsConnectionString",
+          "applicationInsightsKey",
+          "Cloud",
+          "Extension",
+          "OnPrem"
+        ],
+        correct: [0, 2],
+        explanation: "applicationInsightsConnectionString is the current recommended property for Application Insights integration in app.json; the older applicationInsightsKey property is deprecated and causes compile-time warnings. The target environment for Business Central online is 'Cloud' (not 'Extension' or 'OnPrem'). Using the deprecated key would trigger the warning that the quality department wants to avoid."
+      },
+      {
+        id: 509,
+        text: "You need to define the XMLport properties for the Fabrikam Accounting export. The file must be XML format, export-only (no import), and contain accounting movements from G/L entries. Which three code segment completions are correct? (Select THREE)",
+        type: "multiple",
+        choices: [
+          "Format = FixedText;",
+          "Format = VariableText;",
+          "Format = Xml;",
+          "Direction = Both;",
+          "Direction = Export;",
+          "Direction = Import;",
+          "SourceTable = \"Subcontract Documents\"",
+          "SourceTable = \"G/L Account\"",
+          "SourceTable = \"G/L Entry\""
+        ],
+        correct: [2, 4, 8],
+        explanation: "Format = Xml generates XML output as required. Direction = Export makes the XMLport write-only — it cannot receive/import data, which is the security requirement. The source table must be \"G/L Entry\" (not \"G/L Account\") because the requirement is to export accounting movements (transactions/journal entries) between two dates, which are stored in G/L Entry records, not in the G/L Account master."
+      },
+      {
+        id: 510,
+        text: "You need to modify the API Customer Lines query code to expose customer_Number, customer_Name, and qty (sum of Outstanding Quantity on Sales Order Lines, sorted descending by qty). For each statement, is it correct (Yes) or not (No)?",
+        type: "multiple",
+        choices: [
+          "A. Add two lines: OrderBy = descending(\"Outstanding Quantity\"); between lines 8–9, and Method = Sum; between lines 24–25.",
+          "B. Add three lines: OrderBy = descending(qty); between lines 8–9, DataItemTableFilter = \"Document Type\" = filter('Order'); between lines 22–23, and Method = Sum; between lines 24–25.",
+          "C. Add three lines: OrderBy = descending(qty); between lines 8–9, DataItemTableFilter = \"Document Type\" = const('Order'); between lines 22–23, and Method = Sum; between lines 24–25."
+        ],
+        correct: [2],
+        explanation: "Option C is the only correct answer. OrderBy must reference the query column alias 'qty' (not the raw field name 'Outstanding Quantity'). The DataItemTableFilter must restrict to Sales Order lines using const('Order') — 'const' is the correct AL filter type for matching a specific enum/option value. 'filter' (option B) would interpret the value as a filter expression string rather than a constant match. Method = Sum is required to aggregate the Outstanding Quantity values."
+      }
+    ]
   }
 ];
