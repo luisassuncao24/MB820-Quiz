@@ -367,7 +367,7 @@ const questionsOfficial = [
   {
     id: 528,
     text: "You have a per-tenant extension with interface 'IDiscount Calculation' that defines GetLine(var Line: Variant) and GetDiscount(): Decimal. Codeunit 50108 'Discount Mgmt.' implements this interface. The codeunit uses VariantLine as the parameter name in GetLine, and has an additional DiscountIsValid(DocumentDate: Date): Boolean procedure not in the interface. Which statements are true? (Select all that apply)",
-    type: "multiple",
+    type: "single",
     choices: [
       "Codeunit 'Discount Mgmt.' compiles successfully.",
       "VariantLine in GetLine must be changed to Line and DiscountAmount removed for the codeunit to compile.",
@@ -542,7 +542,7 @@ const questionsOfficial = [
   {
     id: 540,
     text: "You create a ContosoPost procedure to send an HTTP POST request in JSON format. The procedure does not work as expected. For each of the following statements, select Yes if the statement is true (the fix is needed). Which statements are true? (Select all that apply)\n\nStatement 1: Replace line 16 'Content.ReadAs(ResponseText)' with 'ResponseMessage.Content.ReadAs(ResponseText)'\nStatement 2: In line 13, change the 'text/plain' value to 'application/json'\nStatement 3: Replace line 14 'Headers.Add(\"Authorization\", ...)' with 'Client.DefaultRequestHeaders.Add(\"Authorization\", ...)'\nStatement 4: In line 10, replace WriteFrom with ReadAs",
-    type: "multiple",
+    type: "single",
     choices: [
       "YES — Replace line 16: change Content.ReadAs(ResponseText) to ResponseMessage.Content.ReadAs(ResponseText)",
       "YES — In line 13, change 'text/plain' to 'application/json'",
@@ -623,7 +623,7 @@ const questionsOfficial = [
   {
     id: 546,
     text: "A company is generating a detailed custom report. A user observes that the generated report dataset contains more Delivery Line records than expected for one specific Delivery Header. You need to generate a report that contains the accurate number of records. For each statement, select Yes if the statement is true:\n\nStatement 1: Configure the DataItemTableView property of the Delivery Header data item.\nStatement 2: Configure the RequestFilterFields property of both data items.\nStatement 3: Configure the DataItemLink property of the Delivery Line table.",
-    type: "multiple",
+    type: "single",
     choices: [
       "YES — Configure the DataItemTableView property of the Delivery Header data item",
       "YES — Configure the RequestFilterFields property of both data items",
@@ -1009,7 +1009,7 @@ const questionsOfficial = [
   {
     id: 575,
     text: "You create a procedure to check if a purchase order has lines. The procedure returns false for purchase order P0000 even though it has purchase lines.\n\nThe code uses:\n- Line 05: PurchaseLine.SetRange(\"Document Type\", PurchaseHeader.\"Document Type\")\n- Line 06: PurchaseLine.SetRange(\"No.\", PurchaseHeader.\"No.\")\n- Line 07: exit(not PurchaseLine.IsEmpty())\n\nFor each statement, select Yes if true:\nStatement 1: Add Clear(PurchaseLine) before line 01.\nStatement 2: Add PurchaseLine.SetFilter('Line No.', '>0') after line 06.\nStatement 3: Change the filter on line 06 from a \"No.\" field to a \"Document No.\" field.\nStatement 4: Remove \"not\" in line 07.",
-    type: "multiple",
+    type: "single",
     choices: [
       "YES — Add Clear(PurchaseLine) before line 01",
       "YES — Add PurchaseLine.SetFilter('Line No.', '>0') after line 06",

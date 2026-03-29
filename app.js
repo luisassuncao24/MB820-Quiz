@@ -61,6 +61,7 @@
   const TIMER_DURATION       = 120 * 60; // 120 minutes in seconds
   const TIMER_WARNING_MINS   = 30;       // yellow threshold
   const TIMER_CRITICAL_MINS  = 10;       // red threshold
+  const IDLE_TIMEOUT_SECS    = 120;      // 2 minutes — auto-pause after this long without user activity
 
   // MB-820 scoring thresholds (percentage, 0-100)
   const PASS_PCT     = 70; // 700/1000 points — minimum passing score for MB-820
@@ -76,6 +77,12 @@
   let timerSeconds  = TIMER_DURATION;
   let timerInterval = null;
   let reviewMode    = false; // true when re-viewing a completed quiz (no re-save)
+
+  // ── Idle / auto-pause state ───────────────────────────────────────────────
+  let idleTimeout          = null;  // setTimeout handle for auto-pause
+  let isPaused             = false; // true when quiz is auto-paused
+  let quizIsActive         = false; // true when a question is displayed
+  let pauseTimerWasRunning = false; // remember if the quiz timer was running before pause
 
   // ── Test-case state ───────────────────────────────────────────────────────
   // caseStudyMode: null | "standalone" | "combined"
@@ -97,8 +104,12 @@
   const homeBtn        = document.getElementById("home-btn");
 
   homeBtn.addEventListener("click", function () {
+    clearIdleTimer();
+    quizIsActive = false;
+    isPaused     = false;
+    hidePauseOverlay();
     stopTimer();
-    if (shuffled.length > 0 && !reviewMode) saveProgress();
+    if (shuffled.length > 0 && current < shuffled.length && !reviewMode) saveProgress();
     reviewMode     = false;
     activeSet      = null;
     caseStudyMode  = null;
@@ -168,7 +179,72 @@
     return String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
   }
 
-  // ── Persistence ──────────────────────────────────────────────────────────
+  // ── Idle / auto-pause ────────────────────────────────────────────────────
+  // Throttle timestamp — avoid re-setting the idle timer on every pixel of
+  // mousemove (which fires dozens of times per second).
+  let lastActivityReset = 0;
+
+  function clearIdleTimer() {
+    if (idleTimeout) { clearTimeout(idleTimeout); idleTimeout = null; }
+  }
+
+  function startIdleTimer() {
+    clearIdleTimer();
+    if (!quizIsActive || isPaused) return;
+    idleTimeout = setTimeout(pauseQuiz, IDLE_TIMEOUT_SECS * 1000);
+  }
+
+  function onUserActivity() {
+    // quizIsActive is checked first — so this handler is effectively a no-op
+    // on the set-selection and summary screens even though it is always registered.
+    if (!quizIsActive || isPaused) return;
+    const now = Date.now();
+    if (now - lastActivityReset < 1000) return; // throttle: reset at most once per second
+    lastActivityReset = now;
+    startIdleTimer();
+  }
+
+  function showPauseOverlay() {
+    document.getElementById("pause-overlay").style.display = "flex";
+  }
+
+  function hidePauseOverlay() {
+    document.getElementById("pause-overlay").style.display = "none";
+  }
+
+  function pauseQuiz() {
+    if (!quizIsActive || isPaused) return;
+    isPaused             = true;
+    pauseTimerWasRunning = (timerInterval !== null);
+    clearIdleTimer();
+    stopTimer();
+    saveProgress();
+    showPauseOverlay();
+  }
+
+  function resumeFromPause() {
+    if (!isPaused) return;
+    isPaused = false;
+    hidePauseOverlay();
+    if (pauseTimerWasRunning) startTimer();
+    startIdleTimer();
+  }
+
+  // Register activity listeners — they are always present but onUserActivity()
+  // exits immediately when quizIsActive is false, keeping the cost negligible.
+  ["mousemove", "mousedown", "keydown", "touchstart", "scroll", "click"].forEach(function (evt) {
+    document.addEventListener(evt, onUserActivity, { passive: true });
+  });
+
+  // Wire up pause overlay buttons
+  document.getElementById("pause-resume-btn").addEventListener("click", resumeFromPause);
+  document.getElementById("pause-home-btn").addEventListener("click", function () {
+    isPaused = false;
+    hidePauseOverlay();
+    homeBtn.click(); // delegate to existing home-button handler
+  });
+
+
   function saveKey() {
     if (caseStudyMode === "standalone") {
       return "mb820_case_" + caseStudy.key;
@@ -437,7 +513,10 @@
 
   // ── Set selection screen ─────────────────────────────────────────────────
   function showSetSelection() {
-    reviewMode = false;
+    reviewMode   = false;
+    quizIsActive = false;
+    clearIdleTimer();
+    hidePauseOverlay();
     hideHomeBtn();
     hideTimer();
     setSelectionEl.style.display = "block";
@@ -697,6 +776,8 @@
   // ── Init (quiz) ───────────────────────────────────────────────────────────
   function init(resume) {
     reviewMode = false;
+    isPaused   = false;
+    hidePauseOverlay();
     showHomeBtn();
     setSelectionEl.style.display = "none";
     summaryEl.style.display      = "none";
@@ -738,6 +819,8 @@
   // ── Init (standalone test case) ───────────────────────────────────────────
   function initStandaloneCase(resume) {
     reviewMode = false;
+    isPaused   = false;
+    hidePauseOverlay();
     showHomeBtn();
     setSelectionEl.style.display = "none";
     summaryEl.style.display      = "none";
@@ -776,6 +859,8 @@
   // ── Init (random practice quiz) ───────────────────────────────────────────
   function initRandomQuiz(resume) {
     reviewMode     = false;
+    isPaused       = false;
+    hidePauseOverlay();
     activeSet      = RANDOM_SET;
     caseStudyMode  = null;
     caseStudy      = null;
@@ -821,6 +906,8 @@
 
 
   function showCaseIntro() {
+    quizIsActive = false;
+    clearIdleTimer();
     hideTimer();
     const scenario = caseStudy.scenario || caseStudy.description;
     questionEl.innerHTML =
@@ -846,6 +933,8 @@
 
   // ── Transition: quiz done → test case phase ───────────────────────────────
   function startTestCasePhase() {
+    quizIsActive = false;
+    clearIdleTimer();
     // Snapshot the completed quiz state
     savedQuizState = {
       shuffledIds: shuffled.map(function (q) { return q.id; }),
@@ -901,6 +990,8 @@
 
   // ── Resume prompt ─────────────────────────────────────────────────────────
   function showResumePrompt(saved) {
+    quizIsActive = false;
+    clearIdleTimer();
     showHomeBtn();
     const nextQuestion = saved.results.length + 1;
     const timerInfo = typeof saved.timerSeconds === "number"
@@ -933,7 +1024,9 @@
 
   // ── Render ───────────────────────────────────────────────────────────────
   function renderQuestion() {
-    answered = false;
+    answered      = false;
+    quizIsActive  = true;
+    startIdleTimer();
     nextBtn.style.display = "none";
 
     const q = shuffled[current];
@@ -1153,6 +1246,8 @@
 
   // ── Summary ───────────────────────────────────────────────────────────────
   function showSummary() {
+    quizIsActive = false;
+    clearIdleTimer();
     hideTimer();
     questionEl.innerHTML  = "";
     choicesEl.innerHTML   = "";

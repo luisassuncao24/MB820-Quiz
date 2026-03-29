@@ -429,7 +429,7 @@ const TEST_CASES = [
     scenario: "Fabrikam Inc. is a manufacturing company that needs a custom Business Central extension called Quality Control (v1.0.0.2). The extension manages Subcontract Documents and their relationship with vendors. Key deliverables include: an upgrade codeunit to migrate data from the obsolete Issue Category table to Issue Type when upgrading from v1.0.0.1; an Excel report with two worksheets (posted and unposted Subcontract Documents) for the control department; a read-only Vendor API page for the accounting department; vendor deletion logic that cascades or blocks based on posted status; InstructionalText for empty Description and Comments fields; conditional bold formatting on the Subcontract Document List; CaptionML-based translations into English (US) and Spanish (Spain); proper Application Insights configuration in app.json without deprecation warnings; an XMLport to export G/L entries as XML for external accounting analysis; and a customer API query with aggregation sorted descending by quantity.",
     questions: [
       {
-        id: 501,
+        id: 601,
         context: "The Quality Control extension is being upgraded from v1.0.0.1 (currently installed in the database) to v1.0.0.2 (the version being deployed). The upgrade codeunit calls NavApp.GetCurrentModuleInfo() inside OnUpgradePerCompany.",
         text: "You need to evaluate the version values of the Quality Control extension (v1.0.0.1 installed, v1.0.0.2 being deployed) to decide how to update it. NavApp.GetCurrentModuleInfo(myInfo) is called in OnUpgradePerCompany. Which two values can you obtain? (Select TWO)",
         type: "multiple",
@@ -444,10 +444,10 @@ const TEST_CASES = [
         explanation: "In an Upgrade codeunit, NavApp.GetCurrentModuleInfo returns info about the version being installed (the new version). AppVersion is the version of the new app being deployed — 1.0.0.2. DataVersion is the version of the data currently in the database — the last successfully installed version, which is 1.0.0.1. This allows the upgrade code to determine what transformation is needed."
       },
       {
-        id: 502,
+        id: 602,
         context: "The control department needs a report listing Subcontract Documents that downloads as Excel only. The report must contain two separate worksheets: one for posted documents and one for unposted documents. The existing report definition includes a Word layout section that must be removed.",
         text: "You need to develop the Subcontract Documents Excel List report for the control department. The report must download as Excel only, with two worksheets (posted and unposted). For each statement, is it correct (Yes) or not (No)?",
-        type: "multiple",
+        type: "single",
         choices: [
           "A. Delete lines 31–35 (Word layout section). Change line 5 to DefaultLayout = Excel;",
           "B. Delete lines 31–35 (Word layout section). Change line 5 to DefaultRenderingLayout = excelLayout; and add ExcelLayoutMultipleDataSheets = true; after line 6.",
@@ -457,7 +457,7 @@ const TEST_CASES = [
         explanation: "Option B is the only correct approach. You must remove the Word layout rendering block (lines 31–35) because the report must only produce Excel output. The correct modern property is DefaultRenderingLayout = excelLayout (not DefaultLayout). To support two worksheets, ExcelLayoutMultipleDataSheets = true must be added. Option A uses the deprecated DefaultLayout property. Option C keeps the Word layout, which would still allow Word output."
       },
       {
-        id: 503,
+        id: 603,
         context: "The accounting department needs an API that exposes vendor information from Business Central. The page must be read-only, use the replica database for performance, and be accessible as a standard Business Central API page (not a web service or query).",
         text: "You need to create the Fabrikam Vendor API page for the accounting department. It must expose vendor information, use the replica database for performance, and be an API. Which three code segment completions are correct? (Select THREE)",
         type: "multiple",
@@ -477,7 +477,7 @@ const TEST_CASES = [
         explanation: "A page object (not query or pageextension) must be created with PageType = API to define a custom API page. DataAccessIntent = ReadOnly routes queries to the read-only replica database to improve performance, which is a stated requirement. The object type must be 'page', as 'query' with QueryType = API is a different concept used for query-based APIs."
       },
       {
-        id: 504,
+        id: 604,
         context: "The quality department requires that when a Vendor record is deleted, all non-posted Subcontract Documents for that vendor are automatically removed. If any posted Subcontract Documents exist for the vendor, deletion must be blocked with an error message.",
         text: "You need to create the code for the Subcontract Documents table to meet the quality department requirement: when a vendor is deleted, remove non-posted Subcontract Document records; block deletion if posted records exist. Which three code segment completions are correct? (Select THREE)",
         type: "multiple",
@@ -497,7 +497,7 @@ const TEST_CASES = [
         explanation: "A tableextension of the Vendor table is the correct approach — this allows hooking into the standard Vendor table's triggers without modifying it directly. The OnDelete trigger fires when a Vendor record is deleted, which is when we want to cascade or block. Error(errLbl) is the correct function to block deletion and show a non-confirmable error message when posted subcontract documents exist (Confirm would allow the user to override; Message does not stop execution)."
       },
       {
-        id: 505,
+        id: 605,
         context: "The Description and Comments fields on the Subcontract Document page must display a brief in-field guide when the field is empty, helping employees understand what to enter. The guide must disappear automatically once the user starts typing.",
         text: "You need to add a property to the Description and Comments fields so that employees see a brief guide when the field is empty, and the guide disappears once they start entering values. Which property should you add?",
         type: "single",
@@ -511,7 +511,7 @@ const TEST_CASES = [
         explanation: "InstructionalText is the Business Central page field property that displays placeholder/hint text inside the field when it is empty, and automatically disappears once the user starts typing. ToolTip shows on hover but does not appear inside the field. Description is a developer comment property. Caption changes the field label, not the in-field hint."
       },
       {
-        id: 506,
+        id: 606,
         context: "On the Subcontract Document List page, the Amount field must be displayed in bold whenever the Posted field is true, helping users quickly identify posted documents at a glance.",
         text: "You need to apply the correct formatting to the Amount field on the Subcontract Document List page so that it appears in bold when the Posted field is true. Which field definition should you use?",
         type: "single",
@@ -526,7 +526,7 @@ const TEST_CASES = [
         explanation: "Option D is correct: the field being styled is Amount (Rec.Amount), Style = Strong applies bold formatting, and StyleExpr = Rec.Posted = true makes the bold conditional on the Posted field being true. Option A always applies bold (StyleExpr = true is not conditional). Option B/C apply the style to the Posted field itself rather than Amount. Option E uses Style = None which removes formatting rather than applying bold."
       },
       {
-        id: 507,
+        id: 607,
         context: "The Subcontract Docs extension must support multilingual users. The Description and Comments fields must be translatable into English (US) and Spanish (Spain), with the translations stored directly in the table definition (not via XLIFF workflow).",
         text: "You need to configure the Subcontract Docs extension to translate Description and Comments fields into English (US) and Spanish (Spain), stored in the table. Which three actions are required? (Select THREE)",
         type: "multiple",
@@ -543,7 +543,7 @@ const TEST_CASES = [
         explanation: "The correct sequence is: (1) Open the Subcontract Documents table — translations must be stored at the table level, not the page level. (2) Add the CaptionML property to each field that needs translation. (3) Complete the CaptionML value with the format eNU='English text'; eSP='Spanish text'; for each field. The TranslationFile feature and .xlf workflow are a different translation approach (XLIFF) and are not required here since CaptionML stores translations directly in the table."
       },
       {
-        id: 508,
+        id: 608,
         context: "The development team needs to configure app.json so that Application Insights telemetry is enabled without generating compile-time deprecation warnings. The extension targets the Business Central 2024 wave 1 online environment.",
         text: "You need to configure the app.json file for the development department's extension. Telemetry must be monitored through Application Insights (without compile-time warnings), and the extension targets Business Central 2024 wave 1 online. Which two settings are correct? (Select TWO)",
         type: "multiple",
@@ -558,7 +558,7 @@ const TEST_CASES = [
         explanation: "applicationInsightsConnectionString is the current recommended property for Application Insights integration in app.json; the older applicationInsightsKey property is deprecated and causes compile-time warnings. The target environment for Business Central online is 'Cloud' (not 'Extension' or 'OnPrem'). Using the deprecated key would trigger the warning that the quality department wants to avoid."
       },
       {
-        id: 509,
+        id: 609,
         context: "The accounting department needs to export G/L entries as an XML file for external accounting analysis between two dates. The XMLport must be write-only (export only — no import capability) and must source data from accounting transaction records.",
         text: "You need to define the XMLport properties for the Fabrikam Accounting export. The file must be XML format, export-only (no import), and contain accounting movements from G/L entries. Which three code segment completions are correct? (Select THREE)",
         type: "multiple",
@@ -577,10 +577,10 @@ const TEST_CASES = [
         explanation: "Format = Xml generates XML output as required. Direction = Export makes the XMLport write-only — it cannot receive/import data, which is the security requirement. The source table must be \"G/L Entry\" (not \"G/L Account\") because the requirement is to export accounting movements (transactions/journal entries) between two dates, which are stored in G/L Entry records, not in the G/L Account master."
       },
       {
-        id: 510,
+        id: 610,
         context: "A customer API query must expose customer_Number, customer_Name, and the sum of Outstanding Quantity on Sales Order Lines (as qty) for the accounting team. Results must be sorted in descending order by qty, and only Sales Order lines (not other document types) must be included.",
         text: "You need to modify the API Customer Lines query code to expose customer_Number, customer_Name, and qty (sum of Outstanding Quantity on Sales Order Lines, sorted descending by qty). For each statement, is it correct (Yes) or not (No)?",
-        type: "multiple",
+        type: "single",
         choices: [
           "A. Add two lines: OrderBy = descending(\"Outstanding Quantity\"); between lines 8–9, and Method = Sum; between lines 24–25.",
           "B. Add three lines: OrderBy = descending(qty); between lines 8–9, DataItemTableFilter = \"Document Type\" = filter('Order'); between lines 22–23, and Method = Sum; between lines 24–25.",
