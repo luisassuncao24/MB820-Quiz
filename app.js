@@ -575,7 +575,6 @@
           completedBadge +
           (hasSaved
             ? '<p class="set-card-resume">\u23F8 Saved: question ' + (saved.results.length + 1) + ' of ' + saved.shuffled.length +
-              ' \u2014 ' + Math.round((saved.score / saved.shuffled.length) * 100) + '% score' +
               (savedTimer !== null ? ' \u2014 \u23F1 ' + formatTime(savedTimer) + ' left' : '') + '</p>'
             : '') +
           '<div class="case-selector">' +
@@ -600,7 +599,38 @@
 
     html += '</div>';
 
-    // ── Section 2: Case Studies ──────────────────────────────────────────
+    // ── Section 2: Random Practice Quiz ─────────────────────────────────
+    const randomSaved = loadProgress(RANDOM_SET);
+    const randomHasSaved = randomSaved && Array.isArray(randomSaved.results) &&
+      randomSaved.results.length > 0 && randomSaved.results.length < randomSaved.shuffled.length;
+
+    html += '<div class="section-divider"></div>' +
+      '<h2 class="set-selection-title">Random Practice</h2>' +
+      '<p class="set-selection-sub">Test yourself with a random mix of questions — does not affect preparation progress.</p>' +
+      '<div class="set-cards">' +
+        '<div class="set-card" id="random-quiz-card">' +
+          '<div class="set-card-header">' +
+            '<span class="set-card-title">' + RANDOM_SET.label + '</span>' +
+            '<span class="set-card-count">' + RANDOM_QUIZ_COUNT + ' questions</span>' +
+          '</div>' +
+          '<span class="difficulty-badge diff-random">\uD83C\uDFB2 Random</span>' +
+          '<p class="set-card-desc">' + RANDOM_SET.description + '</p>' +
+          (randomHasSaved
+            ? '<p class="set-card-resume">\u23F8 Saved: question ' + (randomSaved.results.length + 1) + ' of ' + randomSaved.shuffled.length +
+              (randomSaved.timerSeconds !== null ? ' \u2014 \u23F1 ' + formatTime(randomSaved.timerSeconds) + ' left' : '') + '</p>'
+            : '') +
+          '<div class="set-card-actions">' +
+            (randomHasSaved
+              ? '<button class="set-btn resume-set-btn" id="random-resume-btn">Resume</button>'
+              : '') +
+            '<button class="set-btn start-set-btn" id="random-start-btn">' +
+              (randomHasSaved ? 'New Random Quiz' : 'Start Random Quiz') +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // ── Section 3: Case Studies ──────────────────────────────────────────
     html += '<div class="section-divider"></div>' +
       '<h2 class="set-selection-title">Case Studies</h2>' +
       '<p class="set-selection-sub">Practice standalone scenario-based questions from each case study.</p>' +
@@ -629,8 +659,7 @@
           '<p class="set-card-desc">' + tc.description + '</p>' +
           completedBadge +
           (hasSaved
-            ? '<p class="set-card-resume">\u23F8 Saved: question ' + (savedCase.results.length + 1) + ' of ' + savedCase.shuffled.length +
-              ' \u2014 ' + Math.round((savedCase.score / savedCase.shuffled.length) * 100) + '% score</p>'
+            ? '<p class="set-card-resume">\u23F8 Saved: question ' + (savedCase.results.length + 1) + ' of ' + savedCase.shuffled.length + '</p>'
             : '') +
           '<div class="set-card-actions">' +
             (available
@@ -648,39 +677,7 @@
         '</div>';
     });
 
-    html += '</div>';
-
-    // ── Section 3: Random Practice Quiz ─────────────────────────────────
-    const randomSaved = loadProgress(RANDOM_SET);
-    const randomHasSaved = randomSaved && Array.isArray(randomSaved.results) &&
-      randomSaved.results.length > 0 && randomSaved.results.length < randomSaved.shuffled.length;
-
-    html += '<div class="section-divider"></div>' +
-      '<h2 class="set-selection-title">Random Practice</h2>' +
-      '<p class="set-selection-sub">Test yourself with a random mix of questions — does not affect preparation progress.</p>' +
-      '<div class="set-cards">' +
-        '<div class="set-card" id="random-quiz-card">' +
-          '<div class="set-card-header">' +
-            '<span class="set-card-title">' + RANDOM_SET.label + '</span>' +
-            '<span class="set-card-count">' + RANDOM_QUIZ_COUNT + ' questions</span>' +
-          '</div>' +
-          '<span class="difficulty-badge diff-random">\uD83C\uDFB2 Random</span>' +
-          '<p class="set-card-desc">' + RANDOM_SET.description + '</p>' +
-          (randomHasSaved
-            ? '<p class="set-card-resume">\u23F8 Saved: question ' + (randomSaved.results.length + 1) + ' of ' + randomSaved.shuffled.length +
-              ' \u2014 ' + Math.round((randomSaved.score / randomSaved.shuffled.length) * 100) + '% score' +
-              (randomSaved.timerSeconds !== null ? ' \u2014 \u23F1 ' + formatTime(randomSaved.timerSeconds) + ' left' : '') + '</p>'
-            : '') +
-          '<div class="set-card-actions">' +
-            (randomHasSaved
-              ? '<button class="set-btn resume-set-btn" id="random-resume-btn">Resume</button>'
-              : '') +
-            '<button class="set-btn start-set-btn" id="random-start-btn">' +
-              (randomHasSaved ? 'New Random Quiz' : 'Start Random Quiz') +
-            '</button>' +
-          '</div>' +
-        '</div>' +
-      '</div></div>';
+    html += '</div></div>';
 
     setSelectionEl.innerHTML = html;
 
@@ -1599,6 +1596,52 @@
     });
   }
 
+  // ── Password protection ───────────────────────────────────────────────────
+  const PASSWORD_KEY = "mb820_authenticated";
+  const CORRECT_PASSWORD = "Arquiconsult@20!6";
+
+  function isAuthenticated() {
+    try { return localStorage.getItem(PASSWORD_KEY) === "1"; } catch (e) { return false; }
+  }
+
+  function setAuthenticated() {
+    try { localStorage.setItem(PASSWORD_KEY, "1"); } catch (e) { /* ignore */ }
+  }
+
+  function showPasswordOverlay() {
+    document.getElementById("password-overlay").style.display = "flex";
+    document.getElementById("quiz-container").style.display = "none";
+  }
+
+  function hidePasswordOverlay() {
+    document.getElementById("password-overlay").style.display = "none";
+    document.getElementById("quiz-container").style.display = "";
+  }
+
+  function setupPasswordGate(onSuccess) {
+    const submitBtn  = document.getElementById("password-submit-btn");
+    const inputEl    = document.getElementById("password-input");
+    const errorEl    = document.getElementById("password-error");
+
+    function attempt() {
+      if (inputEl.value === CORRECT_PASSWORD) {
+        setAuthenticated();
+        hidePasswordOverlay();
+        onSuccess();
+      } else {
+        errorEl.style.display = "block";
+        inputEl.value = "";
+        inputEl.focus();
+      }
+    }
+
+    submitBtn.addEventListener("click", attempt);
+    inputEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") attempt();
+    });
+    inputEl.focus();
+  }
+
   // ── Boot ─────────────────────────────────────────────────────────────────
   // Migrate any legacy progress keys from the old "set1"/"set2" format.
   // Then check for saved in-progress state; if exactly one set has progress, prompt resume.
@@ -1610,21 +1653,30 @@
       });
     } catch (e) { /* ignore */ }
 
-    const setsWithProgress = QUESTION_SETS.filter(function (set) {
-      const saved = loadProgress(set);
-      return saved && Array.isArray(saved.results) && saved.results.length > 0 && saved.results.length < saved.shuffled.length;
-    });
+    function startApp() {
+      const setsWithProgress = QUESTION_SETS.filter(function (set) {
+        const saved = loadProgress(set);
+        return saved && Array.isArray(saved.results) && saved.results.length > 0 && saved.results.length < saved.shuffled.length;
+      });
 
-    if (setsWithProgress.length === 1) {
-      activeSet      = setsWithProgress[0];
-      caseStudyMode  = null;
-      caseStudy      = null;
-      savedQuizState = null;
-      casePhase      = "quiz";
-      const saved    = loadProgress(activeSet);
-      showResumePrompt(saved);
+      if (setsWithProgress.length === 1) {
+        activeSet      = setsWithProgress[0];
+        caseStudyMode  = null;
+        caseStudy      = null;
+        savedQuizState = null;
+        casePhase      = "quiz";
+        const saved    = loadProgress(activeSet);
+        showResumePrompt(saved);
+      } else {
+        showSetSelection();
+      }
+    }
+
+    if (isAuthenticated()) {
+      startApp();
     } else {
-      showSetSelection();
+      showPasswordOverlay();
+      setupPasswordGate(startApp);
     }
   })();
 })();
