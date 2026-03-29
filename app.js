@@ -27,6 +27,13 @@
       difficulty: "proficient",
       description: "67 challenging scenario-based questions covering advanced MB-820 exam topics.",
       data: questions.slice(33)
+    },
+    {
+      key: "official",
+      label: "Official Questions",
+      difficulty: "official",
+      description: "31 official MB-820 exam questions covering deployment architecture, AL development, permissions, XMLports, queries, and more.",
+      data: questionsOfficial
     }
   ];
 
@@ -65,6 +72,22 @@
   const nextBtn        = document.getElementById("next-button");
   const summaryEl      = document.getElementById("score-summary");
   const timerEl        = document.getElementById("timer-display");
+  const homeBtn        = document.getElementById("home-btn");
+
+  homeBtn.addEventListener("click", function () {
+    stopTimer();
+    clearProgress();
+    activeSet      = null;
+    caseStudyMode  = null;
+    caseStudy      = null;
+    savedQuizState = null;
+    casePhase      = "quiz";
+    showSetSelection();
+  });
+
+  // ── Home button visibility ────────────────────────────────────────────────
+  function showHomeBtn() { homeBtn.style.display = "inline-block"; }
+  function hideHomeBtn() { homeBtn.style.display = "none"; }
 
   // ── Timer ────────────────────────────────────────────────────────────────
   function startTimer() {
@@ -245,6 +268,7 @@
 
   // ── Set selection screen ─────────────────────────────────────────────────
   function showSetSelection() {
+    hideHomeBtn();
     hideTimer();
     setSelectionEl.style.display = "block";
     questionEl.innerHTML         = "";
@@ -256,7 +280,8 @@
     const difficultyMeta = {
       beginner:     { icon: "\uD83D\uDFE2", label: "Beginner",     cls: "diff-beginner" },
       intermediate: { icon: "\uD83D\uDFE1", label: "Intermediate", cls: "diff-intermediate" },
-      proficient:   { icon: "\uD83D\uDD34", label: "Proficient",   cls: "diff-proficient" }
+      proficient:   { icon: "\uD83D\uDD34", label: "Proficient",   cls: "diff-proficient" },
+      official:     { icon: "\uD83D\uDCCB", label: "Official",     cls: "diff-official" }
     };
 
     // ── Section 1: Practice Quizzes ──────────────────────────────────────
@@ -412,6 +437,7 @@
 
   // ── Init (quiz) ───────────────────────────────────────────────────────────
   function init(resume) {
+    showHomeBtn();
     setSelectionEl.style.display = "none";
     summaryEl.style.display      = "none";
     document.getElementById("quiz-container").classList.remove("finished");
@@ -451,6 +477,7 @@
 
   // ── Init (standalone test case) ───────────────────────────────────────────
   function initStandaloneCase(resume) {
+    showHomeBtn();
     setSelectionEl.style.display = "none";
     summaryEl.style.display      = "none";
     document.getElementById("quiz-container").classList.remove("finished");
@@ -567,6 +594,7 @@
 
   // ── Resume prompt ─────────────────────────────────────────────────────────
   function showResumePrompt(saved) {
+    showHomeBtn();
     const nextQuestion = saved.results.length + 1;
     const timerInfo = typeof saved.timerSeconds === "number"
       ? ' with <strong>' + formatTime(saved.timerSeconds) + '</strong> remaining on the clock'
@@ -942,7 +970,8 @@
     const difficultyMeta = {
       beginner:     { icon: "\uD83D\uDFE2", label: "Beginner" },
       intermediate: { icon: "\uD83D\uDFE1", label: "Intermediate" },
-      proficient:   { icon: "\uD83D\uDD34", label: "Proficient" }
+      proficient:   { icon: "\uD83D\uDD34", label: "Proficient" },
+      official:     { icon: "\uD83D\uDCCB", label: "Official" }
     };
     const dmeta = difficultyMeta[activeSet.difficulty] || { icon: "", label: "" };
 
@@ -1087,7 +1116,8 @@
     const difficultyMeta = {
       beginner:     { icon: "\uD83D\uDFE2", label: "Beginner" },
       intermediate: { icon: "\uD83D\uDFE1", label: "Intermediate" },
-      proficient:   { icon: "\uD83D\uDD34", label: "Proficient" }
+      proficient:   { icon: "\uD83D\uDD34", label: "Proficient" },
+      official:     { icon: "\uD83D\uDCCB", label: "Official" }
     };
     const dmeta = difficultyMeta[activeSet.difficulty] || { icon: "", label: "" };
 
