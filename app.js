@@ -76,7 +76,7 @@
 
   homeBtn.addEventListener("click", function () {
     stopTimer();
-    saveProgress();
+    if (shuffled.length > 0) saveProgress();
     activeSet      = null;
     caseStudyMode  = null;
     caseStudy      = null;
@@ -189,7 +189,7 @@
           current: current,
           score: score,
           results: results,
-          timerSeconds: timerSeconds
+          timerSeconds: caseStudyMode === "standalone" ? null : timerSeconds
         }));
       }
     } catch (e) { /* storage unavailable */ }
@@ -346,7 +346,6 @@
       const available  = tc.questions.length > 0;
       const savedCase  = available ? loadCaseProgress(tc) : null;
       const hasSaved   = savedCase && Array.isArray(savedCase.results) && savedCase.results.length > 0 && savedCase.results.length < savedCase.shuffled.length;
-      const savedTimer = hasSaved ? savedCase.timerSeconds : null;
       html +=
         '<div class="set-card case-card' + (available ? '' : ' case-card-disabled') + '" data-case-key="' + tc.key + '">' +
           '<div class="set-card-header">' +
@@ -357,8 +356,7 @@
           '<p class="set-card-desc">' + tc.description + '</p>' +
           (hasSaved
             ? '<p class="set-card-resume">\u23F8 Saved: question ' + (savedCase.results.length + 1) + ' of ' + savedCase.shuffled.length +
-              ' \u2014 ' + Math.round((savedCase.score / savedCase.shuffled.length) * 100) + '% score' +
-              (savedTimer !== null ? ' \u2014 \u23F1 ' + formatTime(savedTimer) + ' left' : '') + '</p>'
+              ' \u2014 ' + Math.round((savedCase.score / savedCase.shuffled.length) * 100) + '% score</p>'
             : '') +
           '<div class="set-card-actions">' +
             (available
