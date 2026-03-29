@@ -1596,41 +1596,67 @@
     });
   }
 
-  // ── Password protection ───────────────────────────────────────────────────
-  const PASSWORD_KEY = "mb820_authenticated";
-  const CORRECT_PASSWORD = "Arquiconsult@20!6";
+  // ── Bot prevention / human verification ──────────────────────────────────
+  const AUTH_KEY = "mb820_authenticated";
 
   function isAuthenticated() {
-    try { return localStorage.getItem(PASSWORD_KEY) === "1"; } catch (e) { return false; }
+    try { return localStorage.getItem(AUTH_KEY) === "1"; } catch (e) { return false; }
   }
 
   function setAuthenticated() {
-    try { localStorage.setItem(PASSWORD_KEY, "1"); } catch (e) { /* ignore */ }
+    try { localStorage.setItem(AUTH_KEY, "1"); } catch (e) { /* ignore */ }
   }
 
-  function showPasswordOverlay() {
-    document.getElementById("password-overlay").style.display = "flex";
+  function generateMathChallenge() {
+    var ops = ["+", "-", "*"];
+    var op = ops[Math.floor(Math.random() * ops.length)];
+    var a, b, answer;
+    if (op === "+") {
+      a = Math.floor(Math.random() * 10) + 1;
+      b = Math.floor(Math.random() * 10) + 1;
+      answer = a + b;
+    } else if (op === "-") {
+      a = Math.floor(Math.random() * 10) + 5;
+      b = Math.floor(Math.random() * a) + 1;
+      answer = a - b;
+    } else {
+      a = Math.floor(Math.random() * 9) + 2;
+      b = Math.floor(Math.random() * 9) + 2;
+      answer = a * b;
+    }
+    return { question: "What is " + a + " " + op + " " + b + " ?", answer: answer };
+  }
+
+  function showMathOverlay() {
+    document.getElementById("math-overlay").style.display = "flex";
     document.getElementById("quiz-container").style.display = "none";
   }
 
-  function hidePasswordOverlay() {
-    document.getElementById("password-overlay").style.display = "none";
+  function hideMathOverlay() {
+    document.getElementById("math-overlay").style.display = "none";
     document.getElementById("quiz-container").style.display = "";
   }
 
-  function setupPasswordGate(onSuccess) {
-    const submitBtn  = document.getElementById("password-submit-btn");
-    const inputEl    = document.getElementById("password-input");
-    const errorEl    = document.getElementById("password-error");
+  function setupMathGate(onSuccess) {
+    var submitBtn  = document.getElementById("math-submit-btn");
+    var inputEl    = document.getElementById("math-input");
+    var errorEl    = document.getElementById("math-error");
+    var challengeEl = document.getElementById("math-challenge-text");
+
+    var challenge = generateMathChallenge();
+    challengeEl.textContent = challenge.question;
 
     function attempt() {
-      if (inputEl.value === CORRECT_PASSWORD) {
+      var parsed = parseInt(inputEl.value, 10);
+      if (!isNaN(parsed) && parsed === challenge.answer) {
         setAuthenticated();
-        hidePasswordOverlay();
+        hideMathOverlay();
         onSuccess();
       } else {
         errorEl.style.display = "block";
         inputEl.value = "";
+        challenge = generateMathChallenge();
+        challengeEl.textContent = challenge.question;
         inputEl.focus();
       }
     }
@@ -1675,8 +1701,8 @@
     if (isAuthenticated()) {
       startApp();
     } else {
-      showPasswordOverlay();
-      setupPasswordGate(startApp);
+      showMathOverlay();
+      setupMathGate(startApp);
     }
   })();
 })();
