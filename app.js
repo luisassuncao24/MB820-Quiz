@@ -2,10 +2,26 @@
   "use strict";
 
   // ── Question sets ────────────────────────────────────────────────────────
-  // Split all 200 questions into 3 difficulty tiers:
+  // Split all questions into 3 difficulty tiers:
   //   Beginner    (66): first 66 from questionsSet2 (foundational/conceptual)
   //   Intermediate(67): last 34 from questionsSet2 + first 33 from questions (transitional)
-  //   Proficient  (67): last 67 from questions       (hard scenario-based)
+  //   Proficient  (67): curated mix of scenario-based functional questions (from
+  //                     questions.js) + AL developer questions (IDs 101-134),
+  //                     covering the full MB-820 exam topic spread.
+
+  // Proficient quiz: 33 functional questions + 34 AL/developer questions = 67
+  var _proficientIds = new Set([
+    // ── Finance, Sales, Purchase, Inventory, Service, Planning, Jobs (33) ──
+    34, 35, 37, 39, 40, 41, 43, 44, 46, 47, 48, 51, 52, 54, 55, 57,
+    61, 64, 66, 69, 70, 71, 73, 75, 76, 79, 81, 83, 85, 86, 87, 94, 95,
+    // ── AL Development, Extensions, Events, Testing, Permissions, API,
+    //    XMLport, Report, Upgrade, Deployment, Telemetry (34) ──
+    101, 102, 103, 104, 105, 106, 107, 108, 109, 110,
+    111, 112, 113, 114, 115, 116, 117, 118, 119, 120,
+    121, 122, 123, 124, 125, 126, 127, 128, 129, 130,
+    131, 132, 133, 134
+  ]);
+
   const QUESTION_SETS = [
     {
       key: "beginner",
@@ -25,8 +41,8 @@
       key: "proficient",
       label: "Proficient Quiz",
       difficulty: "proficient",
-      description: "67 challenging scenario-based questions covering advanced MB-820 exam topics.",
-      data: questions.slice(33)
+      description: "67 scenario-based questions balanced across the full MB-820 exam — functional configuration, AL extension development, events, testing, permissions, API pages, XMLport, upgrade codeunits, telemetry, and deployment.",
+      data: questions.filter(function (q) { return _proficientIds.has(q.id); })
     },
     {
       key: "official",
@@ -410,6 +426,54 @@
       // Clear attempt history
       localStorage.removeItem(HISTORY_KEY);
     } catch (e) { /* ignore */ }
+  }
+
+  // ── Export / Import progression ─────────────────────────────────────────────
+  function exportProgress() {
+    try {
+      const data = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("mb820_") && key !== AUTH_KEY) {
+          data[key] = localStorage.getItem(key);
+        }
+      }
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement("a");
+      a.href     = url;
+      a.download = "mb820-progress-" + new Date().toISOString().slice(0, 10) + ".json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      alert("Export failed: " + e.message);
+    }
+  }
+
+  function importProgress(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (typeof data !== "object" || Array.isArray(data)) {
+          throw new Error("Invalid file format — expected a JSON object.");
+        }
+        let count = 0;
+        Object.keys(data).forEach(function (key) {
+          if (key.startsWith("mb820_") && key !== AUTH_KEY) {
+            localStorage.setItem(key, data[key]);
+            count++;
+          }
+        });
+        showSetSelection();
+        alert("\u2705 Progress imported successfully (" + count + " items restored).");
+      } catch (err) {
+        alert("Import failed: " + err.message);
+      }
+    };
+    reader.readAsText(file);
   }
 
   // ── Completed-state persistence ────────────────────────────────────────────
@@ -884,11 +948,41 @@
     // ── Reset All Progress ───────────────────────────────────────────────
     html += buildHistorySection();
 
-    html += '<div class="reset-all-container">' +
+    html += '<div class="export-import-container">' +
+      '<p class="export-import-info">\uD83D\uDCBE <strong>Transfer your progress</strong> between devices &mdash; export your progress to a file, then import it on another device.</p>' +
+      '<div class="export-import-buttons">' +
+        '<button class="export-btn" id="export-progress-btn">\u2B06\uFE0F Export Progress</button>' +
+        '<label class="import-btn" id="import-progress-label" for="import-progress-input">\u2B07\uFE0F Import Progress' +
+          '<input type="file" id="import-progress-input" accept=".json" style="display:none;">' +
+        '</label>' +
+      '</div>' +
+    '</div>' +
+    '<div class="reset-all-container">' +
       '<button class="reset-all-btn" id="reset-all-btn">\uD83D\uDDD1\uFE0F Reset All Progress</button>' +
     '</div>';
 
     setSelectionEl.innerHTML = html;
+
+    // Export / Import progress buttons
+    const exportBtn = document.getElementById("export-progress-btn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", exportProgress);
+    }
+    const importInput = document.getElementById("import-progress-input");
+    if (importInput) {
+      importInput.addEventListener("change", function () {
+        if (importInput.files && importInput.files[0]) {
+          showConfirm(
+            "Import Progress?",
+            "This will overwrite any existing quiz data with the imported file. Are you sure?",
+            function () {
+              importProgress(importInput.files[0]);
+              importInput.value = "";
+            }
+          );
+        }
+      });
+    }
 
     // Quiz resume/start buttons
     setSelectionEl.querySelectorAll(".resume-set-btn:not(.case-resume-btn)").forEach(function (btn) {
@@ -1321,8 +1415,7 @@
       '<div class="resume-prompt">' +
         '<h2>Resume Quiz?</h2>' +
         '<p class="resume-meta"><strong>' + activeSet.label + '</strong> &mdash; ' + modeLabel + '</p>' +
-        '<p>You were on question <strong>' + nextQuestion + ' of ' + saved.shuffled.length + '</strong> ' +
-        'with a score of <strong>' + Math.round((saved.score / saved.shuffled.length) * 100) + '%</strong>' + timerInfo + '.</p>' +
+        '<p>You were on question <strong>' + nextQuestion + ' of ' + saved.shuffled.length + '</strong>' + timerInfo + '.</p>' +
         '<div class="resume-buttons">' +
           '<button class="resume-btn" id="resume-btn">Resume</button>' +
           '<button class="new-quiz-btn" id="new-quiz-btn">New Quiz</button>' +
@@ -1490,8 +1583,8 @@
     } else if (q.type === "multiple" && q.correct.length > 1) {
       const correctlySelected = selected.filter(function (s) { return q.correct.includes(s); }).length;
       const wronglySelected   = selected.filter(function (s) { return !q.correct.includes(s); }).length;
-      // Penalize wrong selections: deduct one point per wrong answer, floor at 0
-      questionScore = q.correct.length > 0 ? Math.max(0, (correctlySelected - wronglySelected) / q.correct.length) : 0;
+      // Partial credit: fraction of correct answers identified (no penalty for wrong selections)
+      questionScore = q.correct.length > 0 ? correctlySelected / q.correct.length : 0;
     }
     score += questionScore;
 

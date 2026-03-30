@@ -582,7 +582,7 @@ const questionsOfficial = [
   },
   {
     id: 543,
-    text: "A company uses Azure Application Insights for Business Central online in its production environment. A user observes that some job queues go into the failed state and require manual intervention. You need to analyze job queue lifecycle telemetry. How should you complete the KQL code segment? (Select TWO — one per blank)\n\ntraces\n| ??? 100\n| where customDimensions.eventId == 'YOUREVENTID' (e.g., AL0000E3F for job queue started, or the relevant job queue lifecycle event ID from the telemetry documentation)\n| ??? timestamp, jobQueueObjectId = customDimensions.alJobQueueObjectId, jobQueueObjectType = customDimensions.alJobQueueObjectType, ...",
+    text: "A company uses Azure Application Insights for Business Central online in its production environment. A user observes that some job queues go into the failed state and require manual intervention. You need to analyze job queue lifecycle telemetry. How should you complete the Kusto Query Language (KQL) code segment? (Select TWO — one per blank)\n\ntraces\n| ??? 100\n| where customDimensions.eventId == 'YOUREVENTID' (e.g., AL0000E3F for job queue started, or the relevant job queue lifecycle event ID from the telemetry documentation)\n| ??? timestamp, jobQueueObjectId = customDimensions.alJobQueueObjectId, jobQueueObjectType = customDimensions.alJobQueueObjectType, ...",
     type: "multiple",
     choices: [
       "take — to limit results to 100 rows",
