@@ -1184,9 +1184,67 @@ body {
 /* ── Reset-all button on set-selection ───────────────────────────────── */
 .reset-all-container {
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid #334155;
+}
+
+/* ── Export / Import progression ─────────────────────────────────────── */
+.export-import-container {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: #0f172a;
+}
+
+.export-import-info {
+  margin: 0 0 1rem 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.export-import-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.export-btn,
+.import-btn {
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.export-btn {
+  background: transparent;
+  color: #7dd3fc;
+  border: 1px solid #38bdf8;
+}
+
+.export-btn:hover {
+  background: #0c4a6e;
+  color: #e0f2fe;
+  border-color: #7dd3fc;
+}
+
+.import-btn {
+  display: inline-block;
+  background: transparent;
+  color: #86efac;
+  border: 1px solid #4ade80;
+}
+
+.import-btn:hover {
+  background: #052e16;
+  color: #dcfce7;
+  border-color: #86efac;
 }
 
 .reset-all-btn {

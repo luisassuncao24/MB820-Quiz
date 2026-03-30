@@ -38,7 +38,7 @@ const questions = [
       "Set the Allow Posting From / Allow Posting To dates on the General Ledger Setup page",
       "Lock the accounting periods in the Accounting Periods list",
       "Set the Allow Posting From / Allow Posting To dates on each user's User Setup page",
-      "Both A and C - G/L Setup provides the global default; User Setup overrides it per user"
+      "Both G/L Setup and User Setup posting dates — G/L Setup provides the global default; User Setup overrides it per user"
     ],
     correct: [3],
     explanation: "G/L Setup defines company-wide allowed posting dates. User Setup can narrow that window per user. Both must be correctly configured to fully restrict postings to closed periods."
@@ -160,7 +160,7 @@ const questions = [
     text: "Which costing method prevents negative inventory by design, and what is the consequence when inventory goes negative accidentally?",
     type: "single",
     choices: [
-      "FIFO — costs are calculated incorrectly until inventory is replenished",
+      "First In, First Out (FIFO) — costs are calculated incorrectly until inventory is replenished",
       "Average — the average cost is recalculated to include future receipts",
       "Standard — a variance entry is created automatically",
       "Specific — the item tracking entry is reversed"
@@ -226,7 +226,7 @@ const questions = [
   },
   {
     id: 17,
-    text: "What is the effect of enabling 'Flushing Method: Backward' on a BOM component?",
+    text: "What is the effect of enabling 'Flushing Method: Backward' on a Bill of Materials (BOM) component?",
     type: "single",
     choices: [
       "Component consumption is posted when the production order is released",
@@ -819,7 +819,7 @@ const questions = [
   },
   {
     id: 60,
-    text: "A production BOM has a scrap percentage of 10% on a component. If the finished good requires 100 units of the component, how many units does Business Central calculate as the needed component quantity?",
+    text: "A production Bill of Materials (BOM) has a scrap percentage of 10% on a component. If the finished good requires 100 units of the component, how many units does Business Central calculate as the needed component quantity?",
     type: "single",
     choices: [
       "100 units",
@@ -881,7 +881,7 @@ const questions = [
       "ATO produces for a specific sales order and posts output to the customer; ATS produces to inventory and picks from stock",
       "ATO uses production orders; ATS uses assembly orders",
       "ATO posts to WIP accounts; ATS posts directly to inventory",
-      "ATO requires a BOM; ATS does not"
+      "ATO requires a Bill of Materials (BOM); ATS does not"
     ],
     correct: [0],
     explanation: "ATO assemblies are triggered by a sales order and the assembly order is linked directly to the sales line — output is consumed by the sale without touching stock. ATS assembles to inventory in advance, and sales orders pick from the stocked finished goods."
@@ -892,7 +892,7 @@ const questions = [
     type: "multiple",
     choices: [
       "Modify component quantities on the linked assembly order",
-      "Add extra components not in the standard BOM",
+      "Add extra components not in the standard Bill of Materials (BOM)",
       "Change the assembly item's unit cost directly",
       "Split the assembly order into multiple output quantities",
       "Link the assembly order to a different item number"
@@ -1182,13 +1182,13 @@ const questions = [
   },
   {
     id: 86,
-    text: "An ISV wants to allow external systems to read and write Business Central data without using the UI. Which technology is the recommended approach for Business Central online (SaaS)?",
+    text: "An Independent Software Vendor (ISV) wants to allow external systems to read and write Business Central data without using the UI. Which technology is the recommended approach for Business Central online (SaaS)?",
     type: "single",
     choices: [
       "Direct database access via SQL Server",
       "Business Central API pages accessed via RESTful OData/API endpoints",
       "NAS (Business Central Server Administration) automation sessions",
-      "Business Central Web Services (SOAP) with WSDL-based integration"
+      "Business Central Web Services (SOAP) with Web Services Description Language (WSDL)-based integration"
     ],
     correct: [1],
     explanation: "For Business Central SaaS, the recommended integration approach is using API pages exposed as RESTful OData endpoints. Direct database access and NAS are not supported in the cloud; SOAP web services are legacy and not recommended for new integrations."
@@ -1216,7 +1216,7 @@ const questions = [
       "Notification template is configured for the Purchase Order workflow",
       "The approver's user account has a valid email address in Business Central",
       "The approval workflow is in 'Enabled' status",
-      "The SMTP email server is configured in Business Central Email Accounts",
+      "The Simple Mail Transfer Protocol (SMTP) email server is configured in Business Central Email Accounts",
       "The notification schedule allows immediate notifications"
     ],
     correct: [1, 3],
@@ -1232,7 +1232,7 @@ const questions = [
       "The item must be flagged as 'Cross-Dock Enabled' on the item card",
       "An open warehouse shipment or pick must exist for the item at the receiving location",
       "The location must have both Directed Put-away and Pick enabled AND Use Cross-Docking enabled",
-      "Both B and C must be true"
+      "Both conditions must be simultaneously true: directed warehouse setup with Cross-Docking enabled AND an open outbound demand at the receiving location"
     ],
     correct: [3],
     explanation: "Cross-docking requires (1) the location to have Directed Put-away and Pick plus Use Cross-Docking enabled, AND (2) an open outbound demand (shipment or pick) to exist for the received item at that location."
@@ -1366,7 +1366,7 @@ const questions = [
   // ── INVENTORY (additional) ─────────────────────────────────────────────────
   {
     id: 99,
-    text: "A company uses FIFO costing. Three purchase receipts were posted for the same item: 10 units @ £10, 10 units @ £12, and 10 units @ £15. A sales shipment is then posted for 25 units. What is the cost of goods sold?",
+    text: "A company uses First In, First Out (FIFO) costing. Three purchase receipts were posted for the same item: 10 units @ £10, 10 units @ £12, and 10 units @ £15. A sales shipment is then posted for 25 units. What is the cost of goods sold?",
     type: "single",
     choices: [
       "£312.50 (average of all three receipts × 25)",
