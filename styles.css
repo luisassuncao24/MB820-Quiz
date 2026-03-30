@@ -986,6 +986,44 @@ body {
   margin: 0;
 }
 
+.prep-progress-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.prep-study-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #38bdf8;
+  white-space: nowrap;
+}
+
+/* ── In-progress sessions banner ──────────────────────────────────────── */
+.in-progress-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #0c1a2e;
+  border: 1px solid #0ea5e9;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.25rem;
+  color: #bae6fd;
+  font-size: 0.85rem;
+}
+
+.in-progress-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.in-progress-text strong {
+  color: #38bdf8;
+}
+
 /* ── Completed badge on set cards ────────────────────────────────────── */
 .set-card-completed {
   display: inline-flex;

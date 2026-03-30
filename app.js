@@ -82,6 +82,7 @@
   // MB-820 scoring thresholds (percentage, 0-100)
   const PASS_PCT     = 70; // 700/1000 points — minimum passing score for MB-820
   const MARGINAL_PCT = 60; // "close but not there" band
+  const STUDY_TIME_KEY = "mb820_study_time"; // accumulated study seconds (quizzes + test cases)
 
   // ── State ────────────────────────────────────────────────────────────────
   let activeSet     = null; // one of QUESTION_SETS entries
@@ -115,10 +116,16 @@
   // practiceMode = false: show answers only on the evaluation / summary screen
   let practiceMode = true;
 
+  // ── Study-time tracking ───────────────────────────────────────────────────
+  // Counts every second the quiz/testcase timer is running (Quick Practice and
+  // review mode do not use startTimer(), so they are naturally excluded).
+  let studyTimeSeconds = 0;
+
   // ── Quick Practice state ─────────────────────────────────────────────────
   const QP_STREAK_KEY = "mb820_qp_streak";
   const QP_BEST_KEY   = "mb820_qp_best";
-  var qp = { pool: [], poolIdx: 0, streak: 0, bestStreak: 0 };
+  const QP_SEEN_KEY   = "mb820_qp_seen"; // question IDs answered in the current run
+  var qp = { pool: [], poolIdx: 0, streak: 0, bestStreak: 0, seenInRun: new Set() };
   var UT_MESSAGES = [
     { streak: 5,  msg: "KILLING SPREE!",   emoji: "\uD83D\uDD25", color: "#f97316" },
     { streak: 10, msg: "RAMPAGE!",          emoji: "\uD83D\uDCA5", color: "#ef4444" },
@@ -165,9 +172,10 @@
     timerInterval = setInterval(function () {
       if (timerSeconds > 0) {
         timerSeconds--;
+        studyTimeSeconds++;
         updateTimerDisplay();
         // Save timer state every 10 seconds so a page-close loses at most 10 s
-        if (timerSeconds % 10 === 0) saveProgress();
+        if (timerSeconds % 10 === 0) { saveProgress(); saveStudyTime(); }
       } else {
         stopTimer();
         timerEl.innerHTML =
@@ -211,6 +219,17 @@
       return h + "h " + String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
     }
     return String(m).padStart(2, "0") + "m " + String(s).padStart(2, "0") + "s";
+  }
+
+  function loadStudyTime() {
+    try {
+      const v = parseInt(localStorage.getItem(STUDY_TIME_KEY), 10);
+      return isNaN(v) || v < 0 ? 0 : v;
+    } catch (e) { return 0; }
+  }
+
+  function saveStudyTime() {
+    try { localStorage.setItem(STUDY_TIME_KEY, String(studyTimeSeconds)); } catch (e) { /* ignore */ }
   }
 
   // ── Confirmation modal ────────────────────────────────────────────────────
@@ -451,6 +470,9 @@
       });
       // Clear attempt history
       localStorage.removeItem(HISTORY_KEY);
+      // Clear Quick Practice run state
+      localStorage.removeItem(QP_SEEN_KEY);
+      qp.seenInRun = new Set();
     } catch (e) { /* ignore */ }
   }
 
@@ -718,11 +740,30 @@
     });
     var failed = [], unseen = [], others = [];
     ALL_QUESTIONS.forEach(function (q) {
-      if (failedIds[q.id])     failed.push(q);
-      else if (!seenIds[q.id]) unseen.push(q);
-      else                     others.push(q);
+      if (qp.seenInRun.has(q.id))   { /* skip — already answered this run */ }
+      else if (failedIds[q.id])      failed.push(q);
+      else if (!seenIds[q.id])       unseen.push(q);
+      else                           others.push(q);
     });
     return shuffle(failed).concat(shuffle(unseen)).concat(shuffle(others));
+  }
+
+  function loadQpSeen() {
+    try {
+      var raw = localStorage.getItem(QP_SEEN_KEY);
+      if (!raw) return new Set();
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? new Set(arr) : new Set();
+    } catch (e) { return new Set(); }
+  }
+
+  function saveQpSeen() {
+    try { localStorage.setItem(QP_SEEN_KEY, JSON.stringify(Array.from(qp.seenInRun))); } catch (e) { /**/ }
+  }
+
+  function resetQpRun() {
+    qp.seenInRun = new Set();
+    try { localStorage.removeItem(QP_SEEN_KEY); } catch (e) { /**/ }
   }
 
   function qpEsc(s) {
@@ -732,8 +773,12 @@
   function renderQuickPractice() {
     var container = document.getElementById("qp-container");
     if (!container) return;
-    if (!qp.pool.length) { qp.pool = buildQuickPracticePool(); qp.poolIdx = 0; }
-    if (qp.poolIdx >= qp.pool.length) { qp.pool = buildQuickPracticePool(); qp.poolIdx = 0; }
+    // Pool exhausted — user answered every remaining question correctly: reset run
+    if (!qp.pool.length || qp.poolIdx >= qp.pool.length) {
+      resetQpRun();
+      qp.pool    = buildQuickPracticePool();
+      qp.poolIdx = 0;
+    }
 
     var q = qp.pool[qp.poolIdx];
     var orderedChoices = shuffle(q.choices.map(function (t, i) { return { text: t, idx: i }; }));
@@ -830,9 +875,14 @@
       qp.streak++;
       if (qp.streak > qp.bestStreak) qp.bestStreak = qp.streak;
       try { localStorage.setItem(QP_STREAK_KEY, qp.streak); localStorage.setItem(QP_BEST_KEY, qp.bestStreak); } catch (e) { /**/ }
+      // Mark this question as answered in the current run so it won't reappear on reload
+      qp.seenInRun.add(q.id);
+      saveQpSeen();
     } else {
       qp.streak = 0;
       try { localStorage.setItem(QP_STREAK_KEY, 0); } catch (e) { /**/ }
+      // Wrong answer — reset the run so all questions are available again
+      resetQpRun();
     }
 
     var expDiv = document.createElement("div");
@@ -845,7 +895,14 @@
     if (btnRow) {
       btnRow.innerHTML = '<button class="qp-next-btn" id="qp-next-btn">Next Question \u2192</button>';
       document.getElementById("qp-next-btn").addEventListener("click", function () {
-        qp.poolIdx++; renderQuickPractice();
+        if (!isCorrect) {
+          // Run was reset — rebuild pool from all questions and start fresh
+          qp.pool    = buildQuickPracticePool();
+          qp.poolIdx = 0;
+        } else {
+          qp.poolIdx++;
+        }
+        renderQuickPractice();
       });
     }
 
@@ -874,6 +931,7 @@
       qp.streak     = isNaN(s) ? 0 : s;
       qp.bestStreak = isNaN(b) ? 0 : b;
     } catch (e) { qp.streak = 0; qp.bestStreak = 0; }
+    qp.seenInRun = loadQpSeen();
     qp.pool    = buildQuickPracticePool();
     qp.poolIdx = 0;
     return '<div class="section-divider"></div>' +
@@ -936,7 +994,18 @@
       '<div class="prep-progress-track">' +
         '<div class="prep-progress-fill ' + fillCls + '" style="width:' + pct + '%"></div>' +
       '</div>' +
-      '<p class="prep-progress-sub">Complete every quiz and case study with \u2265' + PASS_PCT + '% to reach 100% preparation.</p>' +
+      '<div class="prep-progress-footer">' +
+        '<p class="prep-progress-sub">Complete every quiz and case study with \u2265' + PASS_PCT + '% to reach 100% preparation.</p>' +
+        (studyTimeSeconds > 0 ? '<span class="prep-study-time">\u23F1 ' + formatTime(studyTimeSeconds) + ' studied</span>' : '') +
+      '</div>' +
+    '</div>';
+  }
+
+  function buildInProgressBanner(count) {
+    const label = count === 1 ? "1 in-progress session" : count + " in-progress sessions";
+    return '<div class="in-progress-banner">' +
+      '<span class="in-progress-icon">\u23F8</span>' +
+      '<span class="in-progress-text">You have <strong>' + label + '</strong> \u2014 continue where you left off below.</span>' +
     '</div>';
   }
 
@@ -1006,6 +1075,7 @@
   // ── Set selection screen ─────────────────────────────────────────────────
   function showSetSelection() {
     reviewMode   = false;
+    practiceMode = true;
     quizIsActive = false;
     clearIdleTimer();
     hidePauseOverlay();
@@ -1025,8 +1095,35 @@
       official:     { icon: "\uD83D\uDCCB", label: "Official",     cls: "diff-official" }
     };
 
+    // ── Count all in-progress sessions for the banner ─────────────────────
+    let inProgressCount = 0;
+    QUESTION_SETS.forEach(function (set) {
+      const s = loadProgress(set);
+      if (s && Array.isArray(s.results) && s.results.length > 0 && s.results.length < s.shuffled.length) {
+        inProgressCount++;
+      } else {
+        for (let i = 0; i < TEST_CASES.length; i++) {
+          const tc = TEST_CASES[i];
+          if (tc.questions.length === 0) continue;
+          const cp = loadCombinedProgress(set, tc);
+          if (cp && ((cp.phase === "quiz" && Array.isArray(cp.results) && cp.results.length > 0) || cp.phase === "testcase")) {
+            inProgressCount++;
+            break;
+          }
+        }
+      }
+    });
+    const rs = loadProgress(RANDOM_SET);
+    if (rs && Array.isArray(rs.results) && rs.results.length > 0 && rs.results.length < rs.shuffled.length) inProgressCount++;
+    TEST_CASES.forEach(function (tc) {
+      if (tc.questions.length === 0) return;
+      const sc = loadCaseProgress(tc);
+      if (sc && Array.isArray(sc.results) && sc.results.length > 0 && sc.results.length < sc.shuffled.length) inProgressCount++;
+    });
+
     // ── Progress bar ─────────────────────────────────────────────────────
     let html = '<div class="set-selection-wrapper">' + buildProgressBar();
+    if (inProgressCount > 0) html += buildInProgressBanner(inProgressCount);
 
     // ── Quick Practice (above Practice Quizzes) ──────────────────────────
     html += buildQuickPracticeSection();
@@ -2594,6 +2691,7 @@
     } catch (e) { /* ignore */ }
 
     function startApp() {
+      studyTimeSeconds = loadStudyTime();
       const setsWithProgress = QUESTION_SETS.filter(function (set) {
         const saved = loadProgress(set);
         return saved && Array.isArray(saved.results) && saved.results.length > 0 && saved.results.length < saved.shuffled.length;
