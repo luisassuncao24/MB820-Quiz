@@ -2,10 +2,26 @@
   "use strict";
 
   // ── Question sets ────────────────────────────────────────────────────────
-  // Split all 200 questions into 3 difficulty tiers:
+  // Split all questions into 3 difficulty tiers:
   //   Beginner    (66): first 66 from questionsSet2 (foundational/conceptual)
   //   Intermediate(67): last 34 from questionsSet2 + first 33 from questions (transitional)
-  //   Proficient  (67): last 67 from questions       (hard scenario-based)
+  //   Proficient  (67): curated mix of scenario-based functional questions (from
+  //                     questions.js) + AL developer questions (IDs 101-134),
+  //                     covering the full MB-820 exam topic spread.
+
+  // Proficient quiz: 33 functional questions + 34 AL/developer questions = 67
+  var _proficientIds = new Set([
+    // ── Finance, Sales, Purchase, Inventory, Service, Planning, Jobs (33) ──
+    34, 35, 37, 39, 40, 41, 43, 44, 46, 47, 48, 51, 52, 54, 55, 57,
+    61, 64, 66, 69, 70, 71, 73, 75, 76, 79, 81, 83, 85, 86, 87, 94, 95,
+    // ── AL Development, Extensions, Events, Testing, Permissions, API,
+    //    XMLport, Report, Upgrade, Deployment, Telemetry (34) ──
+    101, 102, 103, 104, 105, 106, 107, 108, 109, 110,
+    111, 112, 113, 114, 115, 116, 117, 118, 119, 120,
+    121, 122, 123, 124, 125, 126, 127, 128, 129, 130,
+    131, 132, 133, 134
+  ]);
+
   const QUESTION_SETS = [
     {
       key: "beginner",
@@ -25,8 +41,8 @@
       key: "proficient",
       label: "Proficient Quiz",
       difficulty: "proficient",
-      description: "67 challenging scenario-based questions covering advanced MB-820 exam topics.",
-      data: questions.slice(33)
+      description: "67 scenario-based questions balanced across the full MB-820 exam — functional configuration, AL extension development, events, testing, permissions, API pages, XMLport, upgrade codeunits, telemetry, and deployment.",
+      data: questions.filter(function (q) { return _proficientIds.has(q.id); })
     },
     {
       key: "official",
