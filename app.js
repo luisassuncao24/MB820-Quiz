@@ -1481,9 +1481,8 @@
       questionScore = 1;
     } else if (q.type === "multiple" && q.correct.length > 1) {
       const correctlySelected   = selected.filter(function (s) { return q.correct.includes(s); }).length;
-      const incorrectlySelected = selected.filter(function (s) { return !q.correct.includes(s); }).length;
       // Credit = correctly identified / total correct answers (no penalty for wrong selections)
-      questionScore = correctlySelected / q.correct.length;
+      questionScore = q.correct.length > 0 ? correctlySelected / q.correct.length : 0;
     }
     score += questionScore;
 
