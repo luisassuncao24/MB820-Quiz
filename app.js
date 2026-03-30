@@ -1006,6 +1006,7 @@
   // ── Set selection screen ─────────────────────────────────────────────────
   function showSetSelection() {
     reviewMode   = false;
+    practiceMode = true;
     quizIsActive = false;
     clearIdleTimer();
     hidePauseOverlay();
