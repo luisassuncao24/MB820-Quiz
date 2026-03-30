@@ -69,6 +69,34 @@
             <button class="new-quiz-btn" id="mode-cancel-btn">Cancel</button>
         </div>
     </div>
+
+    <!-- Test-mode peek score overlay -->
+    <div id="peek-overlay" style="display:none;">
+        <div id="peek-card">
+            <div class="peek-emoji" id="peek-emoji">&#128527;</div>
+            <h2 id="peek-title">Afraid to continue?</h2>
+            <div class="peek-score-display">
+                <span class="peek-pct" id="peek-pct">0%</span>
+                <span class="peek-detail" id="peek-detail">0 of 0 answered</span>
+            </div>
+            <p class="peek-taunt" id="peek-taunt"></p>
+            <div class="resume-buttons">
+                <button id="peek-continue-btn" class="resume-btn">&#128170; Keep Going!</button>
+                <button id="peek-quit-btn" class="new-quiz-btn">&#127987;&#65039; Give Up</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Practice streak milestone overlay -->
+    <div id="streak-overlay" style="display:none;">
+        <div id="streak-card">
+            <div class="streak-icon" id="streak-icon">&#128293;</div>
+            <div class="streak-msg" id="streak-msg">KILLING SPREE!</div>
+            <div class="streak-count" id="streak-count">5 in a row!</div>
+            <button class="streak-dismiss-btn" id="streak-dismiss-btn">&#128293; Keep It Up!</button>
+        </div>
+    </div>
+
     <script src="questions.js"></script>
     <script src="questions2.js"></script>
     <script src="questionsOfficial.js"></script>

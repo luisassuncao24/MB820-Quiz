@@ -48,7 +48,7 @@
       key: "official",
       label: "Official Questions",
       difficulty: "official",
-      description: "78 official MB-820 exam questions covering deployment architecture, AL development, permissions, XMLports, queries, HTTP, reports, telemetry, and more.",
+      description: "77 official MB-820 exam questions covering deployment architecture, AL development, permissions, XMLports, queries, HTTP, reports, telemetry, and more.",
       data: questionsOfficial
     }
   ];
@@ -2074,7 +2074,7 @@
     527: "AL Objects",                 528: "AL Development",
     529: "AL Objects",                 530: "AL Objects",
     531: "AL Development",             532: "Integration",
-    533: "AL Objects",                 534: "AL Objects",
+    534: "AL Objects",
     535: "AL Development",             536: "Describe Business Central",
     537: "Deployment & Architecture",  538: "AL Objects",
     539: "AL Objects",                 540: "Integration",

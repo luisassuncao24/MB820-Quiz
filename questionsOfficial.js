@@ -433,24 +433,6 @@ const questionsOfficial = [
     explanation: "For Business Central online environments, you must use the HttpClient data type variable to make HTTP requests to external REST services. The legacy codeunits (1297 Http Web Request Mgt. and 1299 Web Request Helper) are not available in online/SaaS environments. HttpContent is used to represent the body of a request/response, not to initiate the request itself."
   },
   {
-    id: 533,
-    text: "You need to create the configuration table and page for the non-conformity functionality. Which table configurations should you use? (Select THREE — one per requirement)\n\nRequirements:\n1. Design pattern for the setup table\n2. Data type of the primary key field\n3. Property required to prevent users from adding records",
-    type: "multiple",
-    choices: [
-      "Singleton — design pattern for the setup table",
-      "No. Series — design pattern for the setup table",
-      "Adapter — design pattern for the setup table",
-      "BigInteger — data type of the primary key field",
-      "Code — data type of the primary key field",
-      "Integer — data type of the primary key field",
-      "InitValue — property to prevent users from adding records",
-      "InsertAllowed — property to prevent users from adding records",
-      "UnBound — property to prevent users from adding records"
-    ],
-    correct: [0, 4, 7],
-    explanation: "The Singleton design pattern is used for setup tables so that only one record exists. The primary key field should use the Code data type (typically a single blank Code field). The InsertAllowed property set to false prevents users from manually inserting new records, enforcing the single-record constraint on the setup table and page."
-  },
-  {
     id: 534,
     text: "You are creating a view for a Business Central app. The view requires a custom layout that displays only customer records with a balance greater than 500 in local currency. You need to configure the view to specify that it has a custom layout. Which property combination should you use?",
     type: "single",
