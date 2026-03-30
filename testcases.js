@@ -445,8 +445,44 @@ const TEST_CASES = [
       },
       {
         id: 602,
-        context: "The control department needs a report listing Subcontract Documents that downloads as Excel only. The report must contain two separate worksheets: one for posted documents and one for unposted documents. The existing report definition includes a Word layout section that must be removed.",
-        text: "You need to develop the Subcontract Documents Excel List report for the control department. The report must download as Excel only, with two worksheets (posted and unposted). For each statement, is it correct (Yes) or not (No)?",
+        context: `The control department needs a report listing Subcontract Documents that downloads as Excel only. The report must contain two separate worksheets: one for posted documents and one for unposted documents. The existing report definition includes a Word layout section that must be removed.<pre class='question-code-block'> 1: report 50100 "Subcontract Documents Excel List"
+ 2: {
+ 3:     Caption = 'Subcontract Documents Excel List';
+ 4:     UsageCategory = ReportsAndAnalysis;
+ 5:     DefaultRenderingLayout = wordLayout;
+ 6:     ApplicationArea = All;
+ 7:
+ 8:     dataset
+ 9:     {
+10:         dataitem(PostedSubcontractDoc; "Subcontract Documents")
+11:         {
+12:             DataItemTableFilter = Posted = const(true);
+13:             column(VendorNo; "Vendor No.") { }
+14:             column(VendorName; "Vendor Name") { }
+15:             column(DocumentNo; "Document No.") { }
+16:             column(Amount; Amount) { }
+17:         }
+18:         dataitem(UnpostedSubcontractDoc; "Subcontract Documents")
+19:         {
+20:             DataItemTableFilter = Posted = const(false);
+21:             column(VendorNo2; "Vendor No.") { }
+22:             column(VendorName2; "Vendor Name") { }
+23:             column(DocumentNo2; "Document No.") { }
+24:             column(Amount2; Amount) { }
+25:         }
+26:     }
+27:
+28:     rendering
+29:     {
+30:         layout(excelLayout) { Type = Excel; LayoutFile = 'SubcontractDocsExcel.xlsx'; }
+31:         layout(wordLayout)
+32:         {
+33:             Type = Word;
+34:             LayoutFile = 'SubcontractDocsWord.docx';
+35:         }
+36:     }
+37: }</pre>`,
+        text: "You need to develop the Subcontract Documents Excel List report for the control department. The report must download as Excel only, with two worksheets (posted and unposted). Which approach is correct?",
         type: "single",
         choices: [
           "A. Delete lines 31–35 (Word layout section). Change line 5 to DefaultLayout = Excel;",
@@ -578,8 +614,36 @@ const TEST_CASES = [
       },
       {
         id: 610,
-        context: "A customer API query must expose customer_Number, customer_Name, and the sum of Outstanding Quantity on Sales Order Lines (as qty) for the accounting team. Results must be sorted in descending order by qty, and only Sales Order lines (not other document types) must be included.",
-        text: "You need to modify the API Customer Lines query code to expose customer_Number, customer_Name, and qty (sum of Outstanding Quantity on Sales Order Lines, sorted descending by qty). For each statement, is it correct (Yes) or not (No)?",
+        context: `A customer API query must expose customer_Number, customer_Name, and the sum of Outstanding Quantity on Sales Order Lines (as qty) for the accounting team. Results must be sorted in descending order by qty, and only Sales Order lines (not other document types) must be included.<pre class='question-code-block'> 1: query 50100 "API Customer Lines"
+ 2: {
+ 3:     APIGroup = 'qualityControl';
+ 4:     APIPublisher = 'fabrikam';
+ 5:     APIVersion = 'v1.0';
+ 6:     Caption = 'API Customer Lines';
+ 7:     EntityName = 'customerLine';
+ 8:     EntitySetName = 'customerLines';
+ 9:     QueryType = API;
+10:
+11:     elements
+12:     {
+13:         dataitem(Customer; Customer)
+14:         {
+15:             column(customer_Number; "No.") { }
+16:             column(customer_Name; Name) { }
+17:
+18:             dataitem(SalesOrderLine; "Sales Line")
+19:             {
+20:                 SqlJoinType = InnerJoin;
+21:                 DataItemLink =
+22:                     "Sell-to Customer No." = Customer."No.";
+23:                 column(qty; "Outstanding Quantity")
+24:                 {
+25:                 }
+26:             }
+27:         }
+28:     }
+29: }</pre>`,
+        text: "You need to modify the API Customer Lines query code to expose customer_Number, customer_Name, and qty (sum of Outstanding Quantity on Sales Order Lines, sorted descending by qty). Which approach is correct?",
         type: "single",
         choices: [
           "A. Add two lines: OrderBy = descending(\"Outstanding Quantity\"); between lines 8–9, and Method = Sum; between lines 24–25.",
