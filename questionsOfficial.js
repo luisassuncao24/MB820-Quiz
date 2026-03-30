@@ -604,15 +604,15 @@ const questionsOfficial = [
   },
   {
     id: 546,
-    text: "A company is generating a detailed custom report. A user observes that the generated report dataset contains more Delivery Line records than expected for one specific Delivery Header. You need to generate a report that contains the accurate number of records. For each statement, select Yes if the statement is true:\n\nStatement 1: Configure the DataItemTableView property of the Delivery Header data item.\nStatement 2: Configure the RequestFilterFields property of both data items.\nStatement 3: Configure the DataItemLink property of the Delivery Line table.",
+    text: "A company is generating a detailed custom report. A user observes that the generated report dataset contains more Delivery Line records than expected for one specific Delivery Header. You need to generate a report that contains the accurate number of records. Which statement is true?",
     type: "single",
     choices: [
-      "YES — Configure the DataItemTableView property of the Delivery Header data item",
-      "YES — Configure the RequestFilterFields property of both data items",
-      "YES — Configure the DataItemLink property of the Delivery Line table"
+      "Configure the DataItemTableView property of the Delivery Header data item",
+      "Configure the RequestFilterFields property of both data items",
+      "Configure the DataItemLink property of the Delivery Line table"
     ],
     correct: [2],
-    explanation: "Statement 3 is true (YES): The DataItemLink property on the Delivery Line data item links it to its parent Delivery Header (e.g., linking \"Document No.\" to the Header's \"No.\"). Without this link, Business Central returns all Delivery Line records rather than only those belonging to the current Delivery Header. Statement 1 is false (NO): DataItemTableView sets a static filter/sort but does not establish the parent-child link. Statement 2 is false (NO): RequestFilterFields controls which filter fields appear on the request page for users; it does not fix the data relationship between data items."
+    explanation: "Configuring the DataItemLink property on the Delivery Line data item links it to its parent Delivery Header (e.g., linking \"Document No.\" to the Header's \"No.\"). Without this link, Business Central returns all Delivery Line records rather than only those belonging to the current Delivery Header. DataItemTableView sets a static filter or sort order on a data item but does not establish a parent-child link between data items. RequestFilterFields controls which filter fields appear on the report request page for users; it does not fix the data relationship between data items."
   },
   {
     id: 547,
@@ -977,29 +977,31 @@ const questionsOfficial = [
   },
   {
     id: 574,
-    text: "A developer creates a profile for a shop supervisor and adds customizations. Review the profile and customization code, then for each statement select Yes if true:\n\nStatement 1: The Part Time Shop Supervisor profile will be applied only to users with \"Register Time\" = true on User Setup.\nStatement 2: Variables, procedures, and triggers cannot be added on page customization objects.\nStatement 3: Line 10 should use 'extends' instead of 'customizes'.\nStatement 4: In line 18, \"Unit Cost\" will be moved after \"Costing Method\".",
+    context: "A developer creates a profile for a shop supervisor and adds a page customization. Review the following AL code:\n<pre class=\"question-code-block\">01: profile \"PART-TIME-SHOP-SUPERVISOR\"\n02: {\n03:     Caption = 'Part Time Shop Supervisor';\n04:     RoleCenter = \"Shop Supervisor Role Center\";\n05:     Enabled = true;\n06:     Customizations = ShopSupervisorCustomization;\n07: }\n08:\n09: pagecustomization ShopSupervisorCustomization\n10:     customizes \"Item Card\"\n11: {\n12:     layout\n13:     {\n14:         modify(\"Costing Method\")\n15:         {\n16:             Visible = true;\n17:         }\n18:         moveafter(\"Unit Cost\"; \"Costing Method\")\n19:     }\n20: }</pre>",
+    text: "For each statement below, select Yes if the statement is true. (Select TWO)\n\nStatement 1: The Part Time Shop Supervisor profile will be applied only to users with \"Register Time\" = true on User Setup.\nStatement 2: Variables, procedures, and triggers cannot be added on page customization objects.\nStatement 3: Line 10 should use 'extends' instead of 'customizes'.\nStatement 4: In line 18, \"Unit Cost\" will be moved after \"Costing Method\".",
     type: "multiple",
     choices: [
-      "YES — The profile will be applied only to users with Register Time = true",
-      "YES — Variables, procedures, and triggers cannot be added on page customization objects",
-      "YES — Line 10 should use extends instead of customizes",
-      "YES — Unit Cost will be moved after Costing Method in line 18"
+      "YES — Statement 1: The profile is applied only to users with Register Time = true",
+      "YES — Statement 2: Variables, procedures, and triggers cannot be added on page customization objects",
+      "YES — Statement 3: Line 10 should use 'extends' instead of 'customizes'",
+      "YES — Statement 4: In line 18, \"Unit Cost\" will be moved after \"Costing Method\""
     ],
     correct: [1, 3],
-    explanation: "Statement 1 is false (NO): Profile objects do not have a condition based on User Setup fields like 'Register Time'. Profiles are assigned to users manually or via configuration, not automatically based on User Setup fields. Statement 2 is true (YES): Page customization objects are restricted — you can only modify layout and visibility, not add code (variables, procedures, triggers are not allowed). Statement 3 is false (NO): 'customizes' is the correct keyword for page customization objects; 'extends' is used for page extension objects. Statement 4 is true (YES): The moveafter(\"Unit Cost\"; \"Costing Method\") call moves \"Unit Cost\" to appear after the \"Costing Method\" field."
+    explanation: "Statement 1 is false (NO): Profile objects have no condition based on User Setup fields like 'Register Time'. Profiles are assigned to users manually or via configuration — not automatically based on User Setup fields. Statement 2 is true (YES): Page customization objects are restricted to layout and visibility changes only; variables, procedures, and triggers cannot be added. Statement 3 is false (NO): 'customizes' on line 10 is the correct keyword for pagecustomization objects; 'extends' is the keyword for page extension objects. Statement 4 is true (YES): The moveafter(\"Unit Cost\"; \"Costing Method\") call on line 18 moves the \"Unit Cost\" field to appear immediately after the \"Costing Method\" field."
   },
   {
     id: 575,
-    text: "You create a procedure to check if a purchase order has lines. The procedure returns false for purchase order P0000 even though it has purchase lines.\n\nThe code uses:\n- Line 05: PurchaseLine.SetRange(\"Document Type\", PurchaseHeader.\"Document Type\")\n- Line 06: PurchaseLine.SetRange(\"No.\", PurchaseHeader.\"No.\")\n- Line 07: exit(not PurchaseLine.IsEmpty())\n\nFor each statement, select Yes if true:\nStatement 1: Add Clear(PurchaseLine) before line 01.\nStatement 2: Add PurchaseLine.SetFilter('Line No.', '>0') after line 06.\nStatement 3: Change the filter on line 06 from a \"No.\" field to a \"Document No.\" field.\nStatement 4: Remove \"not\" in line 07.",
+    context: "A developer creates the following procedure to check if a purchase order has lines, but it returns false for purchase order P0000 even though it has purchase lines:\n<pre class=\"question-code-block\">01: procedure HasPurchaseLines(PurchaseHeader: Record \"Purchase Header\"): Boolean\n02: var\n03:     PurchaseLine: Record \"Purchase Line\";\n04: begin\n05:     PurchaseLine.SetRange(\"Document Type\", PurchaseHeader.\"Document Type\");\n06:     PurchaseLine.SetRange(\"No.\", PurchaseHeader.\"No.\");\n07:     exit(not PurchaseLine.IsEmpty());\n08: end;</pre>",
+    text: "Which single change will fix the procedure so it returns true when purchase lines exist?",
     type: "single",
     choices: [
-      "YES — Add Clear(PurchaseLine) before line 01",
-      "YES — Add PurchaseLine.SetFilter('Line No.', '>0') after line 06",
-      "YES — Change the filter on line 06 from \"No.\" field to \"Document No.\" field",
-      "YES — Remove \"not\" in line 07"
+      "Add Clear(PurchaseLine) before line 05",
+      "Add PurchaseLine.SetFilter('Line No.', '>0') after line 06",
+      "On line 06, change SetRange(\"No.\", ...) to SetRange(\"Document No.\", ...)",
+      "On line 07, remove \"not\" from the exit statement"
     ],
     correct: [2],
-    explanation: "Statement 3 is true (YES): The Purchase Line table uses \"Document No.\" (not \"No.\") as the field that links to the Purchase Header \"No.\". Filtering on \"No.\" of the Purchase Line table would be filtering on the line's own \"No.\" field which is not the document reference field. The correct filter should be PurchaseLine.SetRange(\"Document No.\", PurchaseHeader.\"No.\"). Statement 1 is false: Clear() on a Record variable resets it but doesn't affect filters in a meaningful way for this bug. Statement 2 is false: Line No. > 0 is not the relevant fix. Statement 4 is false: Removing 'not' would reverse the logic (returning true when empty)."
+    explanation: "The Purchase Line table uses \"Document No.\" (not \"No.\") to link lines back to their Purchase Header. Line 06 incorrectly filters on the Purchase Line's own \"No.\" field instead of \"Document No.\", so no lines are ever found for the header — causing the procedure to always return false. Changing SetRange(\"No.\", ...) to SetRange(\"Document No.\", ...) on line 06 fixes the filter. Clear(PurchaseLine) is unnecessary — no stale filters exist before line 05. Adding a Line No. > 0 filter is irrelevant to the bug. Removing 'not' would invert the logic (returning true when there are no lines)."
   },
   {
     id: 576,
