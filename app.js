@@ -1075,7 +1075,7 @@
   }
 
 
-  function buildProgressBar() {
+  function calcPrepPct() {
     const availableCases = TEST_CASES.filter(function (tc) { return tc.questions.length > 0; });
     const totalItems = QUESTION_SETS.length + availableCases.length;
     let completedItems = 0;
@@ -1090,6 +1090,14 @@
     });
 
     const pct = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;
+    return { pct: pct, completedItems: completedItems, totalItems: totalItems };
+  }
+
+  function buildProgressBar() {
+    const prep = calcPrepPct();
+    const pct = prep.pct;
+    const completedItems = prep.completedItems;
+    const totalItems = prep.totalItems;
     const fillCls = pct >= 100 ? "prep-fill-full" : pct >= PASS_PCT ? "prep-fill-good" : "";
 
     return '<div class="prep-progress-bar-container">' +
@@ -1103,6 +1111,19 @@
       '<div class="prep-progress-footer">' +
         '<p class="prep-progress-sub">Complete every quiz and case study with \u2265' + PASS_PCT + '% to reach 100% preparation.</p>' +
         (studyTimeSeconds > 0 ? '<span class="prep-study-time">\u23F1 ' + formatTime(studyTimeSeconds) + ' studied</span>' : '') +
+      '</div>' +
+    '</div>';
+  }
+
+  function buildCongratulationsScreen() {
+    return '<div class="congrats-screen">' +
+      '<div class="congrats-trophy">\uD83C\uDFC6</div>' +
+      '<h2 class="congrats-title">You\u2019re Ready for MB-820!</h2>' +
+      '<p class="congrats-msg">Outstanding achievement! You\u2019ve passed all quizzes and case studies with a passing score. You are fully prepared to ace the MB-820 certification exam. Go get that certification!</p>' +
+      '<div class="congrats-badges">' +
+        '<span class="congrats-badge">\u2705 All Quizzes Passed</span>' +
+        '<span class="congrats-badge">\u2705 All Case Studies Passed</span>' +
+        '<span class="congrats-badge">\uD83C\uDFC5 100% Ready</span>' +
       '</div>' +
     '</div>';
   }
@@ -1228,7 +1249,13 @@
     });
 
     // ── Progress bar ─────────────────────────────────────────────────────
-    let html = '<div class="set-selection-wrapper">' + buildProgressBar();
+    const prepProgress = calcPrepPct();
+    let html = '<div class="set-selection-wrapper">';
+    if (prepProgress.pct >= 100) {
+      html += buildCongratulationsScreen();
+      launchConfetti();
+    }
+    html += buildProgressBar();
     if (inProgressCount > 0) html += buildInProgressBanner(inProgressCount);
 
     // ── Quick Practice (above Practice Quizzes) ──────────────────────────
