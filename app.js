@@ -83,7 +83,6 @@
   const PASS_PCT     = 70; // 700/1000 points — minimum passing score for MB-820
   const MARGINAL_PCT = 60; // "close but not there" band
   const STUDY_TIME_KEY = "mb820_study_time"; // accumulated study seconds (quizzes + test cases)
-  const REPORT_EMAIL   = "luiscarlosassuncao24@gmail.com";
 
   // ── State ────────────────────────────────────────────────────────────────
   let activeSet     = null; // one of QUESTION_SETS entries
@@ -253,14 +252,14 @@
     try { localStorage.setItem(STUDY_TIME_KEY, String(studyTimeSeconds)); } catch (e) { /* ignore */ }
   }
 
-  // ── Bug / mistypo report ──────────────────────────────────────────────────
-  // Opens the user's email client with a pre-filled subject and body so they
-  // can report a problem in any question with a single click.
-  function reportIssue(q, setLabel) {
+  // ── Copy issue to clipboard ───────────────────────────────────────────────
+  // Copies question details to the clipboard so the user can paste them into
+  // a Teams chat (or any other channel) to report a bug or typo.
+  function copyIssue(q, setLabel, feedbackEl) {
     var formattedChoices = q.choices.map(function (c, i) { return (i + 1) + ". " + c; }).join("\n");
     var correctAnswerTexts = q.correct.map(function (i) { return q.choices[i]; }).join(", ");
-    var subject = encodeURIComponent("[MB-820 Quiz] Bug Report \u2014 Question #" + q.id);
-    var body = encodeURIComponent(
+    var text =
+      "[MB-820 Quiz] Issue Report — Question #" + q.id + "\n\n" +
       "Please describe the issue you found:\n" +
       "[Your description here]\n\n" +
       "------- Question Details -------\n" +
@@ -269,9 +268,41 @@
       "Question Text:\n" + q.text + "\n\n" +
       "Choices:\n" + formattedChoices + "\n\n" +
       "Correct Answer(s): " + correctAnswerTexts + "\n" +
-      "--------------------------------"
-    );
-    window.location.href = "mailto:" + REPORT_EMAIL + "?subject=" + subject + "&body=" + body;
+      "--------------------------------";
+
+    function showFeedback(msg) {
+      if (feedbackEl) {
+        feedbackEl.textContent = msg;
+        feedbackEl.style.display = "block";
+        setTimeout(function () { feedbackEl.style.display = "none"; }, 5000);
+      } else {
+        alert(msg);
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        showFeedback("✅ Copied! Send it to me via Teams chat 😊");
+      }, function () {
+        showFeedback("⚠️ Copy failed — please try again.");
+      });
+    } else {
+      // Fallback for older browsers
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity  = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        showFeedback(ok ? "✅ Copied! Send it to me via Teams chat 😊" : "⚠️ Copy failed — please try again.");
+      } catch (e) {
+        showFeedback("⚠️ Copy failed — please try again.");
+      }
+    }
   }
 
   // ── Confirmation modal ────────────────────────────────────────────────────
@@ -879,8 +910,9 @@
         '<div class="qp-btn-row">' +
           '<button class="qp-submit-btn" id="qp-submit-btn"' + (q.type === "single" ? " disabled" : "") + '>Submit Answer</button>' +
           '<button class="qp-skip-btn" id="qp-skip-btn">Skip \u23ED</button>' +
-          '<button class="report-issue-btn qp-report-btn" id="qp-report-btn" title="Report a bug or typo in this question">\uD83D\uDEA9 Report</button>' +
+          '<button class="report-issue-btn qp-report-btn" id="qp-report-btn" title="Copy question details to clipboard to report an issue">\uD83D\uDCCB Copy</button>' +
         '</div>' +
+        '<span class="copy-issue-feedback" id="qp-copy-feedback" style="display:none;"></span>' +
       '</div>';
 
     // Choice interaction
@@ -916,7 +948,10 @@
     var skipBtn = document.getElementById("qp-skip-btn");
     if (skipBtn) skipBtn.addEventListener("click", function () { qp.poolIdx++; renderQuickPractice(); });
     var qpReportBtn = document.getElementById("qp-report-btn");
-    if (qpReportBtn) qpReportBtn.addEventListener("click", function () { reportIssue(q, "Quick Practice"); });
+    if (qpReportBtn) {
+      var qpCopyFeedback = document.getElementById("qp-copy-feedback");
+      qpReportBtn.addEventListener("click", function () { copyIssue(q, "Quick Practice", qpCopyFeedback); });
+    }
   }
 
   function onQpSubmit(container, q) {
@@ -1968,7 +2003,8 @@
       '</div>' +
       (q.context ? '<div class="question-context">' + q.context + '</div>' : '') +
       '<div class="question-text">' + q.text + '</div>' +
-      '<button class="report-issue-btn" id="report-issue-btn" title="Report a bug or typo in this question">\uD83D\uDEA9 Report Issue</button>';
+      '<button class="report-issue-btn" id="report-issue-btn" title="Copy question details to clipboard to report an issue">\uD83D\uDCCB Copy Issue</button>' +
+      '<span class="copy-issue-feedback" id="copy-issue-feedback" style="display:none;"></span>';
 
     if (!practiceMode) {
       var peekBtnEl = document.getElementById("peek-btn");
@@ -1977,8 +2013,9 @@
 
     var reportIssueBtnEl = document.getElementById("report-issue-btn");
     if (reportIssueBtnEl) {
+      var copyFeedbackEl = document.getElementById("copy-issue-feedback");
       reportIssueBtnEl.addEventListener("click", function () {
-        reportIssue(shuffled[current], activeSet ? activeSet.label : "Unknown");
+        copyIssue(shuffled[current], activeSet ? activeSet.label : "Unknown", copyFeedbackEl);
       });
     }
 
