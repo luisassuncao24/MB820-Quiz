@@ -1,198 +1,400 @@
-// PL-400: Microsoft Power Platform Developer
-// Proficient / scenario-based questions
-
-const pl400Questions = [
-  // ── Create a Technical Design ────────────────────────────────────────────
+var pl400Questions = [
   {
-    id: 1,
-    text: "A developer needs to create a custom connector that integrates a third-party REST API with Power Platform. The API uses OAuth 2.0 with the authorization code flow. Which configuration section in the custom connector wizard should be used to define the OAuth 2.0 settings?",
-    type: "single",
+    id: 1001,
+    text: 'A company manages electric utility equipment. Technicians use Dynamics 365 Field Service mobile app plus a canvas app for maintenance history. Managers currently use a Power BI dashboard but now must work in the field from a single screen.',
+    type: 'single',
     choices: [
-      "General",
-      "Security",
-      "Definition",
-      "Test"
-    ],
-    correct: [1],
-    explanation: "The Security section of the custom connector wizard is where authentication settings are configured, including OAuth 2.0 with the authorization code flow. This is where you define the client ID, client secret, authorization URL, and token URL."
-  },
-  {
-    id: 2,
-    text: "A company wants to enforce a business rule in Dataverse that prevents saving a record when the revenue field is negative. Which two approaches can achieve this without writing any client-side code? (Select TWO)",
-    type: "multiple",
-    choices: [
-      "Business rule with a condition and Show error message action",
-      "Calculated column",
-      "Power Automate cloud flow triggered on record creation",
-      "Business rule with a condition and Lock or unlock fields action",
-      "Column-level security profile"
-    ],
-    correct: [0, 2],
-    explanation: "A Business rule with a condition and Show error message action will prevent saving on the form client-side. A Power Automate cloud flow triggered on record creation/update can also validate and reject records server-side. Both approaches require no custom client-side JavaScript."
-  },
-  // ── Configure Microsoft Dataverse ────────────────────────────────────────
-  {
-    id: 3,
-    text: "A developer needs to ensure that only users with the System Administrator role can read a specific column in a Dataverse table. What feature should be used?",
-    type: "single",
-    choices: [
-      "Column-level security profiles",
-      "Table permissions",
-      "Record-level sharing",
-      "Team-based security roles"
+      'Add the maintenance history app to the Field Service Mobile app.'
     ],
     correct: [0],
-    explanation: "Column-level security profiles in Dataverse allow you to restrict read, create, and update access to specific columns to only those users or teams that are members of the profile. This is the correct feature for restricting access to individual columns."
+    explanation: 'This keeps managers on the same field experience used by technicians and avoids switching between apps.',
   },
   {
-    id: 4,
-    text: "You are designing a Dataverse solution that requires storing data shared across multiple environments without duplication. Which table type should be used?",
-    type: "single",
+    id: 1005,
+    text: 'Canvas app must support delegation for filtering/sorting over large datasets.',
+    type: 'multiple',
     choices: [
-      "Standard table",
-      "Virtual table",
-      "Elastic table",
-      "Activity table"
-    ],
-    correct: [1],
-    explanation: "Virtual tables allow data stored in external systems to be represented as Dataverse tables without physically storing the data in Dataverse. This avoids duplication while making external data available across environments through the Dataverse API."
-  },
-  // ── Create and configure Power Apps ─────────────────────────────────────
-  {
-    id: 5,
-    text: "A canvas app developer needs to display a collection of product images retrieved from SharePoint. Each image must link to a detail screen when tapped. Which control is best suited for this requirement?",
-    type: "single",
-    choices: [
-      "Data table",
-      "Gallery with an Image control inside",
-      "List box",
-      "Form control"
-    ],
-    correct: [1],
-    explanation: "A Gallery control can display a collection of records (including images from SharePoint) and supports an OnSelect property for navigation to a detail screen when an item is tapped. An Image control inside the gallery renders each record's image."
-  },
-  {
-    id: 6,
-    text: "Which two statements about model-driven app views are correct? (Select TWO)",
-    type: "multiple",
-    choices: [
-      "System views can be edited and deleted by any user",
-      "Personal views are only visible to the user who created them",
-      "Public views are available to all users with access to the table",
-      "System views can be hidden from the app but not deleted",
-      "Views can reference columns from related tables using FETCHXML"
-    ],
-    correct: [1, 2],
-    explanation: "Personal views are created by individual users and are only visible to them. Public views are created by administrators or customizers and are available to all users who have access to the table. System views cannot be deleted (they can only be deactivated or hidden)."
-  },
-  // ── Configure business process automation ────────────────────────────────
-  {
-    id: 7,
-    text: "A company needs to send an approval email whenever a new expense report is submitted in Dataverse, wait for the approval response, and then update the expense report status. Which Power Platform feature is best suited?",
-    type: "single",
-    choices: [
-      "Canvas app with a button trigger",
-      "Power Automate cloud flow with the Approvals connector",
-      "Business rule in Dataverse",
-      "Classic workflow in Dataverse"
-    ],
-    correct: [1],
-    explanation: "Power Automate cloud flows with the Approvals connector support multi-step approval workflows with email notifications and waiting for responses. This is the recommended modern approach for approval scenarios in Power Platform."
-  },
-  {
-    id: 8,
-    text: "You need to configure a business process flow (BPF) in Dataverse that spans two tables: Opportunity and Quote. Which statement about this configuration is correct?",
-    type: "single",
-    choices: [
-      "A BPF cannot span more than one table",
-      "Cross-table BPFs require a custom plugin",
-      "You can add a second table by using the Expand Entity option in the BPF designer",
-      "Only the N:N relationship can be used to connect tables in a BPF"
-    ],
-    correct: [2],
-    explanation: "The Business Process Flow designer supports cross-entity (cross-table) flows. You can expand to a second entity using the 'Expand Entity' option, which allows the BPF to include stages from a related table like Quote after the Opportunity stages."
-  },
-  // ── Extend the user experience ───────────────────────────────────────────
-  {
-    id: 9,
-    text: "A developer needs to add a custom button to the model-driven app command bar that calls a Power Automate flow with the selected record's ID. Which modern approach should be used?",
-    type: "single",
-    choices: [
-      "Ribbon Workbench",
-      "Command Bar Designer in the Power Apps maker portal",
-      "JavaScript web resource added to the form",
-      "Site map editor"
-    ],
-    correct: [1],
-    explanation: "The Command Bar Designer (available in the Power Apps maker portal under the model-driven app editor) is the modern, no-code approach for adding and configuring commands including ones that trigger Power Automate flows with record context."
-  },
-  {
-    id: 10,
-    text: "Which two types of PCF (Power Apps Component Framework) controls exist? (Select TWO)",
-    type: "multiple",
-    choices: [
-      "Field controls",
-      "Dataset controls",
-      "Form controls",
-      "View controls",
-      "Canvas controls"
+      'SQL Server',
+      'Common Data Service (Dataverse)'
     ],
     correct: [0, 1],
-    explanation: "PCF supports two types of controls: Field controls (bound to a single field/column on a form) and Dataset controls (bound to a view or dataset, used to render lists of records). These are the two component types defined in the PCF manifest."
+    explanation: 'Both are delegation-friendly data sources.',
   },
-  // ── Extend the platform ──────────────────────────────────────────────────
   {
-    id: 11,
-    text: "A developer is writing a Dataverse plug-in that needs to run synchronously and prevent a record from being saved if a validation rule fails. Which message and stage should the plug-in be registered on?",
-    type: "single",
+    id: 1010,
+    text: 'Using Liquid templates in a Power Apps portal to display dynamic content.',
+    type: 'multiple',
     choices: [
-      "Post-operation, asynchronous",
-      "Pre-validation, synchronous",
-      "Pre-operation, synchronous",
-      "Post-operation, synchronous"
+      'Content snippet',
+      'Web page',
+      'Web template'
     ],
-    correct: [2],
-    explanation: "A Pre-operation synchronous plug-in runs before the database operation and can throw an InvalidPluginExecutionException to cancel the save. Pre-validation runs before security checks, while Pre-operation is the correct stage for blocking saves with access to the full execution context."
+    correct: [0, 1, 2],
+    explanation: 'These are the portal artefacts where Liquid can be used directly.',
   },
   {
-    id: 12,
-    text: "When should you use a Dataverse plug-in instead of a Power Automate cloud flow? (Select TWO)",
-    type: "multiple",
+    id: 1013,
+    text: 'Public-facing Power Apps portal: need to change the layout of a specific web page.',
+    type: 'multiple',
     choices: [
-      "When you need to perform complex real-time validation that cancels the database transaction",
-      "When you need to send an email notification after a record is created",
-      "When sub-millisecond response time is required for synchronous operations",
-      "When the logic must be triggered by a scheduled recurrence",
-      "When you need server-side logic that works even without a licensed Power Automate user"
+      'Select the portal app and then select Manage',
+      'Select the portal app and then select Edit'
     ],
-    correct: [0, 2],
-    explanation: "Plug-ins are preferable when you need synchronous real-time logic that can roll back the transaction (not possible with cloud flows), or when very low latency is required. Cloud flows add overhead due to their asynchronous nature and are not suitable for blocking transactional operations."
+    correct: [0, 1],
+    explanation: 'Both approaches let you work on page layout/content from the portal side.',
   },
-  // ── Develop integrations ─────────────────────────────────────────────────
   {
-    id: 13,
-    text: "A developer needs to query Dataverse data from an external application using the Web API. The query must retrieve all active Account records where the annual revenue is greater than 1,000,000, including only the name and revenue columns. Which OData query option correctly filters and selects these columns?",
-    type: "single",
+    id: 1021,
+    text: 'Power Apps maker building a chatbot. The bot must recognize geographic attributes for additional functionality.',
+    type: 'single',
     choices: [
-      "$filter=statecode eq 0 and revenue gt 1000000&$select=name,revenue",
-      "$where=statecode=0 and revenue>1000000&$columns=name,revenue",
-      "$filter=statuscode eq 1&$select=name,revenue",
-      "$query=active and revenue gt 1000000&$fields=name,revenue"
+      'Slot filling'
     ],
     correct: [0],
-    explanation: "The Dataverse Web API uses OData syntax. $filter with statecode eq 0 (Active) and revenue gt 1000000 correctly filters the records. $select=name,revenue returns only those columns. The other options use incorrect query syntax not supported by OData/Dataverse."
+    explanation: 'Used to extract structured attributes like geography from user input.',
   },
   {
-    id: 14,
-    text: "You are building a Power Pages (portals) website that needs to display Dataverse records to anonymous users. Which configuration must be set up to allow anonymous access to Dataverse table data?",
-    type: "single",
+    id: 1022,
+    text: 'Power Apps solution redeployment after deleting a column, modifying views, and adding charts to dashboards.',
+    type: 'single',
     choices: [
-      "Grant System Administrator access to the anonymous user role",
-      "Configure Table Permissions with the Anonymous Users web role",
-      "Disable column-level security for the table",
-      "Set the table ownership to Organization"
+      'Update the solution.'
+    ],
+    correct: [0],
+    explanation: 'These are standard solution changes that fit an update, not a new solution or patch.',
+  },
+  {
+    id: 1023,
+    text: 'Model-driven app users are members of Azure AD security-group team; one user is missing from Team Members and cannot use the app.',
+    type: 'single',
+    choices: [
+      'Add User1 to the group that owns the team.'
+    ],
+    correct: [0],
+    explanation: 'The user must be in the Azure AD group linked to the Dataverse team.',
+  },
+  {
+    id: 1059,
+    text: 'Need to display Dataverse data on a Power Apps portal page.',
+    type: 'single',
+    choices: [
+      'Liquid'
+    ],
+    correct: [0],
+    explanation: 'Liquid is the native server-side templating language for Power Pages/portals.',
+  },
+  {
+    id: 1071,
+    text: 'Need to find the integer value for an option set when using a non-.NET language.',
+    type: 'single',
+    choices: [
+      'Use Web API and use a PicklistAttributeMetadata request'
+    ],
+    correct: [0],
+    explanation: 'This exposes option-set metadata and corresponding integer values without requiring the .NET Organization Service.',
+  },
+  {
+    id: 1074,
+    text: 'Rollup fields for insurance exposure/risk are not updating immediately when a policy is created.',
+    type: 'single',
+    choices: [
+      'Create a plug-in that uses the CalculateRollupFieldRequest method for the rollup field and trigger it on Create of the policy entity'
+    ],
+    correct: [0],
+    explanation: 'This recalculates immediately instead of waiting for the scheduled rollup job.',
+  },
+  {
+    id: 1075,
+    text: 'Public survey page on company website must write data into Dataverse without explicit user credentials.',
+    type: 'single',
+    choices: [
+      'Client secret'
+    ],
+    correct: [0],
+    explanation: 'An application identity with client secret is appropriate for server-side or app-to-app authentication without interactive user sign-in.',
+  },
+  {
+    id: 1076,
+    text: 'Managed solution import fails because a form with OnLoad/OnSave scripts is missing a component.',
+    type: 'single',
+    choices: [
+      'The web resources were not added to the form before adding the form to the solution'
+    ],
+    correct: [0],
+    explanation: 'Form dependencies must be associated so the solution includes everything needed during import.',
+  },
+  {
+    id: 1082,
+    text: 'Group2 must not read a sensitive column; Group1 must be able to read it.',
+    type: 'single',
+    choices: [
+      'Create a field-level security profile for Group1 users to grant the users access to the column'
+    ],
+    correct: [0],
+    explanation: 'With field-level security enabled, only users/profiles granted access can read the secured column.',
+  },
+  {
+    id: 1086,
+    text: 'Change tracking is enabled on Account. Need to retrieve delta data by using Organization Service and C#.',
+    type: 'single',
+    choices: [
+      'RetrieveEntityChangesRequest'
+    ],
+    correct: [0],
+    explanation: 'This is the SDK message designed for retrieving tracked changes.',
+  },
+  {
+    id: 1087,
+    text: 'Need to delete TableA, but a lookup to TableA appears on a form in TableB, and a delete error occurs.',
+    type: 'single',
+    choices: [
+      'Remove the lookup field to TableA on the TableB form'
+    ],
+    correct: [0],
+    explanation: 'The form-level dependency blocks deletion.',
+  },
+  {
+    id: 1095,
+    text: 'Real-time workflow populates a lookup with a default value. Managed solution imported to test causes "Record is not available" when creating a record.',
+    type: 'single',
+    choices: [
+      'Use the Configuration Migration Tool to extract the lookup table data from development and import it to test'
+    ],
+    correct: [0],
+    explanation: 'The lookup data itself must exist in the target environment.',
+  },
+  {
+    id: 1107,
+    text: 'Custom page used as contextual dialog in a model-driven app must receive two parameters as a concatenated string split by pipe (|).',
+    type: 'multiple',
+    choices: [
+      'Left(Param("recordId"), Find("|", Param("recordId")) - 1)',
+      'Right(Param("recordId"), Len(Param("recordId")) - Find("|", Param("recordId")))'
+    ],
+    correct: [0, 1],
+    explanation: 'These formulas split the string into the left and right values around the delimiter.',
+  },
+  {
+    id: 1109,
+    text: 'SolutionA developer needs a new development environment. SolutionA changes must not interfere with SolutionB customizations, even though solutions share components.',
+    type: 'single',
+    choices: [
+      'Import SolutionA as unmanaged and SolutionB as managed'
+    ],
+    correct: [0],
+    explanation: 'SolutionA must remain editable for development. SolutionB should be protected from interference by being installed as managed.',
+  },
+  {
+    id: 1112,
+    text: 'Four developers each work in isolated environments refreshed from source control as managed layer. Changes must later be merged into a base solution in a shared sandbox.',
+    type: 'single',
+    choices: [
+      'Export each developer\'s solution as unmanaged'
+    ],
+    correct: [0],
+    explanation: 'Unmanaged export is appropriate for merging isolated development work into a shared base solution.',
+  },
+  {
+    id: 1116,
+    text: 'Developers spend many hours deploying customizations to downstream environments and do not have access to IDEs.',
+    type: 'single',
+    choices: [
+      'Use the maker portal'
+    ],
+    correct: [0],
+    explanation: 'Deployment pipelines in the maker portal fit this requirement better than configuration migration packages.',
+  },
+  {
+    id: 1117,
+    text: 'Need to debug a plug-in issue from a Germany environment in a separate environment while respecting EU data-boundary compliance.',
+    type: 'single',
+    choices: [
+      'Create a new sandbox environment. Register the plug-in'
+    ],
+    correct: [0],
+    explanation: 'This supports isolated debugging without copying EU-bound data into the company\'s default region.',
+  },
+  {
+    id: 1120,
+    text: 'Solution uses access team templates. Users cannot access rows.',
+    type: 'single',
+    choices: [
+      'Add the users to the Access Team Members subgrid'
+    ],
+    correct: [0],
+    explanation: 'Access team templates grant row access when users are added to the access team members list for the record.',
+  },
+  {
+    id: 1134,
+    text: 'HoTspor - A company uses Dynamics 365 Sales and the Microsoft Online Services portal The mul lect OptionSet field data type is not supported in the portal. You need to copy the selected field value to the text field How should you configure the Organization service request? To...',
+    type: 'single',
+    choices: [
+      'Use InputParameters[\'Target\']; retrieve attribute metadata for target field; evaluate flags based on returned metadata'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 1187,
+    text: 'Trigger a business rule when the main form is saved in Dynamics 365 Sales.',
+    type: 'single',
+    choices: [
+      'Set the scope of the business rule to Entity.'
+    ],
+    correct: [0],
+    explanation: 'Set the scope of the business rule to Entity.',
+  },
+  {
+    id: 1188,
+    text: 'Automatically send an email notification to the sales manager when a business process completes.',
+    type: 'single',
+    choices: [
+      'Create a workflow on the process-completed trigger.'
+    ],
+    correct: [0],
+    explanation: 'Create a workflow on the process-completed trigger.',
+  },
+  {
+    id: 1190,
+    text: 'Customer business process flow includes custom entities and four stages for each entity; one stage has 15 steps. Identify the design flaw.',
+    type: 'single',
+    choices: [
+      'Suggested answer: maximum number of custom entities exceeded.'
+    ],
+    correct: [0],
+    explanation: 'Suggested answer: maximum number of custom entities exceeded.',
+  },
+  {
+    id: 1200,
+    text: 'Insurance company recalculates risk exposure and risk profile immediately after a policy is created.',
+    type: 'single',
+    choices: [
+      'Create new fields and use a plug-in on the insurance policy create event.'
+    ],
+    correct: [0],
+    explanation: 'Create new fields and use a plug-in on the insurance policy create event.',
+  },
+  {
+    id: 1201,
+    text: 'Cloud flow processes a list of records using a loop. Determine when a variable should be initialized.',
+    type: 'single',
+    choices: [
+      'Initialize the variable before the loop.'
+    ],
+    correct: [0],
+    explanation: 'Initialize the variable before the loop.',
+  },
+  {
+    id: 1205,
+    text: 'Scheduled automation retrieves a rotated API key for a third-party API without a built-in connector.',
+    type: 'single',
+    choices: [
+      'Use environment variables.'
+    ],
+    correct: [0],
+    explanation: 'Use environment variables.',
+  },
+  {
+    id: 1229,
+    text: 'Canvas app loan form. LoanAmount should immediately change background color based on threshold values.',
+    type: 'single',
+    choices: [
+      'Add a formula to the LoanAmount field.'
+    ],
+    correct: [0],
+    explanation: 'Add a formula to the LoanAmount field.',
+  },
+  {
+    id: 1236,
+    text: 'Custom connector definition must not be visible to the end user.',
+    type: 'single',
+    choices: [
+      'Use visibility parameter = internal.'
+    ],
+    correct: [0],
+    explanation: 'Use visibility parameter = internal.',
+  },
+  {
+    id: 1256,
+    text: 'Display a dialog when a form opens or when a grid on the form is sorted.',
+    type: 'single',
+    choices: [
+      'Subgrid OnLoad'
+    ],
+    correct: [0],
+    explanation: 'Subgrid OnLoad fires on initial load and on subgrid refresh/sort scenarios.',
+  },
+  {
+    id: 1264,
+    text: 'Implement a solution for displaying a timer / duration / automatic refresh in a model-driven app.',
+    type: 'single',
+    choices: [
+      'Canvas component'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 1276,
+    text: 'Publicly accessible survey page must update data from the page to Dataverse; users do not require individual Dataverse credentials.',
+    type: 'single',
+    choices: [
+      'OAuth 2.0'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 1278,
+    text: 'Public survey page to Common Data Service environment with authentication requirements.',
+    type: 'single',
+    choices: [
+      'OAuth 2.0'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 1306,
+    text: 'Plug-in faz múltiplos pedidos a um serviço web externo e não deve sofrer timeout quando o serviço demora a responder.',
+    type: 'single',
+    choices: [
+      'Set the HTTP connection KeepAlive property to false. Extraído do texto OCR da página renderizada.'
+    ],
+    correct: [0],
+    explanation: 'Set the HTTP connection KeepAlive property to false. Extraído do texto OCR da página renderizada.',
+  },
+  {
+    id: 1351,
+    text: 'Custom validation with message on form.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'The rendered source page marks suggested answer A.',
+  },
+  {
+    id: 1352,
+    text: 'Custom validation and output parameters in plug-in.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
     ],
     correct: [1],
-    explanation: "Power Pages uses Table Permissions to control which records and operations external users (including anonymous users) can access. The Anonymous Users web role must be configured with appropriate Table Permissions to allow unauthenticated access to Dataverse data."
+    explanation: 'The rendered source page marks suggested answer B.',
+  },
+  {
+    id: 1353,
+    text: 'Tracing service used to display validation guidance.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'The rendered source page marks suggested answer B.',
   }
 ];

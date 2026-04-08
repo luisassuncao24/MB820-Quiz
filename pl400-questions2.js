@@ -1,272 +1,554 @@
-// PL-400: Microsoft Power Platform Developer
-// Foundational / conceptual questions
-
-const pl400Questions2 = [
-  // ── Power Platform fundamentals ──────────────────────────────────────────
+var pl400Questions2 = [
   {
-    id: 101,
-    text: "Which Power Platform component is used to automate repetitive tasks and integrate with external services?",
-    type: "single",
+    id: 2006,
+    text: 'Client is deploying Dynamics 365 Finance / Field Service without third-party add-ons and must choose appropriate solutions.',
+    type: 'multiple',
     choices: [
-      "Power Apps",
-      "Power BI",
-      "Power Automate",
-      "Power Virtual Agents"
+      'Warehouse employees can scan barcodes in Dynamics 365 Finance → Out-of-the-box',
+      'Communicate technician location by text message from Dynamics 365 Field Service → Power Automate'
     ],
-    correct: [2],
-    explanation: "Power Automate (formerly Microsoft Flow) is the Power Platform component designed for automating workflows and integrating with hundreds of external services through connectors."
+    correct: [0, 1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
   },
   {
-    id: 102,
-    text: "What is the primary data platform for Power Platform?",
-    type: "single",
+    id: 2008,
+    text: 'Order processing app will execute complex business logic and integrate with external systems. Large orders may take up to six minutes and must complete in one operation.',
+    type: 'single',
     choices: [
-      "Azure SQL Database",
-      "Microsoft Dataverse",
-      "SharePoint Lists",
-      "Azure Cosmos DB"
-    ],
-    correct: [1],
-    explanation: "Microsoft Dataverse (formerly Common Data Service) is the primary data platform for Power Platform. It provides a cloud-based storage service that enables secure data storage and business logic."
-  },
-  {
-    id: 103,
-    text: "Which two types of Power Apps can be created? (Select TWO)",
-    type: "multiple",
-    choices: [
-      "Canvas apps",
-      "Script apps",
-      "Model-driven apps",
-      "Backend apps",
-      "Query apps"
-    ],
-    correct: [0, 2],
-    explanation: "Power Apps supports two main types: Canvas apps (where you design the UI by dragging and dropping elements on a canvas with full layout control) and Model-driven apps (where the UI is generated automatically based on the Dataverse data model)."
-  },
-  {
-    id: 104,
-    text: "What is a solution in the context of Power Platform?",
-    type: "single",
-    choices: [
-      "A compiled binary package deployed to Azure",
-      "A container that holds customizations and components for transport between environments",
-      "A Power BI report package",
-      "An Azure DevOps pipeline configuration"
-    ],
-    correct: [1],
-    explanation: "A solution in Power Platform is a container that holds customizations such as apps, flows, tables, and other components. Solutions are used to transport these customizations between environments (e.g., from development to production)."
-  },
-  {
-    id: 105,
-    text: "What is the difference between a managed and unmanaged solution?",
-    type: "single",
-    choices: [
-      "Managed solutions can be edited; unmanaged solutions cannot",
-      "Unmanaged solutions can be edited; managed solutions have restrictions on modification",
-      "Managed solutions are for canvas apps only",
-      "Unmanaged solutions cannot be exported"
-    ],
-    correct: [1],
-    explanation: "Unmanaged solutions allow full editing and are typically used in development environments. Managed solutions are deployed to non-development environments; their components have restrictions on modification and are meant to protect the solution's integrity."
-  },
-  // ── Dataverse fundamentals ───────────────────────────────────────────────
-  {
-    id: 106,
-    text: "What is a Dataverse environment?",
-    type: "single",
-    choices: [
-      "A virtual machine that hosts Power Platform",
-      "An isolated space that stores data, apps, and flows and enforces security boundaries",
-      "A subscription tier for licensing",
-      "A development IDE for Power Platform"
-    ],
-    correct: [1],
-    explanation: "A Dataverse environment is an isolated container that stores data (in Dataverse tables), apps, flows, and other components. Each environment has its own security model and is used to separate development, testing, and production workloads."
-  },
-  {
-    id: 107,
-    text: "Which two relationship types are supported between Dataverse tables? (Select TWO)",
-    type: "multiple",
-    choices: [
-      "One-to-Many (1:N)",
-      "One-to-One (1:1)",
-      "Many-to-Many (N:N)",
-      "Zero-to-Many (0:N)",
-      "Hierarchical (parent-child)"
-    ],
-    correct: [0, 2],
-    explanation: "Dataverse natively supports One-to-Many (1:N) and Many-to-Many (N:N) table relationships. One-to-Many is the most common relationship, while N:N uses an intersect table. One-to-One relationships are not a native Dataverse relationship type."
-  },
-  {
-    id: 108,
-    text: "What is the purpose of a lookup column in Dataverse?",
-    type: "single",
-    choices: [
-      "To perform text searches across all columns",
-      "To reference a record in another (or the same) table, creating a relationship",
-      "To store calculated values based on other columns",
-      "To define a primary key for the table"
-    ],
-    correct: [1],
-    explanation: "A lookup column in Dataverse stores a reference (foreign key) to a record in another table. It creates a Many-to-One relationship between the current table and the target table, allowing you to associate records."
-  },
-  {
-    id: 109,
-    text: "Which column type in Dataverse automatically calculates its value based on a formula using other columns in the same row?",
-    type: "single",
-    choices: [
-      "Rollup column",
-      "Calculated column",
-      "Currency column",
-      "Choice column"
-    ],
-    correct: [1],
-    explanation: "Calculated columns in Dataverse use a formula based on values in the same row to compute their value automatically when a record is retrieved. Rollup columns aggregate values from related records."
-  },
-  {
-    id: 110,
-    text: "What is the correct statement about Dataverse security roles?",
-    type: "single",
-    choices: [
-      "A user can only have one security role at a time",
-      "Security roles define what operations users can perform on specific tables and records",
-      "Security roles can only be applied to individual users, not teams",
-      "Security roles apply only to model-driven apps"
-    ],
-    correct: [1],
-    explanation: "Dataverse security roles define CRUD (Create, Read, Update, Delete) permissions on tables and records for users or teams. A user can have multiple security roles, and roles apply across all Dataverse-connected apps."
-  },
-  // ── Power Automate fundamentals ───────────────────────────────────────────
-  {
-    id: 111,
-    text: "What is the difference between a cloud flow and a desktop flow in Power Automate?",
-    type: "single",
-    choices: [
-      "Cloud flows run in Azure; desktop flows run locally to automate UI-based tasks",
-      "Cloud flows can only use Dataverse; desktop flows can use any connector",
-      "Desktop flows are always scheduled; cloud flows are always triggered by events",
-      "There is no functional difference; they are just different names for the same flow type"
+      'A webhook that connects to an Azure Function'
     ],
     correct: [0],
-    explanation: "Cloud flows run in the cloud and automate digital tasks using connectors and APIs. Desktop flows (Robotic Process Automation / RPA) run locally on a machine and automate UI-based tasks, including legacy applications that do not have APIs."
+    explanation: 'Chosen because it supports long-running external processing better than workflow/custom action options.',
   },
   {
-    id: 112,
-    text: "What is an environment variable in Power Platform solutions?",
-    type: "single",
+    id: 2009,
+    text: 'Not-for-profit agency replacing manual volunteer registration/onboarding with a portal solution.',
+    type: 'multiple',
     choices: [
-      "A variable stored in an Azure Key Vault",
-      "A solution component that stores parameter values that can differ between environments",
-      "A global JavaScript variable used in canvas apps",
-      "A column in a Dataverse table"
+      'Create a portal by using a portal template → Customer self-service portal',
+      'Manage volunteer registration → Webform'
     ],
-    correct: [1],
-    explanation: "Environment variables are solution components that store configuration values (like a SharePoint site URL or API endpoint) that can be set differently per environment. This avoids hard-coding environment-specific values in flows and apps."
+    correct: [0, 1],
+    explanation: 'Confirmed from the highlighted suggested answer in the uploaded screenshot/page crop.',
   },
   {
-    id: 113,
-    text: "Which connector action is used in Power Automate to retrieve multiple records from Dataverse that match a filter condition?",
-    type: "single",
+    id: 2012,
+    text: 'Migrating to Power Platform and creating plug-ins. Need the isolation mode.',
+    type: 'single',
     choices: [
-      "Get a row by ID",
-      "List rows",
-      "Get rows (deprecated)",
-      "Search rows"
-    ],
-    correct: [1],
-    explanation: "The 'List rows' action in the Dataverse connector (modern) retrieves multiple records that match a specified filter expression. 'Get a row by ID' retrieves a single record by its primary key."
-  },
-  {
-    id: 114,
-    text: "A developer needs a Power Automate flow to run only on weekdays at 9 AM. Which trigger should be used?",
-    type: "single",
-    choices: [
-      "When an HTTP request is received",
-      "Recurrence trigger",
-      "When a Dataverse row is created",
-      "Automated cloud flow trigger"
-    ],
-    correct: [1],
-    explanation: "The Recurrence trigger allows you to schedule a flow at specific intervals. It supports specifying days of the week, which enables running only on weekdays. Other trigger types are event-based or HTTP-based."
-  },
-  {
-    id: 115,
-    text: "What happens when a Power Automate cloud flow action fails and no error handling is configured?",
-    type: "single",
-    choices: [
-      "The flow retries the failed action indefinitely",
-      "The flow marks itself as succeeded and continues",
-      "The flow run is marked as failed and subsequent actions are skipped by default",
-      "The flow sends an automatic email notification to the flow owner"
-    ],
-    correct: [2],
-    explanation: "By default, when an action in a Power Automate cloud flow fails, the run is marked as Failed and subsequent actions are skipped. To handle failures, you can configure 'Configure run after' settings on subsequent actions to run on failure."
-  },
-  // ── Canvas app fundamentals ───────────────────────────────────────────────
-  {
-    id: 116,
-    text: "What does the Patch() function do in Power Apps?",
-    type: "single",
-    choices: [
-      "Retrieves a record from a data source",
-      "Creates or updates records in a data source",
-      "Deletes a record from a data source",
-      "Filters a collection of records"
-    ],
-    correct: [1],
-    explanation: "The Patch() function in Power Apps creates or modifies records in a data source. It can create a new record by passing Defaults(DataSource) or update an existing record by providing its record identity. It's the primary way to write data to a data source in canvas apps."
-  },
-  {
-    id: 117,
-    text: "What is the purpose of the OnStart property of a canvas app?",
-    type: "single",
-    choices: [
-      "It runs when the user navigates to a new screen",
-      "It defines the app's data connections",
-      "It runs once when the app is launched, before any screen is shown",
-      "It handles errors that occur during app execution"
-    ],
-    correct: [2],
-    explanation: "The OnStart property runs once when the app is first launched, before any screen is displayed. It is commonly used to initialize variables, load collections, or set global state that the app needs from the start."
-  },
-  {
-    id: 118,
-    text: "Which formula is used to navigate to another screen in a canvas app?",
-    type: "single",
-    choices: [
-      "Navigate(ScreenName)",
-      "Go(ScreenName)",
-      "LoadScreen(ScreenName)",
-      "Route(ScreenName)"
+      'Sandbox'
     ],
     correct: [0],
-    explanation: "The Navigate() function is used in canvas apps to navigate to a different screen. It accepts the screen name as the first parameter and an optional transition type as the second parameter (e.g., ScreenTransition.Fade)."
+    explanation: 'Recommended isolation mode for Dataverse/Dynamics plug-ins.',
   },
   {
-    id: 119,
-    text: "What is a delegation warning in Power Apps, and why does it matter?",
-    type: "single",
+    id: 2014,
+    text: 'Azure custom app parses resumes and stores contact/skills information in Dataverse.',
+    type: 'single',
     choices: [
-      "A warning that a control is deprecated and will be removed",
-      "A warning that only a subset of records may be processed because the data source cannot execute the formula server-side",
-      "A warning that the app has too many screens",
-      "A warning that a connector license is required"
+      'Web API'
+    ],
+    correct: [0],
+    explanation: 'Best fit for an external Azure application writing to Dataverse.',
+  },
+  {
+    id: 2016,
+    text: 'Interpret Web API call against RelationshipDefinitions?$select=SchemaName.',
+    type: 'single',
+    choices: [
+      'Retrieve the list of relationships between tables.'
+    ],
+    correct: [0],
+    explanation: 'The call queries relationship metadata and returns relationship schema names.',
+  },
+  {
+    id: 2017,
+    text: 'Power Automate flow uses Dataverse List Rows and only needs a subset of Account data.',
+    type: 'multiple',
+    choices: [
+      'Full name of the primary contact → Expand Query = primarycontactid($select=fullname)',
+      'Account with the highest credit limit → Row count = 1 and Sort By = creditlimit desc'
+    ],
+    correct: [0, 1],
+    explanation: 'Uses expand for related contact data and descending sort with row count 1 for the top credit limit row.',
+  },
+  {
+    id: 2019,
+    text: 'Power Pages website with Power Virtual Agents topics. Need to use a bot on website, create Bot Framework skills, and create support requests without human interaction.',
+    type: 'multiple',
+    choices: [
+      'Use a bot on the website → Power Virtual Agents',
+      'Create Bot Framework skills → Power Virtual Agents',
+      'Create support request from the bot → Power Automate'
+    ],
+    correct: [0, 1, 2],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2025,
+    text: 'Virtual table scenario. Solution proposes a calculated column on the virtual table.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
     ],
     correct: [1],
-    explanation: "Delegation occurs when Power Apps sends a formula to the data source for processing. When a function cannot be delegated (e.g., complex filters not supported by the data source), a delegation warning appears and Power Apps applies the formula only to a limited set of records (by default, up to 500)."
+    explanation: 'Calculated columns are not the right approach for the stated virtual-table goal in this question series.',
   },
   {
-    id: 120,
-    text: "Which two built-in functions can be used to work with local collections in canvas apps? (Select TWO)",
-    type: "multiple",
+    id: 2028,
+    text: 'Custom plug-in reads entity image in Dataverse. Need how to access the information.',
+    type: 'single',
     choices: [
-      "Collect()",
-      "Patch()",
-      "ClearCollect()",
-      "Filter()",
-      "Lookup()"
+      'Register a post image by using the Plug-in Registration Tool and then read the post image in the entity image from the context object.'
     ],
-    correct: [0, 2],
-    explanation: "Collect() adds records to a local collection (creates it if it doesn't exist). ClearCollect() clears the collection first and then adds records. Both are used to work with in-memory collections in canvas apps. Filter() and Lookup() work with data sources and collections but don't modify them."
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2030,
+    text: 'Solution proposes enabling auditing on a virtual table column for the requirement.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Virtual table auditing in the proposed way does not satisfy the goal for this question.',
+  },
+  {
+    id: 2031,
+    text: 'Solution uses a GUID as the primary key for the virtual table.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'A GUID works as a unique identifier for virtual-table integration.',
+  },
+  {
+    id: 2033,
+    text: 'Virtual table scenario. Solution: create a calculated column on the virtual table.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Retained separately because these series questions are independent.',
+  },
+  {
+    id: 2035,
+    text: 'Model-driven app form loads slowly. Need control types that can improve performance.',
+    type: 'multiple',
+    choices: [
+      'Timeline',
+      'Quick view form',
+      'Lookup'
+    ],
+    correct: [0, 1, 2],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2048,
+    text: 'University / opportunity access scenario. Solution gives organization-level access by security role.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Would grant broader access than required.',
+  },
+  {
+    id: 2049,
+    text: 'Same university scenario. Solution uses access team templates and grants access to members from two departments.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'Access teams allow controlled record-level collaboration across departments.',
+  },
+  {
+    id: 205200,
+    text: 'Offline-capable canvas app expression with Patch/collection logic. — 1. Saves data to CDS when reconnecting after losing network connection',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205201,
+    text: 'Offline-capable canvas app expression with Patch/collection logic. — 2. Collection created by Patch contains all contacts not saved to CDS',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205202,
+    text: 'Offline-capable canvas app expression with Patch/collection logic. — 3. Expression updates existing contacts in CDS',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205203,
+    text: 'Offline-capable canvas app expression with Patch/collection logic. — 4. Expression handles loss of connection to CDS',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205500,
+    text: 'Evaluate statements to prevent a real-time workflow privilege error. — Changing Append To on Account to Organization',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205501,
+    text: 'Evaluate statements to prevent a real-time workflow privilege error. — Adding Environment Maker role',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205502,
+    text: 'Evaluate statements to prevent a real-time workflow privilege error. — Adding System Customizer gives more access than needed',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 205503,
+    text: 'Evaluate statements to prevent a real-time workflow privilege error. — Setting Building privileges to User',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2057,
+    text: 'School district/student/class-history Dataverse design.',
+    type: 'multiple',
+    choices: [
+      'Table ownership for the class record table → User or Team',
+      'Relationship of the class history table to the student table → Many-to-one',
+      'Behavior of the relationship between the class history table and the student table → Referential'
+    ],
+    correct: [0, 1, 2],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2077,
+    text: 'Use column mapping in a model-driven app to map child and parent values.',
+    type: 'multiple',
+    choices: [
+      'Map the value of a Choices column on the child table to the value of a Choices column on the parent table',
+      'Map the value of columns on both the child table quick create and main forms to the value for the same columns on the parent table'
+    ],
+    correct: [0, 1],
+    explanation: 'These are supported mapping scenarios when data types and contexts align.',
+  },
+  {
+    id: 2081,
+    text: 'Need an alternate key using Name and Email from ERP data during Dataverse mapping.',
+    type: 'single',
+    choices: [
+      'Create a key in the Account table in Dataverse'
+    ],
+    correct: [0],
+    explanation: 'An alternate key is defined directly on the Dataverse table.',
+  },
+  {
+    id: 209400,
+    text: 'Console app uses ExecuteMultipleRequest with CreateRequest for Account and Contact. — 1. When the connection string or credentials are invalid, an error message is sent to the application terminal',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'The code prints LastCrmError when service is not ready. ContinueOnError is false, so a failure in the first request stops later requests.',
+  },
+  {
+    id: 209401,
+    text: 'Console app uses ExecuteMultipleRequest with CreateRequest for Account and Contact. — 2. When a similar account exists, the account will still be created',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'The code prints LastCrmError when service is not ready. ContinueOnError is false, so a failure in the first request stops later requests.',
+  },
+  {
+    id: 209402,
+    text: 'Console app uses ExecuteMultipleRequest with CreateRequest for Account and Contact. — 3. A contact record will always be created',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'The code prints LastCrmError when service is not ready. ContinueOnError is false, so a failure in the first request stops later requests.',
+  },
+  {
+    id: 2096,
+    text: 'Which permissions does a managed identity have on Dataverse data?',
+    type: 'single',
+    choices: [
+      'permissions assigned to the corresponding application user'
+    ],
+    correct: [0],
+    explanation: 'Managed identity permissions flow through the Dataverse application user/security roles.',
+  },
+  {
+    id: 2097,
+    text: 'Import two managed solutions in sequence. Solution A sets name length to 75 and adds categoryid to the Account form; Solution B sets name length to 100 and adds territoryid to the same section.',
+    type: 'multiple',
+    choices: [
+      'Column → Length is 100',
+      'Form → Both columns appear in the Account Information section'
+    ],
+    correct: [0, 1],
+    explanation: 'The later managed layer wins for the same column property, while additive form customizations accumulate.',
+  },
+  {
+    id: 2129,
+    text: 'HoTsPoT - Fabrikam, Inc, has two divisions as shown in the Business Unit exhibit. (Click the Business Unit tab) Business Units lieu Acne Susiness Unde] More Adions = a New a @ (x G PunwWorttiow... [5] Sut Diteg [CV name 4 ain Prone weoste Parent Business Yo Fabrikam Fabrikam P...',
+    type: 'single',
+    choices: [
+      'Yes; No; No'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2156,
+    text: 'Choose web resource types for image quality and localized text in a model-driven app.',
+    type: 'single',
+    choices: [
+      'Image in resized image scenario = SVG; return language-localized text = RESX'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2177,
+    text: 'Improve form performance for account retrieval and visibility logic in an OnLoad JavaScript scenario.',
+    type: 'single',
+    choices: [
+      'O material aparenta sugerir C; confirmar em revisão final se necessário.'
+    ],
+    correct: [0],
+    explanation: 'O material aparenta sugerir C; confirmar em revisão final se necessário.',
+  },
+  {
+    id: 2179,
+    text: 'ExecuteMultiple / ExecuteTransaction-style code: determine behavior of responses, faults, and access to created IDs.',
+    type: 'single',
+    choices: [
+      'No; Yes; No; Yes'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2183,
+    text: 'Interpret two Power Automate expressions: 1) outputs(\'Get_Item\')?[\'statusCode\'] 2) from?(\'@result(\'MyScope\')\')',
+    type: 'single',
+    choices: [
+      '1 = Return the statuscode at runtime 2 = Return all the results from all actions from MyScope'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2189,
+    text: 'Power Virtual Agents bot in Environment1 must access a Power Automate flow created in the default environment.',
+    type: 'single',
+    choices: [
+      'Add the Power Automate flow to a solution in Environment1; export the solution from the default environment and import it into Environment1.'
+    ],
+    correct: [0],
+    explanation: 'Add the Power Automate flow to a solution in Environment1; export the solution from the default environment and import it into Environment1.',
+  },
+  {
+    id: 2213,
+    text: 'JavaScript button on entity form/view calls another JavaScript function from a different web resource and errors.',
+    type: 'single',
+    choices: [
+      'Add the missing web resource as a dependency.'
+    ],
+    correct: [0],
+    explanation: 'Add the missing web resource as a dependency.',
+  },
+  {
+    id: 2214,
+    text: 'PCF control for phone-number area-code validation must retrieve valid area codes when a contact record opens.',
+    type: 'single',
+    choices: [
+      'Call webAPI.retrieveMultipleRecords in updateView.'
+    ],
+    correct: [0],
+    explanation: 'Call webAPI.retrieveMultipleRecords in updateView.',
+  },
+  {
+    id: 2216,
+    text: 'Determine whether icons/tooltip logic behave as expected in an annual revenue display column.',
+    type: 'single',
+    choices: [
+      'No; No; Yes'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2224,
+    text: 'OpenForm + data parameter scenario. Solution says to add an event handler for the data parameter to the receiving form.',
+    type: 'single',
+    choices: [
+      'Material-source suggested answer: No.'
+    ],
+    correct: [0],
+    explanation: 'Material-source suggested answer: No.',
+  },
+  {
+    id: 2225,
+    text: 'OpenForm + data parameter scenario. Solution says to add a web resource that sets formContext.data.attributes.',
+    type: 'single',
+    choices: [
+      'Material-source suggested answer: No.'
+    ],
+    correct: [0],
+    explanation: 'Material-source suggested answer: No.',
+  },
+  {
+    id: 2230,
+    text: 'Canvas app gallery of contacts. Users must search by last name, email address, and country/region, and sort by last name then country/region.',
+    type: 'multiple',
+    choices: [
+      'Outer function → SortByColumns',
+      'Inner function → Search'
+    ],
+    correct: [0, 1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2232,
+    text: 'OpenForm scenario. Solution says to export the solution, edit customizations.xml, and add a querystringparameter element to the XML.',
+    type: 'single',
+    choices: [
+      'Material-source suggested answer: No.'
+    ],
+    correct: [0],
+    explanation: 'Material-source suggested answer: No.',
+  },
+  {
+    id: 2238,
+    text: 'Contact form phone-field script. Determine which messages appear in Business Phone notification area and in the form notification area.',
+    type: 'single',
+    choices: [
+      'No; Yes; No; Yes'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2241,
+    text: 'Model-driven app. Need to configure the associated JavaScript web resource name when adding an event handler to the form.',
+    type: 'single',
+    choices: [
+      'Library'
+    ],
+    correct: [0],
+    explanation: 'The “Library” field stores the JavaScript web resource reference. The “Function” field identifies which function inside that library will execute.',
+  },
+  {
+    id: 2259,
+    text: 'Custom API defined as a function does not appear in $metadata and returns an error when called.',
+    type: 'single',
+    choices: [
+      'Set is Private = False so the custom API is discoverable in metadata and callable.'
+    ],
+    correct: [0],
+    explanation: 'Set is Private = False so the custom API is discoverable in metadata and callable.',
+  },
+  {
+    id: 2273,
+    text: 'Assignments entity delta-link / JSON snippet interpretation.',
+    type: 'multiple',
+    choices: [
+      'You can use the JSON segment to retrieve a list of changes to assignment records referenced in the segment. → Yes',
+      'Is the delta link token valid? → Yes'
+    ],
+    correct: [0, 1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2350,
+    text: 'Series question about integration and HTTP timeout/response-time constraint.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [1],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2370,
+    text: 'Partilha de oportunidades entre departamentos em Dynamics 365 Sales.',
+    type: 'single',
+    choices: [
+      'Yes',
+      'No'
+    ],
+    correct: [0],
+    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+  },
+  {
+    id: 2377,
+    text: 'Power Platform app com Azure Service Bus / Service Bus namespace permissions.',
+    type: 'single',
+    choices: [
+      'Send; Listen'
+    ],
+    correct: [0],
+    explanation: 'A explicação na página indica que são necessárias permissões para enviar e receber mensagens.',
   }
 ];

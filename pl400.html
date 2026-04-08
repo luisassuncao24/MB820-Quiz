@@ -100,6 +100,9 @@
 
     <script src="pl400-questions.js"></script>
     <script src="pl400-questions2.js"></script>
+    <script src="pl400-questions3.js"></script>
+    <script src="pl400-questions4.js"></script>
+    <script src="pl400-questions5.js"></script>
     <script src="pl400-testcases.js"></script>
     <script>
       window.QUIZ_CONFIG = {
@@ -108,37 +111,51 @@
         examTitle: "PL-400 Quiz",
         questionSets: [
           {
-            key: "foundational",
-            label: "Foundational Quiz",
+            key: "beginner",
+            label: "Beginner Quiz",
             difficulty: "beginner",
-            description: "20 foundational questions covering core Power Platform concepts, Dataverse basics, Power Automate, and canvas app fundamentals.",
+            description: "39 beginner-level questions covering core Power Platform concepts, canvas apps, portals, solution management, and security basics.",
+            data: pl400Questions
+          },
+          {
+            key: "intermediate",
+            label: "Intermediate Quiz",
+            difficulty: "intermediate",
+            description: "52 intermediate questions covering Dataverse integration, virtual tables, security roles, plug-in development, and Power Automate flows.",
             data: pl400Questions2
+          },
+          {
+            key: "advanced",
+            label: "Advanced Quiz",
+            difficulty: "advanced",
+            description: "56 advanced questions covering custom connectors, Azure Functions, PCF controls, complex ALM patterns, and deep Dataverse mechanics.",
+            data: pl400Questions3
           },
           {
             key: "proficient",
             label: "Proficient Quiz",
             difficulty: "proficient",
-            description: "14 advanced scenario-based questions covering technical design, Dataverse configuration, plug-ins, PCF, integrations, and Power Pages.",
-            data: pl400Questions
+            description: "65 proficient-level questions on technical design, deployment pipelines, field-level security, canvas-app formula patterns, and integrations.",
+            data: pl400Questions4
+          },
+          {
+            key: "expert",
+            label: "Expert Quiz",
+            difficulty: "expert",
+            description: "22 expert-level questions covering advanced plug-in pipeline stages, Web API upsert semantics, ALM layering, and PCF component design.",
+            data: pl400Questions5
           }
         ],
         testCases: PL400_TEST_CASES,
         categoryFn: function (id) {
-          // pl400-questions.js: IDs 1-100 (scenario-based)
-          if (id >= 1   && id <= 2)   return "Create a Technical Design";
-          if (id >= 3   && id <= 4)   return "Configure Microsoft Dataverse";
-          if (id >= 5   && id <= 6)   return "Create and Configure Power Apps";
-          if (id >= 7   && id <= 8)   return "Configure Business Process Automation";
-          if (id >= 9   && id <= 10)  return "Extend the User Experience";
-          if (id >= 11  && id <= 12)  return "Extend the Platform";
-          if (id >= 13  && id <= 14)  return "Develop Integrations";
-          // pl400-questions2.js: IDs 101-200 (foundational)
-          if (id >= 101 && id <= 105) return "Power Platform Fundamentals";
-          if (id >= 106 && id <= 110) return "Configure Microsoft Dataverse";
-          if (id >= 111 && id <= 115) return "Power Automate";
-          if (id >= 116 && id <= 120) return "Canvas Apps";
-          // Case study questions
-          return "Case Study";
+          // IDs follow pattern: base_offset + original_question_number
+          // base: 1000=beginner, 2000=intermediate, 3000=advanced, 4000=proficient, 5000=expert, 9000=case studies
+          if (id >= 9000) return "Case Study";
+          if (id >= 5000) return "Expert — Advanced Platform Development";
+          if (id >= 4000) return "Proficient — Technical Implementation";
+          if (id >= 3000) return "Advanced — Integrations & Automation";
+          if (id >= 2000) return "Intermediate — Platform Configuration";
+          return "Beginner — Core Concepts";
         }
       };
     </script>
