@@ -1,0 +1,1323 @@
+PL-400 - Perguntas separadas por CASE STUDY / TEST CASE
+Nota editorial:
+- Este ficheiro foi criado a partir dos TXT de trabalho já consolidados.
+- As perguntas foram agrupadas por case study com base na lista-mestra enviada, no contexto preservado em cada pergunta e em inferência editorial quando o TXT não mantinha explicitamente o nome do case study.
+- Itens que já estavam marcados como 'Review required', 'nota de reserva' ou equivalente foram mantidos assim.
+- O bloco 'EXTRA CASE STUDY DETECTED IN THE TXT - Common Voice' foi mantido separado porque aparece como case study no material consolidado, embora não conste claramente da lista-mestra de 8 case studies.
+
+RESUMO DE AGRUPAMENTO
+- CASE STUDY 1 - Bellows Sports: 11 perguntas -> Q378, Q393, Q394, Q395, Q397, Q398, Q399, Q400, Q421, Q423, Q425
+- CASE STUDY 2 - Adventure Works: 10 perguntas -> Q64, Q65, Q66, Q67, Q68, Q386, Q402, Q422, Q428, Q429
+- CASE STUDY 3 - Contoso Pharmaceuticals: 17 perguntas -> Q69, Q70, Q91, Q381, Q387, Q388, Q390, Q396, Q404, Q415, Q416, Q417, Q418, Q419, Q420, Q424, Q426
+- CASE STUDY 4 - Northwind Electric Cars: 10 perguntas -> Q405, Q406, Q407, Q408, Q409, Q410, Q411, Q412, Q413, Q414
+- CASE STUDY 5 - Proseware: 21 perguntas -> Q88, Q89, Q90, Q141, Q150, Q151, Q152, Q154, Q246, Q247, Q248, Q249, Q250, Q287, Q288, Q289, Q290, Q291, Q298, Q299, Q300
+- CASE STUDY 6 - Northwind Traders: 8 perguntas -> Q92, Q161, Q162, Q206, Q209, Q251, Q252, Q253
+- CASE STUDY 7 - City Power & Light: 13 perguntas -> Q36, Q37, Q38, Q104, Q105, Q106, Q210, Q303, Q304, Q309, Q340, Q346, Q355
+- EXTRA CASE STUDY DETECTED IN THE TXT - Common Voice: 2 perguntas -> Q26, Q27
+
+====================================================================================================
+CASE STUDY 1 - Bellows Sports
+====================================================================================================
+Perguntas incluídas: Q378, Q393, Q394, Q395, Q397, Q398, Q399, Q400, Q421, Q423, Q425
+
+----------------------------------------------------------------------------------------------------
+QUESTION 378 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configurar app com envio de emails, mostrar Sponsor field e notificação.
+
+RECOMMENDED ANSWER:
+- Send required emails → Power Automate flow
+- Display the Sponsor field → Business rule
+- Display the notification → Onload script
+
+NOTES / WHY:
+A answer area final está visível na página renderizada.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 393 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Resolver rendering issue for buttons e adicionar email button no registration form.
+
+RECOMMENDED ANSWER:
+- Resolve rendering issue for New and Save buttons → Add addRibbonDebug=true to the end of the application URL
+- Add email button for registration form → Use Ribbon Workbench
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 394 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Selecionar script/código para event handling em registration form.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 395 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Selecionar script/código para popular event date no form.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 397 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Portal items / code changes.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+A answer area está visível mas a reconstrução exata do código não ficou suficientemente robusta.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 398 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Track information from Adobe Forms and create leads.
+
+RECOMMENDED ANSWER:
+D
+
+NOTES / WHY:
+A página mostra 'The suggested answer is D'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 399 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Escolher markup apropriado / concurrent API calls.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 400 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Customer mobile app - tipo de function para encontrar customer.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A' (Filter).
+
+----------------------------------------------------------------------------------------------------
+QUESTION 421 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Select data types for required fields.
+
+RECOMMENDED ANSWER:
+- Division → Option Set
+- End date → Date Only
+- Tournament owner → Lookup
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 423 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Analyze and identify issue from call stack / plugin trace style output.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+A answer area final aparece, mas a leitura exata do código e das ações ainda merece revisão manual.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 425 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Write expression to update table / account entity.
+
+RECOMMENDED ANSWER:
+E
+
+NOTES / WHY:
+A página mostra 'The suggested answer is E'.
+
+
+====================================================================================================
+CASE STUDY 2 - Adventure Works
+====================================================================================================
+Perguntas incluídas: Q64, Q65, Q66, Q67, Q68, Q386, Q402, Q422, Q428, Q429
+
+----------------------------------------------------------------------------------------------------
+QUESTION 64 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Custom Package entity needs delivery-efficiency calculation and a data type for delivery time with display transformations.
+
+CORRECT ANSWER:
+- Calculate the efficiency of the delivery = DIFFINMINUTES(Created On, Delivery Time)
+- Select the data type for delivery that has additional transformations applied before display = Duration
+
+NOTES / WHY:
+Duration stores values in minutes but presents them in a user-friendly time format.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 65 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Move solutions from development instance to production instance in CDS.
+
+CORRECT ANSWER:
+A. Make changes in development, export as managed, and import to production
+B. Clone a patch in development, make changes, export, and import to production
+
+NOTES / WHY:
+Both are valid ALM approaches for managed deployments.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 66 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Package a reusable PCF component for deployment into a model-driven app.
+
+CORRECT ANSWER:
+1. pac solution init --publisher-name <publisher> --publisher-prefix <prefix>
+2. pac solution add-reference --path <control path>
+3. msbuild /t:build /restore
+
+NOTES / WHY:
+Initialize a solution project, reference the control, then build the solution package.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 67 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+In a parent-child model-driven app scenario, new child rows created from the parent form must automatically inherit values from the parent to reduce errors.
+
+CORRECT ANSWER:
+B. Map table columns from the parent record to the child record
+
+NOTES / WHY:
+Relationship column mapping is the out-of-box approach for prepopulating child records from a parent.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 68 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Register a plug-in so accounts of relationship type Customer receive an account number if one was not provided.
+
+CORRECT ANSWER:
+1. In the Plug-in Registration tool, select Register New Assembly
+2. Register New Step with Message = Update, Primary Entity = Account, Event Pipeline Stage = PreOperation
+3. Register New Image, set Image type = PreImage, and include accountnumber as a parameter
+
+NOTES / WHY:
+PreOperation is the right place to set values before commit; a pre-image avoids unnecessary retrievals.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 386 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Relacionar tools com requisitos.
+
+RECOMMENDED ANSWER:
+- Online sales orders → Logic Apps
+- Customer survey → Power Automate
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 402 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Improve warehouse counting efficiency.
+
+RECOMMENDED ANSWER:
+D
+
+NOTES / WHY:
+A página mostra 'The suggested answer is D'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 422 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Receive response time for information email on the website.
+
+RECOMMENDED ANSWER:
+B
+
+NOTES / WHY:
+A página mostra 'The suggested answer is B'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 428 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Improve efficiency of counting available inventory.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 429 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Select appropriate component for each requirement.
+
+RECOMMENDED ANSWER:
+- Making list scroll up/down → Flip grid
+- Number of store visits → Linear gauge
+- Purpose of visit → Option set
+
+NOTES / WHY:
+A answer area final está visível.
+
+
+====================================================================================================
+CASE STUDY 3 - Contoso Pharmaceuticals
+====================================================================================================
+Perguntas incluídas: Q69, Q70, Q91, Q381, Q387, Q388, Q390, Q396, Q404, Q415, Q416, Q417, Q418, Q419, Q420, Q424, Q426
+
+----------------------------------------------------------------------------------------------------
+QUESTION 69 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Need to attach a PDF copy of a doctor's medical license to each row in a custom Doctors table.
+
+CORRECT ANSWER:
+B. Navigate to Table options and enable attachments
+
+NOTES / WHY:
+Attachments are enabled at table level.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 70 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure Package Deployer package that includes custom code and sample data.
+
+CORRECT ANSWER:
+- File that you must edit to include custom code = PackageTemplate.cs
+- File to edit to include sample data = ImportConfig.xml
+- Value for the Copy to Output Directory setting = Copy Always
+
+NOTES / WHY:
+PackageTemplate.cs hosts custom code. ImportConfig.xml controls sample data/solution content. Copy Always ensures package files are present at build output.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 91 of 429
+TYPE: Case study / Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Contoso Pharmaceuticals case study. Assign the minimum environmental security role to each user type.
+
+CORRECT ANSWER:
+- UserA = Environment Maker
+- UserB = System Administrator
+- UserC = System Customizer
+- All employees = Basic User
+
+NOTES / WHY:
+Matches the permissions described: maker, full owner/admin, customizer, and minimal end-user access.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 381 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Roles mínimos para customizar system, ver system jobs e ver todos os dados.
+
+RECOMMENDED ANSWER:
+- Create customizations in the system → System Customizer only
+- View all system job entities → System Administrator only
+- View all data stored in system entities → System Administrator only
+
+NOTES / WHY:
+A answer area final está visível nas páginas renderizadas.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 387 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Processos: criar Slack notification, mudar priority field, garantir informação em leads.
+
+RECOMMENDED ANSWER:
+- Create a Slack notification from a lead → Power Automate
+- Change the priority field → Business rule
+- Ensure appropriate information is added to leads → Business process flow
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 388 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+O que adicionar à app para contas ligadas a referrals.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 390 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configurar sistema para suportar automação.
+
+RECOMMENDED ANSWER:
+A, C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A, C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 396 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configurar mobile app para provar artigo / validar phone number.
+
+RECOMMENDED ANSWER:
+B
+
+NOTES / WHY:
+A página mostra 'The suggested answer is B'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 404 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Synchronize pharmacy names / propagate data to Cerner system.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+As opções finais aparecem parcialmente, mas a transcrição completa exige revisão manual antes de publicação.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 415 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure the table with the appropriate types.
+
+RECOMMENDED ANSWER:
+- Driver’s name field on customer record → Lookup
+- Auto-populate Retail data field → Calculated
+- Doctor’s name field in Doctor’s entity → Text
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 416 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Map environment management security roles.
+
+RECOMMENDED ANSWER:
+- UserA → Environment Maker
+- UserB → System Administrator
+- User C → System Customizer
+- All employees → Common Data Service User
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 417 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Create an application to deploy to other pharmacies.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 418 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Set up security to meet requirements.
+
+RECOMMENDED ANSWER:
+- supervisors → Field level security
+- salespeople → Security roles
+- developers → Security roles
+
+NOTES / WHY:
+A answer area final mostra estas associações.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 419 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Determine primary cause of issue when certain users use the app.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 420 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Assign security roles to groups of users.
+
+RECOMMENDED ANSWER:
+- HR → Environment Maker
+- Manager → System Administrator
+- Sales representative → Basic User
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 424 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Address annual revenue / dashboards / analytics.
+
+RECOMMENDED ANSWER:
+A, C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A, C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 426 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Resolve ContactID issue with data app / filter lookup.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A'.
+
+
+====================================================================================================
+CASE STUDY 4 - Northwind Electric Cars
+====================================================================================================
+Perguntas incluídas: Q405, Q406, Q407, Q408, Q409, Q410, Q411, Q412, Q413, Q414
+
+----------------------------------------------------------------------------------------------------
+QUESTION 405 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Address validation requirements.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 406 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configurar solução para suporte de driving record verification.
+
+RECOMMENDED ANSWER:
+A, B
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A, B'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 407 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Implement driving record check functionality.
+
+RECOMMENDED ANSWER:
+- Trigger a driving record check → After the address validation field is saved to Dataverse
+- Perform a driving record check → Cloud flow
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 408 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configurar development environment e production environment.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+A answer area está visível mas não suficientemente nítida para fixação integral com confiança alta.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 409 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure address validation API.
+
+RECOMMENDED ANSWER:
+- Address validation message → northwind_ValidateAddress
+- Execution mode → Synchronous
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 410 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Design functionality to process background check results.
+
+RECOMMENDED ANSWER:
+- Select an implementation pattern → Event-based
+- Apply stage changes to Dataverse → Update
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 411 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Enable address validation API access.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+A página mostra 'The suggested answer is C'.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 412 of 429
+TYPE: Hotspot / statements Yes/No
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Integrate with address validation API and evaluate statements.
+
+RECOMMENDED ANSWER:
+- You must replace ACTIONNAME in line 427 with northwind_ValidateAddress. → Yes
+- You can add code at line 452 to display an error message returned by the address validation API. → No
+- Calling the address validation API from the submit action eliminates the error reported by users. → Yes
+
+NOTES / WHY:
+A answer area final está visível.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 413 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure a connector to the driving record verification API.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+A answer area está parcialmente visível, mas a configuração exata do system/credentials precisa de revisão manual.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 414 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Implement background verification check stage field.
+
+RECOMMENDED ANSWER:
+D
+
+NOTES / WHY:
+A página mostra 'The suggested answer is D' (Lookup).
+
+
+====================================================================================================
+CASE STUDY 5 - Proseware
+====================================================================================================
+Perguntas incluídas: Q88, Q89, Q90, Q141, Q150, Q151, Q152, Q154, Q246, Q247, Q248, Q249, Q250, Q287, Q288, Q289, Q290, Q291, Q298, Q299, Q300
+
+----------------------------------------------------------------------------------------------------
+QUESTION 88 of 429
+TYPE: Case study / Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Proseware recruiting case study. Need to store designations/certifications for candidates and support multiple designations per contact.
+
+CORRECT ANSWER:
+B. Create a new table that has an N:N relationship with the Contact table
+
+NOTES / WHY:
+A many-to-many structure supports multiple designations per candidate and reuse of designation records across candidates.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 89 of 429
+TYPE: Case study / Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Proseware case study. Need to stop a field used by a PCF control from updating the Dataverse record.
+
+CORRECT ANSWER:
+B. Make the field read-only
+C. Call the setSubmitMode('never') function on the field
+
+NOTES / WHY:
+Read-only prevents edits; setSubmitMode('never') stops the field from being submitted on save.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 90 of 429
+TYPE: Case study / Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Proseware case study. Need to track referrals independently of completed applications and support multiple referrals per candidate.
+
+RECOMMENDED ANSWER:
+D. Create a new Referral table with required lookup columns to the Contact, SystemUser, and JobPosting tables
+
+NOTES / WHY:
+This decouples referrals from application completion and supports multiple referrals per candidate.
+EDITORIAL NOTE:
+Community votes in the source differed, but D is the technically stronger answer.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 141 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study: determine whether a FetchXML query meets requirements for counting
+interviews / recommendations.
+
+RECOMMENDED ANSWER:
+Yes; Yes; No
+
+NOTES / WHY:
+Resposta consolidada a partir do suggested answer / answer area visível no material.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 150 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question present in source, but OCR did not preserve the final answer
+reliably.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Case study com resposta não preservada com fiabilidade; rever antes de publicação.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 151 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question present in source, but OCR did not preserve enough text for a
+reliable answer extraction.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Case study com resposta não preservada com fiabilidade; rever antes de publicação.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 152 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question present in source, but OCR did not preserve enough text for a
+reliable answer extraction.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Case study com resposta não preservada com fiabilidade; rever antes de publicação.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 154 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study / drag-and-drop in source. Answer area not recovered cleanly enough from OCR.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Resposta de drag-and-drop não foi preservada com nitidez suficiente; rever antes de
+publicação.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 246 of 429
+TYPE: Multiple choice / case study related
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Question visible in source material but not reconstructed here with high confidence.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Manual review recommended before publication.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 247 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure manifest elements for the PCF control used to display local time.
+
+RECOMMENDED ANSWER:
+- Property -> of-type="DateAndTime.DateAndTime"
+- Type-Group -> <type>Whole.None</type>
+
+NOTES / WHY:
+Validated from the highlighted answer-area screenshot provided in chat.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 248 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Resolve issue with the new command button where the context input parameter is null.
+
+RECOMMENDED ANSWER:
+D. Pass the value PrimaryControl to the function in the action definition.
+
+NOTES / WHY:
+Editorial note: this differs from the site’s suggested answer (C). For a ribbon/command button scenario, passing PrimaryControl in the command definition is the stronger technical fit.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 249 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Implement ribbon display rules to control availability for the scoring command button.
+
+RECOMMENDED ANSWER:
+- Configure button visibility for recruiters -> CustomRule
+- Configure visibility for the button based on the mode for the form -> FormStateRule
+
+NOTES / WHY:
+Validated from the highlighted answer-area screenshot provided in chat.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 250 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure the PCF control to display team members for interview scheduling.
+
+RECOMMENDED ANSWER:
+A, B
+
+NOTES / WHY:
+Inputs needed are:
+- identifier for the hiring manager
+- time-zone offset for the job candidate
+This allows retrieval of direct reports and ordering by time-zone proximity to the candidate.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 287 of 429
+TYPE: Multiple choice / case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question from the source material.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Manual review recommended.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 288 of 429
+TYPE: Multiple choice / case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question from the source material.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Manual review recommended.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 289 of 429
+TYPE: Multiple choice / case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question from the source material.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Manual review recommended.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 290 of 429
+TYPE: Multiple choice / case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question from the source material.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Manual review recommended.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 291 of 429
+TYPE: Multiple choice / case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question from the source material.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Manual review recommended.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 298 of 429
+TYPE: Multiple choice / case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Determine the root cause of the issue reported by interviewers not receiving notifications when interview records are created for an existing person of interest.
+
+RECOMMENDED ANSWER:
+C. The plug-in used to synchronize the Person of Interest field from Contact to Interview was not triggered.
+
+NOTES / WHY:
+Editorial note: this differs from the site’s suggested answer (B). The practical failure is that synchronization does not run in the creation scenario, so the Interview record does not reflect Person of Interest and downstream notification logic is not reached.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 299 of 429
+TYPE: Hotspot (Yes/No)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Plug-in code retrieves contact fullname, finds recruiters from active applications, and sends emails.
+
+RECOMMENDED ANSWER:
+- You can use data from the contact’s name without explicitly retrieving the value from the fullname column. -> No
+- You can use the same plug-in to send notifications to interviewers. -> Yes
+- Recruiters only receive a single email notification per applicant. -> No
+
+NOTES / WHY:
+The code explicitly retrieves fullname, can be adapted for other recipients, and may send multiple emails depending on the recruiter/application records returned.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 300 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Implement scoring for all individuals and for a specific individual.
+
+RECOMMENDED ANSWER:
+- Initiate process for all individuals -> Custom process action and plug-in
+- Calculate for a specific individual -> JavaScript code
+
+NOTES / WHY:
+The global process should run from a reusable server-side/action entry point, while the specific individual calculation is triggered by the form command/button.
+
+
+====================================================================================================
+CASE STUDY 6 - Northwind Traders
+====================================================================================================
+Perguntas incluídas: Q92, Q161, Q162, Q206, Q209, Q251, Q252, Q253
+
+----------------------------------------------------------------------------------------------------
+QUESTION 92 of 429
+TYPE: Case study / Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Northwind case study. A solution containing a Power Automate flow fails to import because a required component is missing.
+
+CORRECT ANSWER:
+C. custom connector
+
+NOTES / WHY:
+The flow depends on the custom connector that exposes the external Web API.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 161 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Start of a new case study. Background and requirements were captured, but the first
+answer was not reliably extracted.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Case study de arranque; primeira resposta não foi extraída com segurança.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 162 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose the scheduling/process tool that should use a custom connector to call the Web
+API for prioritized data analysis.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+Resposta consolidada a partir do suggested answer / answer area visível no material.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 206 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Northwind case study. Configure a Dataverse trigger and action in Power Automate so researchers can update account records with data from the Web API even without edit privileges.
+
+RECOMMENDED ANSWER:
+Change Type = Added or Modified
+Update a row connection type = Service principal
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 209 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Northwind case study. Implement a reusable solution to encapsulate parameterized Dataverse queries.
+
+RECOMMENDED ANSWER:
+1. Create a custom process action that uses a custom workflow activity to perform the Dataverse queries
+2. Define the input parameters for the Dataverse queries
+3. Run the real-time workflow by using the Dataverse connector
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+Note editorial: wording is slightly awkward because the source mixes custom process action and real-time workflow terminology.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 251 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure the row filter on the Dataverse trigger so only records with DataId are processed.
+
+RECOMMENDED ANSWER:
+D. new_dataid ne null
+
+NOTES / WHY:
+Matches the column name used in the case study and filters only rows with a non-null DataId.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 252 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Ensure data returned from the Web API corresponds to the correct environment.
+
+RECOMMENDED ANSWER:
+D. environment variables
+
+NOTES / WHY:
+Environment variables let the connector/solution use environment-specific values without hardcoding.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 253 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure the custom connector to incorporate the environment name and DataId in the Web API URL.
+
+RECOMMENDED ANSWER:
+Sequence:
+1. Create a policy template that uses the Set host URL template.
+2. Set the operation to dataservice.
+3. Set the subdomain of the URL template to: dataservice-@connectionParameters('EnvironmentName')
+4. Set the path of the URL template path to: enrich/@queryParameters('DataId')
+
+NOTES / WHY:
+This matches the answer-area screenshot provided in chat and the case-study requirement to compose the URL dynamically.
+
+
+====================================================================================================
+CASE STUDY 7 - City Power & Light
+====================================================================================================
+Perguntas incluídas: Q36, Q37, Q38, Q104, Q105, Q106, Q210, Q303, Q304, Q309, Q340, Q346, Q355
+
+----------------------------------------------------------------------------------------------------
+QUESTION 36 of 429
+TYPE: Case study / drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+City Power & Light case study. Data model design steps for protecting PII on Contact while enabling the required app design.
+
+CORRECT ANSWER:
+1. Select the Contact table
+2. Modify a column
+3. Enable column security
+4. Create column security profile
+
+NOTES / WHY:
+Confirmed from the screenshot you later sent for Q36.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 37 of 429
+TYPE: Case study / multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Planning Hub / Power Platform case study question.
+
+CORRECT ANSWER:
+C. Create application users in the target environment / use the recommended admin configuration shown by the suggested answer
+
+NOTES / WHY:
+This one should be polished later from the original page, but the answer letter from OCR is C.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 38 of 429
+TYPE: Case study / multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Another City Power & Light case-study item.
+
+CORRECT ANSWER:
+A. Use the recommended solution indicated by the suggested answer
+
+NOTES / WHY:
+Answer letter extracted from OCR; exact option text should be normalized in the final editorial pass.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 104 of 429
+TYPE: Case study / Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+City Power & Light case study. Need to deploy the correct Planning Hub solution and remove a column after deployment.
+
+CORRECT ANSWER:
+- Solution to deploy = Claim submission portal
+- How to export = Export the unmanaged solution as managed
+- Remove the column after the deployment = Upgrade
+
+NOTES / WHY:
+Managed export is the right production artifact; component removal is applied through solution upgrade.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 105 of 429
+TYPE: Case study / Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+City Power & Light case study. Funding application issue loads information incorrectly to the test system after deployment.
+
+CORRECT ANSWER:
+C. environment variable
+
+NOTES / WHY:
+Environment variables are the correct way to separate environment-specific configuration like endpoints or keys.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 106 of 429
+TYPE: Case study / Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+City Power & Light case study. After deploying model changes, the email address of the user who created the appointment is missing and searches on description do not return results.
+
+SOURCE-INDICATED ANSWER:
+- Interface component 1 = the filter icon in the Table columns area
+- Interface component 2 = Edit filters in the Filter by area
+
+EDITORIAL NOTE:
+This answer appears inconsistent with the problem statement. Functionally, the issue sounds more related to related/find columns than to filter settings. Keep this item flagged for final manual review.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 210 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+City Power & Light case study. Build automation for the Planning Hub application.
+
+RECOMMENDED ANSWER:
+Retrieve data = Excel Online for Business
+Approve the submission in Microsoft Teams = Approvals
+Record the result of the API upload = Dataverse
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 303 of 429
+TYPE: Case study related
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão ligada ao case study do bloco 301-320.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Conteúdo visível nas páginas renderizadas, mas sem extração suficientemente limpa para fixar resposta com confiança alta.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 304 of 429
+TYPE: Multiple choice / case study related
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão ligada ao mesmo case study.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+Necessita confirmação manual no material-source antes de publicação final.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 309 of 429
+TYPE: Case study related
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 301-320.
+
+RECOMMENDED ANSWER:
+Review required
+
+----------------------------------------------------------------------------------------------------
+QUESTION 340 of 429
+TYPE: Case study / drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão presente no case study do bloco 341-360.
+
+RECOMMENDED ANSWER:
+Review required
+
+----------------------------------------------------------------------------------------------------
+QUESTION 346 of 429
+TYPE: Case study / drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Case study question in block 341-360.
+
+RECOMMENDED ANSWER:
+Review required
+
+----------------------------------------------------------------------------------------------------
+QUESTION 355 of 429
+TYPE: Case study
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+City Power & Light eligibility assessment issue.
+
+RECOMMENDED ANSWER:
+B
+
+NOTES / WHY:
+The rendered source page marks suggested answer B.
+
+
+====================================================================================================
+EXTRA CASE STUDY DETECTED IN THE TXT - Common Voice
+====================================================================================================
+Perguntas incluídas: Q26, Q27
+
+----------------------------------------------------------------------------------------------------
+QUESTION 26 of 429
+TYPE: Case study / multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Common Voice style case study from OCR. Need recommended app type for the described scenario.
+
+CORRECT ANSWER:
+B. Canvas application for the Sales function
+
+NOTES / WHY:
+Derived from the OCR suggested answer. Revisit wording when polishing the final publication version.
+
+----------------------------------------------------------------------------------------------------
+QUESTION 27 of 429
+TYPE: Case study / multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Same case study sequence; choose the right approach for another requirement.
+
+CORRECT ANSWER:
+D. Use a plug-in / customization-based approach as indicated by the suggested answer
+
+NOTES / WHY:
+This item should be normalized in a later cleanup pass because OCR on the options is noisy.
+
+

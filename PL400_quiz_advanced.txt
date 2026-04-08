@@ -1,0 +1,928 @@
+PL-400 - Advanced Quiz
+
+Editorial note:
+- This quiz was created from the non-case-study question set only.
+- Difficulty was assigned editorially based on question format, topic depth, number of decision points, and any review/ambiguity flags already present in the source files.
+- Questions remain in numeric order.
+
+TOTAL QUESTIONS IN THIS QUIZ: 71
+Questions included: Q7, Q11, Q15, Q18, Q29, Q32, Q39, Q42, Q44, Q58, Q60, Q61, Q62, Q79, Q99, Q101, Q111, Q114, Q118, Q119, Q127, Q139, Q148, Q149, Q158, Q160, Q165, Q170, Q171, Q175, Q185, Q193, Q203, Q207, Q208, Q221, Q222, Q226, Q227, Q233, Q234, Q242, Q243, Q255, Q257, Q258, Q260, Q261, Q266, Q271, Q277, Q279, Q284, Q286, Q292, Q293, Q294, Q325, Q326, Q330, Q331, Q333, Q334, Q337, Q338, Q339, Q345, Q360, Q361, Q362, Q371
+
+================================================================================
+QUESTION 7 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Model-driven app integration requirements: use SharePoint Online for document storage and Exchange Online for email.
+
+CORRECT ANSWER:
+Email = Server-side synchronization
+Document storage = Server-based integration
+
+NOTES / WHY:
+This is the exact mapping shown in the suggested answer on page 6 of the uploaded 1-20 PDF.
+================================================================================
+QUESTION 11 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Need to incorporate an Azure skill bot for each class into a homework bot used with Power Virtual Agents.
+
+CORRECT ANSWER:
+1. Register the skill bot in Azure Active Directory
+2. Create a manifest for the skill bot
+3. Register the skill bot in Power Virtual Agents
+
+NOTES / WHY:
+Order reconstructed from the suggested answer image/OCR; this one may deserve a final visual re-check later.
+================================================================================
+QUESTION 15 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Need to choose the right data source object for three integration requirements.
+
+CORRECT ANSWER:
+Support records that use an integer as a primary key = Custom connector
+Ensure that data can be read and updated = Custom connector
+Ensure that data is available to all Microsoft Dataverse clients = Virtual entity
+
+NOTES / WHY:
+Confirmed from the suggested answer shown on page 10 of the 1-20 PDF.
+================================================================================
+QUESTION 18 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Canvas app must search user sign-in information in Azure AD through an Azure Function returning JSON.
+
+CORRECT ANSWER:
+B. Create a custom connector by using the Azure Function API
+E. Create an API definition for the Azure Function
+
+NOTES / WHY:
+Option E was inferred from the suggested answer text shown in OCR.
+================================================================================
+QUESTION 29 of 429
+TYPE: Yes/No style
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Solution proposes an alternate key as the primary key for a virtual table.
+
+CORRECT ANSWER:
+A. Yes
+
+NOTES / WHY:
+A GUID/appropriate unique key satisfies the virtual-table identity requirement in this item.
+================================================================================
+QUESTION 32 of 429
+TYPE: Drag and drop / code blocks
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Dataverse plug-in must create a follow-up task for a new account. Choose the three code blocks in order.
+
+CORRECT ANSWER:
+1. Entity account = (Entity)context.InputParameters["Target"];
+2. Entity followuptask = new Entity("task"); followuptask["subject"] = "Send e-mail to the new customer"; followuptask["regardingobjectid"] = account.ToEntityReference();
+3. service.Create(followuptask);
+
+NOTES / WHY:
+Confirmed from the screenshot you later sent for Q32.
+================================================================================
+QUESTION 39 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose business logic solutions for a model-driven app: phone-number formatting and percentage calculations, without custom development when possible.
+
+CORRECT ANSWER:
+Phone number formatting = Business rule
+Percentage calculation = Formula column
+
+NOTES / WHY:
+Confirmed from the screenshot you later sent for Q39.
+================================================================================
+QUESTION 42 of 429
+TYPE: Hotspot / Power Fx
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Canvas app over Dataverse Contacts. Default list all contacts, filter by last name when text entered, add Full Salutation column, sort by surname.
+
+CORRECT ANSWER:
+SortByColumns( AddColumns( Filter(Contacts, TextInput1.Text, "Last Name" ) ... ) ) style answer with the exact selections confirmed as:
+1. SortByColumns
+2. AddColumns
+3. Filter
+4. Concatenate
+5. "Last Name"
+
+NOTES / WHY:
+Confirmed from the screenshot you later sent for Q42. Final formula should be normalized carefully before publication.
+================================================================================
+QUESTION 44 of 429
+TYPE: Hotspot / Power Fx
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Canvas app should keep a local collection of overdue SharePoint tasks and minimize outbound calls.
+
+CORRECT ANSWER:
+ClearCollect(projectTasks, Filter(Tasks, 'DueDate' < Now()))
+
+NOTES / WHY:
+Confirmed from the screenshot you later sent for Q44.
+================================================================================
+QUESTION 58 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Data storage mechanism mapping question.
+
+CORRECT ANSWER:
+Existing licensing / high-scale reference data = appropriate scalable data store (review once more)
+Red light camera photos = Azure Storage Blob
+Violation information = Elastic/Dataverse-style storage as shown in the suggested answer
+
+NOTES / WHY:
+This one remains partially OCR-noisy and should be normalized from the source page before final publication.
+================================================================================
+QUESTION 60 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Assign the right security option for three app scenarios involving managers, probability fields, and shared territory access.
+
+CORRECT ANSWER:
+Sales managers can view salespeople records in their business unit = Role-based security
+Only sales managers can view sales probability data = Field-level security
+Sales representatives and new hires in the same territory share access to sales records = Record-level security
+
+NOTES / WHY:
+Recovered from the suggested answer text in OCR.
+================================================================================
+QUESTION 61 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Synchronize SQL Server-based .NET application data into Dataverse/CDS by using UpsertRequest against Account with accountnumber as key-like value.
+
+RECOMMENDED ANSWER:
+1. Creating a new field to store the record identifier resolves the error = No
+2. Creating an alternate key that uses accountnumber resolves the error = Yes
+3. If an account exists only with name = Contoso and no accountnumber, a new record is created = Yes
+4. If an account exists with account number CO-555, a new account record is created = No
+
+NOTES / WHY:
+Upsert requires a defined alternate key. With an alternate key on accountnumber, Dataverse will create when the key is not found and update when it is found.
+EDITORIAL NOTE:
+The source image appears to mark item 4 differently, but that conflicts with normal Upsert behavior.
+================================================================================
+QUESTION 62 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Select Dataverse relationship behaviors for delete/assign requirements.
+
+CORRECT ANSWER:
+- When a primary record is deleted, associated referential records must also be deleted = Parental
+- When a record is assigned to a user, all referencing active records must also be assigned = Cascade User Owned
+- When a primary record is deleted, the associated record must not be deleted = Referential
+
+NOTES / WHY:
+Parental cascades delete; Referential prevents cascading delete; Cascade User Owned cascades certain actions only for user/team-owned related rows.
+================================================================================
+QUESTION 79 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Canvas apps and cloud flows use a CMS URL stored in an environment variable. Production URL is updated directly after deployment.
+
+CORRECT ANSWER:
+- Canvas app sessions open during the update = Development
+- Canvas app sessions launched after the update = Production
+- Power Automate flows that have been saved after the update = Production
+
+NOTES / WHY:
+Existing running sessions can hold prior values. Newly launched/saved artifacts use the current environment-variable value.
+================================================================================
+QUESTION 99 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Managed solution imported to production has Account table auditing disabled because a First Party layer sits above it. Need to enable the Auditing setting.
+
+CORRECT ANSWER:
+1. Create a blank solution and move Account table customizations from the original solution to the blank solution. Export the new solution as managed from development and import it to production
+2. Remove the Account table from the original solution. Export the solution as managed from development and import it to production by using the Upgrade setting
+3. Delete the new solution from the development and production environments
+4. Add the Account table and all customizations of this table to the original solution
+5. With the Account table, export the original solution as managed from development and import it to production by using the Upgrade setting
+
+NOTES / WHY:
+This sequence is the one indicated by the source material to realign layering and then reapply the intended customization.
+EDITORIAL NOTE:
+This item should receive a final visual/technical review before publication.
+================================================================================
+QUESTION 101 of 429
+TYPE: Series / Yes-No
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Single-tenant custom connector deployment. Proposed solution: publish the custom connector to AppSource.
+
+CORRECT ANSWER:
+B. No
+
+NOTES / WHY:
+AppSource is not the right distribution model for a tenant-restricted internal connector.
+================================================================================
+QUESTION 111 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Create a reusable input control for telephone formatting across multiple canvas apps inside the company.
+
+SOURCE-INDICATED ANSWER:
+1. Create the control as a canvas app component
+2. Publish all customizations
+3. Create a blank canvas app
+
+EDITORIAL NOTE:
+This is the sequence shown in the provided image, but it is not the most intuitive build order. Keep flagged for final review.
+================================================================================
+QUESTION 114 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Changes were made directly in production. They were mirrored back to development. One table column was deleted in development and views were added. Need production to mirror development without impacting users.
+
+SOURCE-INDICATED ANSWER:
+1. Publish all customizations in production
+2. Export the solution from development as managed
+3. Import the solution as an upgrade
+
+EDITORIAL NOTE:
+This follows the provided image but should be re-checked against unmanaged-layer/upgrade behavior before final publication.
+================================================================================
+QUESTION 118 of 429
+TYPE: Multiple choice (multiple answers)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Integration must, in a single request, create a row if it does not exist or update the existing row by using supported Dataverse mechanisms.
+
+SOURCE-INDICATED ANSWER:
+A. Client-side script
+B. Cloud flow
+E. PCF control
+
+EDITORIAL NOTE:
+This is the answer shown in the source material. Confidence is moderate only; this item deserves a final technical review because server-side approaches such as plug-ins may also appear defensible depending on interpretation.
+================================================================================
+QUESTION 119 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Parent-child tables need unique values. Parent = fixed prefix ABC + six-digit auto-incrementing number. Child = parent value + three-digit sequence starting at 001. Use low-code when possible.
+
+SOURCE-INDICATED ANSWER:
+- Parent = Autonumber column
+- Child = Business rule
+
+EDITORIAL NOTE:
+The parent choice is strong. The child choice from the source material is technically questionable because a business rule is not a natural fit for generating a sequential sibling-specific increment. A plug-in may be the more defensible implementation.
+================================================================================
+QUESTION 127 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+DRAG DROP - You are creating a model-driven app. Users need to see only the entities in
+the app navigation that are relevant to their role and their method of accessing the
+app. You need to restrict entities on the sub-areas in the SiteMap. Which properties
+should you use? To ...
+
+RECOMMENDED ANSWER:
+Subarea visibility by security role = Privileges; subarea visibility by access method /
+client = Client
+
+NOTES / WHY:
+Resposta consolidada a partir do suggested answer / answer area visível no material.
+================================================================================
+QUESTION 139 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure components for a model-driven time-tracking app.
+
+RECOMMENDED ANSWER:
+Project Name discoverable in Advanced Find = View; display estimated duration as
+start/end dates during time entry = Quick Create
+
+NOTES / WHY:
+Nota de reserva: os componentes extraídos por OCR devem ser confirmados antes da
+publicação final.
+================================================================================
+QUESTION 148 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Hotspot / troubleshooting scenario. OCR preserved the context but not the answer area
+reliably.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+OCR parcial; rever print original antes de publicação.
+================================================================================
+QUESTION 149 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Determine which security roles / permissions to assign for the Power Apps Checker
+application user.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+OCR parcial; rever print original antes de publicação.
+================================================================================
+QUESTION 158 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Source OCR did not preserve the answer reliably.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+OCR parcial; rever print original antes de publicação.
+================================================================================
+QUESTION 160 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Source OCR did not preserve the final answer reliably.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+OCR parcial; rever print original antes de publicação.
+================================================================================
+QUESTION 165 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Use URL parameters to troubleshoot form events in a model-driven app.
+
+RECOMMENDED ANSWER:
+Form OnLoad = DisableFormLibraries; Column OnChange = DisableFormLibraries
+
+NOTES / WHY:
+Resposta consolidada a partir do suggested answer / answer area visível no material.
+================================================================================
+QUESTION 170 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Use Monitor to troubleshoot a model-driven app form issue.
+
+RECOMMENDED ANSWER:
+1. Create a new Monitor session for the app 2. Use the inline option and select form 3.
+Have the user reproduce the issue
+
+NOTES / WHY:
+Resposta consolidada a partir do suggested answer / answer area visível no material.
+================================================================================
+QUESTION 171 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Troubleshoot a command button and save behavior by using URL parameters. OCR preserved
+only part of the exact parameter names.
+
+RECOMMENDED ANSWER:
+Command button visibility = ribbondebug=true; unexpected form save behavior =
+flags=DisableFormCommanding? / extraqs debug parameter (review source)
+
+NOTES / WHY:
+Parâmetros URL exatos ficaram parcialmente truncados na OCR; rever antes de publicação.
+================================================================================
+QUESTION 175 of 429
+TYPE: Series question
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Use JavaScript + Web API on form save to create a child/contact record automatically.
+
+RECOMMENDED ANSWER:
+B (No)
+
+NOTES / WHY:
+Resposta consolidada a partir do suggested answer / answer area visível no material.
+================================================================================
+QUESTION 185 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose implementation methods for business logic with minimal code.
+Requirements include: access current and new values when data is updated; run on a schedule.
+
+RECOMMENDED ANSWER:
+Access current and new values when data is updated = Plug-in
+Run on a schedule = Power Automate flow
+
+NOTES / WHY:
+Confirmed from highlighted suggested answer.
+================================================================================
+QUESTION 193 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Add a custom slider control to a specific step in a business process flow.
+
+RECOMMENDED ANSWER:
+1. Configure custom controls on a related table form
+2. Copy custom control configurations to the business process flow form
+3. Import customizations into the Microsoft Dataverse environment
+
+NOTES / WHY:
+Based on suggested answer shown on the page.
+Review final wording before publication.
+================================================================================
+QUESTION 203 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Model-driven app on Opportunities. Minimize code to notify sales over $50,000 and show sponsors field over $1,000,000.
+
+RECOMMENDED ANSWER:
+Opportunity over $50,000 = Power Automate cloud flow
+Opportunity over one million dollars = Business rule
+
+NOTES / WHY:
+Taken from the highlighted suggested answer.
+================================================================================
+QUESTION 207 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Resolve access-related issues using least privilege when Entra ID groups manage environment- and team-level permissions.
+
+RECOMMENDED ANSWER:
+Unable to access a single environment = Microsoft Entra ID group
+Unable to update Account rows = Security role
+Unable to access rows owned by the human resources team = Team
+Unable to create a sandbox environment = Microsoft Power Platform
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+================================================================================
+QUESTION 208 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Power Automate List rows action against Accounts table with >15,000 rows.
+Need to manage large volumes and return data from related contact records.
+
+RECOMMENDED ANSWER:
+Manage a large number of records = Skip token
+Return information from related contact records = Expand query
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+================================================================================
+QUESTION 221 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Modify RibbonDiffXml so a custom JavaScript ribbon button shows messages in the user's language (e.g., French instead of English).
+
+RECOMMENDED ANSWER:
+Box 1 = CrmParameter
+Box 2 = UserLcid
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+================================================================================
+QUESTION 222 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Create a reusable PCF component for date of birth and validate that the applicant is not a minor.
+Complete the manifest.
+
+RECOMMENDED ANSWER:
+Box 1 = AdultDatePicker
+Box 2 = DateandTime.DateOnly
+Box 3 = bound
+
+NOTES / WHY:
+Validated in chat from user-provided clearer images.
+================================================================================
+QUESTION 226 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Add a button to a model-driven form that manually invokes JavaScript.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+Use the Ribbon Workbench.
+================================================================================
+QUESTION 227 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+PCF manifest resource load order.
+
+RECOMMENDED ANSWER:
+CSS order = 1
+HTML order = 1
+
+NOTES / WHY:
+Taken from the highlighted answer area.
+Review before final publication if you need exact manifest reconstruction.
+================================================================================
+QUESTION 233 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Deploy a new PCF control using Power Apps CLI and a new solution.
+
+RECOMMENDED ANSWER:
+1. Create a solution
+2. Add a solution reference to the project
+3. Build the project and solution
+4. Deploy the solution
+
+NOTES / WHY:
+Taken from the highlighted suggested answer.
+================================================================================
+QUESTION 234 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Development environment notifications must display department-specific wording using values that power users can customize.
+
+RECOMMENDED ANSWER:
+1. Create an empty environment variable named Custom Text Placeholder
+2. Create a JavaScript function to retrieve the value from the custom text placeholder and display the notification
+3. Export the solution
+
+NOTES / WHY:
+Taken from the highlighted suggested answer.
+Review exact wording if final publication needs the full original phrasing.
+================================================================================
+QUESTION 242 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Define a reusable PCF component manifest for a survey capture control. Need correct property type and feature usage.
+
+RECOMMENDED ANSWER:
+- property latitude of-type-group -> Decimal
+- uses-feature name -> Utility
+
+NOTES / WHY:
+Validated from the answer-area screenshot provided in chat.
+================================================================================
+QUESTION 243 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Single Power Apps component used on both tablet devices and phones. Complete code segment with the correct client/runtime detection methods.
+
+RECOMMENDED ANSWER:
+- Use getClient to detect client type (for example, "Mobile")
+- Use getFormFactor to detect specific device form factor
+
+NOTES / WHY:
+The answer area in the source page highlights getClient and getFormFactor. Exact code placement should be reviewed before final publication.
+================================================================================
+QUESTION 255 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Post-operation plug-in updating Account unintentionally triggers a synchronous third-party ISV plug-in.
+
+RECOMMENDED ANSWER:
+B
+
+NOTES / WHY:
+Use UpdateRequest with BypassCustomPluginExecution and Organization service Execute to bypass synchronous custom plug-ins.
+================================================================================
+QUESTION 257 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Managed solution import to production does not reflect changes to a column-bound PCF code component.
+
+RECOMMENDED ANSWER:
+C
+
+NOTES / WHY:
+Increment the control version in manifest.xml and reimport the solution.
+================================================================================
+QUESTION 258 of 429
+TYPE: Hotspot (Yes/No)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+OnSave JavaScript handler uses preventDefault(), retrieves account credithold asynchronously, and conditionally opens a confirm dialog.
+
+RECOMMENDED ANSWER:
+- The code cancels the normal save operation of the form. -> Yes
+- A confirmation dialog box is displayed if the credithold value is true. -> No
+- The record will save if the credithold value is false. -> No
+
+NOTES / WHY:
+preventDefault() cancels the normal save immediately; because retrieval is async, the later if block does not behave as a synchronous gate for the original save.
+================================================================================
+QUESTION 260 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Implement visual hints in the custom connector.
+
+RECOMMENDED ANSWER:
+C, D
+
+NOTES / WHY:
+Editorial note: this differs from the site’s suggested answer (B, D). Extending the OpenAPI definition for DataId and updating the DataId description is the more useful end-user hint configuration.
+================================================================================
+QUESTION 261 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+HTTP property values for a Web API request that updates account rows.
+
+RECOMMENDED ANSWER:
+Method = PATCH
+Header = If-None-Match: null
+
+NOTES / WHY:
+Visible in the highlighted answer area on the source page. Review exact header formatting before final publication.
+================================================================================
+QUESTION 266 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Investigate a form before opening it in a model-driven app with client-side scripts/autosave.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+Suggested answer visible on the source page. Manual review recommended.
+================================================================================
+QUESTION 271 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Configure custom connector security components.
+
+RECOMMENDED ANSWER:
+- Ensure Dynamics 365 security is in place -> Security roles
+- Capture application usage from public sites -> API key
+- Configure a website login that does not need encryption -> Basic authentication
+
+NOTES / WHY:
+Suggested answer visible on the source page.
+================================================================================
+QUESTION 277 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Complete Plug-in Registration Tool steps for an Azure Function webhook / service endpoint.
+
+RECOMMENDED ANSWER:
+Sequence:
+1. Select Register New Web Hook.
+2. Enter the endpoint URL.
+3. Register a New Step (or the relevant step on Create of SalesOrder).
+
+NOTES / WHY:
+The answer area and explanatory text are visible on the source page.
+================================================================================
+QUESTION 279 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Map user security issues to Power Platform / Teams / exfiltration controls.
+
+RECOMMENDED ANSWER:
+- User is not able to sign in to a Power Apps app from home -> Conditional access
+- User is not able to use a social media connector in a flow that uses the Microsoft Teams connector -> DLP policy
+- User is not able to forward email messages to an address in another domain -> Exfiltration blocking
+
+NOTES / WHY:
+Suggested answer visible on the source page.
+================================================================================
+QUESTION 284 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose recommended approach for Azure Function / Power Platform integration scenario.
+
+RECOMMENDED ANSWER:
+B
+
+NOTES / WHY:
+Suggested answer visible on the source page. Manual review recommended.
+================================================================================
+QUESTION 286 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose the right fix/approach for a Power Platform integration issue.
+
+RECOMMENDED ANSWER:
+A
+
+NOTES / WHY:
+Suggested answer visible on the source page. Manual review recommended.
+================================================================================
+QUESTION 292 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose HTTP methods for Dataverse Web API actions.
+
+RECOMMENDED ANSWER:
+- Create a column -> POST
+- Update a column for an existing row -> PATCH
+
+NOTES / WHY:
+Validated from the answer-area screenshot provided in chat.
+================================================================================
+QUESTION 293 of 429
+TYPE: Hotspot (Yes/No)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Plug-in registered in post-operation stage when custom_field3 is updated.
+
+RECOMMENDED ANSWER:
+- You can improve code performance by using new ColumnSet(true) instead of retrieving individual fields. -> No
+- You can avoid retrieving the changed entity by using plug-in images. -> Yes
+- You can avoid updating the changed entity by registering the plug-in in the pre-operation stage. -> Yes
+
+NOTES / WHY:
+Validated from the answer-area screenshot provided in chat.
+================================================================================
+QUESTION 294 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Choose custom connector security type for external systems.
+
+RECOMMENDED ANSWER:
+- Accounts receivable -> OAuth 2.0
+- Bing Maps -> API key
+
+NOTES / WHY:
+Client credentials grant type maps to OAuth 2.0; unique identifier in query string maps to API key.
+================================================================================
+QUESTION 325 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 326 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 330 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 331 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 333 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 334 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 337 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 321-340.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 338 of 429
+TYPE: Multiple choice / security / auth
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 341-360.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 339 of 429
+TYPE: Multiple choice / auth
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Questão visível no bloco 341-360.
+
+RECOMMENDED ANSWER:
+Review required
+================================================================================
+QUESTION 345 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Model-driven app authentication for external users / Graph without extra verification.
+
+RECOMMENDED ANSWER:
+Review required
+
+NOTES / WHY:
+The page suggests a different answer than the community votes and should be reviewed before publication.
+================================================================================
+QUESTION 360 of 429
+TYPE: Yes/No scenario series
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Register synchronous plug-in that throws InvalidPluginExecutionException when request fails; goal is response under 60s.
+
+RECOMMENDED ANSWER:
+B. No
+
+NOTES / WHY:
+The rendered source page shows suggested answer B.
+================================================================================
+QUESTION 361 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Integração que envia created records para um REST API. A solução proposta regista um plug-in assíncrono que faz o HTTP request e lança InvalidPluginExecutionException quando o request falha.
+
+RECOMMENDED ANSWER:
+B. No
+
+NOTES / WHY:
+A resposta sugerida visível na página é B. Em cenário assíncrono, lançar InvalidPluginExecutionException não resolve o requisito de conseguir identificar corretamente o motivo da resposta 500 do serviço externo.
+================================================================================
+QUESTION 362 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Integração REST API com Azure Service Bus queue e Azure Function para processar mensagens.
+
+RECOMMENDED ANSWER:
+A. Yes
+
+NOTES / WHY:
+A página mostra 'The suggested answer is A'.
+================================================================================
+QUESTION 371 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+CONTEXT / ENUNCIADO:
+Criar componente PCF com Microsoft package.
+
+RECOMMENDED ANSWER:
+1. Create a code component project
+2. Implement code component logic
+3. Create a solution project and add the code component project as a reference
+4. Build the code component in release mode
+
+NOTES / WHY:
+A sequência está visível na answer area da página renderizada.
