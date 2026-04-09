@@ -1,0 +1,347 @@
+PL-400 MERGED CASE STUDY FILE - Northwind Traders
+
+Editorial note:
+Merged from the uploaded case-study TXT files.
+Question order is preserved ascending by question number.
+
+Included questions: 92, 162, 206, 207, 208, 209, 251, 252, 253, 260, 301, 302, 303, 304, 346
+
+================================================================================
+CASE STUDY: Northwind Traders
+================================================================================
+
+QUESTION 92 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to determine which component to add to the solution to resolve the account records import error.
+
+Which component should you add?
+
+A. connection
+B. service endpoint
+C. custom connector
+D. Account table
+
+CORRECT ANSWER: C
+
+
+QUESTION 162 of 429
+TYPE: Multiple choice / Case study (Northwind Traders)
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Northwind Traders exposes a RESTful Web API through an Azure Function and plans to create a custom connector. The requirements emphasize low-code integration, automatic processing, and Power Automate use by researchers.
+
+QUESTION:
+You need to choose a technology to access the Web API.
+
+Which technology should you select?
+
+OPTIONS:
+A. Canvas app that uses the custom connector
+B. Plug-in that contacts the Web API
+C. Power Automate flow that uses the custom connector
+D. Webhook that contacts the Web API
+
+CORRECT ANSWER:
+C. Power Automate flow that uses the custom connector
+
+
+QUESTION 206 of 429
+TYPE: Hotspot
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Researchers must be able to update account records with data from a Web API through Power Automate, even if they do not have edit privileges on the record.
+
+QUESTION:
+What should you configure for each trigger and action requirement?
+
+AVAILABLE VALUES:
+For 'When a row is added, modified, or deleted trigger with Change Type':
+- Added
+- Modified
+- Added or Modified
+
+For 'Update a row connection type':
+- API key
+- User account
+- Service principal
+
+CORRECT ANSWER:
+- Change Type -> Added or Modified
+- Update a row connection type -> Service principal
+
+================================================================================
+
+
+QUESTION 207 of 429
+TYPE: Drag drop
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Microsoft Entra ID groups are used to manage environment and team-level permissions. Users encounter access-related issues while testing a model-driven app. Use the principle of least privilege.
+
+QUESTION:
+What should you assign to resolve each issue?
+
+AVAILABLE RESOLUTIONS:
+- Microsoft Power Platform
+- Security role
+- Microsoft Entra ID group
+- Team
+
+CORRECT ANSWER:
+- Unable to access a single environment -> Microsoft Entra ID group
+- Unable to update Account rows -> Security role
+- Unable to access rows owned by the human resources team -> Team
+- Unable to create a sandbox environment -> Microsoft Power Platform
+
+================================================================================
+
+
+QUESTION 208 of 429
+TYPE: Drag drop
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+A cloud flow uses a List rows action against the Accounts table, which contains more than 15,000 rows. The flow must handle many records and also return data from related contact records.
+
+QUESTION:
+Which properties should you configure?
+
+AVAILABLE PROPERTIES:
+- Filter rows
+- Expand query
+- Skip token
+- Select columns
+
+CORRECT ANSWER:
+- Manage a large number of records -> Skip token
+- Return information from related contact records -> Expand query
+
+================================================================================
+
+
+QUESTION 209 of 429
+TYPE: Drag drop
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Researchers want a reusable solution that encapsulates a set of parameterized Dataverse queries so those steps can be reused across different Power Automate flows.
+
+QUESTION:
+Which three actions should you perform in sequence?
+
+AVAILABLE ACTIONS:
+- Create a real-time workflow that uses a custom workflow activity to perform the Dataverse queries.
+- Run the custom process action by using the Dataverse connector.
+- Create a custom process action that uses a custom workflow activity to perform the Dataverse queries.
+- Create a custom process action that uses a plug-in to perform the Dataverse queries.
+- Run the real-time workflow by using the Dataverse connector.
+- Define the input parameters for the Dataverse queries.
+
+CORRECT ANSWER:
+1. Create a custom process action that uses a custom workflow activity to perform the Dataverse queries.
+2. Define the input parameters for the Dataverse queries.
+3. Run the real-time workflow by using the Dataverse connector.
+
+================================================================================
+
+
+QUESTION 251 of 429
+TYPE: Multiple choice
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Only account records that contain a DataId should be updated by the Web API.
+
+QUESTION:
+You need to configure the row filter on the Dataverse trigger.
+
+Which filter should you use?
+
+OPTIONS:
+A. not contains(new_dataid, "")
+B. new_dataid eq null
+C. DataId ne null
+D. new_dataid ne null
+
+CORRECT ANSWER:
+D. new_dataid ne null
+
+================================================================================
+
+
+QUESTION 252 of 429
+TYPE: Multiple choice
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+The solution must ensure that the data returned from the Web API corresponds to the correct environment without hardcoding environment values.
+
+QUESTION:
+What should you use?
+
+OPTIONS:
+A. system settings
+B. plug-in secure configurations
+C. records in a new configuration table
+D. environment variables
+
+CORRECT ANSWER:
+D. environment variables
+
+================================================================================
+
+
+QUESTION 253 of 429
+TYPE: Drag Drop
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+You need to configure the custom connector so the Web API URL dynamically includes the environment name and the DataId.
+
+QUESTION:
+Which four actions should you perform in sequence?
+
+ACTIONS:
+- Set the operation to dataservice.
+- Create a policy template that uses the Route request template.
+- Set the subdomain of the URL template to: dataservice-@connectionParameters('EnvironmentName')
+- Set the path of the URL template path to: enrich/@queryParameters('DataId')
+- Create a policy template that uses the Set host URL template.
+- Set the operation to enrich.
+
+CORRECT ANSWER:
+1. Create a policy template that uses the Set host URL template.
+2. Set the operation to dataservice.
+3. Set the subdomain of the URL template to: dataservice-@connectionParameters('EnvironmentName')
+4. Set the path of the URL template path to: enrich/@queryParameters('DataId')
+
+
+QUESTION 260 of 429
+TYPE: Multiple choice (two answers)
+CASE STUDY: Northwind Traders
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+A custom connector is used to call a Web API. The connector must provide visual hints for non-developers.
+
+QUESTION:
+You need to implement visual hints in the custom connector.
+
+What should you do? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. In the custom connector, update the name of the policy template.
+B. Extend the Open API definition of the Web API for the EnvironmentName parameter.
+C. Extend the Open API definition of the Web API for the DataId parameter.
+D. In the custom connector, update the description for the DataId parameter.
+
+CORRECT ANSWER:
+B. Extend the Open API definition of the Web API for the EnvironmentName parameter.
+D. In the custom connector, update the description for the DataId parameter.
+
+
+QUESTION 301 of 429
+TYPE: Hotspot
+FOCUSED CONTEXT:
+Northwind Traders uses an Azure Function REST API and must expose it through a custom connector in Microsoft Power Platform. You need to configure security for both the Azure Function and the custom connector.
+
+QUESTION:
+Which security should you use for each item?
+
+OPTIONS:
+- Azure Function: Anonymous / Function key / Azure Active Directory
+- Custom connector: API Key / OAuth 2.0 / Basic authentication
+
+CORRECT ANSWER:
+- Azure Function -> Function key
+- Custom connector -> OAuth 2.0
+
+================================================================================
+
+
+QUESTION 302 of 429
+TYPE: Hotspot
+FOCUSED CONTEXT:
+Northwind Traders must configure the Web API and then create the custom connector for it. The connector definition must be generated using a low-code technology.
+
+QUESTION:
+Which action should you perform for each step?
+
+OPTIONS:
+- Configure the Web API: Import a WSDL file / Add an OpenAPI definition / Import a Postman collection
+- Create the custom connector: Import a solution / Import an OpenAPI file / Import a Postman collection
+
+CORRECT ANSWER:
+- Configure the Web API -> Add an OpenAPI definition
+- Create the custom connector -> Import a Postman collection
+
+================================================================================
+
+
+QUESTION 303 of 429
+TYPE: Drag-drop
+FOCUSED CONTEXT:
+You are developing a Power Apps app that interacts with an ERP system. Users create quotes for customers. The solution must display an error if there is no account associated with a quote and prevent changes to the quote, and must synchronize quotes with the external ERP system.
+
+QUESTION:
+Which pipeline stages should you use for each requirement?
+
+OPTIONS:
+Pipeline stages:
+- MainOperation
+- PostOperation
+- PreOperation
+- PreValidation
+
+Requirements:
+- Display an error message if there is no account associated with a quote and prevent changes to the quote.
+- Synchronize quotes with the external ERP system.
+
+CORRECT ANSWER:
+- Display an error message if there is no account associated with a quote and prevent changes to the quote. -> PreValidation
+- Synchronize quotes with the external ERP system. -> MainOperation
+
+================================================================================
+
+
+QUESTION 304 of 429
+TYPE: Multiple choice
+FOCUSED CONTEXT:
+A tester connects to the production instance of the Web API using a DataId that should return data, but receives an error stating that the remote name could not be resolved.
+
+QUESTION:
+What is the most likely cause of the issue?
+
+OPTIONS:
+A. The web service lacks data for the record.
+B. There is an authentication error.
+C. The request timed out.
+D. The hostname in the URL is missing a valid value.
+
+CORRECT ANSWER:
+D. The hostname in the URL is missing a valid value.
+
+
+QUESTION 346 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Northwind Traders uses Microsoft Dynamics 365 Sales and an Azure Function exposed through a custom connector. A tester gets a "remote name could not be resolved" error against production, and a solution import in test is failing because of a missing component. You need to configure a Power Automate flow to update account records by using the response returned from the Web API.
+
+QUESTION:
+Which three actions should you perform in sequence?
+
+OPTIONS:
+- Add an initialize variable step and set the value to the response code from the custom connector.
+- Add a condition step to check if the variable value equals 404.
+- Add a condition step to check if the variable value equals 200.
+- Add a terminate step and set the status to failed.
+- Add a Dataverse update record step to update the Dataverse account record.
+- Add initialize variable step and set the value to the DataId from the Dataverse account record.
+
+CORRECT ANSWER:
+1. Add an initialize variable step and set the value to the response code from the custom connector.
+2. Add a condition step to check if the variable value equals 404.
+3. Add a terminate step and set the status to failed.

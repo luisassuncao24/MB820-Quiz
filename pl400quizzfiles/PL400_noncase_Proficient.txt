@@ -1,0 +1,2044 @@
+PL-400 NON-CASE QUESTIONS - Proficient
+
+Editorial note:
+This file was built from the uploaded non-test-case TXT files.
+Difficulty is estimated heuristically based on technical complexity, question structure,
+and implementation depth. It is not an official Microsoft difficulty rating.
+
+Question count: 77
+Estimated difficulty score range: 4.33 to 5.26
+Included question numbers: 8, 10, 11, 15, 19, 20, 23, 24, 28, 34, 40, 41, 54, 60, 65, 68, 73, 74, 79, 84, 85, 101, 103, 119, 121, 132, 142, 143, 158, 169, 170, 171, 186, 193, 199, 200, 203, 211, 212, 220, 226, 228, 237, 239, 245, 246, 258, 259, 261, 265, 268, 270, 283, 292, 293, 318, 319, 322, 324, 326, 331, 340, 342, 349, 367, 368, 369, 372, 376, 378, 382, 384, 387, 393, 397, 399, 403
+
+==========================================================================================
+
+QUESTION 8 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+A company plans to create an order processing app. When orders are created, the app will perform complex business logic and integrate with several external systems.
+
+Orders that have a large number of line items may take up to six minutes to complete. Processing for each order must be completed in one operation to avoid leaving records in an incomplete state.
+
+You need to recommend a solution for the company.
+
+What should you recommend?
+
+A. an asynchronous workflow that uses a custom workflow activity
+B. a real-time workflow that uses a custom action
+C. a webhook that connects to an Azure Function
+D. an asynchronous plug-in
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 10 of 429
+TYPE: Multiple choice (choose three)
+--------------------------------------------------------------------------------
+You are implementing custom business logic in a Power Apps portal.
+
+You need to use Liquid templates to display dynamic content.
+
+To which three entities can you include Liquid code? Each correct answer presents a complete solution.
+
+A. Content snippet
+B. Web page
+C. Web template
+D. Page template
+E. Portal settings
+
+CORRECT ANSWER: A, B, C
+
+================================================================================
+
+
+QUESTION 11 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+Teachers in a school district use Azure skill bots to teach specific classes. Students sign in to an online portal to submit completed homework to their teacher for review. Students use a Power Virtual Agents chatbot to request help from teachers.
+
+You need to incorporate the skill bot for each class into the homework bot.
+
+Available actions:
+- Create a manifest for the skill bot
+- Register the skill bot in Azure Active Directory
+- Register the skill bot in Power Virtual Agents
+- Register the homework bot in Azure Active Directory
+- Create a manifest for the homework bot
+- Register the homework bot in Power Virtual Agents
+
+Arrange the correct three actions in sequence.
+
+CORRECT ANSWER:
+1. Register the skill bot in Azure Active Directory
+2. Create a manifest for the skill bot
+3. Register the skill bot in Power Virtual Agents
+
+================================================================================
+
+
+QUESTION 15 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You are researching integrations with several external systems.
+
+Each integration has different requirements.
+
+Available objects:
+- Virtual entity
+- Custom connector
+
+Match each requirement to the correct object.
+
+1. Support records that use an integer as a primary key -> ?
+2. Ensure that data can be read and updated -> ?
+3. Ensure that data is available to all Microsoft Dataverse clients -> ?
+
+CORRECT ANSWER:
+1 -> Custom connector
+2 -> Custom connector
+3 -> Virtual entity
+
+================================================================================
+
+
+QUESTION 19 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+A company is configuring Microsoft Power Virtual Agents and Power Automate flows that use model-driven apps.
+
+The company has a website that uses Power Pages. You create Power Virtual Agents bot topics.
+
+You must configure the following:
+- Use a bot on the website.
+- Create Bot Framework skills.
+- Create a support request from the bot without human interaction.
+
+Available applications:
+- Power Virtual Agents
+- Power Automate
+- Power Pages
+- Power Apps
+
+Match each requirement to the correct application.
+
+1. Use a bot on the website -> ?
+2. Create Bot Framework skills -> ?
+3. Create support request from the bot -> ?
+
+CORRECT ANSWER:
+1 -> Power Pages
+2 -> Power Virtual Agents
+3 -> Power Automate
+
+================================================================================
+
+
+QUESTION 20 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You are configuring a custom connector for a web service. The web service is hosted in two different regions. The web service URL includes a common domain name and a unique sub-domain for each region.
+
+The custom connector must allow the region to be entered for additional regions when creating the connection.
+
+You need to create a policy template.
+
+Which template type should you use?
+
+A. Set HTTP header
+B. Route request
+C. Set host URL
+D. Set query string parameter
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 23 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You develop a model-driven app. You add the following users as members to the Sales Microsoft Azure Active Directory (Azure AD) security group: User1, User2, and User3.
+
+The Sales Azure AD security group is linked to a pre-existing Microsoft Dataverse Azure AD security group team that is associated with the Sales security role. You assign each of the appropriate licenses to each user.
+
+User1 is not listed in the Team Members subgrid for the app. User2 and User3 are listed in the subgrid.
+
+You need to ensure that User1 can use the model-driven app.
+
+What should you do?
+
+A. Change the membership of the Sales Azure AD Security group to Dynamic User.
+B. Change the membership type for User1 to Owner in the Azure AD security group.
+C. Create an Owner team for the members of the Sales Azure AD group.
+D. Ask User1 to sign in to the model-driven app.
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 24 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You are modifying a model-driven app for a bicycle company.
+
+The app modifications must meet the following requirements:
+- The order form must include a column that calculates payments based on how many years the customer wants to finance a bicycle.
+- A pop-up box must remind the employee to validate the information entered before saving.
+
+You must use out-of-the-box features before customizing the application.
+
+Available actions:
+- Customize the app
+- Configure an out-of-box feature
+- Edit XML
+
+Match each requirement to the correct action.
+
+1. Calculate payments -> ?
+2. A pop-up box must appear -> ?
+
+CORRECT ANSWER:
+1 -> Configure an out-of-box feature
+2 -> Configure an out-of-box feature
+
+
+QUESTION 28 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+A company develops a new Microsoft Dataverse plug-in that manages the Update message of an entity.
+
+The plug-in logic requires access to the record columns before the operation starts and must compare the columns to post-update values.
+
+You need to modify the design of the solution to access the information.
+
+What should you do?
+
+A. Add the code to the plug-in to read the record from the InputParameters collection.
+B. Register a pre-image by using the Plug-in Registration Tool. Add the code to the plug-in to read the image from the PreEntityImages collection.
+C. Register a post-image by using the Plug-in Registration Tool. Add the code to the plug-in to read the image from the PostEntityImages collection.
+D. Add the code to the plug-in to query the data from Dataverse by using the API call based on the record ID.
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 34 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+A company designs a Microsoft Dataverse Custom API to encapsulate business logic in it.
+
+The Custom API business logic must be encapsulated in a way that does not allow the business logic behavior to be modified or canceled.
+
+You need to set the parameter value of the custom API so it cannot be customized.
+
+Which parameter value should you set?
+
+A. Execute Privilege Name to prv_SdkMessageProcessingStep
+B. Enabled for Workflow to No
+C. Binding Type to Entity
+D. Custom Processing Step to None
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 40 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You are creating a FetchXML query.
+
+The query must return data from a table and return filtered data from a related table.
+
+You need to configure the FetchXML query.
+
+Which two elements should you use? Each correct answer presents part of the solution.
+
+A. attribute
+B. link-entity
+C. alias
+D. condition
+
+CORRECT ANSWER: B, D
+
+================================================================================
+
+
+QUESTION 41 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You are testing security in a model-driven app. The business unit structure in the environment consists of two top-level business units with three business units named BusA, BusB, and BusC directly under it.
+
+BusA users must be able to view records in only their business unit.
+
+You observe that BusA users have security roles from BusB and BusC assigned to them. The BusA users can view records in those business units. All security role privileges are set to the Business Unit level.
+
+You need to correct the problem with record access.
+
+Which two actions should you perform? Each correct answer presents part of the solution.
+
+A. Turn off the feature that controls record ownership across business units.
+B. Create a security role for BusA users in the parent business unit with privileges set to Business Unit level.
+C. Move BusA users to the parent business unit. Assign security roles with Parent: Child Business Units privileges.
+D. Ensure security role privileges are set to User level.
+
+CORRECT ANSWER: B, D
+
+================================================================================
+
+
+QUESTION 54 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+A company has Common Data Service (CDS) environments for development, test, and production.
+
+You have a model-driven app that consists of two solutions. The solutions include settings and reference data. You plan to move the solutions, app settings, and reference data from a development environment to a production environment.
+
+You export each solution from the development environment as a zip file.
+You run the Configuration Manager to export the settings and reference data as zip files.
+
+You need to prepare the app and its settings for deployment.
+
+Available actions:
+A. Add solution and data files to the PkgFolder in the project
+B. Build the package
+C. Run the Package Deployer tool
+D. Define the solution and data files in ImportConfig.xml
+E. Run the Solution Packager tool
+F. Create a Dynamics 365 Package project in Visual Studio
+
+Arrange the actions in the correct order.
+
+CORRECT ANSWER:
+1. Create a Dynamics 365 Package project in Visual Studio
+2. Add solution and data files to the PkgFolder in the project
+3. Define the solution and data files in ImportConfig.xml
+4. Build the package
+
+================================================================================
+
+
+QUESTION 60 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You are creating a canvas app for a company.
+
+A security role has been created for sales representatives and a second security role has been created for sales managers.
+
+The canvas app has the following requirements:
+- Sales managers must be able to view the records of the salespeople in their business unit.
+- Sales managers must be the only people who can view sales probability data in opportunity records.
+- Sales representatives and new hires assigned to the same territory share access to sales records.
+
+Available security options:
+A. Role-based security
+B. Field-level security
+C. Record-level security
+
+CORRECT ANSWER:
+- Sales managers can view salespeople records in their business unit -> Role-based security
+- Only sales managers can view sales probability data -> Field-level security
+- Sales representatives and new hires in the same territory share access to sales records -> Record-level security
+
+
+QUESTION 65 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+A financial services company uses the Common Data Service (CDS) to develop solutions. The company uses development and production instances.
+
+You need to move solutions from the development instance to the production instance.
+
+What are two possible ways to achieve this goal? Each correct answer presents a complete solution.
+
+A. In the development instance, make changes to the solutions that are deployed in production, export the solutions as managed solutions, and import the managed solutions into the production instance.
+B. In the development instance, highlight the solution, select Clone a Patch, make changes, export the solution, and import the solution into the production instance.
+C. Export all managed solutions from the development environment and import the solutions into production.
+D. In the production instance, import solutions with the same version number or higher when updating solutions.
+
+CORRECT ANSWER: A, B
+
+================================================================================
+
+
+QUESTION 68 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You are developing a Power Platform solution for a medical practice. You create a custom table named Doctors.
+
+You need to register a plug-in so that accounts of relationship type Customer receive an account number if one was not provided by the user.
+
+Available actions:
+A. In the Plug-in Registration Tool, select Register New Assembly.
+B. Register New Step with Message = Update, Primary Entity = Account, Event Pipeline Stage = PreOperation.
+C. Register New Image, change Image Type to PreImage, and include accountnumber as a parameter.
+D. Register New Image, change Image Type to PostImage, and include accountnumber as a parameter.
+E. Register New Step with Message = Update, Primary Entity = Account, Event Pipeline Stage = PostOperation.
+
+CORRECT ANSWER:
+1. Register New Assembly
+2. Register New Step (Update / Account / PreOperation)
+3. Register New Image (PreImage including accountnumber)
+
+================================================================================
+
+
+QUESTION 73 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You are troubleshooting Power Apps solutions.
+
+You need to determine the cause for the identified issues.
+
+Choose the correct reason for each issue.
+
+Issue 1:
+Solution checker completes a run and reports errors for one solution but completes without errors for a different solution.
+
+Possible reasons:
+- A canvas app in the first solution has errors
+- The Power Apps checker application user is disabled
+
+Issue 2:
+A JavaScript web resource contains code like:
+var acctnumber = formContext.getAttribute("accountnumber").getValue();
+if (acctnumber == "abc")
+
+Possible reasons:
+- The code uses the following rule: web-avoid-eval
+- The code uses the following rule: web-remove-debug-script
+- The code uses the following rule: web-avoid-modals
+- The code uses the following rule: web-use-strict-mode
+
+CORRECT ANSWER:
+- Solution checker reports errors for one solution but not another -> A canvas app in the first solution has errors
+- Error on the web resource code -> The code uses the following rule: web-use-strict-mode
+
+================================================================================
+
+
+QUESTION 74 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+A company uses Common Data Service rollup fields to calculate insurance exposure and risk profiles for customers.
+
+Users report that the system does not update values for the rollup fields when new insurance policies are written.
+
+You need to recalculate the value of the rollup fields immediately after a policy is created.
+
+What should you do?
+
+A. Create new fields on the customer entity for insurance exposure and risk and use a workflow triggered when a new policy is created to calculate the values.
+B. Update the Mass Calculate Rollup Field job to trigger when a new policy record is created.
+C. Change the frequency of the Calculate Rollup Field recurring job from every hour to every five minutes.
+D. Create a plug-in that uses the CalculateRollupFieldRequest method for the rollup field and trigger it on Create of the policy entity.
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 79 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You have a Microsoft Power Platform solution that includes canvas apps and Power Automate cloud flows. The canvas apps and flows interact with a third-party content management system (CMS).
+
+You store the URL for the CMS version (development or production) in an environment variable.
+
+You deploy the solution to a production environment. The environment variable initially references the development URL. You then update the URL value of the variable directly in the production environment.
+
+Determine which environment variable value will be used in each scenario.
+
+Available environment variable versions:
+A. Development
+B. Production
+
+Scenarios:
+- Canvas app sessions open during the update
+- Canvas app sessions launched after the update
+- Power Automate flows which have been saved after the update
+
+CORRECT ANSWER:
+- Canvas app sessions open during the update -> Development
+- Canvas app sessions launched after the update -> Production
+- Power Automate flows which have been saved after the update -> Production
+
+================================================================================
+
+
+QUESTION 84 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+The following code updates the customersizecode choice column on the Account table if the numberofemployees column value is greater than 100.
+
+Line numbering is provided for information only.
+
+01 static void UpdateAccount(CrmServiceClient svc, string accountId)
+02 {
+03     using (svc)
+04     {
+05         var account = svc.Retrieve("account", accountId, new ColumnSet(true));
+06         var numberofemployees = account.GetAttributeValue<int>("numberofemployees");
+07         if (numberofemployees > 100)
+08         {
+09             account["customersizecode"] = new OptionSetValue(2);
+10             svc.Update(account);
+11         }
+12     }
+13 }
+
+For each statement, select Yes or No.
+
+Statements:
+1. Does the Retrieve method use the correct parameters?
+2. Will a plug-in triggered on the update of the numberofemployees column execute after the Update method is executed?
+3. Will an exception be thrown if the value for numberofemployees is null?
+
+CORRECT ANSWER:
+1. No
+2. No
+3. No
+
+================================================================================
+
+
+QUESTION 85 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You are developing a Power Apps app to manage records in the Account table in Microsoft Dataverse.
+
+You must configure a Web API request to retrieve changes from the table.
+
+You need to configure the preference header for the API request.
+
+What should you include in the request header?
+
+A. odata.nextLink
+B. odata.context
+C. odata.deltaLink
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 101 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company develops a new custom connector for a Microsoft Entra ID-protected Azure Function that was created as a single tenant app.
+
+The custom connector must be moved to a production environment. The connector must be visible and accessible only to users in the tenant.
+
+You need to deploy the custom connector.
+
+Solution: Publish the custom connector to AppSource.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 103 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company develops a new custom connector for a Microsoft Entra ID-protected Azure Function that was created as a single tenant app.
+
+The custom connector must be moved to a production environment. The connector must be visible and accessible only to users in the tenant.
+
+You need to deploy the custom connector.
+
+Solution: Use Postman to export the custom connector. Then use Postman to import the connector into the production environment.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+
+QUESTION 119 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+Question:
+You have two custom tables that have a parent-child relationship.
+
+The parent table value is formed by the fixed prefix ABC followed by a six-digit, auto-incrementing number.
+
+Each child table value appends a three-digit sequence starting at 001 to its associated parent table value, incrementing with each new child record. Child records are always linked to a parent.
+
+Each table requires a column that has a unique value. Low-code functionality must be used when possible.
+
+You need to implement the method that will create each unique value.
+
+Choices:
+- Plug-in
+- Business rule
+- Autonumber column
+
+Tables:
+1. Parent
+2. Child
+
+Correct answer:
+1. Parent = Autonumber column
+2. Child = Business rule
+
+================================================================================
+
+
+QUESTION 121 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You create a custom API as part of a solution that will be made available on Microsoft AppSource.
+
+You need to prevent others from using Dataverse code generation tools that create classes and use the messages for your custom API.
+
+What should you do?
+
+OPTIONS:
+A. Set Is Private to Yes.
+B. Set Is Function to Yes.
+C. Set Allowed Custom Processing Step Type to None.
+D. Set Allow Customizations to No.
+
+CORRECT ANSWER:
+A. Set Is Private to Yes.
+
+================================================================================
+
+
+QUESTION 132 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a model-driven app for the purchasing department of an organization. You provision a new test environment and a security role. You select users to test the app and assign those users to a security group named TestSG.
+
+If the tests succeed, a manager will perform additional testing in the production environment and then publish the app for the organization's purchasing department.
+
+You need to ensure that the test and production environments are configured correctly.
+
+For each scenario, choose the correct security artifact.
+
+SCENARIOS:
+1. Ensure that only test users can access the test environment.
+2. Ensure that only the manager can access the app in production.
+3. Ensure that test users can access the app in production.
+4. Ensure that purchasing department users can access the test environment.
+
+SECURITY ARTIFACT OPTIONS:
+- Set the test environment security group to TestSG.
+- Assign the test users the app security role.
+- Set the test environment security group to TestSG and assign test users the app security role.
+- Set the production environment security group to TestSG.
+- Assign the manager the app security role.
+- Add the manager to the TestSG security group and grant the manager the app security role.
+- Assign all users the app security role.
+- Add all users in the department to the TestSG security group.
+- Remove the security group TestSG associated with the test environment.
+
+CORRECT ANSWER:
+1. Set the test environment security group to TestSG and assign test users the app security role.
+2. Assign the manager the app security role.
+3. Assign the test users the app security role.
+4. Add all users in the department to the TestSG security group.
+
+================================================================================
+
+
+QUESTION 142 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+QUESTION:
+You have the following code:
+
+```javascript
+Xrm.WebApi.createRecord("account", data).then(
+  function success(result) {
+    console.log("Success");
+  },
+  function (error) {
+    console.log(error.message);
+  }
+);
+```
+
+You have a contact record that uses the GUID `991bf2fd-d40c-4752-9984-26b7c0455b69`.
+
+You need to assign the contact record as the primary contact for an account when you create the account.
+
+Which two code segments can you use? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. `var data = { "name": "Contoso account", "primarycontactid": { "logicalname": "contact", "id": "991bf2fd-d40c-4752-9984-26b7c0455b69" } };`
+B. `var data = { "name": "Contoso account", "primarycontactid@odata.bind": "/contacts(991bf2fd-d40c-4752-9984-26b7c0455b69)" };`
+C. `var data = { "name": "Contoso account", "primarycontactid@odata.context": "/contacts(991bf2fd-d40c-4752-9984-26b7c0455b69)" };`
+D. `var data = { "name": "Contoso account", "primarycontactid": "/contacts(991bf2fd-d40c-4752-9984-26b7c0455b69)" };`
+
+CORRECT ANSWER:
+A and D
+
+================================================================================
+
+
+QUESTION 143 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+A company has a model-driven app.
+
+A form that validates the date entered requires a custom button. The button must be available only under certain conditions.
+
+You need to define the `CommandDefinition` in the `RibbonDiffXML` to meet the conditions for the button.
+
+Which elements should you use?
+
+ELEMENTS:
+- Enable Rule
+- Display Rule
+- Action
+
+CONDITIONS:
+1. Make the button appear when the form shows an existing record.
+2. Make the button appear when the user has Write privilege on the record.
+3. Prevent the button from being used in Bulk Edit mode.
+
+CORRECT ANSWER:
+1. Display Rule
+2. Display Rule
+3. Enable Rule
+
+================================================================================
+
+
+QUESTION 158 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a model-driven app for users to submit and manage budgets for projects.
+
+You must create a business process flow to ensure that any lead with a budget over $10,000 requires approval by a manager. You must add a custom control that allows users to select the estimated budget cost for a project.
+
+You need to add the control to the business process flow.
+
+In which order should you perform the actions?
+
+ACTIONS:
+- Paste control description FormulaID into the correct stage of the business process flow in the exported Solution.xml file.
+- Export the business process flow and the Lead form as two separate solutions.
+- Add a control to the Lead form by using the form designer.
+- Import the solution into the system and publish.
+- Copy all control description FormulaID from the Lead form of the exported solution.
+
+CORRECT ANSWER (SEQUENCE):
+1. Add a control to the Lead form by using the form designer.
+2. Export the business process flow and the Lead form as two separate solutions.
+3. Copy all control description FormulaID from the Lead form of the exported solution.
+4. Paste control description FormulaID into the correct stage of the business process flow in the exported Solution.xml file.
+5. Import the solution into the system and publish.
+
+================================================================================
+
+
+QUESTION 169 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company uses a plug-in within Dataverse to perform complex calculations of data in near real time.
+
+The calculations often run longer than five minutes, which causes the plug-in to time out.
+
+You need to recommend an appropriate replacement component.
+
+What should you recommend?
+
+OPTIONS:
+A. Azure Event Hub
+B. Azure Data Factory
+C. Azure Functions
+D. Azure Databricks
+
+CORRECT ANSWER:
+C. Azure Functions
+
+================================================================================
+
+
+QUESTION 170 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You create a model-driven app form.
+
+During testing of the app, a user indicates a column that was expected to be editable is read-only.
+
+You need to use Monitor to troubleshoot the issue.
+
+Which three actions should you perform in sequence?
+
+AVAILABLE ACTIONS:
+- Have a user create a new Monitor session for the app.
+- Use the Connect user option and select the user.
+- Have the user reproduce the issue.
+- Use the Invite option and select the user.
+- Create a new Monitor session for the app.
+
+CORRECT ANSWER:
+1. Create a new Monitor session for the app.
+2. Use the Invite option and select the user.
+3. Have the user reproduce the issue.
+
+================================================================================
+
+
+QUESTION 171 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A form in a model-driven app contains a custom command button with several rules that determine the button's visibility and JavaScript registered on the OnLoad and OnSave events.
+
+You must address two issues with the form:
+- The command button is hidden but must be visible.
+- An unexpected behavior occurs when users save the form. You must determine whether it is caused by the JavaScript code.
+
+You need to troubleshoot the issues by using URL parameters.
+
+ISSUES:
+1. Command button visibility
+2. Unexpected form save behavior
+
+AVAILABLE URL PARAMETERS (visible in source):
+- &navbar=on
+- &ribbondebug=true
+- &flags=DisableFormCommandbar=true
+- &extraqs=name=debug
+- &flags=DisableFormHandlers=true
+
+CORRECT ANSWER:
+1. Command button visibility -> &ribbondebug=true
+2. Unexpected form save behavior -> &flags=DisableFormHandlers=true
+
+================================================================================
+
+
+QUESTION 186 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+QUESTION:
+You create a Power Automate flow that retrieves data from a proprietary database.
+
+You need to ensure that the flow works for other users.
+
+Which two actions should you perform? Each correct answer presents part of the solution.
+
+OPTIONS:
+A. Share a view with users.
+B. Share the custom connector with users.
+C. Share the flow with users.
+D. Share the environment by giving permissions to the users.
+
+CORRECT ANSWER:
+B, C
+
+================================================================================
+
+
+QUESTION 193 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a Power Platform solution.
+
+You must add a custom control slider to a specific step in a business process flow.
+
+You need to add the custom control.
+
+Which four actions should you perform in sequence?
+
+AVAILABLE ACTIONS:
+- Import customizations into the Microsoft Dataverse environment.
+- Modify columns in the default solution.
+- Create a FormXML file to edit the custom controls.
+- Generate and export the business process flow form.
+- Configure custom controls on a related table form.
+- Copy custom control configurations to the FormXML for the business process flow.
+
+CORRECT ANSWER:
+1. Configure custom controls on a related table form.
+2. Generate and export the business process flow form.
+3. Copy custom control configurations to the FormXML for the business process flow.
+4. Import customizations into the Microsoft Dataverse environment.
+
+================================================================================
+
+
+QUESTION 199 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You develop a model-driven app to manage customer information. You have the system administrator security role on all environments.
+
+You create a business process flow that is associated with the Contact table. You grant users Create, Read, and Write permissions on the business process flow.
+
+Users report that the new business process flow does not appear when the users create new contact records. You verify that you can view the business process flow when you sign into the app and create a new contact record.
+
+You need to resolve the issue.
+
+What should you do?
+
+OPTIONS:
+A. Grant users the Run Flows privilege.
+B. In the app designer, ensure that the business process flow is added to the app.
+C. Grant users the Organization Read permission on the Process table.
+D. Open the business process flow and associate the flow with the user security roles by using the Edit security button on the command bar.
+
+CORRECT ANSWER:
+B. In the app designer, ensure that the business process flow is added to the app.
+
+================================================================================
+
+
+QUESTION 200 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company uses Microsoft Dataverse rollup fields to calculate insurance exposure and risk profiles for customers.
+
+Users report that the system does not update values for the rollup fields when new insurance policies are written.
+
+You need to recalculate the value of the rollup fields immediately after a policy is created.
+
+What should you do?
+
+OPTIONS:
+A. Create new fields on the customer entity for insurance exposure and risk. Write a workflow process that is triggered when a new policy record is created to calculate the sum of values from policy records.
+B. Create new calculated fields on the customer entity for insurance exposure and risk. Configure the formula to calculate the sum of values from policy records.
+C. Change the frequency of the Calculate Rollup Field recurring job from every hour to every five minutes.
+D. Create new fields on the customer entity for insurance exposure and risk. Write a plug-in that is triggered whenever a new policy is created.
+
+CORRECT ANSWER:
+D. Create new fields on the customer entity for insurance exposure and risk. Write a plug-in that is triggered whenever a new policy is created.
+
+
+QUESTION 203 of 429
+TYPE: Drag drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a model-driven app that uses the Opportunities table.
+
+Requirements:
+- An email must be sent to the sales team if the opportunity is over $50,000.
+- Users must be able to enter sponsors when creating a record if the opportunity is over one million dollars.
+- You must minimize the amount of code required.
+
+Which tool should you use for each requirement?
+
+AVAILABLE TOOLS:
+- Power Automate cloud flow
+- Business rules
+- JavaScript
+- Power Virtual Agent
+
+CORRECT ANSWER:
+- Opportunity over $50,000 -> Power Automate cloud flow
+- Opportunity over one million dollars -> Business rules
+
+================================================================================
+
+
+QUESTION 211 of 429
+TYPE: Multiple selection
+--------------------------------------------------------------------------------
+QUESTION:
+A client requires that the system send an email from a button on their customer contact form.
+
+You need to call the action from JavaScript.
+
+Which two functions achieve this result?
+
+OPTIONS:
+A. Xrm.WebApi.online.executeMultiple()
+B. Xrm.WebApi.online.updateRecord()
+C. Xrm.WebApi.online.createRecord()
+D. Xrm.WebApi.online.execute()
+
+CORRECT ANSWER:
+C. Xrm.WebApi.online.createRecord()
+D. Xrm.WebApi.online.execute()
+
+================================================================================
+
+
+QUESTION 212 of 429
+TYPE: Multiple selection
+--------------------------------------------------------------------------------
+QUESTION:
+A company has two development instances, two test instances, two staging instances, and one production instance.
+
+The test team reports connection issues with the test and staging instances.
+
+You need to identify which instances the testing team currently has access to.
+
+Which two URLs can you use?
+
+OPTIONS:
+A. https://globaldisco.crm.dynamics.com/api/discovery/v9.1/instances
+B. https://myorg.api.crm.dynamics.com/api/data/v9.1/
+C. https://dev.crm.dynamics.com/api/discovery/v9.1/instances
+D. https://disco.crm.dynamics.com/api/discovery/v9.1/
+E. https://dev.crm.dynamics.com/api/discovery/v9.1/instances(UniqueName='myorg')
+
+CORRECT ANSWER:
+C. https://dev.crm.dynamics.com/api/discovery/v9.1/instances
+E. https://dev.crm.dynamics.com/api/discovery/v9.1/instances(UniqueName='myorg')
+
+================================================================================
+
+
+QUESTION 220 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing an app that uses Common Data Service.
+
+You must integrate Common Data Service with a new web application. You must allow the new web application to display data from Common Data Service.
+
+You build a single-page web application by using the Web API.
+
+You need to authenticate your app by using OAuth.
+
+What should you use?
+
+OPTIONS:
+A. Windows Communication Foundation (WCF)
+B. Cross-Origin Resource Sharing (CORS)
+C. Microsoft Authentication Library (MSAL)
+D. Kerberos authentication
+
+CORRECT ANSWER:
+C. Microsoft Authentication Library (MSAL)
+
+
+QUESTION 226 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a model-driven app.
+
+A JavaScript function must be manually invoked by the user from within an entity form.
+
+You need to add a button to the form to run the JavaScript.
+
+What should you do?
+
+OPTIONS:
+A. Use the Ribbon Workbench.
+B. Edit the SiteMap.
+C. Edit the XML for the form.
+D. Edit IISU.Config to export the ribbon definitions.
+
+CORRECT ANSWER:
+A. Use the Ribbon Workbench.
+
+================================================================================
+
+
+QUESTION 228 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a business process flow.
+
+JavaScript must be used to implement additional business logic in the business process flow.
+
+You need to evaluate the JavaScript code.
+
+What is the result of running each code segment?
+
+RESULT OPTIONS FOR SEGMENT 1:
+- Hides only the control in the body of the form.
+- Hides only the control in the business process flow.
+- Hides controls in the body of the form and the business process flow.
+
+RESULT OPTIONS FOR SEGMENT 2:
+- Adds an event handler to enable a function named TestFunction to run when a business process flow stage changes.
+- Adds an event handler to enable a function named TestFunction to run when the process status changes.
+- Adds an event handler to enable a function named TestFunction to run when the active stage changes.
+- Adds an event handler to enable a function named TestFunction to run when the business process flow stage is clicked.
+
+CORRECT ANSWER:
+- Segment 1 -> Hides only the control in the body of the form.
+- Segment 2 -> Adds an event handler to enable a function named TestFunction to run when a business process flow stage changes.
+
+================================================================================
+
+
+QUESTION 237 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A model-driven app has the following JavaScript code attached to the OnChange event of the Phone (telephone1) field on the Account entity:
+
+- If telephone1 is null, the code returns.
+- Otherwise, it reads primarycontactid and calls Xrm.WebApi.updateRecord("contact", contact[0].id, { telephone1: telephone }).
+- On success it shows an alert dialog with "Updated".
+- On failure it shows an alert dialog with "Not updated".
+
+For each statement, determine whether it is true.
+
+STATEMENTS:
+1. When the code runs and the Primary contact (primarycontactid) field is populated, the Contact record's Phone (telephone1) field is updated to match the Account.
+2. When the code runs and the Primary contact (primarycontactid) field is not populated, the following error message displays: Not updated.
+3. When the code runs and the value in Phone (telephone1) is removed, the Contact record's Phone (telephone1) field is updated to null.
+
+CORRECT ANSWER:
+1. Yes
+2. No
+3. No
+
+================================================================================
+
+
+QUESTION 239 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a Power Apps app to manage records in the Account table in Microsoft Dataverse.
+
+You must configure a Web API request to retrieve changes from the table.
+
+You need to configure the Preference header for the API request.
+
+What should you include in the request header?
+
+OPTIONS:
+A. odata.context
+B. odata.deltaLink
+C. odata.track-changes
+D. odata.nextLink
+
+CORRECT ANSWER:
+C. odata.track-changes
+
+================================================================================
+
+
+QUESTION 245 of 429
+TYPE: Hotspot (Yes/No)
+--------------------------------------------------------------------------------
+QUESTION:
+You have the following code registered on the OnChange event of the parentcustomerid column on a contact table form. The parentcustomerid field is a lookup which can be an account or a contact record.
+
+Code summary:
+- If parentcustomerid is not null, the code calls Xrm.WebApi.online.retrieveRecord(parent[0].name, parent[0].id, "?$select=telephone1")
+- On success it sets telephone1 on the form from the returned record
+- On error it shows the error message
+- If parentcustomerid is null, it sets telephone1 on the form to null
+
+For each statement, select Yes if true. Otherwise, select No.
+
+STATEMENTS:
+1. Would the value of the telephone1 column on the contact form be null if the parentcustomerid column is null?
+2. Would the code return a parentcustomerid record if it is an account or a contact?
+3. Would the value of the telephone1 column be null if the value of the telephone1 column from the parentcustomerid record is null?
+
+CORRECT ANSWER:
+1. No
+2. No
+3. No
+
+================================================================================
+
+
+QUESTION 246 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating an app for a school.
+
+You need to implement client-side logic that uses the Microsoft Dataverse web API to evaluate the class type associated with a class record. The code must hide the School Schedule tab if no value is entered for Class Type.
+
+How should you complete the code?
+
+AVAILABLE VALUES:
+For the comparison value:
+- false
+- empty string
+- null
+- zero
+
+For the attribute function:
+- getVisible()
+- getValue()
+- getObject()
+- getName()
+
+For the tab action:
+- setVisible(false)
+- setVisible(true)
+- setDisabled(false)
+- setDisabled(true)
+
+CORRECT ANSWER:
+- comparison value -> null
+- attribute function -> getValue()
+- tab action -> setVisible(false)
+
+
+QUESTION 258 of 429
+TYPE: Hotspot (Yes/No)
+--------------------------------------------------------------------------------
+QUESTION:
+You develop the following code as part of an OnSave event handler in a form:
+- executionContext.getEventArgs().preventDefault();
+- Retrieve account credithold asynchronously with Xrm.WebApi.retrieveRecord(...)
+- If isOnHold is true, open a confirm dialog and then call formContext.data.save() on confirmation.
+
+For each statement, select Yes if true. Otherwise, select No.
+
+STATEMENTS:
+1. The code cancels the normal save operation of the form.
+2. A confirmation dialog box is displayed if the credithold value is true.
+3. The record will save if the credithold value is false.
+
+CORRECT ANSWER:
+1. Yes
+2. No
+3. No
+
+================================================================================
+
+
+QUESTION 259 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You create a custom API. You define the API as a function.
+
+The custom API does not appear in the response received from https://[yourorg].api.crm.dynamics.com/api/data/v9.2/$metadata and returns an error when called.
+
+You need to identify why the custom API is not working.
+
+What should you do?
+
+OPTIONS:
+A. Add a response property to the custom API.
+B. Add a request property to the custom API.
+C. Set the Enabled for Workflow option of the custom API to True.
+D. Set the is Private property of the custom API to False.
+
+CORRECT ANSWER:
+D. Set the is Private property of the custom API to False.
+
+
+QUESTION 261 of 429
+TYPE: Hotspot
+QUESTION:
+You are composing a request to the Microsoft Dataverse Web API that updates existing account records in Dataverse and returns the resulting records in the response.
+
+You need to complete the request.
+
+Which value should you use for each property?
+
+OPTIONS / ANSWER AREA:
+Method:
+- GET
+- PATCH
+- POST
+
+Header:
+- If-None-Match: null
+- Prefer: return=representation
+- MSCRM.SuppressDuplicateDetection: false
+
+CORRECT ANSWER:
+- Method = PATCH
+- Header = Prefer: return=representation
+
+================================================================================
+
+
+QUESTION 265 of 429
+TYPE: Drag and drop
+QUESTION:
+Telephone numbers for a company must have their values formatted by using JavaScript on the OnChange event.
+
+You need to create the JavaScript function.
+
+Which three actions should you perform in sequence?
+
+AVAILABLE ACTIONS:
+- Use the getEventArgs method to get the column name.
+- Use the getEventSource method to get the column name.
+- Get the global context.
+- Get the execution context passed to the function.
+- Format and update the correct column.
+
+CORRECT ANSWER (SEQUENCE):
+1. Get the execution context passed to the function.
+2. Use the getEventSource method to get the column name.
+3. Format and update the correct column.
+
+================================================================================
+
+
+QUESTION 268 of 429
+TYPE: Drag and drop
+QUESTION:
+You are writing code to integrate a system with Dataverse by using the Web API.
+
+The code must perform the following operations:
+- Upsert to create and update records
+- Upsert only to create new records
+
+Which headers should you use?
+
+HEADERS:
+- If-Match: *
+- If-None-Match: *
+- If-None-Match: null
+
+CORRECT ANSWER:
+- Upsert to create and update records = If-None-Match: null
+- Upsert only to create new records = If-None-Match: *
+
+================================================================================
+
+
+QUESTION 270 of 429
+TYPE: Hotspot
+QUESTION:
+You work for a multinational company that has Azure and Microsoft Dataverse environments in the United States (UTC-7) and Japan (UTC+9).
+
+You create Azure Functions for each location to update key data.
+
+You need to configure the functions to run at 4:00 AM on weekdays at each location.
+
+Which timer schedule formats should you use?
+
+OPTIONS SEEN IN ANSWER AREA:
+- 0 0 4 * * 1-5
+- 0 0 7 * * 0-4
+- 0 0 11 * * 1-5
+- 0 0 19 * * 0-4
+
+CORRECT ANSWER:
+- United States = 0 0 11 * * 1-5
+- Japan = 0 0 19 * * 0-4
+
+================================================================================
+
+
+QUESTION 283 of 429
+TYPE: Multiple choice (multi-select)
+QUESTION:
+A company is developing multiple plug-ins.
+
+One of the plug-ins keeps failing.
+
+You need to debug the plug-in.
+
+Which three actions should you perform?
+
+OPTIONS:
+A. Highlight the plug-in step and select Debug in the Plug-in Registration tool.
+B. Copy the .pdb file into the server/bin/assembly folder.
+C. Select Start Profiling in the Plug-in Registration tool.
+D. Attach the debugger to the w3wp.exe process.
+E. Install the plug-in profiler.
+
+CORRECT ANSWER:
+A. Highlight the plug-in step and select Debug in the Plug-in Registration tool.
+D. Attach the debugger to the w3wp.exe process.
+E. Install the plug-in profiler.
+
+================================================================================
+
+
+QUESTION 292 of 429
+TYPE: Drag-drop
+QUESTION:
+You are creating a Web API.
+
+The API must be able to perform the following actions:
+- Create a column in a Microsoft Dataverse table.
+- Update a column for an existing row.
+
+Which HTTP methods should you use?
+
+OPTIONS:
+HTTP methods:
+- GET
+- POST
+- PATCH
+- ACCEPT
+
+CORRECT ANSWER:
+- Create a column. -> POST
+- Update a column for an existing row. -> PATCH
+
+================================================================================
+
+
+QUESTION 293 of 429
+TYPE: Hotspot (Yes/No)
+QUESTION:
+You have a plug-in that performs business logic on contact records. The plug-in is registered in the post-operation stage and is executed when a field named custom_field3 is updated.
+
+The plug-in contains the following code:
+- Retrieve contact columns lastname and custom_field1
+- Concatenate those values into custom_field2
+- Update the contact
+
+For each statement, select Yes if the statement is true. Otherwise, select No.
+
+STATEMENTS:
+1. You can improve code performance by using the following code instead of retrieving individual fields: new ColumnSet(true)
+2. You can avoid retrieving the changed entity by using plug-in images.
+3. You can avoid updating the changed entity by registering the plug-in in the pre-operation stage.
+
+CORRECT ANSWER:
+1. No
+2. Yes
+3. Yes
+
+================================================================================
+
+
+QUESTION 318 of 429
+TYPE: Hotspot
+QUESTION:
+You are implementing a Power Automate flow in a model-driven app. The flow will facilitate an approval process to increase customer credit limits.
+
+A user must be able to initiate the process from a customer record. The user must be prompted for the amount of the increase.
+
+Once the increase is approved, the customer record must update to reflect the new amount.
+
+You need to add a trigger to the flow and locate the ID of the record to update. The flow should be written to use the LEAST number of steps.
+
+How should you create the flow?
+
+OPTIONS:
+- Trigger type: When a Dataverse record is selected / Manually trigger a flow / When Power Apps calls a flow
+- Record ID to update: From the trigger / From a variable / From a list Dataverse rows step
+
+CORRECT ANSWER:
+- Trigger type -> Manually trigger a flow
+- Record ID to update -> From the trigger
+
+================================================================================
+
+
+QUESTION 319 of 429
+TYPE: Multiple choice
+QUESTION:
+You write a plug-in that creates a row in a custom table.
+
+Only some users have permission to create rows in the custom table.
+
+You need to allow the plug-in to run for all users by using the principle of least privilege.
+
+What should you do?
+
+OPTIONS:
+A. Initiate the IOrganizationService by passing the ID of a user with permissions to create rows in the custom table.
+B. Ensure all users have been granted the Environment Maker role.
+C. Set Run in the User's Context to Calling User in the plug-in step.
+D. Ensure all users have the Act on Behalf of Another User permission assigned to one of their security roles.
+
+CORRECT ANSWER:
+A. Initiate the IOrganizationService by passing the ID of a user with permissions to create rows in the custom table.
+
+================================================================================
+
+
+QUESTION 322 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+Users are directed to a form in a model-driven app through a special URL that
+passes values for three lookup columns.
+
+The form has three tabs: A (default), B, and C.
+
+JavaScript currently does the following:
+- OnLoad: a lookup column on each tab is used to retrieve data and populate
+  columns on that same tab.
+- OnSave: data validation calculates values on the form and the record must not be
+  saved if a value is outside the acceptable range.
+
+Users report that loading and saving the form takes too long when they create a
+new record.
+
+Which new event registrations should you create to shorten the load/save time
+without losing functionality?
+
+OPTIONS:
+OnLoad:
+A. TabStateChange events on tabs B and C
+B. TabStateChange events on tabs A, B, and C
+C. OnChange events for the lookup columns on tabs B and C
+D. OnChange events for the lookup columns on tabs A, B, and C
+
+OnSave:
+A. PostSave event for the form
+B. OnChange events for the columns involved in the calculations
+C. OnOutputChange events for the columns involved in the calculations
+
+CORRECT ANSWER:
+OnLoad -> A. TabStateChange events on tabs B and C
+OnSave -> B. OnChange events for the columns involved in the calculations
+
+================================================================================
+
+
+QUESTION 324 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A company is building a new model-driven app.
+
+The app must integrate with a number of on-premises and cloud solutions. No VPNs
+are in place.
+
+Which integration method should you use for each scenario?
+
+OPTIONS:
+Methods:
+- Webhook
+- Azure Event Hub
+- Azure Service Bus
+
+Requirements:
+1. Outbound synchronous calls to a third-party Web API service
+2. Calls to and from a website hosted in Azure with high peak loads
+3. Outbound calls to multiple on-premises and cloud systems to notify of customer
+   address changes
+
+CORRECT ANSWER:
+1. Webhook
+2. Azure Event Hub
+3. Azure Service Bus
+
+================================================================================
+
+
+QUESTION 326 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+You are designing a one-way integration from Microsoft Dataverse to another system.
+
+Requirements:
+- Use an Azure Function to update the other system.
+- Send only newly created records.
+- Support scenarios where a component of the integration is unavailable for more
+  than a few seconds without data loss.
+
+Proposed solution:
+Register a service endpoint in Dataverse that connects to an Azure Service Bus
+queue. Create and register an Azure-aware plug-in that uses the service endpoint.
+Register a step on the plug-in that runs asynchronously on the record's Create
+message in the post-operation stage. Configure the Azure Function to process
+records as they are added to the queue.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+A. Yes
+
+================================================================================
+
+
+QUESTION 331 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+You are designing a one-way integration from Microsoft Dataverse to another system.
+
+Requirements:
+- Use an Azure Function to update the other system.
+- Send only newly created records.
+- Support scenarios where a component of the integration is unavailable for more
+  than a few seconds without data loss.
+
+Proposed solution:
+Register a service endpoint in Dataverse that connects to an Azure Service Bus
+queue. Create and register an Azure-aware plug-in that uses the service endpoint.
+Register a step on the plug-in that runs asynchronously on the record's Create
+message in the post-operation stage. Configure the Azure Function to process
+records as they are added to the queue.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+A. Yes
+
+================================================================================
+
+
+QUESTION 340 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You need to package and deploy a Power Apps code component to an environment.
+
+Which commands should you use? To answer, select the appropriate options in the
+answer area.
+
+OPTIONS:
+Commands:
+- pac solution init --publisher-name Contoso --publisher-prefix cto
+- pac auth create --url https://contoso.crm.dynamics.com
+- pac pcf push --publisher-prefix
+- pac solution add-reference --path c:\downloads\mysamplecomponent
+
+Actions:
+- Package
+- Connect
+- Deploy
+
+CORRECT ANSWER:
+Package -> pac solution init --publisher-name Contoso --publisher-prefix cto
+Connect -> pac auth create --url https://contoso.crm.dynamics.com
+Deploy -> pac pcf push --publisher-prefix
+
+
+QUESTION 342 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a Power Platform solution. The solution connects to a third-party accounting system by using a Web API through a Power Apps app that automatically exchanges contacts with sales data.
+
+You have the following code (line numbers are included for reference only):
+
+01 GET https://contoso.crm.dynamics.com/api/data/v9.1/contacts?$select=name,accountnumber,telephone1 &$top=5 HTTP/1.1
+02
+03 OData-Version: 4.0
+04 OData-MaxVersion: 4.0
+05 Content-Type: application/json
+
+You need to ensure that the code only synchronizes data that was not previously synchronized.
+
+Which code segment should you insert at line 02?
+
+OPTIONS:
+A. Prefer: odata.track-changes
+B. Prefer: odata.allow-entityreferences
+C. Prefer: odata.include-annotations
+
+CORRECT ANSWER:
+A. Prefer: odata.track-changes
+
+
+================================================================================
+
+
+QUESTION 349 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+A company requires custom validation when users save form records that use a synchronous plug-in.
+
+If validation fails, a message that explains how to resolve the issue must be displayed on the form to the user.
+
+You need to implement the custom validation.
+
+Solution: Throw an InvalidPluginExecutionException with the message.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+A. Yes
+
+
+================================================================================
+
+
+QUESTION 367 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+A company creates a custom connector for its cloud-based ERP system.
+
+The company requires an authentication method that can be consumed by the custom connector.
+
+Which authentication method should you use?
+
+OPTIONS:
+A. two-factor authentication
+B. Windows Active Directory authentication
+C. biometric authentication
+D. generic OAuth authentication
+
+CORRECT ANSWER:
+D. generic OAuth authentication
+
+
+================================================================================
+
+
+QUESTION 368 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+A company plans to implement an integration between Microsoft Dataverse and Azure Service Bus.
+
+When an Account row is updated, if the Credit Limit is set to over $25,000, information about the row must post to an Azure Service Bus queue. The previous Credit Limit value must also be included.
+
+You use the Microsoft Power Platform CLI to create the plug-in package.
+
+Which interface should you implement next?
+
+OPTIONS:
+A. IServiceEndpointNotificationService
+B. IPluginExecutionContext
+C. IWebHttpServiceEndpointPlugin
+D. IServiceEndpointPlugin
+
+CORRECT ANSWER:
+B. IPluginExecutionContext
+
+
+================================================================================
+
+
+QUESTION 369 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You are implementing data integration that involves Dataverse. You have a table named Table1 that has the following two custom columns: ColumnA and ColumnB.
+
+You need to integrate the data to meet the following requirements:
+- The integration must create or update a single record based on the Dataverse unique identifier value.
+- The integration must create or update a single record based on the value within the two custom columns.
+- Uniqueness must be enforced in the two custom columns.
+- An automation must be able to retrieve records by referencing the two custom column values.
+- The use of custom code must be minimized.
+
+OPTIONS:
+Alternate key
+Plug-in
+UpsertRequest
+Workflow extension
+
+CORRECT ANSWERS / MAPPING:
+- Create or update a record by using the primary value. -> UpsertRequest
+- Create or update a record by using custom columns. -> UpsertRequest
+- Enforce uniqueness by using custom columns. -> Alternate key
+- Retrieve records by using custom column values. -> Plug-in
+
+
+================================================================================
+
+
+QUESTION 372 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You create a new canvas app.
+
+You update a test case and must test the app in a separate browser.
+
+You need to test the app by using Test Studio.
+
+Which four actions should you perform in sequence?
+
+OPTIONS:
+- Select a test suite
+- Publish the test
+- Select the OnTestSuiteComplete action
+- Select Copy play link
+- Open a browser and paste the URL for the app into the address bar
+- Send the results from the test to a flow in Power Automate
+
+CORRECT ORDER:
+1. Select a test suite
+2. Select Copy play link
+3. Publish the test
+4. Open a browser and paste the URL for the app into the address bar
+
+
+================================================================================
+
+
+QUESTION 376 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+A company uses Microsoft Dataverse rollup fields to calculate insurance exposure and risk profiles for customers.
+
+Users report that the system does not update values for the rollup fields when new insurance policies are written.
+
+You need to recalculate the value of the rollup fields immediately after a policy is created.
+
+What should you do?
+
+OPTIONS:
+A. Create new calculated fields on the customer entity for insurance exposure and risk. Create a formula to calculate the sum of values from policy records.
+B. Change the frequency of the Calculate Rollup Field recurring job from every hour to every five minutes.
+C. Create a plug-in that uses the update method for the rollup fields. Configure a step on the Create event for the policy entity for this plug-in.
+D. Create a plug-in that uses the CalculateRollupFieldRequest method for the rollup field. Configure a step on the Create event for the policy entity for this plug-in.
+
+CORRECT ANSWER:
+D. Create a plug-in that uses the CalculateRollupFieldRequest method for the rollup field. Configure a step on the Create event for the policy entity for this plug-in.
+
+
+================================================================================
+
+
+QUESTION 378 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You are creating a model-driven app for a company. Sales team members will use the app to manage leads. The app will interact with the Microsoft Dataverse Leads table.
+
+You must configure the app to meet the following requirements:
+1. If the estimated value for a lead is greater than $10,000, the app must:
+   - Send an email to a manager.
+   - Display a field named Sponsor on the lead form.
+2. If the estimated value for a lead is greater than $100,000, the app must:
+   - Send an email to the company's vice president.
+   - Display the following message as a notification while the lead record is open: "High value customer, handle with care."
+
+You need to configure the app. The solution must minimize the use of code.
+
+OPTIONS:
+Business rule
+Power Automate flow
+Onload script
+
+CORRECT ANSWERS / MAPPING:
+- Send required emails -> Power Automate flow
+- Display the Sponsor field -> Business rule
+- Display the notification -> Onload script
+
+
+================================================================================
+
+
+QUESTION 382 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You are creating a plug-in for a Power Apps app for the human resources department.
+The app will be used to process new employees and help employees apply for an identification card.
+
+Requirements:
+- Applications must not be marked as complete if the employee has not completed mandatory drug screening.
+- Add logic that stores the name of the human resources team member that approves an application. This step must be completed before an ID card is created for the applicant.
+- Successful validation and ID card printing.
+
+You need to configure the event pipeline.
+
+Available stages:
+- PreValidation
+- PreOperation
+- PostOperation
+
+Requirements to map:
+1. Mandatory drug screening is completed
+2. The application is reviewed and approved
+3. The ID card is printed
+
+CORRECT ANSWER:
+1. Mandatory drug screening is completed -> PreValidation
+2. The application is reviewed and approved -> PreOperation
+3. The ID card is printed -> PostOperation
+
+================================================================================
+
+
+QUESTION 384 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You need to select connectors for the app.
+
+Available connectors:
+- Create a custom connector.
+- Use an AppSource connector.
+- Use a native application function.
+- Create a connector with a Postman collection.
+
+Requirements:
+1. View full registration records
+2. View customer names
+3. View daily registrations
+
+CORRECT ANSWER:
+1. View full registration records -> Create a custom connector.
+2. View customer names -> Use an AppSource connector.
+3. View daily registrations -> Use a native application function.
+
+================================================================================
+
+
+QUESTION 387 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You need to select a process to create each function.
+
+Available processes:
+- Power Automate
+- Business rule
+- Business process flow
+
+Functions:
+1. Create a Slack notification from a lead.
+2. Change the priority field.
+3. Ensure appropriate information is added to leads.
+
+CORRECT ANSWER:
+1. Create a Slack notification from a lead. -> Power Automate
+2. Change the priority field. -> Business rule
+3. Ensure appropriate information is added to leads. -> Business process flow
+
+================================================================================
+
+
+QUESTION 393 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You need to address the user interface issues.
+
+Available actions:
+- Add &ribbondebug=true to the end of the application URL.
+- Export the XML file.
+- Modify the RibbonWSS.xsd file.
+- Use Ribbon Workbench.
+
+Requirements:
+1. Resolve rendering issue for New and Save buttons.
+2. Add email button for registration form.
+
+CORRECT ANSWER:
+1. Resolve rendering issue for New and Save buttons. -> Add &ribbondebug=true to the end of the application URL.
+2. Add email button for registration form. -> Use Ribbon Workbench.
+
+================================================================================
+
+
+QUESTION 397 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to correct the portal query issues.
+
+Select the appropriate code change for each portal issue.
+
+Portal issues:
+1. New registrations
+2. All registered users
+
+Choices for New registrations:
+A. GET [Organization URI]/api/data/v9.1/accounts?$select=name, sport
+B. GET [Organization URI]/api/data/v9.1/accounts?$apply=name, sport
+C. GET [Organization URI]/api/data/v9.1/accounts?$filter=name, sport
+
+Choices for All registered users:
+A. $apply=groupby(sport ne null)
+B. $filter = name, sport
+C. $orderby = name, sport
+
+CORRECT ANSWER:
+1. New registrations -> GET [Organization URI]/api/data/v9.1/accounts?$select=name, sport
+2. All registered users -> $apply=groupby(sport ne null)
+
+================================================================================
+
+
+QUESTION 399 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to reduce the number of Azure consumption API calls for User2.
+
+Which markup segment should you use?
+
+A.
+<policies>
+  <inbound>
+    <base />
+    <rate-limit-by-key calls="100"
+      renewal-period="30"
+      increment-condition="@(context.Response.StatusCode == 200)"
+      counter-key="@(context.Request.IpAddress)"/>
+  </inbound>
+  <outbound>
+    <base />
+  </outbound>
+</policies>
+
+B.
+<policies>
+  <inbound>
+    <base />
+    <rate-limit calls="1000" renewal-period="90" />
+  </inbound>
+  <outbound>
+    <base />
+  </outbound>
+</policies>
+
+C.
+<policies>
+  <inbound>
+    <base />
+    <rate-limit-by-key calls="1"
+      renewal-period="60"
+      increment-condition="@(context.Response.StatusCode == 200)"
+      counter-key="@(context.Request.IpAddress)"/>
+  </inbound>
+  <outbound>
+    <base />
+  </outbound>
+</policies>
+
+D.
+<policies>
+  <inbound>
+    <base />
+    <quota calls="100" bandwidth="400" renewal-period="30" />
+  </inbound>
+  <outbound>
+    <base />
+  </outbound>
+</policies>
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 403 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You need to replace the bicycle inspection forms.
+
+Which two solutions should you use? Each answer presents part of the solution.
+
+A. a flow that maps inspection data to Dynamics 365 Field Service
+B. a logic app that guides the technician through the inspection
+C. a canvas app that guides the technician through the inspection
+D. a model-driven app based on customer service entities
+
+CORRECT ANSWER: A, C
+
+================================================================================

@@ -1,0 +1,2113 @@
+PL-400 NON-CASE QUESTIONS - Expert
+
+Editorial note:
+This file was built from the uploaded non-test-case TXT files.
+Difficulty is estimated heuristically based on technical complexity, question structure,
+and implementation depth. It is not an official Microsoft difficulty rating.
+
+Question count: 77
+Estimated difficulty score range: 5.29 to 8.36
+Included question numbers: 2, 3, 4, 6, 14, 18, 32, 39, 45, 52, 66, 100, 102, 118, 125, 126, 152, 153, 168, 173, 177, 181, 185, 191, 194, 196, 214, 217, 221, 222, 227, 233, 234, 240, 242, 255, 257, 262, 263, 269, 271, 277, 281, 282, 284, 287, 288, 289, 294, 295, 297, 305, 312, 316, 320, 328, 338, 341, 343, 345, 358, 360, 361, 364, 371, 379, 383, 386, 390, 392, 404, 406, 407, 408, 411, 413, 417
+
+==========================================================================================
+
+QUESTION 2 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You work for a staffing company that helps employees fill temporary jobs. Available temporary jobs are categorized and listed on a secure area of the company website.
+
+The company wants to eliminate manual work related to job and candidate management. The company plans to invite employers with available jobs and job candidates to view jobs by sending personalized invitations.
+
+Requirements:
+- Human resources team members from the staffing company must be able to access the jobs listing and post available positions.
+- Employers seeking temporary employees must also be able to access the jobs listing and post available positions.
+- Approved job candidates must be notified about new positions for which they are qualified.
+- Approved job candidates must have an option to accept a job assignment directly from the invitation.
+
+Which features should you implement?
+
+1. Create the job listings portal
+Options:
+A. Custom self-service portal for employers and a custom page for job candidates
+B. Custom self-service portal for both employers and job candidates
+C. Portal for job candidates and a custom self-service portal for employers
+D. Portal from blank for job candidates and employers
+
+2. Create an app that lists available positions
+Options:
+A. Canvas app with push notifications
+B. Model-driven app with push notifications
+C. Portal app with push notifications
+
+3. Create the app for employers who are seeking temporary employees
+Options:
+A. Entity form defined on the job custom entity
+B. Webform with target set to the job custom entity
+C. Web page defined on the job custom entity
+D. Web step with target set to the job custom entity
+
+4. Create invitation parameters for job candidates
+Options:
+A. Configure a value for the Assigned to Account option only
+B. Configure a value for the Execute Workflow on Redeeming Contact option only
+C. Configure values for Assigned to Account and Execute Workflow on Redeeming Contact
+D. Leave both Assigned to Account and Execute Workflow on Redeeming Contact empty
+
+5. Create invitation parameters for approved job candidates
+Options:
+A. Configure a value for the Assigned to Account option only
+B. Configure a value for the Execute Workflow on Redeeming Contact option only
+C. Configure values for Assigned to Account and Execute Workflow on Redeeming Contact
+D. Leave both Assigned to Account and Execute Workflow on Redeeming Contact empty
+
+CORRECT ANSWER:
+1 -> B. Custom self-service portal for both employers and job candidates
+2 -> B. Model-driven app with push notifications
+3 -> B. Webform with target set to the job custom entity
+4 -> B. Configure a value for the Execute Workflow on Redeeming Contact option only
+5 -> A. Configure a value for the Assigned to Account option only
+
+================================================================================
+
+
+QUESTION 3 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You create a suite of Power Platform-based order management canvas apps for a bakery that has five retail stores. Staff must prepare the order and then use the app to notify the customer when the order is ready.
+
+When an order is ready for delivery or shipment, staff must be able to use Bing Maps to calculate the distance from the retail store to the delivery address.
+
+You must support the amount of custom code and configuration required to implement the solution.
+
+Which implementation options should you use?
+
+1. Determine which store is closest to the order destination
+Options:
+A. Power Automate flow
+B. Plug-in
+C. Logic app
+
+2. Estimate the time required to prepare an order and notify the customer
+Options:
+A. New canvas app
+B. New screen in an existing order canvas app
+C. New logic app
+
+3. Send the newsletter by email to customers
+Options:
+A. Power Automate flow triggered manually
+B. Power Automate UI flow triggered from an email button
+
+CORRECT ANSWER:
+1 -> A. Power Automate flow
+2 -> B. New screen in an existing order canvas app
+3 -> B. Power Automate UI flow triggered from an email button
+
+================================================================================
+
+
+QUESTION 4 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+A company has an application that provides API access. You plan to connect to the API from a canvas app by using a custom connector.
+
+You need to request information from the API developers so that you can create the custom connector.
+
+Which two types of files can you use? Each correct answer presents a complete solution.
+
+A. YAML
+B. WSDL
+C. OpenAPI definition
+D. Postman collection
+
+CORRECT ANSWER: C, D
+
+================================================================================
+
+
+QUESTION 6 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+A client is deploying Dynamics 365 Finance without any third-party add-ons.
+
+You need to select the appropriate solutions for the client.
+
+1. Warehouse employees can use mobile devices to scan barcodes by using Dynamics 365 Finance
+Options:
+A. Out-of-the-box
+B. Logic apps
+C. Power Automate
+D. Common Data Service
+
+2. The location of field technicians can be communicated with a text message from Dynamics 365 Field Service
+Options:
+A. Common Data Service
+B. Workflow
+C. Power Automate
+
+CORRECT ANSWER:
+1 -> A. Out-of-the-box
+2 -> C. Power Automate
+
+================================================================================
+
+
+QUESTION 14 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You are building a custom application in Azure to process resumes for the HR department.
+
+The app will monitor submissions of resumes and parse the resumes.
+
+You need to parse the resumes and save contact and skill information into the Common Data Service.
+
+Which mechanism should you use?
+
+A. Power Automate
+B. Common Data Service plug-in
+C. Web API
+D. Custom workflow activity
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 18 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You are creating a canvas app to retrieve user sign-in information from Microsoft Azure Active Directory (Azure AD) when someone searches for information about an end user.
+
+You create an Azure Function to retrieve the required information by using JSON.
+
+You need to ensure that the application functions correctly.
+
+Which two actions should you perform? Each correct answer presents part of the solution.
+
+A. Create a Power Automate flow to import data.
+B. Create a custom connector by using the Azure Function API.
+C. Use app designer in the Power Platform admin center.
+D. Use Azure Service Bus.
+E. Create an API definition for the Azure Function.
+
+CORRECT ANSWER: B, E
+
+================================================================================
+
+
+QUESTION 32 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+A company is developing a Microsoft Dataverse plug-in.
+
+The plug-in must create a follow-up task for a new account.
+
+You add the code that receives context (IPluginExecutionContext) and service (IOrganizationService).
+
+You need to create the remaining code to insert the follow-up task.
+
+Available code blocks:
+
+A.
+Entity followuptask = new Entity("task");
+followuptask["subject"] = "Send e-mail to the new customer";
+followuptask["regardingobjectid"] = account;
+
+B.
+Entity followuptask = new Entity("task");
+followuptask["subject"] = "Send e-mail to the new customer";
+followuptask["regardingobjectid"] = account.ToEntityReference();
+
+C.
+Entity account = (Entity)context.InputParameters["Target"];
+
+D.
+service.Create(followuptask);
+
+E.
+Entity account = (Entity)context.PreEntityImages["Target"];
+
+F.
+service.Update(followuptask);
+
+Arrange the correct three code blocks in sequence.
+
+CORRECT ANSWER:
+1. C. Entity account = (Entity)context.InputParameters["Target"];
+2. B. Create followuptask and set regardingobjectid = account.ToEntityReference();
+3. D. service.Create(followuptask);
+
+================================================================================
+
+
+QUESTION 39 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+A company is implementing business logic in a model-driven app. Employees import records from Microsoft Excel to create lead records.
+
+The company has the following requirements:
+- An existing phone number column must be formatted to only display numbers and periods.
+- Three existing columns must be calculated to display the sum based on a percentage.
+- The solution must not use custom development when possible.
+
+You need to implement the business logic solution.
+
+Available solutions:
+A. Business rule
+B. Formula column
+C. Plug-in
+
+Match each requirement to the correct solution.
+
+CORRECT ANSWER:
+- Phone number formatting -> Business rule
+- Percentage calculation -> Formula column
+
+================================================================================
+
+
+QUESTION 45 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You are implementing security features for a Dataverse plug-in that you created. The plug-in creates a Note whenever a user updates an Account row in Dataverse.
+
+The plug-in has the following security requirements:
+- Users must have edit-only restrictions for existing accounts that are not their own.
+- The plug-in must always trigger successfully.
+- All necessary privileges must be assigned to users within an existing Microsoft Teams site.
+- The principle of least privilege must always be followed.
+
+You need to implement the security features.
+
+Match each requirement to the correct feature.
+
+Available choices include:
+- Security role / Business unit / Microsoft Entra ID role / Field security profile
+- User Create / User Update / Business Unit Create / Business Unit Update
+- User Append / User Append To / Business Unit Append / Business Unit Append To
+- Access / Owner / Microsoft Entra ID Office Group / Microsoft Entra ID Security Group
+
+CORRECT ANSWER:
+- Privilege provided to edit accounts -> Security role
+- Access level for the Account table -> User Update
+- Access level for the Notes table -> User Append To
+- Team type to assign privileges to -> Microsoft Entra ID Security Group
+
+================================================================================
+
+
+QUESTION 52 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+An organization uses Common Data Service.
+
+The organization's IT helpdesk requires a single-page web application to monitor and manage Data Export Service. The app must access Data Export Service securely. The app must also permit helpdesk users to perform a limited set of functions.
+
+You need to create a single-page app.
+
+Match each requirement to the correct option.
+
+Requirements:
+1. Connect to the app securely
+2. Monitor the status of data replication
+3. Enable an entity for replication
+4. Start or stop data replication
+5. View information on records that fail to sync
+
+Available options shown in the answer area include:
+- Use the sign-in credentials for Azure SQL Server
+- Use the Environment Maker security role
+- Register the app in Azure Active Directory
+- Use FetchXML queries
+- Use Profile operations
+- Use Metadata operations
+- Use T-SQL queries
+- Define an alternate key
+- Enable Auditing
+- Enable Change Tracking
+- Set the data provider
+- /crm/exporter/metadata/entities
+- /crm/exporter/profiles/validate
+- /crm/exporter/profiles/{id}/test
+- /crm/exporter/profiles/{id}/activatedata
+- Use Azure Storage Explorer
+
+CORRECT ANSWER:
+- Connect to the app securely -> Register the app in Azure Active Directory
+- Monitor the status of data replication -> Use FetchXML queries
+- Enable an entity for replication -> Enable Change Tracking
+- Start or stop data replication -> /crm/exporter/profiles/{id}/activatedata
+- View information on records that fail to sync -> Use Profile operations
+
+
+QUESTION 66 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+A company uses Common Data Service (CDS) and manages their engineers using a model-driven app.
+
+You create a reusable custom component named Component1 by using the Power Apps component framework (PCF).
+
+You need to package Component1 for deployment into the model-driven app.
+
+Available commands:
+A. pac solution init --publisher-name <publisher> --publisher-prefix <prefix>
+B. pac solution add-reference --path <control path>
+C. msbuild /t:build /restore
+D. npm run build
+E. npm start
+F. pac pcf init -namespace <namespace> -name <controlname> -template field
+G. npm install
+
+Arrange the commands in the correct order.
+
+CORRECT ANSWER:
+1. pac solution init --publisher-name <publisher> --publisher-prefix <prefix>
+2. pac solution add-reference --path <control path>
+3. msbuild /t:build /restore
+
+================================================================================
+
+
+QUESTION 100 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company develops a new custom connector for a Microsoft Entra ID-protected Azure Function that was created as a single tenant app.
+
+The custom connector must be moved to a production environment. The connector must be visible and accessible only to users in the tenant.
+
+You need to deploy the custom connector.
+
+Solution: Add the custom connector to a managed solution, export the managed solution, and then import the managed solution into the production environment.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 102 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company develops a new custom connector for a Microsoft Entra ID-protected Azure Function that was created as a single tenant app.
+
+The custom connector must be moved to a production environment. The connector must be visible and accessible only to users in the tenant.
+
+You need to deploy the custom connector.
+
+Solution: Use the maker portal to export the custom connector. Then use the maker portal to import the connector into the production environment.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 118 of 429
+TYPE: Multiple choice (choose three)
+--------------------------------------------------------------------------------
+Question:
+You are building an integration by using Dataverse.
+
+As part of a single request, the integration must create a new row if it does not already exist or update the existing row by using supported mechanisms.
+
+You need to validate which Dataverse features can implement the requirement.
+
+Which three Dataverse features can you use? Each correct answer presents a complete solution.
+
+Options:
+A. Client-side script
+B. Cloud flow
+C. Business rule
+D. Plug-in
+E. PCF control
+
+Correct answer:
+A, B, E
+
+================================================================================
+
+
+QUESTION 125 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+Technicians for a company use a model-driven app on their phones to record information about service visits. Users do not have permissions to the Power Apps maker portal to create or update apps.
+
+Technicians report issues with the model-driven app. You are unable to reproduce the issues in a development environment.
+
+You need to provide instructions to the technicians to gather more details about the errors.
+
+Which four actions should be performed in sequence?
+
+ACTIONS:
+- Perform the steps to generate the errors and download the results from Monitor.
+- Open the app in a browser on the phone.
+- Open the application in a browser on a laptop computer when they return to the office.
+- Perform the steps to generate the errors while you monitor the technician's monitor debug session.
+- Add the following text to the end of the URL for the app: "monitor=true"
+- Open the app on a phone by using Power Apps mobile.
+
+CORRECT ANSWER (SEQUENCE):
+1. Open the application in a browser on a laptop computer when they return to the office.
+2. Add the following text to the end of the URL for the app: "monitor=true"
+3. Open the app on a phone by using Power Apps mobile.
+4. Perform the steps to generate the errors while you monitor the technician's monitor debug session.
+
+================================================================================
+
+
+QUESTION 126 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You deploy a Power Platform plug-in to a production environment. The plug-in code contains detailed tracing information.
+
+You are a member of the Environment Maker security role for the environment.
+
+Users report unexpected results when they interact with confidential data by using the plug-in. You confirm that the plug-in works without errors in a development environment.
+
+You need to investigate the root cause of the plug-in errors.
+
+What should you do?
+
+OPTIONS:
+A. Send a PUT request to enable plug-in tracing for the production environment.
+B. Send a GET request to retrieve the plugintracelogs records.
+C. Install Plug-in Profiler in the production environment by using the Plug-in Registration tool.
+D. Reproduce and capture the errors, then debug from Visual Studio.
+
+CORRECT ANSWER:
+C. Install Plug-in Profiler in the production environment by using the Plug-in Registration tool.
+
+================================================================================
+
+
+QUESTION 152 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating an app that connects to Microsoft Dataverse on a nightly basis. You plan to integrate the app with an external system.
+
+The application must not authenticate by using a Microsoft Azure Active Directory (Azure AD) user account.
+
+You need to enable the application to authenticate to Dataverse.
+
+Which actions should you perform in sequence?
+
+ACTIONS:
+- Use the Azure AD application id and secret as credentials in the application.
+- Use Dataverse application user username and password as credentials in the application.
+- Assign a security role to the application user in Dataverse.
+- Register the application in Azure AD with appropriate permissions.
+- Create the application user in Dataverse using the Application User form.
+- Grant the Dataverse application user the Access Dynamics 365 as organization users permission in Azure AD.
+
+CORRECT ANSWER (SEQUENCE):
+1. Register the application in Azure AD with appropriate permissions.
+2. Create the application user in Dataverse using the Application User form.
+3. Assign a security role to the application user in Dataverse.
+4. Use the Azure AD application id and secret as credentials in the application.
+
+================================================================================
+
+
+QUESTION 153 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a Power Apps Component Framework (PCF) control.
+
+You test the control by using a local test harness.
+
+You need to complete testing.
+
+Which commands should you use?
+
+COMMANDS:
+- `start npm start`
+- `npm start`
+- `npm start watch`
+- `npm update`
+
+FUNCTIONS:
+1. Launch a second `npm start` window while tests run in the first window.
+2. Detect changes in `index.ts`, `ControlManifest.Input.xml`, and other bundled `.ts` files during testing without having to restart the test harness.
+
+CORRECT ANSWER:
+1. `start npm start`
+2. `npm start watch`
+
+================================================================================
+
+
+QUESTION 168 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+A company plans to deploy an Azure Function that connects to Dataverse on a defined schedule to bulk-update Account data.
+
+Corporate policy discourages password-based authentication if other viable options exist.
+
+You need to implement the function app.
+
+Which three actions should you perform in sequence?
+
+AVAILABLE ACTIONS (visible in source):
+- Run pac admin application register.
+- Create a Microsoft Entra ID user named IntegrationAccount.
+- Set IntegrationAccount access mode to Non-interactive.
+- Enable system-assigned managed identity.
+- Run pac admin assign-user.
+- Set IntegrationAccount access mode to Administrative.
+- Create the Azure Functions app.
+
+CORRECT ANSWER:
+1. Create a Microsoft Entra ID user named IntegrationAccount.
+2. Set IntegrationAccount access mode to Non-interactive.
+3. Run pac admin assign-user.
+
+================================================================================
+
+
+QUESTION 173 of 429
+TYPE: Series / Yes-No
+--------------------------------------------------------------------------------
+QUESTION:
+You have two tables, account and contact, with a parent-child relationship. Records in the account table can be created in the UI or from an external system integrated with Dataverse by using an Azure Function.
+
+When a user creates a record in the account table, a default record in the contact table must be created automatically.
+
+You need to implement a process to create the contact records.
+
+Solution: Create a custom API bound to the account table that uses a plug-in. Use the Organization service to create the contact record.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+================================================================================
+
+
+QUESTION 177 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A model-driven app form has JavaScript that runs during the OnLoad event. The event retrieves an account record and changes visibility of a form column based on one of the record columns.
+
+The following portion of code retrieves the account record:
+`Xrm.WebApi.retrieveRecord("account", accountId)`
+
+Users report that the form load is slow.
+
+You need to improve the performance of the code that retrieves the account and changes visibility.
+
+What should you do?
+
+OPTIONS:
+A. Use a synchronous XMLHttpRequest instead.
+B. Add the code to change visibility to the success callback.
+C. Enable the Async OnLoad app setting.
+D. Set the options parameter to return only the column required.
+E. Store the returned data in a global variable.
+
+CORRECT ANSWER:
+C. Enable the Async OnLoad app setting.
+
+================================================================================
+
+
+QUESTION 181 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A university manages grant applications using a model-driven app.
+
+Users report that the message on the Grant Application screen is outdated.
+
+Based on the graphic, identify:
+1. Which Power Platform capability the app uses to display the message.
+2. What the app maker should update to prevent the message from displaying.
+
+AVAILABLE VALUES:
+Capability:
+- Business rule
+- Logic app
+- Flow
+- Plug-in
+
+Action:
+- Update the field calculation
+- Update the rollup field
+- Update the automated flow
+- Update the business rule
+
+CORRECT ANSWER:
+1. Capability -> Business rule
+2. Action -> Update the business rule
+
+================================================================================
+
+
+QUESTION 185 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating technical designs for several complex business processes.
+
+You need to implement custom business logic based on the requirements.
+
+Which implementation methods should you use?
+
+IMPLEMENTATION METHODS:
+- Business rule
+- JavaScript code
+- Power Automate flow
+- Plug-in
+
+REQUIREMENTS:
+1. Access current and new values when data is updated.
+2. Run on a schedule.
+
+CORRECT ANSWER:
+1. Access current and new values when data is updated. -> Plug-in
+2. Run on a schedule. -> Power Automate flow
+
+================================================================================
+
+
+QUESTION 191 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+An organization has a Dynamics 365 Sales environment. In the development environment, you create a business rule named BusinessRule1 on the Account entity. You deploy BusinessRule1 to production as part of a managed solution.
+
+You need to remove BusinessRule1 from the production environment.
+
+Which three actions should you perform in sequence?
+
+AVAILABLE ACTIONS:
+- In the development environment, navigate to Solutions.
+- Create a new managed solution in the production environment.
+- Export the solution as managed and import it in the production environment.
+- In the production environment, add a new business rule.
+- Select the solution that has BusinessRule1 and deactivate the rule.
+- Select the solution that has BusinessRule1, navigate to the appropriate entry, and delete the rule.
+
+CORRECT ANSWER:
+1. In the development environment, navigate to Solutions.
+2. Select the solution that has BusinessRule1, navigate to the appropriate entry, and delete the rule.
+3. Export the solution as managed and import it in the production environment.
+
+================================================================================
+
+
+QUESTION 194 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A company is creating a new system based on Dynamics 365 Sales.
+
+The company has the following requirements for the claim process:
+- Approval process must be the same for all claim applications.
+- Claim applications must go through approvers at each stage.
+- Fields must be shown or hidden based on the requirements in the approval process.
+
+You need to design the data model for the claim process using out-of-the-box components whenever possible.
+
+Which features should you implement?
+
+AVAILABLE FEATURES:
+For requirement 1:
+- Workflow
+- Business process flow
+- Plug-ins
+- Custom workflow
+
+For requirement 2:
+- Power Automate flow
+- Business process flow
+- Actions
+
+For requirement 3:
+- Business rules
+- JavaScript
+
+CORRECT ANSWER:
+1. Claim applications must go through the same approval process. -> Business process flow
+2. Claim applications be routed to approvers at each stage. -> Power Automate flow
+3. Claim applications must show or hide fields based on the values. -> Business rules
+
+================================================================================
+
+
+QUESTION 196 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+QUESTION:
+You create a form in a model-driven app that uses data from the Lead table in a Microsoft Dataverse instance. You add a business rule to the Lead table. The business rule displays an error if the email address is null. The scope for the business rule is All Forms.
+
+You configure a Power Apps portal by using the same Microsoft Dataverse instance. You create a web page by using the Lead form.
+
+You need to ensure the same logic is applied on the Power Apps portal page.
+
+What are two possible ways to achieve the goal? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. Deactivate the business rule. Change the scope for the rule to Table and then reactivate the rule.
+B. Replace the business rule logic with a Microsoft Power Automate cloud flow by using the Dataverse When a row is added, modified or deleted trigger.
+C. Extend the webFormClientValidate JavaScript function to replace the business rule logic. Edit the code in Power Apps Studio. Add the function in a <script> block.
+D. Create a JavaScript web resource and replace the business rule with a JavaScript function. Add an OnSave event handler to the Lead form.
+
+CORRECT ANSWER:
+A, C
+
+================================================================================
+
+
+QUESTION 214 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A multinational company requires all phone numbers to be standardized as country code + area code + phone number.
+
+The application design team decides that a custom Power Apps component framework (PCF) control should be used to prompt users for an area code and to correctly format the phone number.
+
+You need to get the list of valid area codes when a contact record is opened and before the user enters a new phone number.
+
+In which function should you call webAPI.retrieveMultipleRecords?
+
+OPTIONS:
+A. updateView
+B. notifyOutputChanged
+C. getOutputs
+
+CORRECT ANSWER:
+A. updateView
+
+================================================================================
+
+
+QUESTION 217 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You develop JavaScript for a web resource in a model-driven app.
+
+For each statement, determine whether it is true.
+
+STATEMENTS:
+1. The code uses the following exception: Invalid XML in HTTP and HTTPS resources asynchronously (net::ERR_XML).
+2. The code uses the following exception: Use strict equality operators === and !== (eqeqeq).
+3. The code raises the following exception: Avoid including debug script in non-development environments (best-remove-debug-script).
+
+CORRECT ANSWER:
+1. Yes
+2. Yes
+3. No
+
+================================================================================
+
+
+QUESTION 221 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A company has a model-driven app.
+
+A custom button on a form calls a JavaScript function that validates form data fields and creates a web basket.
+
+The JavaScript function then displays a message to the user.
+
+Users are located in the United States, which uses ISO Code 1033, and France, which uses ISO Code 1036.
+Users in France report that the message displays in English.
+
+You need to modify the RibbonDiffXml file to ensure that messages appear in the user's language.
+
+How should you complete the CommandDefinition node?
+
+AVAILABLE VALUES:
+For the parameter type:
+- CrmParameter
+- IntParameter
+- StringParameter
+
+For the value:
+- 1033
+- 1036
+- OrgLcid
+- UserLcid
+
+CORRECT ANSWER:
+- Parameter type -> CrmParameter
+- Value -> UserLcid
+
+================================================================================
+
+
+QUESTION 222 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A company has a model-driven app that captures applications from prospective students.
+
+You are asked to create a new reusable custom component by using the Power Apps component framework (PCF).
+
+The custom component must allow entry of a date of birth and validate that the applicant is not a minor.
+
+You create the class AdultDatePicker in the TypeScript file Index.ts and the style sheet DatePicker.css.
+
+You need to define the component to be available only for relevant fields and its properties when used in a form.
+
+How should you complete the manifest?
+
+AVAILABLE VALUES:
+For constructor:
+- Index.ts
+- DatePicker.css
+- AdultDatePicker
+
+For of-type:
+- Enum
+- DateandTime.DateAndTime
+- DateandTime.DateOnly
+
+For usage:
+- bound
+- input
+
+CORRECT ANSWER:
+- constructor -> AdultDatePicker
+- of-type -> DateandTime.DateOnly
+- usage -> bound
+
+================================================================================
+
+
+QUESTION 227 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You need to complete a Power Apps component framework (PCF) control.
+
+How should you define the order in the manifest?
+
+AVAILABLE VALUES:
+For the CSS file order:
+- 1
+- 2
+- 3
+
+For the HTML file order:
+- 1
+- 2
+- 3
+
+CORRECT ANSWER:
+- CSS file order -> 1
+- HTML file order -> 1
+
+================================================================================
+
+
+QUESTION 233 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a new Power Apps component framework (PCF) control.
+
+The control must be deployed to a development environment by using the Power Apps CLI and a new solution.
+
+Which four actions should you perform in sequence?
+
+ACTIONS:
+- Add a solution reference to the project.
+- Build the project and solution.
+- Create a solution.
+- Deploy the solution.
+
+CORRECT ANSWER:
+1. Create a solution.
+2. Add a solution reference to the project.
+3. Build the project and solution.
+4. Deploy the solution.
+
+================================================================================
+
+
+QUESTION 234 of 429
+TYPE: Drag Drop
+--------------------------------------------------------------------------------
+QUESTION:
+You create a solution in a development environment and export the solution for testing by various departments in your organization. Power users in each department control the testing environments.
+
+You must display department-specific wording at the beginning of any custom notifications that are displayed in testing environments.
+
+You need to package solutions to ensure that the power users can customize the notification content.
+
+Which three actions should you perform in sequence inside a solution?
+
+ACTIONS:
+- Create an empty environment variable named Custom Text Placeholder.
+- Create a config page in the classic solution by using HTML to format.
+- Set the default value of the text field Custom Text Placeholder to Enter custom text.
+- Create a function to retrieve the value from the custom text placeholder and display the notification.
+- Export the solution.
+- Create a solution component configuration named Custom Text Placeholder that uses the JSON file format.
+
+CORRECT ANSWER:
+1. Create an empty environment variable named Custom Text Placeholder.
+2. Create a function to retrieve the value from the custom text placeholder and display the notification.
+3. Export the solution.
+
+================================================================================
+
+
+QUESTION 240 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a Power Apps Component Framework (PCF) component.
+
+You add markup to the component manifest and need to complete the control element.
+
+Which XML markup segment should you insert?
+
+OPTIONS:
+A. <control DisplayNamekey="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">
+B. <control namespace="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">
+C. <control code="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">
+D. <control name="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">
+E. <control value="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">
+
+CORRECT ANSWER:
+B. <control namespace="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">
+
+
+QUESTION 242 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+The planning department for a municipal government wants to survey the land in town and define new property lines. You define a data model for the surveys.
+
+Surveyors and other department employees need a phone app to capture survey data.
+
+You need to define a Power Apps component framework (PCF) component to be used across multiple functional areas.
+
+How should you complete the PCF control manifest?
+
+AVAILABLE VALUES:
+For the latitude property type group:
+- Decimal
+- Whole.None
+- Floating point
+
+For the additional feature usage:
+- Client
+- Utility
+- Web API
+
+CORRECT ANSWER:
+- latitude type group -> Decimal
+- uses-feature -> Utility
+
+================================================================================
+
+
+QUESTION 255 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company is testing a Microsoft Dataverse plug-in in an environment. The plug-in works in post-operation mode and performs the update of the Account entity.
+
+During testing, a user observes that the plug-in unintentionally triggers a synchronous third-party ISV plug-in.
+
+You need to modify the system design to avoid unwanted triggering of the third-party plug-in.
+
+What should you do?
+
+OPTIONS:
+A. Disable the existing third-party plug-in by using the Plug-in Registration Tool.
+B. Use UpdateRequest with the BypassCustomPluginExecution parameter and Execute method of the Organization service.
+C. Update the code of the third-party ISV plug-in to ignore updates caused by the new plug-in.
+D. Update the code of the new plug-in to use InputParameters of Plugin Execution Context.
+
+CORRECT ANSWER:
+B. Use UpdateRequest with the BypassCustomPluginExecution parameter and Execute method of the Organization service.
+
+================================================================================
+
+
+QUESTION 257 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company performs an update to an existing column-bound Power Apps Component Framework (PCF) code component.
+
+You test the changes to the code component in the development environment. You then import the component to the production environment as part of a managed solution. You observe that the changes to the component are not reflected in the production environment.
+
+You need to ensure that the changes are effective in the production environment.
+
+What should you do?
+
+OPTIONS:
+A. Import the PCF code component to the production environment directly from Visual Studio Code by using the pac pcf push instruction.
+B. Publish the form that uses the PCF code component in the production environment.
+C. Increment the PCF control version property in the manifest.xml file, and then reimport the solution from development to the production environment.
+D. Publish the PCF code component in the production environment.
+
+CORRECT ANSWER:
+C. Increment the PCF control version property in the manifest.xml file, and then reimport the solution from development to the production environment.
+
+================================================================================
+
+
+QUESTION 262 of 429
+TYPE: Drag and drop
+QUESTION:
+A company develops a model-driven app. The company sets up a custom form for the Contact table. The app contains multiple custom app pages.
+
+You must extend the app as follows:
+- Run logic when a contact is saved.
+- Display data from an Azure SQL Server database.
+- Apply a consistent header across multiple app pages.
+- Run a Dataverse custom API when the Contact row is saved.
+
+You need to implement the app extension by using minimal development effort.
+
+CAPABILITIES:
+- Power Fx
+- PCF control
+- Client scripting
+- Canvas components
+
+REQUIREMENTS:
+- Run logic when saving.
+- Display data from Azure SQL Server.
+- Render a consistent header.
+- Run a custom API.
+
+CORRECT ANSWER:
+- Run logic when saving. = Client scripting
+- Display data from Azure SQL Server. = Canvas components
+- Render a consistent header. = PCF control
+- Run a custom API. = Power Fx
+
+================================================================================
+
+
+QUESTION 263 of 429
+TYPE: Multiple choice
+QUESTION:
+You plan to create a Microsoft Power Apps Component Framework (PCF) code component for a record form in a model-driven app.
+
+The code must be able to read the record's Id column.
+
+You need to configure the manifest.
+
+Which solution should you use?
+
+OPTIONS:
+A. resources
+B. property
+C. feature-usage
+D. type-group
+
+CORRECT ANSWER:
+B. property
+
+================================================================================
+
+
+QUESTION 269 of 429
+TYPE: Multiple choice
+QUESTION:
+You are creating an integration that uses an Azure Function to create records in the Common Data Service when leads are submitted from your company website.
+
+You create a user and grant the user the Basic User security role.
+
+You do not have administrator access to the environment you are using or access to Azure Active Directory. Company policy dictates that service accounts must be used for integrations, and integrations must not be granted privileges beyond what is needed.
+
+Which three actions should an administrator perform to configure access for the Azure Function?
+
+OPTIONS:
+A. Create an application registration in Azure Active Directory.
+B. Assign the system administrator security role to the application user.
+C. Assign the Power Platform administrator role to the application user in Azure Active Directory.
+D. Create a new security role with the minimum required permissions and assign it to the application user.
+E. Grant the application delegated permissions to the Dynamics CRM API in Azure Active Directory.
+F. Deploy Azure B2B guest permissions to the application user.
+
+CORRECT ANSWER:
+A, D, E
+
+================================================================================
+
+
+QUESTION 271 of 429
+TYPE: Drag and drop
+QUESTION:
+You are creating a Power Apps connector between Dynamics 365 Sales and Slack.
+
+You must generate a Slack notification whenever a new product is added to Dynamics 365 Sales.
+You must not be required to sign in directly to Dynamics 365 Sales to generate notifications.
+
+You created a Power Apps connector between Dynamics 365 Sales and Slack.
+
+Which security components should you configure?
+
+COMPONENTS:
+- OAuth
+- Security roles
+- API key
+- Basic authentication
+
+REQUIREMENTS:
+- Ensure Dynamics 365 security is in place.
+- Capture application usage from public sites.
+- Configure a website login that does not need encryption.
+
+CORRECT ANSWER:
+- Ensure Dynamics 365 security is in place. = Security roles
+- Capture application usage from public sites. = API key
+- Configure a website login that does not need encryption. = Basic authentication
+
+================================================================================
+
+
+QUESTION 277 of 429
+TYPE: Drag and drop
+QUESTION:
+A company uses Dynamics 365 Sales.
+
+Sales commission must be calculated when an order is placed. You create an Azure Function to perform the calculation. The Azure Function has an HTTP trigger.
+
+You need to configure the Plug-in Registration Tool to send data to the Azure Function when an order is placed.
+
+Which three actions should you perform in sequence?
+
+AVAILABLE ACTIONS:
+- Select Register New Web Hook.
+- Select Register New Service Endpoint.
+- Register a New Step for Create of SalesOrder.
+- Enter the endpoint URL.
+- Enter a service endpoint.
+
+CORRECT ANSWER (SEQUENCE):
+1. Select Register New Web Hook.
+2. Enter the endpoint URL.
+3. Register a New Step for Create of SalesOrder.
+
+================================================================================
+
+
+QUESTION 281 of 429
+TYPE: Hotspot / drag-drop
+QUESTION:
+You are designing an integration between Dataverse and an external application. The external application processes thousands of records per day.
+
+Record processing volumes vary throughout the day. Extremely high processing volumes may occur and may exceed the Dataverse service protection API limits.
+
+You need to implement each service protection limit that is enforced.
+
+Which implementations should you use?
+
+OPTIONS:
+Service Protection Limit -> Implementation
+- Number of requests ->
+  1. Number per user over a sliding window of time
+  2. Number per environment over a sliding window of time
+  3. Number per user per 24-hour period
+  4. Number per environment per 24-hour period
+- Combined execution time ->
+  1. Combined time per user over a sliding window of time
+  2. Combined time per user over a fixed window of time
+  3. Combined time per environment over a sliding window of time
+  4. Combined time per environment over a fixed window of time
+- Concurrent requests ->
+  1. Fixed number per user
+  2. Fixed number per tenant
+  3. Fixed number per application
+  4. Fixed number per environment
+
+CORRECT ANSWER:
+- Number of requests -> Number per user over a sliding window of time
+- Combined execution time -> Combined time per user over a sliding window of time
+- Concurrent requests -> Fixed number per user
+
+================================================================================
+
+
+QUESTION 282 of 429
+TYPE: Multiple choice
+QUESTION:
+You are deploying a Power Apps app that uses the custom connector for ServiceNow.
+
+The app loads very slowly for some users. You determine that all records from ServiceNow are being retrieved for every user.
+
+The app must load only incidents that are assigned to each user.
+
+You need to limit the number of records that the connector returns.
+
+What should you do?
+
+OPTIONS:
+A. Apply a Lifecycle Services asset scope.
+B. Apply a business process flow.
+C. Apply the Azure APIM parameter.
+D. Apply a connector policy template.
+
+CORRECT ANSWER:
+D. Apply a connector policy template.
+
+================================================================================
+
+
+QUESTION 284 of 429
+TYPE: Drag-drop
+QUESTION:
+A company uses Dynamics 365 Sales.
+
+Sales commission must be calculated when an order is placed. You create an Azure Function to perform the calculation. The Azure Function has an HTTP trigger.
+
+You need to configure the Plug-in Registration tool to send data to the Azure Function when an order is placed.
+
+Which three actions should you perform in sequence?
+
+OPTIONS:
+- Select Register New Web Hook.
+- Select Register New Service Endpoint.
+- Set authentication to HttpHeader.
+- Register a New Step for Create of SalesOrder.
+- Enter a connection string.
+- Enter the endpoint URL.
+
+CORRECT ANSWER:
+1. Select Register New Web Hook.
+2. Enter the endpoint URL.
+3. Register a New Step for Create of SalesOrder.
+
+================================================================================
+
+
+QUESTION 287 of 429
+TYPE: Multiple choice (multi-select)
+QUESTION:
+A company uses a third-party shipping company to deliver products to customers.
+
+You need to design a custom connector that retrieves the shipping fees from the shipping company API.
+
+Which three elements should you define for the custom connector?
+
+OPTIONS:
+A. Authentication model
+B. Address parameter
+C. OpenAPI definition
+D. Fee parameter
+E. Fee reference
+
+CORRECT ANSWER:
+A. Authentication model
+B. Address parameter
+C. OpenAPI definition
+
+================================================================================
+
+
+QUESTION 288 of 429
+TYPE: Multiple choice (multi-select)
+QUESTION:
+You are creating a Power Apps app that retrieves customer information from Azure Active Directory when you use the app to look up a customer record.
+
+You create an Azure Function by using JSON code to retrieve the customer information.
+
+You need to make the application work.
+
+Which two actions should you perform?
+
+OPTIONS:
+A. Create a Power Automate flow to import data.
+B. Create a custom connector that uses the Azure Function API.
+C. Copy your JSON code to the app.
+D. Create a custom connector that uses the JSON code.
+E. Create an API definition for the Azure Function.
+
+CORRECT ANSWER:
+B. Create a custom connector that uses the Azure Function API.
+E. Create an API definition for the Azure Function.
+
+================================================================================
+
+
+QUESTION 289 of 429
+TYPE: Hotspot
+QUESTION:
+A manufacturing company takes online orders.
+
+The company requires automatic validation of order changes. Requirements are as follows:
+- If validation is successful, the order changes must be submitted.
+- If exceptions are encountered, a message must be shown to the customer and the order changes must not be submitted.
+
+You need to set up and deploy a plug-in that encapsulates the rules.
+
+Which options should you use?
+
+OPTIONS:
+- Execution stage -> PreValidation / PreOperation / PostOperation
+- Execution mode -> Asynchronous / Synchronous
+- Image -> Pre image / Post image
+- Error message ->
+  1. throw new InvalidPluginExecutionException("Your error message", ex);
+  2. tracingService.Trace("Your error message: {0}", ex.ToString());
+
+CORRECT ANSWER:
+- Execution stage -> PreValidation
+- Execution mode -> Synchronous
+- Image -> Pre image
+- Error message -> throw new InvalidPluginExecutionException("Your error message", ex);
+
+================================================================================
+
+
+QUESTION 294 of 429
+TYPE: Drag-drop
+QUESTION:
+You are creating various Power Apps apps for a company. Power Automate flows must connect securely to the following external systems:
+- Accounts receivable: This is a proprietary database. You must access the database by using an API. The API uses the client credentials grant type.
+- Bing Maps: You must access the API by sending a unique identifier in the query string of requests.
+
+You need to create custom connectors to access the external systems.
+
+Which type of security should you use for the connectors?
+
+OPTIONS:
+Security types:
+- OAuth 2.0
+- Basic authentication
+- API key
+- No authentication
+
+CORRECT ANSWER:
+- Accounts receivable -> OAuth 2.0
+- Bing Maps -> API key
+
+================================================================================
+
+
+QUESTION 295 of 429
+TYPE: Hotspot (Yes/No)
+QUESTION:
+You are developing a Power Platform solution that uses a plug-in. The plug-in includes the following code and a step registered in the PreOperation stage for the Create message on Account:
+- If account name is missing, throw an InvalidPluginExecutionException.
+- Set accountnumber = GenerateAccountNumber().
+
+For each statement, select Yes if the statement is true. Otherwise, select No.
+
+STATEMENTS:
+1. The GenerateAccountNumber method runs if the plug-in step registration is changed to the PostOperation stage.
+2. Creating an account in a model-driven app while excluding a name generates the error message "Account name is missing".
+3. The Organization service's Update method must run to update the database after setting the accountnumber value.
+
+CORRECT ANSWER:
+1. No
+2. Yes
+3. No
+
+================================================================================
+
+
+QUESTION 297 of 429
+TYPE: Hotspot
+QUESTION:
+You are developing a new model-driven app.
+
+You MUST create a custom connector to connect the app to the Microsoft Graph API.
+
+You need to configure the environment before creating the custom connector.
+
+Which actions should you use?
+
+OPTIONS:
+Scenario -> Action
+- Enable connector to authenticate with Microsoft Azure Active Directory. ->
+  1. Register Application and specify permissions
+  2. Open Postman and create collections
+  3. Export collection
+  4. Export solution
+- Enable Postman calls to be available for the custom connector. ->
+  1. Register Application and specify permissions
+  2. Open Postman and create collections
+  3. Export collection
+  4. Export solution
+
+CORRECT ANSWER:
+- Enable connector to authenticate with Microsoft Azure Active Directory. -> Register Application and specify permissions
+- Enable Postman calls to be available for the custom connector. -> Open Postman and create collections
+
+
+QUESTION 305 of 429
+TYPE: Multiple choice (multi-select)
+QUESTION:
+You manage a Microsoft Power Automate cloud flow. The cloud flow queries Microsoft Dataverse data by using the List rows action.
+
+You need to configure the cloud flow to process 10,000 records in a single run.
+
+What should you do? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. Set the row count parameter to 10,000.
+B. Return the first 5,000 records and use the @odata.nextLink in the response to retrieve the remaining records.
+C. Call the List rows action again and use the FetchXML account ID option parameter set to 10,000.
+D. Turn on pagination and set the threshold to 10,000.
+
+CORRECT ANSWER:
+B. Return the first 5,000 records and use the @odata.nextLink in the response to retrieve the remaining records.
+D. Turn on pagination and set the threshold to 10,000.
+
+================================================================================
+
+
+QUESTION 312 of 429
+TYPE: Drag-drop
+QUESTION:
+You are creating a model-driven app that requires complex business logic when a Dataverse record is updated.
+
+The app must provide the following functionality:
+- Update a record by using a REST API and be able to manually retry in the event of a failure without additional development.
+- Validate the record values and display an error message next to those that are invalid.
+
+Which implementation method should you use for each functionality?
+
+OPTIONS:
+Implementation methods:
+- Plug-in
+- Power Automate
+- JavaScript
+
+Functionalities:
+- Update using a REST API.
+- Validate record values.
+
+CORRECT ANSWER:
+- Update using a REST API. -> Power Automate
+- Validate record values. -> JavaScript
+
+================================================================================
+
+
+QUESTION 316 of 429
+TYPE: Multiple choice (multi-select)
+QUESTION:
+You have a Power Automate flow. The flow uses an HTTP action to connect to a web service and update a Microsoft Dataverse record with the result.
+
+You must modify the flow to send an email if the web service connection fails.
+
+You need to update the flow.
+
+Which two actions should you perform? Each correct answer presents part of the solution.
+
+OPTIONS:
+A. Configure the send email step to run when the previous step fails.
+B. Add a send email step after the update Dataverse record step.
+C. Add a send email step after the HTTP step.
+D. Update the HTTP step settings and set the retry policy to: None.
+
+CORRECT ANSWER:
+A. Configure the send email step to run when the previous step fails.
+C. Add a send email step after the HTTP step.
+
+================================================================================
+
+
+QUESTION 320 of 429
+TYPE: Drag-drop
+QUESTION:
+You are building a webhook-based integration for a Microsoft Azure Function.
+
+Each environment has a separate Azure Function endpoint that must be connected to. You must successfully complete testing in each environment before changes are applied in production. You copy the endpoint details from the Azure portal by using the Get function URL option.
+
+You need to configure the webhook.
+
+Which four actions should you perform in sequence?
+
+OPTIONS:
+Available actions:
+- Select Register New Web Hook.
+- Configure WebhookKey authentication.
+- Configure the webhook manually in production after testing.
+- Navigate to Power Apps Maker portal solution.
+- Configure a HttpHeader authentication.
+- Deploy the solution to production after testing.
+- Open the Plug-in Registration tool.
+- Create an environment variable for the endpoint URL.
+
+CORRECT ANSWER:
+1. Create an environment variable for the endpoint URL.
+2. Open the Plug-in Registration tool.
+3. Select Register New Web Hook.
+4. Configure WebhookKey authentication.
+
+
+QUESTION 328 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+An organization uses plug-ins to retrieve specific information from legacy data
+stores each time a new record is submitted.
+
+Dataverse analytics shows that average plug-in execution time is increasing.
+
+You need to replace the plug-in with another component while reusing as much of
+the current plug-in code as possible.
+
+Arrange the actions in the correct order.
+
+ACTIONS:
+- Refactor the plug-in logic in the app
+- Create an Azure Function app
+- Register a service endpoint for the app in the Plug-in Registration Tool
+- Create an Azure Logic App
+- Register a step in the webhook
+- Register a webhook for the app in the Plug-in Registration Tool
+- Publish the app
+- Register a step in the service endpoint
+
+CORRECT ANSWER:
+1. Create an Azure Function app
+2. Refactor the plug-in logic in the app
+3. Publish the app
+4. Register a webhook for the app in the Plug-in Registration Tool
+5. Register a step in the webhook
+
+================================================================================
+
+
+QUESTION 338 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company is creating a one-way integration from Microsoft Dataverse to an
+external system. Data will be sent from a webhook to an Azure Function.
+
+You need to configure the Azure Function to handle data from the webhook.
+
+Which class and data type must the Azure Function handle?
+
+OPTIONS:
+A. RemoteExecutionContext in .NET binary format
+B. RemoteExecutionContext in JSON format
+C. RemoteExecutionContext in XML format
+D. IPluginExecutionContext in JSON format
+E. IPluginExecutionContext in XML format
+
+CORRECT ANSWER:
+B. RemoteExecutionContext in JSON format
+
+================================================================================
+
+
+QUESTION 341 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating an integration between Microsoft Dataverse and an external system.
+
+Messages from Dataverse must be sent to Microsoft Azure Service Bus. An Azure Function will process the messages. Events must be published directly to the ServiceEndpoint for Azure Service Bus.
+
+You need to create code for the messages.
+
+Which class should you use?
+
+OPTIONS:
+A. RemoteExecutionContext
+B. WorkflowContext
+C. PluginExecutionContext
+D. IExecutionContext
+
+CORRECT ANSWER:
+A. RemoteExecutionContext
+
+
+================================================================================
+
+
+QUESTION 343 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+A company uses a custom Power Platform app to create and manage programs. The company has a public website that uses TLS 1.0.
+
+The public website is outside of the corporate domain. The website uses POST requests to save data.
+
+You need to automate the transfer of data to the public website.
+
+What should you use? To answer, select the appropriate options in the answer area.
+
+OPTIONS:
+Move program data to the public website:
+- Create an Azure Function app
+- Create an asynchronous webhook
+- Create a Power Automate instant cloud flow
+- Create a plug-in that uses a secure connection
+
+Package the program details:
+- Use the Power Automate HTTP request trigger
+- Configure a shared access signature for the Azure Function
+- Register a pre-image for the program create message in the Plug-in Registration tool
+- Register a step for the program create message step by using the Plug-in Registration tool
+
+CORRECT ANSWER:
+Move program data to the public website -> Create a plug-in that uses a secure connection
+Package the program details -> Register a pre-image for the program create message in the Plug-in Registration tool
+
+
+================================================================================
+
+
+QUESTION 345 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company has a model-driven app that uses Microsoft Dataverse.
+
+The company requires a web application that retrieves information from the model-driven app. The requirements for the web application include:
+- Must be a single-page web application that uses the Web API.
+- Must display the correct company information.
+- Must authenticate using OAuth without additional verification.
+
+You need to configure the web application.
+
+Which methods should you use?
+
+OPTIONS:
+A. NTLM authentication
+B. Kerberos authentication
+C. Microsoft Azure Active Directory Authentication Libraries (ADAL)
+D. Microsoft Authentication Library (MSAL)
+E. Multifactor authentication
+
+CORRECT ANSWER:
+D. Microsoft Authentication Library (MSAL)
+
+
+QUESTION 358 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You plan to integrate Microsoft Dataverse data to a system using a Microsoft Azure Function.
+
+You configure the message containing the data to be sent asynchronously. You need to plan for the following errors:
+- The failure of business logic that uses a synchronous plug-in.
+- The Azure Function is unreachable.
+
+You need to determine the behavior when an error occurs.
+
+OPTIONS:
+Retry behaviors:
+- Message is sent and will not retry.
+- Message is not sent and will not retry.
+- Message is not sent and will retry continually.
+
+Error scenarios:
+- Plug-in failure
+- Azure Function unreachable
+
+CORRECT ANSWER:
+Plug-in failure -> Message is not sent and will not retry.
+Azure Function unreachable -> Message is sent and will retry continually.
+
+
+================================================================================
+
+
+QUESTION 360 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+You are designing an integration that sends created records from a custom Dataverse table to an exposed REST API.
+
+When the REST API is unavailable, you must be able to verify if the response status code is 503.
+
+You need to select a solution that meets the requirement.
+
+Solution: Register a synchronous plug-in that makes an HTTP request to the REST API. Raise an InvalidPluginExecutionException when the request fails.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+
+QUESTION 361 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You are designing an integration that sends created records from a custom Dataverse table to an exposed REST API.
+
+When the REST API is unavailable, you must be able to retry if the response status code is 500.
+
+Solution: Register an asynchronous plug-in that makes an HTTP request to the REST API. Raise an InvalidPluginExecutionException that is configured to retry when the request fails.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+
+================================================================================
+
+
+QUESTION 364 of 429
+TYPE: Multiple choice (Choose two)
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You are creating a .NET application to load a large volume of data into a Dataverse table with one default column value. A synchronous plug-in already sets the same default column value for new rows in the table.
+
+To speed up the process, you must disable the plug-in during the data load. The data load must run during business hours. The load must not affect rows users may be creating.
+
+What are two possible ways to achieve this goal? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. Send the BypassCustomPluginExecution as an optional parameter with the create request.
+B. Send the SuppressCallbackRegistrationExpanderJob as an optional parameter with the request.
+C. Disable the plug-in step prior to starting the data load.
+D. Set the BypassPluginExecution property on the CrmServiceClient.
+
+CORRECT ANSWERS:
+A. Send the BypassCustomPluginExecution as an optional parameter with the create request.
+C. Disable the plug-in step prior to starting the data load.
+
+
+================================================================================
+
+
+QUESTION 371 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You need to develop a Power Apps Component Framework (PCF) component for a company.
+
+You must follow Microsoft's application lifecycle management (ALM) process for code components.
+
+Which four actions should you perform in sequence?
+
+OPTIONS:
+- Create a code component project
+- Build the code component in release mode
+- Create a solution project and add the code component project as a reference
+- Deploy the component in a testing environment
+- Implement code component logic
+
+CORRECT ORDER:
+1. Create a code component project
+2. Implement code component logic
+3. Create a solution project and add the code component project as a reference
+4. Build the code component in release mode
+
+
+================================================================================
+
+
+QUESTION 379 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+Contoso, Ltd. has a database that stores proprietary stock market information that the company has accumulated over many years.
+
+You create a RESTful service for the company that exposes specific information about stocks.
+
+You must make the service available to the company's brokers.
+
+The service must be certified by Microsoft.
+
+You need to create a custom connector for the service APIs.
+
+How should you configure the connector?
+
+OPTIONS:
+For "Who owns the connector?":
+- Contoso, Ltd.
+- Open source
+- Microsoft Corporation
+
+For "Where is the stackOwner property defined?":
+- settings.json
+- apiProperties.json
+- apiDefinition.swagger.json
+
+CORRECT ANSWERS:
+- Who owns the connector? -> Contoso, Ltd.
+- Where is the stackOwner property defined? -> apiProperties.json
+
+
+================================================================================
+
+
+QUESTION 383 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You are developing a Power Platform solution. You are modifying a business process flow.
+You have created a new radial knob for the Total amount value and have added the radial knob to the form.
+
+The Total amount value must be entered at initiation before moving to the next step.
+
+You need to configure the business process flow.
+
+Available actions:
+A. Create a new solution and add the business process flow and export the solution. Delete the solution after export.
+B. Open the business process in the Business Process Flow designer and select Activate/Update.
+C. Add another step to the business process flow.
+D. Import the solution into Dataverse.
+E. Delete the business process flow.
+F. Copy custom control configurations to the business process flow FormXML for the related entity form.
+
+Arrange the correct four actions in sequence.
+
+CORRECT ANSWER:
+1. C. Add another step to the business process flow.
+2. B. Open the business process in the Business Process Flow designer and select Activate/Update.
+3. F. Copy custom control configurations to the business process flow FormXML for the related entity form.
+4. D. Import the solution into Dataverse.
+
+================================================================================
+
+
+QUESTION 386 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You need to recommend solutions to meet the e-commerce automation requirements.
+
+Available tools:
+- Power Apps
+- Logic Apps
+- Power Automate
+- Workflow
+
+Requirements:
+1. Online sales orders
+2. Customer survey
+
+CORRECT ANSWER:
+1. Online sales orders -> Logic Apps
+2. Customer survey -> Power Automate
+
+================================================================================
+
+
+QUESTION 390 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You need to configure the system to support automation for referrals.
+
+What are two possible ways to achieve the goal? Each correct selection presents a complete solution.
+
+A. Azure Function that uses the Discovery service
+B. workflow extension
+C. Azure Function that uses a listener
+D. Power Automate flow
+
+CORRECT ANSWER: C, D
+
+================================================================================
+
+
+QUESTION 392 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to connect to the background check API.
+
+Which mechanism should you use?
+
+A. JavaScript
+B. Flow with a custom connector
+C. Azure Function
+D. Plug-in
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 404 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to synchronize pharmacy names and ensure that Dynamics 365 Sales data propagates correctly to the Cerner system.
+
+Select the appropriate action for each requirement.
+
+Requirements:
+1. Synchronize pharmacy names
+2. Propagate data to the Cerner system
+
+Available actions for requirement 1:
+- Use a Data Integration template in Power Apps
+- Create a workflow in Dynamics 365 Sales
+- Export data from Dynamics 365 Sales to Microsoft Excel
+- Create a data policy in Dynamics 365 Sales
+
+Available actions for requirement 2:
+- Manually enter data
+- Create a workflow in Dynamics 365 Sales
+- Export data from Dynamics 365 Sales to Microsoft Excel
+- Create a custom connector in Power Apps
+
+CORRECT ANSWER:
+1. Synchronize pharmacy names -> Use a Data Integration template in Power Apps
+2. Propagate data to the Cerner system -> Create a workflow in Dynamics 365 Sales
+
+================================================================================
+
+
+QUESTION 406 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You need to configure the solution to meet the requirements for driving record verifications.
+
+What are two possible ways to achieve the goal? Each correct answer presents a complete solution.
+
+A. Create an Azure Logic Apps connector.
+B. Use a connector provided by the driving record verification service.
+C. Share a custom connector for the driving record verification service with a member of the talent department.
+D. Share the flow with a member of the talent department.
+
+CORRECT ANSWER: A, B
+
+================================================================================
+
+
+QUESTION 407 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to implement the driving record check functionality.
+
+Select the appropriate implementation option for each requirement.
+
+Requirements:
+1. Trigger a driving record check
+2. Perform a driving record check
+
+Available options for requirement 1:
+- After the address validation field is saved to Dataverse
+- After the address validation field changes on the screen
+- Before the address validation field is saved to Dataverse
+
+Available options for requirement 2:
+- Plug-in
+- JavaScript
+- Cloud flow
+
+CORRECT ANSWER:
+1. Trigger a driving record check -> After the address validation field is saved to Dataverse
+2. Perform a driving record check -> Cloud flow
+
+================================================================================
+
+
+QUESTION 408 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to configure the environments.
+
+Select the appropriate action for each requirement.
+
+Requirements:
+1. Configure the development environment
+2. Configure the production environment
+
+Available actions for requirement 1:
+- Compile the plug-in in debug mode
+- Enable trace logging in the environment
+- Install the plug-in profiler solution in the environment
+
+Available actions for requirement 2:
+- Write code to throw an InvalidPluginExecutionException exception
+- Write information to the trace log
+- Enable trace log in the environment
+
+CORRECT ANSWER:
+1. Configure the development environment -> Install the plug-in profiler solution in the environment
+2. Configure the production environment -> Enable trace log in the environment
+
+================================================================================
+
+
+QUESTION 411 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to resolve the address validation API error.
+
+Which method should you use to connect?
+
+A. an Azure function triggered by a webhook
+B. JavaScript code
+C. a custom connector used in a cloud flow
+D. a plug-in attached to a custom action called from JavaScript
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 413 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to configure a connector for the driving record verification API.
+
+Select the appropriate implementation for each configuration option.
+
+Configuration options:
+1. Configure authentication
+2. Provide credentials to the API
+
+Available implementations for option 1:
+- Basic
+- OAuth 2.0
+- API Key
+
+Available implementations for option 2:
+- Authentication section in the connector configuration
+- Prompt when the connector is used for the 1st time
+- Pass credentials as parameters to the action being invoked in the flow or app
+
+CORRECT ANSWER:
+1. Configure authentication -> Basic
+2. Provide credentials to the API -> Authentication section in the connector configuration
+
+================================================================================
+
+
+QUESTION 417 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to create an application to deploy to other pharmacies.
+
+What should you do?
+
+A. Recreate customizations in a new environment.
+B. Create a custom connector to connect the pharmacies' systems to the company's systems.
+C. Export the solution as a managed solution.
+D. Write a Web API to move customizations.
+
+CORRECT ANSWER: C
+
+================================================================================

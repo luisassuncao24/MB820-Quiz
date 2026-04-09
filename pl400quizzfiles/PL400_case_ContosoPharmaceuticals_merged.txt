@@ -1,0 +1,83 @@
+PL-400 MERGED CASE STUDY FILE - Contoso Pharmaceuticals
+
+Editorial note:
+Merged from the uploaded case-study TXT files.
+Question order is preserved ascending by question number.
+
+Included questions: 25, 26, 27, 91
+
+================================================================================
+CASE STUDY: Contoso Pharmaceuticals
+================================================================================
+
+QUESTION 25 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to create an application to deploy to other pharmacies.
+
+What should you do?
+
+A. Navigate to Customize the System and export everything to a managed solution.
+B. Create packages for Package Deployer.
+C. Create customizations with metadata in Organization Services.
+D. Write a Web API to move customizations.
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 26 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to create an application that can be deployed to other pharmacies without allowing changes and ensuring it is error free across different environments.
+
+What should you do?
+
+A. Recreate customizations in a new environment.
+B. Create packages for Package Deployer.
+C. Create customizations with metadata in Organization Services.
+D. Clone the solution.
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 27 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to create an application to deploy to other pharmacies.
+
+What should you do?
+
+A. Clone the solution.
+B. Create packages for Package Deployer.
+C. Recreate customizations in a new environment.
+D. Navigate to Customize the System and export everything to a managed solution.
+
+CORRECT ANSWER: D
+
+
+QUESTION 91 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You need to assign the minimum environmental security role to the appropriate users.
+
+Available security roles:
+- System Administrator
+- System Customizer
+- Basic User
+- Environment Maker
+
+Users:
+- UserA
+- UserB
+- UserC
+- All employees
+
+CORRECT ANSWER:
+- UserA -> Environment Maker
+- UserB -> System Administrator
+- UserC -> System Customizer
+- All employees -> Basic User

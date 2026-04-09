@@ -1,0 +1,1798 @@
+PL-400 NON-CASE QUESTIONS - Beginner
+
+Editorial note:
+This file was built from the uploaded non-test-case TXT files.
+Difficulty is estimated heuristically based on technical complexity, question structure,
+and implementation depth. It is not an official Microsoft difficulty rating.
+
+Question count: 78
+Estimated difficulty score range: 1.36 to 3.0
+Included question numbers: 21, 22, 29, 30, 31, 33, 47, 49, 69, 75, 81, 86, 96, 108, 109, 112, 120, 124, 127, 128, 131, 133, 134, 136, 138, 140, 151, 155, 164, 166, 167, 172, 174, 176, 187, 188, 190, 198, 201, 202, 224, 225, 231, 241, 254, 256, 266, 273, 285, 290, 296, 317, 323, 334, 336, 337, 344, 350, 351, 352, 353, 366, 370, 380, 385, 388, 389, 394, 395, 396, 400, 401, 402, 414, 419, 422, 425, 428
+
+==========================================================================================
+
+QUESTION 21 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You are a Power Apps maker creating a chat bot for a website.
+
+The chat bot must recognize geographic attributes to enable additional functionality.
+
+You need to recommend a feature.
+
+What should you recommend?
+
+A. Fallback topic
+B. Power Automate Flow
+C. Bot Service compliance
+D. Slot filling
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 22 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You develop and deploy a Power Apps solution.
+
+The following changes must be made to the solution:
+- Delete a column of data.
+- Modify several views.
+- Add several charts to dashboards.
+
+You need to re-deploy the app.
+
+What should you do?
+
+A. Update the solution.
+B. Upgrade the solution.
+C. Create a new solution.
+D. Patch the solution.
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 29 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company designs data integration with an external system by using virtual tables.
+
+You need to implement the virtual tables.
+
+Solution: Implement an OData v4 provider as the data source.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 30 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company designs data integration with an external system by using virtual tables.
+
+You need to implement the virtual tables.
+
+Solution: Assign record ownership to individual users.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 31 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company designs data integration with an external system by using virtual tables.
+
+You need to implement the virtual tables.
+
+Solution: Use a table that has a GUID as its primary key.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 33 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+A company designs data integration with an external system by using virtual tables.
+
+You need to implement the virtual tables.
+
+Solution: Create a calculated column on the virtual table.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 47 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+Note: This question is part of a series of questions that present the same scenario.
+
+A university implements Dynamics 365 Sales. Several departments use opportunity records to bid for funding for projects within their own departments. You configure the system to ensure that each department can only work on their own records.
+
+Employees in multiple departments often need to work together on an opportunity. Employees report that they are not able to see opportunities from other departments.
+
+You need to ensure that employees from more than one department can work on the same opportunities when necessary.
+
+Solution: Use position hierarchy security and define the two departments as positions.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 49 of 429
+TYPE: Series question (Yes/No)
+--------------------------------------------------------------------------------
+Note: This question is part of a series of questions that present the same scenario.
+
+A university implements Dynamics 365 Sales. Several departments use opportunity records to bid for funding for projects within their own departments. You configure the system to ensure that each department can only work on their own records.
+
+Employees in multiple departments often need to work together on an opportunity. Employees report that they are not able to see opportunities from other departments.
+
+You need to ensure that employees from more than one department can work on the same opportunities when necessary.
+
+Solution: Use access team templates and give access to members in the two departments.
+
+Does the solution meet the goal?
+
+A. Yes
+B. No
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 69 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You are developing a Power Platform solution for a medical practice. You create a custom table named Doctors to record details about the doctors who work at the medical practice.
+
+You must be able to attach a PDF copy of a doctor's medical license to the row for each doctor.
+
+You need to configure the table.
+
+What should you do?
+
+A. Create a Power Automate flow to add attachments.
+B. Navigate to Table options and enable attachments.
+C. Navigate to Column options and enable attachments.
+D. Create relationships between the Doctor table and the Notes table.
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 75 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+The communication department for a company plans to add a publicly accessible survey page to the company’s public website.
+
+You must add the new survey page to the company’s public website and capture data from the page to a Microsoft Dataverse environment.
+
+Explicit user credentials must not be required to write survey data to Dataverse.
+
+You need to implement authentication.
+
+Which authentication mechanism should you implement?
+
+A. AD FS
+B. Azure AD Conditional Access
+C. Azure guest account
+D. Client secret
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 81 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You are mapping data from an enterprise resource planning (ERP) system to Microsoft Dataverse.
+
+You must reference the Name and Email from the ERP system during mapping to ensure that records are unique.
+
+You need to create an alternate key that references the Name and Email columns.
+
+How should you create the key?
+
+A. Add a Power Apps command function.
+B. Use Power Fx.
+C. Add columns to the Account table in Dataverse.
+D. Create a key in the Account table in Dataverse.
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 86 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You enable change tracking on the Account table in Microsoft Dataverse.
+
+You plan to use the Organization Service to retrieve the delta data by using C#.
+
+You need to determine which message to use.
+
+What should you use?
+
+A. RetrieveAttributeRequest
+B. odata.track-changes
+C. RetrieveEntityChangesRequest
+D. UpdateEntityRequest
+E. UpdateRequest
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 96 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+Which permissions does a managed identity have on Microsoft Dataverse data?
+
+A. permissions assigned to the corresponding application user
+B. permissions assigned to the user triggering the Azure resource
+C. permissions equivalent to the environment admin role
+D. permissions equivalent to the system administrator role
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 108 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+Question:
+You are designing an implementation that has complex data requirements.
+
+The data storage requirements are as follows:
+- Query large amounts of unstructured data in Dataverse.
+- Read and update structured data stored outside of Dataverse.
+
+You need to implement data storage to meet the requirements.
+
+Which table types should you use?
+
+Choices:
+- Elastic
+- Standard
+- Virtual
+
+Requirements:
+1. Unstructured data inside Dataverse
+2. Structured data outside Dataverse
+
+Correct answer:
+1. Elastic
+2. Virtual
+
+================================================================================
+
+
+QUESTION 109 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+Question:
+A company deploys managed customizations by using two solutions, SolutionA and SolutionB. The solutions share components with one another.
+
+A developer for SolutionA requires a new development environment. Customizations made in SolutionA must not interfere with customizations made in SolutionB.
+
+You need to import solutions to prepare the environment.
+
+What should you do?
+
+Options:
+A. Import SolutionA as managed and SolutionB as unmanaged.
+B. Import SolutionA and SolutionB as unmanaged.
+C. Import SolutionA as unmanaged and SolutionB as managed.
+D. Import SolutionA and SolutionB as managed.
+
+Correct answer:
+C
+
+================================================================================
+
+
+QUESTION 112 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+Question:
+A company employs four Microsoft Power Platform developers. Each developer has an individual development environment. Each development environment is refreshed regularly from source control as a managed layer.
+
+The developers must implement their changes in isolation within these environments. Development work must be merged into a base solution within a shared sandbox environment.
+
+You need to ensure work carried out by each developer is deployed into the main solution in the sandbox environment.
+
+What should you do?
+
+Options:
+A. Copy each development to the shared environment each day.
+B. Perform all customizations in the shared environment.
+C. Export each developer's solution as managed.
+D. Export each developer's solution as unmanaged.
+
+Correct answer:
+D
+
+================================================================================
+
+
+QUESTION 120 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+Question:
+A company is testing a solution that you built by using access team templates.
+
+Users report that they are unable to access rows.
+
+You need to ensure that the solution works as expected.
+
+What should you do?
+
+Options:
+A. Assign the rows to the team.
+B. Add the users to the Access Team Members subgrid.
+C. Share the affected rows.
+D. Assign a security role to the users.
+
+Correct answer:
+B
+
+
+QUESTION 124 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company uses a model-driven app to record details of laboratory tests.
+
+You are asked to create a custom component that makes it easier to capture multiple values from lab test results on mobile devices.
+
+You need to create the interface for the dataset in case the mobile devices lose connection to the network.
+
+Which method should you use?
+
+OPTIONS:
+A. saveData
+B. updateView
+C. init
+D. getClient
+
+CORRECT ANSWER:
+B. updateView
+
+================================================================================
+
+
+QUESTION 127 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a model-driven app.
+
+Users need to see only the entities in the app navigation that are relevant to their role and their method of accessing the app.
+
+You need to restrict entities on the sub-areas in the SiteMap.
+
+Which properties should you use?
+
+PROPERTIES:
+- Client
+- Offline Availability
+- Privileges
+- SKUs
+
+REQUIREMENTS:
+1. Ensure that the entity is visible only if the user can create records.
+2. Ensure that the entity is visible only if the user is accessing the app with a web browser.
+
+CORRECT ANSWER:
+1. Privileges
+2. Client
+
+================================================================================
+
+
+QUESTION 128 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You fix a bug in the code of your application, which is currently on version 10.0.2.1.
+
+You need to publish an updated version of the solution.
+
+Which version identifier should you use?
+
+OPTIONS:
+A. 10.0.3.1
+B. 10.0.2.2
+C. 10.1.0.2
+D. 11.0.0.0
+
+CORRECT ANSWER:
+A. 10.0.3.1
+
+================================================================================
+
+
+QUESTION 131 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+An organization uses Dynamics 365 Sales. The organization has accounting and customer service departments.
+
+You must restrict users in customer service from being able to change the value of the balance field on the Contact records. The accounting team must be the only team able to edit this field.
+
+You need to create the appropriate solution without any customizations.
+
+What should you do first?
+
+OPTIONS:
+A. Enable field security for the balance field and grant the customer service team read and update permissions.
+B. Create a customer service form and role and make the balance field read-only.
+C. Enable field security for the balance field and grant the accounting team read and update permissions.
+D. Create an accounting form and role and make the balance field read-only.
+
+CORRECT ANSWER:
+C. Enable field security for the balance field and grant the accounting team read and update permissions.
+
+================================================================================
+
+
+QUESTION 133 of 429
+TYPE: Multiple choice (three answers)
+--------------------------------------------------------------------------------
+QUESTION:
+A travel company plans to track the address of places their clients visit in an entity named Destination.
+
+Client information is captured as contact records. Client records include links to the places that clients visit.
+
+The company must be able to link multiple rating records to the new address record.
+
+You need to expand the Rating entity to include contact, address, and rating information in one place.
+
+Which three actions should you perform?
+
+OPTIONS:
+A. Create a 1:N relationship between the Contact system entity and the Address system entity named Destination.
+B. Create a mapping for the Contact–Rating relationship.
+C. Create a 1:N relationship between the Address system entity and the Rating entity.
+D. Create a 1:N relationship between the Contact system entity and the Rating entity.
+E. Create a mapping for the Destination–Rating relationship.
+F. Create a 1:N relationship between the Destination entity and the Rating entity.
+
+CORRECT ANSWER:
+D. Create a 1:N relationship between the Contact system entity and the Rating entity.
+E. Create a mapping for the Destination–Rating relationship.
+F. Create a 1:N relationship between the Destination entity and the Rating entity.
+
+================================================================================
+
+
+QUESTION 134 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A company uses Dynamics 365 Sales and the Microsoft Online Services portal.
+
+The multi-select OptionSet field data type is not supported in the portal.
+
+You need to copy the selected field value to a text field.
+
+How should you configure the Organization service request?
+
+ANSWER AREA:
+Complete these two parts:
+1. RetrieveAsIfPublished = ?
+2. attributeMetadata = ?
+
+AVAILABLE VALUES:
+- true
+- false
+- AttributeResponse
+- OptionMetadataCollection
+- MultiSelectPicklistAttributeMetadata
+- EnumAttributeMetadata
+
+CORRECT ANSWER:
+1. RetrieveAsIfPublished = true
+2. attributeMetadata = MultiSelectPicklistAttributeMetadata
+
+================================================================================
+
+
+QUESTION 136 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a model-driven app.
+
+Users need to see only the entities in the app navigation that are relevant to their role and their method of accessing the app.
+
+You need to restrict entities on the sub-areas in the SiteMap.
+
+Which properties should you use?
+
+PROPERTIES:
+- Client
+- Offline Availability
+- Privileges
+- SKUs
+
+REQUIREMENTS:
+1. Ensure that the entity is visible only if the user can create records.
+2. Ensure that the entity is not visible if the user is using an on-premises deployment.
+3. Ensure that the entity is visible only if the user is accessing the app with a web browser.
+
+CORRECT ANSWER:
+1. Privileges
+2. SKUs
+3. Client
+
+================================================================================
+
+
+QUESTION 138 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You create a Power Apps app that integrates with Dynamics 365 Customer Service.
+
+You update the app and run Solution checker on the original solution. You receive an error stating that Solution checker cannot export the solution.
+
+You need to determine the primary cause for the issue.
+
+What is the primary cause?
+
+OPTIONS:
+A. The original solution is locked because there is a dependent patch.
+B. The solution was not exported before running Solution checker.
+C. The environment is in Administrator mode.
+D. Solution checker cannot check default solutions.
+
+CORRECT ANSWER:
+A. The original solution is locked because there is a dependent patch.
+
+================================================================================
+
+
+QUESTION 140 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a Power Platform solution. You plan to add three buttons to a form.
+
+The buttons have the following requirements:
+- Button1: Add the current date and time to the form when the button is selected.
+- Button2: Apply conditional logic to change the form color based on the option selected in the Title field.
+- Button3: Ensure that the word Emergency is entered as "Emergency".
+
+You need to complete each button's action.
+
+For each button, choose the correct command.
+
+CORRECT ANSWER:
+Button1 = Now() only
+Button2 = Switch() or If()
+Button3 = IsMatch(TextInput1.Text, "emergency", Contains & IgnoreCase)
+
+
+QUESTION 151 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A canvas app loads multiple collections and is slow when users navigate between screens.
+
+You need to improve performance.
+
+What should you do?
+
+OPTIONS:
+A. Replace all instances of the ClearCollect method with the Connect method.
+B. Replace the existing code segment with a version that uses `Concurrent(...)` to load the collections in parallel.
+C. Replace the existing code segment with a version that keeps the calls sequential but splits them into multiple `Concurrent(ClearCollect(...))` blocks.
+
+CORRECT ANSWER:
+B. Replace the existing code segment with a version that uses `Concurrent(...)` to load the collections in parallel.
+
+================================================================================
+
+
+QUESTION 155 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a model-driven app for a company that sells sporting goods. You add a button to a page that displays information for a product.
+
+The button must copy information for the selected product and create a record in the data source. You add the following code to the button. (Line numbers are included for reference only.)
+
+```powerfx
+01 ?
+02 Products,
+03 Defaults(Products),
+04 {
+05   Name: Self.Selected.Item.Name,
+06   Description: Self.Selected.Item.Description,
+07   Type: Self.Selected.Item.Type,
+08   Price: Self.Selected.Item.Price
+09 }
+10 )
+```
+
+You need to complete the code.
+
+Which function should you insert at line 01?
+
+OPTIONS:
+A. UpdateContext(
+B. IsMatch(
+C. LoadData(
+D. Patch(
+E. SaveData(
+
+CORRECT ANSWER:
+D. Patch(
+
+================================================================================
+
+
+QUESTION 164 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+An organization uses Dynamics 365 Sales. The organization has accounting and customer service departments.
+
+You must restrict users in customer service from being able to change the value of the balance field on the Contact records. The accounting team must be the only team able to edit this field.
+
+You need to create the appropriate solution without any customizations.
+
+What should you do?
+
+OPTIONS:
+A. Enable field security for the balance field and grant the customer service team read and update permissions.
+B. Create a customer service form and role and a business rule that enables the balance field.
+C. Enable field security for the balance field and grant the customer service team read permissions.
+D. Enable field security for the balance field and grant the accounting team read permissions.
+
+CORRECT ANSWER:
+C. Enable field security for the balance field and grant the customer service team read permissions.
+
+================================================================================
+
+
+QUESTION 166 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+QUESTION:
+You manage a model-driven app.
+
+The forms in the app do not work as expected. You must troubleshoot the form issues. Code unrelated to an event must continue to run as you troubleshoot.
+
+You need to disable form events to isolate the causes.
+
+Which URL parameters should you use?
+
+AVAILABLE URL PARAMETERS:
+- DisableFormHandlers
+- DisableFormLibraries
+- DisableWebResourceControls
+
+EVENTS:
+1. Form OnLoad
+2. Column OnChange
+
+CORRECT ANSWER:
+1. Form OnLoad -> DisableFormHandlers
+2. Column OnChange -> DisableFormLibraries
+
+================================================================================
+
+
+QUESTION 167 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+An organization uses Dynamics 365 Sales. The organization has accounting and customer service departments.
+
+You must restrict users in customer service from being able to change the value of the balance field on the Contact records. The accounting team must be the only team able to edit this field.
+
+You need to create the appropriate solution without any customizations.
+
+What should you do first?
+
+OPTIONS:
+A. Enable field security for the balance field and grant the customer service team read permissions.
+B. Create a customer service form and role and make the balance field read-only.
+C. Create a customer service form and role and a business rule that enables the balance field.
+D. Create an accounting form and role and a business rule that enables the balance field.
+
+CORRECT ANSWER:
+A. Enable field security for the balance field and grant the customer service team read permissions.
+
+================================================================================
+
+
+QUESTION 172 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are writing C# code to create an alternate key in a table for two columns: Order ID and Order Date.
+
+The table has thousands of records.
+
+You use the CreateEntityKey message to create the key. When you retrieve EntityKeyMetadata.EntityKeyIndexStatus, it returns a value of Failed.
+
+You need to resolve the issue with the index creation.
+
+What should you do first?
+
+OPTIONS:
+A. Use the ReactivateEntityKey action.
+B. Publish customizations.
+C. Use the DeleteEntityKeyRequest message.
+D. Delete duplicate combination values in Order ID and Order Date.
+
+CORRECT ANSWER:
+A. Use the ReactivateEntityKey action.
+
+================================================================================
+
+
+QUESTION 174 of 429
+TYPE: Series / Yes-No
+--------------------------------------------------------------------------------
+QUESTION:
+Same scenario as Question 173.
+
+Solution: Create a plug-in that runs when the account record is created. Use the Organization service to create the contact record.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+================================================================================
+
+
+QUESTION 176 of 429
+TYPE: Series / Yes-No
+--------------------------------------------------------------------------------
+QUESTION:
+Same scenario as Question 173.
+
+Solution: Create a cloud flow that runs when the account record is created. Use the Dataverse connector to create the contact record.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+A. Yes
+
+================================================================================
+
+
+QUESTION 187 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+An organization implements Dynamics 365 Sales.
+
+You want to trigger a business rule when the main form is saved.
+
+What should you do?
+
+OPTIONS:
+A. Write a business rule to trigger on a change of the ModifiedOn field.
+B. Set the scope of the business rule to one specific form where the business rule triggers.
+C. Set the scope of the business rule to All Forms.
+D. Set the scope of the business rule to Entity.
+
+CORRECT ANSWER:
+D. Set the scope of the business rule to Entity.
+
+================================================================================
+
+
+QUESTION 188 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company implements Dynamics 365 Sales.
+
+An email notification must be sent automatically to the sales manager when a business process completes.
+
+You need to ensure that email is sent.
+
+What should you create on the process completed trigger?
+
+OPTIONS:
+A. A workflow
+B. An action step
+C. A data step
+
+CORRECT ANSWER:
+A. A workflow
+
+================================================================================
+
+
+QUESTION 190 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A customer wants to design a complex business process flow that includes six custom entities and four stages for each entity. One of the stages will have 15 steps.
+
+You need to explain the flaw in this design to the customer.
+
+What is the flaw in this design?
+
+OPTIONS:
+A. The maximum number of custom entities has been exceeded.
+B. The maximum number of steps for a stage has been exceeded.
+C. The maximum number of stages for an entity has been exceeded.
+D. The minimum number of stages for an entity has not been met.
+E. The minimum number of steps for a stage has not been met.
+
+CORRECT ANSWER:
+A. The maximum number of custom entities has been exceeded.
+
+================================================================================
+
+
+QUESTION 198 of 429
+TYPE: Multiple choice (two answers)
+--------------------------------------------------------------------------------
+QUESTION:
+An organization implements Dynamics 365 Supply Chain Management.
+
+You need to create a Microsoft Flow that runs daily.
+
+What are two possible ways to achieve this goal? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. Create the flow and set the flow frequency to daily and the interval to 1.
+B. Create the flow and set the flow frequency to daily and the interval to 24.
+C. Create the flow and set the flow frequency to hourly and the interval to 1.
+D. Create the flow and set the flow frequency to hourly and the interval to 24.
+
+CORRECT ANSWER:
+A, B
+
+================================================================================
+
+
+QUESTION 201 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You create a cloud flow to process a list of records by using a loop.
+
+You need to determine when to initialize a variable that is used to process the records.
+
+OPTIONS:
+A. After the loop
+B. After the first use of the variable inside the loop
+C. Before the loop
+D. Before the first use of the variable inside the loop
+
+CORRECT ANSWER:
+C. Before the loop
+
+================================================================================
+
+
+QUESTION 202 of 429
+TYPE: Multiple selection
+--------------------------------------------------------------------------------
+QUESTION:
+You are configuring a Microsoft Power Virtual Agents chatbot to use the authenticate option for Microsoft Teams only.
+
+You need to select the variables that return information about the logged-in user.
+
+OPTIONS:
+A. authToken
+B. UserDisplayName
+C. UserID
+D. isLoggedIn
+
+CORRECT ANSWER:
+B. UserDisplayName
+C. UserID
+
+================================================================================
+
+
+QUESTION 224 of 429
+TYPE: Solution validation
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a model-driven app for a company.
+
+When you create a new Account record, you must automatically display a form to collect data that is needed to create a Contact record. The form must switch to the appropriate form layout based on the contact type.
+
+You open the Contact form by using JavaScript. You pass the contact type information to the form by using the Xrm.Navigation.openForm function. An OnLoad event handler in the Contact form processes the data and shows only the appropriate sections of the form for the given contact type.
+
+You need to configure the receiving form to accept the data parameter.
+
+Solution: In the form editor, add an event handler for the data parameter.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+================================================================================
+
+
+QUESTION 225 of 429
+TYPE: Solution validation
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a model-driven app for a company.
+
+When you create a new Account record, you must automatically display a form to collect data that is needed to create a Contact record. The form must switch to the appropriate form layout based on the contact type.
+
+You open the Contact form by using JavaScript. You pass the contact type information to the form by using the Xrm.Navigation.openForm function. An OnLoad event handler in the Contact form processes the data and shows only the appropriate sections of the form for the given contact type.
+
+You need to configure the receiving form to accept the data parameter.
+
+Solution: In the form editor, add a web resource that sets formContext.data attributes.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+================================================================================
+
+
+QUESTION 231 of 429
+TYPE: Solution validation
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a model-driven app for a company.
+
+When you create a new Account record, you must automatically display a form to collect data that is needed to create a Contact record. The form must switch to the appropriate form layout based on the contact type.
+
+You open the Contact form by using JavaScript. You pass the contact type information to the form by using the Xrm.Navigation.openForm function. An OnLoad event handler in the Contact form processes the data and shows only the appropriate sections of the form for the given contact type.
+
+You need to configure the receiving form to accept the data parameter.
+
+Solution: In the form editor, add a query string parameter for the data parameter.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+A. Yes
+
+================================================================================
+
+
+QUESTION 241 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a model-driven app. You create JavaScript code to display a message when a record is saved.
+
+You need to configure the associated JavaScript web resource name when adding the event handler to the form.
+
+Which field should you use?
+
+OPTIONS:
+A. Event Type
+B. Component
+C. Function
+D. Library
+
+CORRECT ANSWER:
+D. Library
+
+================================================================================
+
+
+QUESTION 254 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+You are configuring two command buttons on a form.
+
+The form must display the buttons only if conditions meet a pre-defined criteria.
+
+You need to create rules for the form.
+
+Which rule types should you use?
+
+AVAILABLE VALUES:
+For website link to the current form:
+- PageRule
+- ValueRule
+- EntityRule
+
+For sum of two form fields:
+- ValueRule
+- CustomRule
+- SelectionCountRule
+
+CORRECT ANSWER:
+- Website link to the current form -> PageRule
+- Sum of two form fields -> ValueRule
+
+================================================================================
+
+
+QUESTION 256 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are developing a model-driven app by using JavaScript.
+
+You need to configure the app to display a dialog box when a form is opened or when a grid on a form is sorted.
+
+What should you use?
+
+OPTIONS:
+A. Grid OnSave
+B. Grid OnRecordSelect
+C. Grid OnChange
+D. Subgrid OnLoad
+
+CORRECT ANSWER:
+D. Subgrid OnLoad
+
+================================================================================
+
+
+QUESTION 266 of 429
+TYPE: Multiple choice
+QUESTION:
+You develop a model-driven app in which client-side scripts are used extensively.
+
+Users report that forms load quickly but become unresponsive.
+
+You need to investigate the form issues before optimizing the forms.
+
+What should you do first?
+
+OPTIONS:
+A. Use a Quick View form.
+B. Add the URL parameter ribbondebug=true.
+C. Remove unused forms from the app.
+D. Enable Offline mode.
+E. Disable form event handlers.
+
+CORRECT ANSWER:
+B. Add the URL parameter ribbondebug=true.
+
+================================================================================
+
+
+QUESTION 273 of 429
+TYPE: Hotspot
+QUESTION:
+An organization has a custom Assignments entity that guides agent actions. Team leaders for each assignment group must be able to review any changes made to assignment data by their agents.
+
+You have a JSON delta query segment.
+
+For each statement, select Yes or No.
+
+STATEMENTS:
+1. You can use the JSON segment to retrieve a list of changes to the assignment records referenced in the segment.
+2. You can use the delta link to query the assignment changes from the last 30 days.
+3. You can use the delta link with a $filter option to retrieve assignment changes from the last 30 days.
+4. Is the delta link token valid?
+
+CORRECT ANSWER:
+1. Yes
+2. No
+3. No
+4. Yes
+
+================================================================================
+
+
+QUESTION 285 of 429
+TYPE: Multiple choice
+QUESTION:
+A company needs to illustrate the relationships of the entities in Dynamics 365 Sales.
+
+You need to select the appropriate tool to show this graphic.
+
+Which tool should you select?
+
+OPTIONS:
+A. Metadata diagram
+B. Sales insights
+C. Power Automate
+D. Security model
+
+CORRECT ANSWER:
+A. Metadata diagram
+
+================================================================================
+
+
+QUESTION 290 of 429
+TYPE: Drag-drop
+QUESTION:
+A field must display multiple selections to the user, enabling the user to select a value.
+
+You need to determine which column type can support the required scenarios.
+
+Which column type should you use?
+
+OPTIONS:
+Column types:
+- Global choice
+- Lookup
+- Global choice and Lookup
+
+Scenarios:
+- Remove a selection from being available without modifying existing records.
+- Must be completely deployed by using a solution.
+- Same set of selections can be used on multiple tables.
+
+CORRECT ANSWER:
+- Remove a selection from being available without modifying existing records. -> Lookup
+- Must be completely deployed by using a solution. -> Global choice
+- Same set of selections can be used on multiple tables. -> Global choice and Lookup
+
+================================================================================
+
+
+QUESTION 296 of 429
+TYPE: Multiple choice
+QUESTION:
+You are creating a plug-in for an app that helps government employees get a proof of vaccination card.
+
+You must add the following information to a vaccination record before a proof of vaccination card is created:
+- Vaccination type
+- Date of vaccination
+- Name of person administering the vaccine
+
+You need to register the plug-in.
+
+In which stage should you register the plug-in?
+
+OPTIONS:
+A. PreValidation
+B. PostOperation
+C. MainOperation
+D. PreOperation
+
+CORRECT ANSWER:
+D. PreOperation
+
+================================================================================
+
+
+QUESTION 317 of 429
+TYPE: Yes/No
+QUESTION:
+You are designing an integration that sends created records from a custom Dataverse table to an exposed REST API.
+
+When the REST API is unavailable, you must be able to retry if the response status code is 500.
+
+Solution: Register a webhook by using the REST API as the endpoint. Wait for the webhook to automatically retry when a failure occurs.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+================================================================================
+
+
+QUESTION 323 of 429
+TYPE: Hotspot
+--------------------------------------------------------------------------------
+QUESTION:
+A company updates client contact information periodically. The Contact entity has
+alternate keys defined.
+
+The code performs an UpsertRequest using key attributes and also sets the last name
+value directly on the entity.
+
+For each statement, select Yes if true. Otherwise, select No.
+
+STATEMENTS:
+1. If the last name is an alternate key and there are no contacts with the last
+   name Smith, the stored value of the last name is Smith.
+2. If the client number is an alternate key and the client number exists, the
+   stored value of the last name is Smith.
+3. If the last name is an alternate key and there are people who have the last
+   name Smith, the stored value of the last name is Smith.
+4. If the client number is an alternate key and the client number does not exist,
+   the stored value of the last name is Smith.
+
+CORRECT ANSWER:
+1. No
+2. No
+3. No
+4. No
+
+================================================================================
+
+
+QUESTION 334 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+A company plans to replicate a Dynamics 365 Sales database into an Azure SQL
+Database instance for reporting purposes. The Data Export Service solution has
+been installed.
+
+You need to configure the Data Export Service.
+
+Which three actions should you perform? Each correct answer presents part of the
+solution.
+
+OPTIONS:
+A. Enable auditing for all entities that must be replicated to Azure SQL Database.
+B. Create an export profile that specifies all the entities that must be replicated.
+C. Set up server-based integration.
+D. Enable change tracking for all entities that must be replicated to Azure SQL Database.
+E. Create an Azure SQL Database service in the same tenant as the Dynamics 365 Sales environment.
+
+CORRECT ANSWER:
+B, D, E
+
+================================================================================
+
+
+QUESTION 336 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You are creating a Power Automate flow.
+
+You create an Azure Service Bus listener app that receives requests from a
+third-party application.
+
+When the flow calls the message queue, it must delete the message as soon as it
+is read.
+
+You need to ensure that the queue is cleared properly.
+
+Which method or class should you use?
+
+OPTIONS:
+A. ReceiveMode
+B. BrokeredMessage
+C. EventHubReceiver
+D. EventHubSender
+
+CORRECT ANSWER:
+A. ReceiveMode
+
+================================================================================
+
+
+QUESTION 337 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+As part of the month-end financial closing process, a company uses a batch job to
+copy all orders into a staging database.
+
+The staging database is used to calculate any outstanding amounts owed by
+clients, and must process all historical data.
+
+You need to ensure that only the data affected during the month is included in
+the integration process.
+
+What are two possible ways to achieve this goal? Each correct answer presents a
+complete solution.
+
+OPTIONS:
+A. Use change tracking on the orders and run the integration to retrieve new
+   orders and the orders that have the total amount changed in the last month.
+B. Create a system view with the orders that have the Modified On field in the
+   last month and run the integration on this subset.
+C. Use change tracking on the order lines and run the integration every week and
+   retrieve only the order lines that have been created or deleted in the last
+   month.
+D. Create a system view with the order lines that have the Modified On field in
+   the last month and run the integration on this subset.
+
+CORRECT ANSWER:
+A, B
+
+================================================================================
+
+
+QUESTION 344 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+The communication department for a company plans to add a publicly accessible survey page to the company's public website.
+
+You must add the new survey page to the company's public website and capture data from the page to a Microsoft Dataverse environment.
+
+Explicit user credentials must not be required to write survey data to Dataverse.
+
+You need to implement authentication.
+
+Which authentication mechanism should you implement?
+
+OPTIONS:
+A. Claims based
+B. Microsoft 365
+C. Azure guest account
+D. Client secret
+
+CORRECT ANSWER:
+D. Client secret
+
+
+================================================================================
+
+
+QUESTION 350 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+A company requires custom validation when users save form records that use a synchronous plug-in.
+
+If validation fails, a message that explains how to resolve the issue must be displayed on the form to the user.
+
+You need to implement the custom validation.
+
+Solution: Include the message in the output parameters of the plug-in.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+
+================================================================================
+
+
+QUESTION 351 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+A company requires custom validation when users save form records that use a synchronous plug-in.
+
+If validation fails, a message that explains how to resolve the issue must be displayed on the form to the user.
+
+You need to implement the custom validation.
+
+Solution: Use the tracing service to log the message.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+
+================================================================================
+
+
+QUESTION 352 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+QUESTION:
+A company requires custom validation when users save form records that use a synchronous plug-in.
+
+If validation fails, a message that explains how to resolve the issue must be displayed on the form to the user.
+
+You need to implement the custom validation.
+
+Solution: Throw a custom exception with the message.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+B. No
+
+
+================================================================================
+
+
+QUESTION 353 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+QUESTION:
+You develop code that will perform an update to existing records in a table.
+
+The update must occur based on the alternate key configured for the table.
+
+You need to perform the update.
+
+Which two requests should you use? Each correct answer presents a complete solution.
+
+OPTIONS:
+A. UpdateRequest
+B. UpsertRequest
+C. CreateRequest
+D. RetrieveRequest
+
+CORRECT ANSWER:
+A. UpdateRequest
+B. UpsertRequest
+
+
+QUESTION 366 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+A company has a new implementation that will use Dynamics 365 Field Service.
+
+A developer adds two custom tables to the solution in a development environment. The custom tables have lookup columns to Field Service tables.
+
+The developer creates a new test environment and imports the solution. The developer receives an error that states dependencies are missing.
+
+What should you recommend?
+
+OPTIONS:
+A. Add the Field Service tables to the solution.
+B. Export the solution as unmanaged.
+C. Add the custom tables to the solution.
+D. Install the Field Service application in test.
+
+CORRECT ANSWER:
+A. Add the Field Service tables to the solution.
+
+
+================================================================================
+
+
+QUESTION 370 of 429
+TYPE: Yes/No
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+A university implements Dynamics 365 Sales. Several departments use opportunity records to bid for funding for projects within their own departments. You configure the system to ensure that each department can only work on their own records.
+
+Employees in multiple departments often need to work together on an opportunity. Employees report that they are not able to see opportunities from other departments.
+
+Solution: Share the individual opportunity that members of one department are working on with all members of the second department, and give those members the appropriate permissions.
+
+Does the solution meet the goal?
+
+OPTIONS:
+A. Yes
+B. No
+
+CORRECT ANSWER:
+A. Yes
+
+
+================================================================================
+
+
+QUESTION 380 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+CONTEXT / QUESTION:
+You are troubleshooting a new canvas app.
+
+Users report the app loads slowly. You use the Monitor tool to view various events being performed in the app. Events performed in the app do not have formula details.
+
+You need to enable formulas to be included with the Monitor tool events.
+
+What should you do?
+
+OPTIONS:
+A. Add the Microsoft Azure Application Insights data source to the canvas app.
+B. After each event, implement the trace function within the canvas app.
+C. Turn on the Debug published app setting in the canvas app.
+D. Validate the Application Insights instrumentation key has been populated in the app object's properties within the canvas app.
+
+CORRECT ANSWER:
+C. Turn on the Debug published app setting in the canvas app.
+
+
+QUESTION 385 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to modify the Power Automate flow to resolve CustomerC's issue.
+
+What should you do?
+
+A. Add a configure run that is set to is successful.
+B. Add a data operation that specifies the false conditions.
+C. Add a condition containing approval hierarchy.
+D. Add a timeout setting to the approval flow.
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 388 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to create the model-driven app for accounts designated as referrals.
+
+What should you add to the app?
+
+A. Workflow
+B. Subgrid
+C. Business rule
+D. Flow
+E. Chart
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 389 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to handle errors in UpdateRecord.js.
+
+Which code segment should you add at line UR04?
+
+A. catch(error) { alert("Caught error: " + error.message); }
+B. Exception exception = Server.GetLastError(); if(exception != null)
+C. Catch(exception e){ console.writeline(e); }
+D. function (error) { console.log(error.message) }
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 394 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to add the script for the registration form event handling.
+
+Which code segment should you use?
+
+A. formContext.data.entity.addOnSave(myFunction)
+B. formContext.data.addOnLoad(myFunction)
+C. formContext.data.removeOnLoad(myFunction)
+D. addOnPreProcessStatusChange
+E. formContext.data.isValid()
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 395 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to add the script to populate event data on the form.
+
+Which code segment should you use?
+
+A. formContext.data.addOnLoad(myFunction)
+B. formContext.data.removeOnLoad(myFunction)
+C. formContext.data.entity.addOnSave(myFunction)
+D. addOnPreProcessStatusChange
+E. formContext.data.isValid()
+
+CORRECT ANSWER: A
+
+================================================================================
+
+
+QUESTION 396 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to configure that the mobile app meets the requirements for phone entries.
+
+Which expression should you use?
+
+A. IsBlank
+B. IsType
+C. PlainText
+D. IsNumeric
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 400 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to create the customer mobile app.
+
+Which type of function expression should you use?
+
+A. Filter
+B. Find
+C. LookUp
+
+CORRECT ANSWER: A
+
+
+QUESTION 401 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to identify the execution mode that is being used for the ISV solution reported by User5.
+
+Which type of execution mode is in use?
+
+A. asynchronous
+B. atomicity
+C. transfer
+D. synchronous
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 402 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to improve warehouse counting efficiency.
+
+What should you create?
+
+A. a flow that updates the warehouse counts as the worker performs the count
+B. a model-driven app that allows the user to key in inventory counts
+C. a Power BI dashboard that shows the inventory counting variances
+D. a canvas app that scans barcodes to allow a warehouse worker to select inventory counts
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 414 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to implement the background verification check stage field.
+
+Which type of field should you use?
+
+A. Choice
+B. Status
+C. Choices
+D. Lookup
+
+CORRECT ANSWER: D
+
+================================================================================
+
+
+QUESTION 419 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to determine the primary cause of the issue reported by interns when they use the app.
+
+What is the primary cause?
+
+A. Interns have the System Customizer security role but need the Environment Maker security role.
+B. Interns have the Common Data Service User security role but need the Environment Maker security role.
+C. Interns have the Environment Maker security role but need the Common Data Service User security role.
+D. Interns have the Environment Maker security role but need the System Customizer security role.
+E. Interns have the Environment Maker security role but need the Delegate security role.
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 422 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to reduce response time for the information email on the website.
+
+What should you create?
+
+A. a flow that creates a SharePoint item for each email response
+B. a flow that creates a notification in Microsoft Teams
+C. a Power Apps app that displays the number of email received in a dashboard
+D. a logic app that moves all emails received to Azure Blob storage
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 425 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to configure the trigger for the priority field in the Account entity.
+
+Which expression should you use?
+
+A. DIFFINWEEKS(now(),1)
+B. SUBTRACTDAYS(10, Now())
+C. ADDWEEKS(1, CreatedOn)
+D. DIFFINDAYS(CreatedOn, now())
+E. ADDDAYS(10, CreatedOn)
+
+CORRECT ANSWER: E
+
+================================================================================
+
+
+QUESTION 428 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to improve the efficiency of counting warehouse inventory.
+
+What should you create?
+
+A. a model-driven app that allows the user to key in inventory counts
+B. a Power BI dashboard that shows the inventory counting variances
+C. a flow that updates the warehouse counts as the worker performs the count
+D. a canvas app that scans barcodes to allow a warehouse worker to select inventory counts
+
+CORRECT ANSWER: D
+
+================================================================================

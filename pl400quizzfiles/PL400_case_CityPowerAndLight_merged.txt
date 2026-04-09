@@ -1,0 +1,287 @@
+PL-400 MERGED CASE STUDY FILE - City Power & Light
+
+Editorial note:
+Merged from the uploaded case-study TXT files.
+Question order is preserved ascending by question number.
+
+Included questions: 36, 37, 38, 104, 105, 106, 210, 308, 309, 354, 355, 356
+
+================================================================================
+CASE STUDY: City Power & Light
+================================================================================
+
+QUESTION 36 of 429
+TYPE: Drag and drop (converted to readable text)
+--------------------------------------------------------------------------------
+You need to design the Planning Hub data model.
+
+Which four actions should you perform in sequence?
+
+Available options:
+A. Select the Contact table
+B. Modify a column
+C. Create a column
+D. Enable auditing
+E. Create a custom table
+F. Enable column security
+G. Create column security profile
+H. Start auditing
+
+CORRECT ANSWER:
+1. A. Select the Contact table
+2. B. Modify a column
+3. F. Enable column security
+4. G. Create column security profile
+
+================================================================================
+
+
+QUESTION 37 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to implement the Suitability Assessment Tool.
+
+What should you use?
+
+A. Power App Component Framework (PCF) control
+B. view
+C. component library
+D. form
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 38 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to identify the Azure service to use for the Planning Hub application.
+
+What service should you use?
+
+A. Logic App
+B. Service Bus
+C. Key Vault
+D. Function
+
+CORRECT ANSWER: A
+
+
+QUESTION 104 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to deploy the changes and resolve the issue with the Planning Hub application.
+
+Select the correct option for each requirement.
+
+Available options for Solution to deploy:
+- Appointment data
+- Claim submission portal
+- Spreadsheet
+- Suitability Assessment Tool
+
+Available options for How to export:
+- Export the unmanaged solution as managed
+- Export the unmanaged solution as unmanaged
+
+Available options for Remove the column after the deployment:
+- Publish all customizations
+- Stage for Upgrade
+- Update
+- Upgrade
+
+CORRECT ANSWER:
+- Solution to deploy -> Claim submission portal
+- How to export -> Export the unmanaged solution as managed
+- Remove the column after the deployment -> Upgrade
+
+================================================================================
+
+
+QUESTION 105 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to resolve the funding application issue.
+
+Which component should you use?
+
+A. secure config
+B. unsecure config
+C. environment variable
+D. settings
+
+CORRECT ANSWER: C
+
+================================================================================
+
+
+QUESTION 106 of 429
+TYPE: Hotspot (converted to readable text)
+--------------------------------------------------------------------------------
+You need to resolve the issues with the appointment data.
+
+Users report that:
+- the email address of the user who created the appointment is missing
+- searches on the description information do not return any results
+
+The source page shows the "Quick Find All Appointments" view with interface components around the Table columns area and the Filter by area.
+
+Select the interface components to change.
+
+Source-indicated answer options selected on the page:
+- Interface component 1 -> the filter icon in the Table columns area
+- Interface component 2 -> Edit filters in the Filter by area
+
+CORRECT ANSWER (source-indicated):
+- Interface component 1 -> Filter icon in the Table columns area
+- Interface component 2 -> Edit filters in the Filter by area
+
+NOTE:
+This item is kept as source-indicated because the visual answer appears inconsistent with the problem statement. It should be manually reviewed later if you want a fully validated final bank.
+
+
+QUESTION 210 of 429
+TYPE: Drag drop
+CASE STUDY: City Power & Light
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+The Planning Hub application must automate submission processing. It needs to retrieve data, send an approval in Microsoft Teams, and record the result of the API upload.
+
+QUESTION:
+Which connector should you use for each requirement?
+
+AVAILABLE CONNECTORS:
+- Approvals
+- Dataverse
+- Excel Online for Business
+- Teams
+
+CORRECT ANSWER:
+- Retrieve data -> Excel Online for Business
+- Approve the submission in Microsoft Teams -> Approvals
+- Record the result of the API upload -> Dataverse
+
+
+QUESTION 308 of 429
+TYPE: Multiple choice (multi-select)
+FOCUSED CONTEXT:
+City Power & Light has a Suitability Assessment Tool solution. After deploying a change in the development environment, the changes do not appear in that development environment.
+
+QUESTION:
+You need to resolve the issue with the eligibility assessment tool.
+
+Which two commands should you run? Each correct answer presents part of the solution.
+
+OPTIONS:
+A. pac solution version
+B. pac solution import
+C. pac pcf push
+D. pac pcf version --strategy manifest
+
+CORRECT ANSWER:
+A. pac solution version
+B. pac solution import
+
+================================================================================
+
+
+QUESTION 309 of 429
+TYPE: Drag-drop
+FOCUSED CONTEXT:
+City Power & Light must configure a custom connector for the Claim Submission Portal API. The API uses a header-based API key. You need the basic connector setup steps only.
+
+QUESTION:
+Which three actions should you perform in sequence?
+
+OPTIONS:
+Available actions:
+- Certify the connector.
+- Enable basic authentication.
+- Share the connector.
+- Enable API key authentication.
+- Import an OpenAPI definition.
+- Create a connector by using the wizard.
+- Enable OAuth 2.0 authentication.
+- Import a Postman collection.
+
+CORRECT ANSWER:
+1. Create a connector by using the wizard.
+2. Enable API key authentication.
+3. Share the connector.
+
+
+QUESTION 354 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+City Power & Light is replacing the Planning Hub spreadsheet and wants to build a new eligibility assessment application. One of the identified issues is that after deploying a change to the new eligibility assessment tool in development, the changes do not appear in the environment. You need to create the eligibility assessment app.
+
+QUESTION:
+Which command should you run?
+
+OPTIONS:
+A. pac application install
+B. pac pcf init
+C. pac plugin init
+D. pac solution init
+
+CORRECT ANSWER:
+B. pac pcf init
+
+
+================================================================================
+
+
+QUESTION 355 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+You are the lead Microsoft Power Platform developer for a company. Developers cannot work on the same components at the same time. Requirements include automatic push of individual changes into existing environments for testing, a dedicated development environment, and the ability to run but not create deployments directly from Microsoft Power Platform.
+
+QUESTION:
+Which four actions should you perform in sequence?
+
+OPTIONS:
+- Assign developers to the Deployment Pipeline User role.
+- Assign developers to the Release Administrator role.
+- Create a Microsoft Power Platform pipeline.
+- Create developer environments.
+- Create a Microsoft Azure DevOps pipeline.
+- Create production environments.
+- Enable managed environments.
+
+CORRECT ANSWER:
+1. Enable managed environments.
+2. Create developer environments.
+3. Create a Microsoft Power Platform pipeline.
+4. Assign developers to the Deployment Pipeline User role.
+
+
+================================================================================
+
+
+QUESTION 356 of 429
+TYPE: Drag and drop
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+You are designing a custom connector for an internal API used by Contoso, LLC. Authentication to the API uses an API key stored in Azure Key Vault, and each environment has its own API key. You need to reference the API key from Key Vault in the custom connector.
+
+QUESTION:
+Which four actions should you perform in sequence?
+
+OPTIONS:
+- Use the syntax @environmentVariables("contoso.ApiKey")
+- Use the syntax @environmentVariables("APIKey")
+- Add a role assignment to Key Vault
+- Create an environment variable named APIKey (contoso_APIKey)
+- Create a cloud flow
+- Create a connection reference
+- Remove the current value
+- Create a connection
+
+CORRECT ANSWER:
+1. Create an environment variable named APIKey (contoso_APIKey)
+2. Remove the current value
+3. Create a connection
+4. Use the syntax @environmentVariables("contoso.ApiKey")

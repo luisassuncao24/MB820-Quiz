@@ -1,0 +1,281 @@
+PL-400 MERGED CASE STUDY FILE - Proseware
+
+Editorial note:
+Merged from the uploaded case-study TXT files.
+Question order is preserved ascending by question number.
+
+Included questions: 88, 89, 90, 160, 161, 247, 248, 249, 250, 298, 299, 300
+
+================================================================================
+CASE STUDY: Proseware
+================================================================================
+
+QUESTION 88 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to store designations and certifications.
+
+What should you do?
+
+A. Create a new Lookup column on the Contact table.
+B. Create a new table that has an N:N relationship with the Contact table.
+C. Create a new table that has an N:1 relationship with the Contact table.
+D. Create a new Choices column on the Contact table.
+
+CORRECT ANSWER: B
+
+================================================================================
+
+
+QUESTION 89 of 429
+TYPE: Multiple choice (choose two)
+--------------------------------------------------------------------------------
+You need to prevent the field used by the PCF control from updating the record.
+
+What are two possible ways to achieve the goal? Each correct answer presents a complete solution.
+
+A. Create a business rule to clear the field value.
+B. Make the field read-only.
+C. Call the setSubmitMode('never') function on the field.
+D. Disable existing event handlers on the field.
+
+CORRECT ANSWER: B, C
+
+================================================================================
+
+
+QUESTION 90 of 429
+TYPE: Multiple choice
+--------------------------------------------------------------------------------
+You need to track referrals.
+
+What should you do?
+
+A. Add a referral source field to the Application table.
+B. Create a new Referral table with required lookup columns to the Contact, SystemUser, and Application tables.
+C. Add a second lookup column to SystemUser for manager referrals to the Application table.
+D. Create a new Referral table with required lookup columns to the Contact, SystemUser, and JobPosting tables.
+
+CORRECT ANSWER: D
+
+
+QUESTION 160 of 429
+TYPE: Drag and drop / Case study
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Proseware uses a model-driven recruiting application.
+
+A scoring process identifies applicants who are "persons of interest" based on historical interactions. The design requires:
+- totals and scores to be stored in numeric fields,
+- the least storage-heavy schema choice that still meets the requirement,
+- recalculation when historical data changes.
+
+You need to configure the columns used to store scores and totals.
+
+QUESTION:
+Which configurations should you use? To answer, drag the appropriate configurations to the correct columns.
+
+AVAILABLE CONFIGURATIONS:
+- Whole number - code
+- Whole number - rollup
+- Whole number - calculation
+
+COLUMNS:
+1. Total Score
+2. Number of designations and certifications
+
+CORRECT ANSWER:
+1. Total Score -> Whole number - calculation
+2. Number of designations and certifications -> Whole number - rollup
+
+
+QUESTION 161 of 429
+TYPE: Hotspot / Case study (Proseware)
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Proseware uses a model-driven recruiting application. Recruiters score candidates and need FetchXML that counts interviews with no recommendation.
+
+QUESTION:
+You create the following FetchXML query to determine the number of interviews where there are no recommendations for an applicant.
+
+For each statement, select Yes or No.
+
+STATEMENTS:
+1. The query meets the requirements for retrieving the count of interviews without recommendations.
+2. You can modify the query to return counts of interviews with and without recommendations.
+3. The query allows scheduled interviews for job applications when there are no recommendations for the job applicant.
+
+CORRECT ANSWER:
+1. Yes
+2. Yes
+3. No
+
+================================================================================
+
+
+QUESTION 247 of 429
+TYPE: Hotspot
+CASE STUDY: Proseware
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+A PCF control is used on the Job Application form to display the candidate's local time. You need to configure the manifest elements for the control that displays local time.
+
+QUESTION:
+Which values should you use?
+
+AVAILABLE VALUES:
+For Property:
+- of-type="Lookup.Simple"
+- of-type="Whole.TimeZone"
+- of-type="DateAndTime.DateAndTime"
+
+For Type-Group:
+- <type>Whole.None</type>
+- <type>SingleLine.Text</type>
+- <type>DateAndTime.DateAndTime</type>
+
+CORRECT ANSWER:
+- Property -> of-type="DateAndTime.DateAndTime"
+- Type-Group -> <type>Whole.None</type>
+
+================================================================================
+
+
+QUESTION 248 of 429
+TYPE: Multiple choice
+CASE STUDY: Proseware
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+Recruiters report that the scoring command button is not working. You debug the code and observe that the context input parameter is null.
+
+QUESTION:
+You need to resolve the issue with the new command button.
+
+What should you do?
+
+OPTIONS:
+A. Pass ExecutionContext to the function in the action definition.
+B. Pass the value SelectedControl to the function in the action definition.
+C. Select the Pass execution context as first parameter option on the event registration form.
+D. Pass the value PrimaryControl to the function in the action definition.
+
+CORRECT ANSWER:
+D. Pass the value PrimaryControl to the function in the action definition.
+
+================================================================================
+
+
+QUESTION 249 of 429
+TYPE: Hotspot
+CASE STUDY: Proseware
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+The scoring command button must be visible only for recruiters and only when the contact form is in Update mode.
+
+QUESTION:
+Which rule types should you use?
+
+AVAILABLE VALUES:
+For recruiter visibility:
+- CustomRule
+- EntityPrivilegeRule
+- EntityPropertyRule
+
+For form mode visibility:
+- FormTypeRule
+- FormStateRule
+- FormEntityContextRule
+
+CORRECT ANSWER:
+- recruiters visibility -> CustomRule
+- form mode visibility -> FormStateRule
+
+================================================================================
+
+
+QUESTION 250 of 429
+TYPE: Multiple choice (two answers)
+CASE STUDY: Proseware
+--------------------------------------------------------------------------------
+FOCUSED CONTEXT:
+A PCF control must display senior team members who report to a hiring manager and sort them by time-zone proximity to the applicant.
+
+QUESTION:
+Which two inputs should you use? Each correct answer presents part of the solution.
+
+OPTIONS:
+A. identifier for the hiring manager
+B. time-zone offset for the job candidate
+C. identifier for the job posting
+D. time-zone offset for the hiring manager
+E. identifier for the job candidate
+
+CORRECT ANSWER:
+A. identifier for the hiring manager
+B. time-zone offset for the job candidate
+
+================================================================================
+
+
+QUESTION 298 of 429
+TYPE: Multiple choice / case study
+QUESTION:
+You need to determine the cause for the issue reported by the interviewers.
+
+What is the root cause of the issue?
+
+OPTIONS:
+A. There was an error in the event pipeline and the entire transaction was rolled back.
+B. There is no plug-in registered to run when an interview record is created.
+C. The plug-in used to synchronize the Person of Interest field from Contact to Interview was not triggered.
+
+CORRECT ANSWER:
+B. There is no plug-in registered to run when an interview record is created.
+
+================================================================================
+
+
+QUESTION 299 of 429
+TYPE: Hotspot (Yes/No) / case study
+QUESTION:
+You develop the following code for the plug-in that sends email notifications to recruiters:
+- Retrieve the current contact and its fullname.
+- Query active application records for that contact.
+- Read recruiter assignments from those applications.
+- Send an email to each recruiter returned.
+
+For each statement, select Yes if the statement is true. Otherwise, select No.
+
+STATEMENTS:
+1. You can use data from the contact's name without explicitly retrieving the value from the fullname column.
+2. You can use the same plug-in to send notifications to interviewers.
+3. Recruiters only receive a single email notification per applicant.
+
+CORRECT ANSWER:
+1. No
+2. Yes
+3. No
+
+================================================================================
+
+
+QUESTION 300 of 429
+TYPE: Drag-drop / case study
+QUESTION:
+You need to implement scoring.
+
+Which methods should you use?
+
+OPTIONS:
+Methods:
+- JavaScript code
+- Power Automate flow
+- Custom process action and plug-in
+
+Actions:
+- Initiate process for all individuals.
+- Calculate for a specific individual.
+
+CORRECT ANSWER:
+- Initiate process for all individuals. -> Custom process action and plug-in
+- Calculate for a specific individual. -> JavaScript code
