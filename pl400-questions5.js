@@ -11,7 +11,7 @@ var pl400Questions5 = [
       '5 -> A. Configure a value for the Assigned to Account option only',
     ],
     correct: [0, 1, 2, 3, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For job listings accessible to HR and employers, a custom self-service portal supports both user types with proper authentication. Model-driven apps with push notifications work well for internal position listings. Webforms with target entity allow external users to submit job postings. For invitations, Execute Workflow on Redeeming Contact triggers automated processes when candidates accept, while Assigned to Account associates candidates with their employer organization.',
   },
   {
     id: 5003,
@@ -23,7 +23,7 @@ var pl400Questions5 = [
       '3 -> B. Power Automate UI flow triggered from an email button',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Power Automate flows can integrate with Bing Maps API for distance calculations without custom code. Adding a new screen to an existing canvas app is more efficient than creating separate apps, reducing maintenance overhead. For newsletters, a UI flow triggered from an email button automates the sending process. Logic apps would add unnecessary complexity, and plug-ins are not appropriate for external API calls like Bing Maps.',
   },
   {
     id: 5004,
@@ -36,7 +36,7 @@ var pl400Questions5 = [
       'Postman collection',
     ],
     correct: [2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Custom connectors in Power Platform can be created from OpenAPI (Swagger) definitions or Postman collections, which describe REST API endpoints, parameters, and responses. YAML alone is not a supported format for creating connectors. WSDL is used for SOAP-based web services, not REST APIs that custom connectors typically consume. OpenAPI and Postman are the standard formats that Power Platform connector creation wizard accepts.',
   },
   {
     id: 5006,
@@ -47,7 +47,7 @@ var pl400Questions5 = [
       '2 -> C. Power Automate',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Dynamics 365 Finance includes out-of-the-box mobile barcode scanning capabilities in the Warehouse Management module, requiring no additional development. For sending text messages from Field Service about technician locations, Power Automate provides SMS connectors (like Twilio) and can be triggered by Dataverse events. Workflows and Common Data Service alone cannot send external SMS messages without additional connectors.',
   },
   {
     id: 5014,
@@ -60,7 +60,7 @@ var pl400Questions5 = [
       'Custom workflow activity',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The Web API is the correct choice because the application is built in Azure (external to Dataverse) and needs to write data into Common Data Service. Web API allows external applications to perform CRUD operations on Dataverse. Power Automate would require triggers within CDS. Plug-ins and custom workflow activities run within the Dataverse context, not from external Azure applications. The Web API provides RESTful endpoints accessible from any external system.',
   },
   {
     id: 5018,
@@ -74,7 +74,7 @@ var pl400Questions5 = [
       'Create an API definition for the Azure Function.',
     ],
     correct: [1, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To connect a canvas app to an Azure Function, you need to create a custom connector using the Azure Function API and create an API definition (OpenAPI/Swagger) for the function. The API definition describes the endpoints, parameters, and responses. Power Automate flows are not needed for direct API calls from canvas apps. Azure Service Bus is for message queuing, not direct API consumption. The maker portal app designer is for building apps, not creating connectors.',
   },
   {
     id: 5032,
@@ -84,9 +84,10 @@ var pl400Questions5 = [
       'Entity account = (Entity)context.InputParameters["Target"];',
       'Create followuptask and set regardingobjectid = account.ToEntityReference();',
       'service.Create(followuptask);',
+      'Entity account = (Entity)context.PreEntityImages["Target"];',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The correct sequence for creating a follow-up task in a plug-in is: (1) Get the target account from context.InputParameters["Target"] — this retrieves the account being created, (2) Create the task entity and set regardingobjectid using account.ToEntityReference() to properly link the task to the account, (3) Use service.Create() to insert the task record. Using PreEntityImages (incorrect option) is wrong because this is a Create operation — no pre-image exists before the record was created. Setting regardingobjectid to the full Entity object without ToEntityReference() would also throw a type mismatch error.',
   },
   {
     id: 5039,
@@ -97,7 +98,7 @@ var pl400Questions5 = [
       'Percentage calculation -> Formula column',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Business rules can format phone numbers using regex-like conditions and actions to modify field values without custom code. Formula columns (Power Fx) can perform calculations including percentages across multiple columns. Plug-ins would require custom development, violating the requirement to avoid custom development when possible. Business rules are declarative and run on both client and server, while formula columns are calculated server-side.',
   },
   {
     id: 5045,
@@ -110,7 +111,7 @@ var pl400Questions5 = [
       'Team type to assign privileges to -> Microsoft Entra ID Security Group',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Security roles define privileges like Update for entities. User Update access level restricts users to editing only their own accounts. User Append To on Notes allows users to attach notes to records they own. Microsoft Entra ID Security Groups can be linked to Teams in Dataverse for privilege assignment, meeting the Microsoft Teams site requirement. Business Unit access levels would be too broad, and Office Groups are for collaboration, not security assignments.',
   },
   {
     id: 5052,
@@ -124,7 +125,7 @@ var pl400Questions5 = [
       'View information on records that fail to sync -> Use Profile operations',
     ],
     correct: [0, 1, 2, 3, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Register the app in Azure AD for secure OAuth authentication to Data Export Service. FetchXML queries monitor replication status by querying the Data Export Service tables. Enable Change Tracking on entities to make them eligible for replication. The /crm/exporter/profiles/{id}/activatedata endpoint controls starting and stopping data replication. Profile operations provide details about sync failures and error information. SQL credentials are for the destination, not the app authentication.',
   },
   {
     id: 5066,
@@ -134,9 +135,10 @@ var pl400Questions5 = [
       'pac solution init --publisher-name <publisher> --publisher-prefix <prefix>',
       'pac solution add-reference --path <control path>',
       'msbuild /t:build /restore',
+      'npm run build',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To package a PCF control for deployment: (1) pac solution init creates the solution project structure with publisher details, (2) pac solution add-reference links the PCF control project to the solution, (3) msbuild /t:build /restore compiles the solution and creates the deployable .zip file. npm run build (incorrect option) is used for local PCF control development and testing, not for creating deployment packages. msbuild is the correct tool for building the solution wrapper that contains the PCF control.',
   },
   {
     id: 5100,
@@ -147,7 +149,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'No, this solution does not meet the goal. Custom connectors for Microsoft Entra ID-protected Azure Functions require proper OAuth configuration that includes the application registration details. Simply exporting and importing as a managed solution does not automatically configure the authentication settings for the target environment. You need to ensure the connector is properly configured with the correct Azure AD app registration and OAuth settings for the production environment.',
   },
   {
     id: 5102,
@@ -158,7 +160,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'No, this solution does not meet the goal. Using the maker portal export/import for custom connectors does not properly handle Microsoft Entra ID-protected connectors. The OAuth configuration, including client IDs and secrets, needs to be reconfigured in the target environment. For single-tenant apps, you must update the connector configuration with production environment-specific authentication settings after import.',
   },
   {
     id: 5125,
@@ -172,7 +174,7 @@ var pl400Questions5 = [
       'Perform the steps to generate the errors while you monitor the technician\'s monitor debug session.',
     ],
     correct: [0, 1, 2, 3, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The correct sequence for debugging model-driven app issues remotely: (1) Open the app in a browser on a laptop (Monitor requires a browser, not mobile app), (2) Add "monitor=true" to the URL to enable Monitor session, (3) Open Power Apps mobile on the phone, (4) Perform steps while you monitor the session. Opening in a browser enables Monitor connection. The phone app connects to the same session. This allows real-time debugging without requiring maker portal access.',
   },
   {
     id: 5126,
@@ -185,7 +187,7 @@ var pl400Questions5 = [
       'Reproduce and capture the errors, then debug from Visual Studio.',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Installing Plug-in Profiler in production allows you to capture the execution context without modifying the environment settings. As an Environment Maker, you may not have permission to enable plug-in tracing (which requires System Administrator). PUT/GET requests for trace logs require admin access. Profiler captures the exact execution context that can be replayed locally in Visual Studio. Debugging directly from Visual Studio against production is not recommended for live environments.',
   },
   {
     id: 5152,
@@ -199,7 +201,7 @@ var pl400Questions5 = [
       'Use the Azure AD application id and secret as credentials in the application.',
     ],
     correct: [0, 1, 2, 3, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For service-to-service authentication without user credentials: (1) Register the application in Azure AD with Dynamics CRM permissions, (2) Create an application user in Dataverse using the Application User form, (3) Assign appropriate security roles to the application user, (4) Use the Azure AD application ID and client secret in the application. This enables OAuth client credentials flow. Using username/password would violate the requirement to not use Azure AD user accounts.',
   },
   {
     id: 5153,
@@ -210,7 +212,7 @@ var pl400Questions5 = [
       '`npm start watch`',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For PCF control testing: "start npm start" launches a second npm start window to run tests in parallel with the first window. "npm start watch" enables file watching to detect changes in index.ts, ControlManifest.Input.xml, and bundled .ts files, automatically recompiling without restarting the test harness. "npm update" updates dependencies but does not help with testing. These commands enable efficient development iteration during PCF control development.',
   },
   {
     id: 5168,
@@ -220,9 +222,10 @@ var pl400Questions5 = [
       'Create a Microsoft Entra ID user named IntegrationAccount.',
       'Set IntegrationAccount access mode to Non-interactive.',
       'Run pac admin assign-user.',
+      'Enable system-assigned managed identity.',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Using a Non-interactive user (service account) avoids password-based authentication while meeting corporate policy: (1) Create a Microsoft Entra ID user named IntegrationAccount as the service identity, (2) Set its access mode to Non-interactive so it cannot log in interactively but can be used for S2S authentication, (3) Run pac admin assign-user to grant the account appropriate security roles in Dataverse. Enabling system-assigned managed identity (incorrect option) is an alternative approach for Azure resources but was not specified here and would require different setup steps including app registration in Dataverse.',
   },
   {
     id: 5173,
@@ -233,7 +236,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'No, a custom API bound to the account table does not meet the goal. Custom APIs must be explicitly called - they do not automatically trigger when records are created. To automatically create a contact when an account is created, you need a plug-in registered on the Create message of the account entity, or a Power Automate flow triggered by the "When a row is added" trigger. The custom API approach requires additional code to invoke it during account creation.',
   },
   {
     id: 5177,
@@ -247,7 +250,7 @@ var pl400Questions5 = [
       'Store the returned data in a global variable.',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Enabling the Async OnLoad app setting allows OnLoad scripts to run asynchronously, improving perceived form load performance. The Xrm.WebApi.retrieveRecord call is already asynchronous, but the form waits for OnLoad to complete. Adding code to success callback does not improve performance. Using synchronous XMLHttpRequest is deprecated and would worsen performance. Setting options parameter reduces data returned but the main issue is form blocking. Global variables do not address the blocking issue.',
   },
   {
     id: 5181,
@@ -258,7 +261,7 @@ var pl400Questions5 = [
       'Action -> Update the business rule',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The notification message displayed on form is characteristic of a business rule action (Show Message). Business rules are declarative and can show/hide messages based on conditions. To update the outdated message, the app maker should update the business rule that contains the message action. Logic apps and Power Automate flows run server-side and cannot display client-side form messages. Plug-ins also cannot directly display messages on forms without additional client scripting.',
   },
   {
     id: 5185,
@@ -269,7 +272,7 @@ var pl400Questions5 = [
       'Run on a schedule. -> Power Automate flow',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Plug-ins have access to both PreEntityImages (current values before update) and PostEntityImages (new values after update), making them ideal for comparing current and new values during updates. Power Automate flows support scheduled triggers (Recurrence trigger) for running on a schedule. Business rules cannot compare pre and post values. JavaScript runs only on client-side and cannot schedule operations. Only plug-ins have access to entity images in the execution context.',
   },
   {
     id: 5191,
@@ -279,9 +282,10 @@ var pl400Questions5 = [
       'In the development environment, navigate to Solutions.',
       'Select the solution that has BusinessRule1, navigate to the appropriate entry, and delete the rule.',
       'Export the solution as managed and import it in the production environment.',
+      'Select the solution that has BusinessRule1 and deactivate the rule.',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To remove a component from a managed solution in production: (1) Navigate to Solutions in the development environment, (2) Find and delete the business rule from the solution — removing it from the source solution, (3) Export as managed and import to production (using Upgrade) — this removes the deleted component from production. Deactivating the business rule (incorrect option) only stops it from running but does not remove it from the environment; the rule would still exist and could be reactivated, which does not fulfill the requirement to remove it.',
   },
   {
     id: 5194,
@@ -293,7 +297,7 @@ var pl400Questions5 = [
       'Claim applications must show or hide fields based on the values. -> Business rules',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Business Process Flows (BPFs) provide a standardized, guided process that all claim applications follow - ensuring consistency. Power Automate flows handle routing claims to different approvers at each stage using approval connectors and workflow logic. Business rules are the out-of-the-box solution for showing/hiding fields based on field values without code. Workflows are legacy. Plug-ins and JavaScript require custom development, violating the "out-of-the-box" preference.',
   },
   {
     id: 5196,
@@ -306,7 +310,7 @@ var pl400Questions5 = [
       'Create a JavaScript web resource and replace the business rule with a JavaScript function. Add an OnSave event handler to the Lead form.',
     ],
     correct: [0, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Business rules with "All Forms" scope only apply to model-driven app forms, not Power Apps portals. To apply the same validation on portals: (1) Change the scope to "Table" so the rule runs server-side for all clients, or (2) Extend the webFormClientValidate JavaScript function on the portal to implement client-side validation. Power Automate flows trigger after data is saved, not suitable for pre-save validation. OnSave handlers in model-driven apps do not affect portal forms.',
   },
   {
     id: 5214,
@@ -316,9 +320,10 @@ var pl400Questions5 = [
       'updateView',
       'notifyOutputChanged',
       'getOutputs',
+      'init',
     ],
     correct: [0],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The updateView function is called when the control is loaded and whenever the context changes, making it the appropriate place to fetch area codes when a record is opened. The init function runs once during initialization but before the control has full context. notifyOutputChanged is called by the control to signal that output values have changed - it does not retrieve data. getOutputs returns the control output values to the framework. Only updateView has access to the full context and webAPI for data retrieval.',
   },
   {
     id: 5217,
@@ -330,7 +335,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Statement 1 (Yes): Invalid XML in async HTTP resources is a common JavaScript exception when parsing fails. Statement 2 (Yes): Using === and !== for strict equality is a best practice enforced by linters like ESLint (eqeqeq rule) to avoid type coercion issues. Statement 3 (No): Debug scripts should be removed from production, but this is a warning/recommendation, not an exception that would be raised during execution. Solution checker flags these but they do not throw runtime exceptions.',
   },
   {
     id: 5221,
@@ -341,7 +346,7 @@ var pl400Questions5 = [
       'Value -> UserLcid',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To pass the user\'s language to JavaScript for localized messages, use CrmParameter as the parameter type (it accesses CRM-specific values) and UserLcid as the value (returns the user\'s locale ID like 1033 for English or 1036 for French). OrgLcid would return the organization\'s default language, not the user\'s preference. IntParameter and StringParameter are for fixed values, not dynamic CRM context values. UserLcid enables runtime localization based on user settings.',
   },
   {
     id: 5222,
@@ -353,7 +358,7 @@ var pl400Questions5 = [
       'usage -> bound',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'In the PCF manifest: constructor specifies the class name (AdultDatePicker) that implements IControl interface. of-type uses DateandTime.DateOnly because date of birth validation only needs the date, not time. usage is "bound" because the control binds to a field value on the form (the date of birth column). "input" usage would be for controls that only receive values but do not output changes. Index.ts is a file, not a constructor name. DateandTime.DateAndTime would include unnecessary time components.',
   },
   {
     id: 5227,
@@ -364,7 +369,7 @@ var pl400Questions5 = [
       'HTML file order -> 1',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'In PCF manifest resources, the order attribute determines loading sequence. Both CSS and HTML files should have order="1" to load first before the control code executes. This ensures styles are applied and HTML templates are available when the control initializes. Higher order numbers (2, 3) would delay loading until after other resources. Setting both to 1 allows parallel loading of these essential resources needed for control rendering.',
   },
   {
     id: 5233,
@@ -377,7 +382,7 @@ var pl400Questions5 = [
       'Deploy the solution.',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The correct sequence for deploying a PCF control: (1) Create a solution using pac solution init to establish the solution project, (2) Add a solution reference using pac solution add-reference to link the PCF project, (3) Build the project and solution using msbuild to create the deployable package, (4) Deploy the solution using pac solution push or import. This follows the standard PCF deployment workflow using Power Platform CLI commands.',
   },
   {
     id: 5234,
@@ -387,9 +392,10 @@ var pl400Questions5 = [
       'Create an empty environment variable named Custom Text Placeholder.',
       'Create a function to retrieve the value from the custom text placeholder and display the notification.',
       'Export the solution.',
+      'Set the default value of the text field Custom Text Placeholder to Enter custom text.',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Environment variables allow different values per environment without code changes: (1) Create an empty environment variable so power users in each department can set their own value, (2) Create a function to retrieve the environment variable value and prepend it to the notification, (3) Export the solution for distribution. Power users in each department set the environment variable value directly in their environment after import. Setting a default value (incorrect option) would override what power users set, defeating the purpose of per-department customization.',
   },
   {
     id: 5240,
@@ -403,7 +409,7 @@ var pl400Questions5 = [
       '<control value="PowerContoso" constructor="CtlProducts" version="0.0.1.0" display-name-key="CtlProducts" description-key="CtlProducts" control-type="standard">',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The PCF control element requires the "namespace" attribute to identify the control uniquely. The correct syntax is: <control namespace="PowerContoso" constructor="CtlProducts"...>. The namespace groups related controls and prevents naming conflicts. "name", "code", "DisplayNamekey", and "value" are not valid attributes for the control element. The constructor attribute specifies the TypeScript class name that implements the control logic.',
   },
   {
     id: 5242,
@@ -414,7 +420,7 @@ var pl400Questions5 = [
       'uses-feature -> Utility',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For latitude/longitude coordinates in PCF: Decimal type group provides sufficient precision for geographic coordinates (up to 10 decimal places). Whole.None would truncate decimal places, losing coordinate precision. Floating point may have precision issues. For uses-feature, Utility provides access to utility functions needed for phone app functionality. WebAPI would be for data operations, and Client is for client-specific features. Utility functions are commonly needed for formatting and calculations.',
   },
   {
     id: 5255,
@@ -427,7 +433,7 @@ var pl400Questions5 = [
       'Update the code of the new plug-in to use InputParameters of Plugin Execution Context.',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Use UpdateRequest with BypassCustomPluginExecution parameter to prevent triggering other plug-ins during the update. This is a supported method to bypass specific plug-in executions without disabling them globally. Disabling the third-party plug-in would affect all users and operations. Modifying ISV plug-in code is typically not possible and violates support agreements. Using InputParameters does not prevent other plug-ins from triggering - they would still fire on the same message.',
   },
   {
     id: 5257,
@@ -440,7 +446,7 @@ var pl400Questions5 = [
       'Publish the PCF code component in the production environment.',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Increment the version property in manifest.xml and reimport the solution. Dataverse caches PCF components and only updates them when it detects a version change. Without incrementing the version, the import does not replace the existing component. Using pac pcf push directly to production bypasses ALM best practices. Publishing alone does not update the underlying code. The manifest.xml version is what Dataverse checks to determine if an update is needed.',
   },
   {
     id: 5262,
@@ -453,7 +459,7 @@ var pl400Questions5 = [
       'Run a custom API. = Power Fx',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Client scripting (JavaScript) handles form events like OnSave with full form context access. Canvas components embedded in custom pages can display Azure SQL data using appropriate connectors. PCF controls can render consistent headers across pages with reusable UI components. Power Fx in custom pages can call Dataverse custom APIs directly. Each approach uses minimal development effort for its specific requirement. JavaScript is required for form events; canvas components integrate external data sources seamlessly.',
   },
   {
     id: 5263,
@@ -466,7 +472,7 @@ var pl400Questions5 = [
       'type-group',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'The "property" element in the PCF manifest defines bound or input properties that the control can access. To read the record ID, you need to define a property bound to the ID field. Resources are for static files like CSS/images. feature-usage declares required platform features like WebAPI. type-group defines groups of compatible data types for properties. Only the property element enables binding to record columns like the ID.',
   },
   {
     id: 5269,
@@ -481,7 +487,7 @@ var pl400Questions5 = [
       'Deploy Azure B2B guest permissions to the application user.',
     ],
     correct: [0, 3, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For Azure Function to Dataverse integration: (1) Create an app registration in Azure AD for authentication, (2) Create a custom security role with minimum permissions (principle of least privilege) for creating leads only, (3) Grant the app delegated permissions to Dynamics CRM API in Azure AD. System Administrator role violates least privilege. Power Platform Administrator is for environment management, not data access. B2B guest permissions are for external users, not service integrations.',
   },
   {
     id: 5271,
@@ -493,7 +499,7 @@ var pl400Questions5 = [
       'Configure a website login that does not need encryption. = Basic authentication',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Security roles in Dynamics 365 control what data users can access, ensuring proper security. API keys are simple tokens sent in requests to identify the application - commonly used for public API tracking. Basic authentication sends username/password in the header without encryption (Base64 encoded only) - suitable when encryption is not required. OAuth would be more secure but adds complexity. Security roles are foundational for D365 data access control.',
   },
   {
     id: 5277,
@@ -506,7 +512,7 @@ var pl400Questions5 = [
       'Register a New Step for Create of SalesOrder.',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To send data to an Azure Function when orders are created: (1) Use Register New Web Hook in the Plug-in Registration Tool, (2) Enter the Azure Function HTTP trigger endpoint URL, (3) Register a new step for the Create message on SalesOrder entity. Service Endpoints are for Azure Service Bus integration, not direct HTTP calls. Webhooks are the correct mechanism for calling HTTP endpoints like Azure Functions. The step registration triggers the webhook on specific entity operations.',
   },
   {
     id: 5281,
@@ -518,7 +524,7 @@ var pl400Questions5 = [
       'Concurrent requests -> Fixed number per user',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Dataverse service protection limits are per-user based: Number of requests is limited per user over a 5-minute sliding window (not per environment). Combined execution time is measured per user over the same sliding window. Concurrent requests are limited to a fixed number (52) per user simultaneously. These limits protect the service from individual users monopolizing resources. Understanding these limits helps design integrations that implement retry logic with exponential backoff.',
   },
   {
     id: 5282,
@@ -531,7 +537,7 @@ var pl400Questions5 = [
       'Apply a connector policy template.',
     ],
     correct: [3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Connector policy templates in Power Platform allow you to modify connector behavior, including filtering data returned by API calls. By applying a policy template, you can add query parameters to filter incidents by assigned user, reducing the data returned. Lifecycle Services is for Dynamics 365 Finance/Operations. Business process flows are for guiding users through processes. Azure APIM parameter is not a Power Platform feature. Policy templates modify connector requests declaratively.',
   },
   {
     id: 5284,
@@ -541,9 +547,10 @@ var pl400Questions5 = [
       'Select Register New Web Hook.',
       'Enter the endpoint URL.',
       'Register a New Step for Create of SalesOrder.',
+      'Set authentication to HttpHeader.',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To configure a webhook for an Azure Function with HTTP trigger: (1) Select Register New Web Hook to create a new webhook endpoint registration, (2) Enter the endpoint URL of the Azure Function (copied from the Azure portal\'s "Get function URL"), (3) Register a step for Create of SalesOrder to trigger the webhook when orders are placed. Setting authentication to HttpHeader (incorrect option) is an optional security measure for passing a secret key in the request header, but it is not one of the three required core steps to make the integration work.',
   },
   {
     id: 5287,
@@ -557,7 +564,7 @@ var pl400Questions5 = [
       'Fee reference',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Custom connectors require: (1) Authentication model to specify how the connector authenticates with the API (API key, OAuth, Basic, etc.), (2) Address parameter to send the shipping address for fee calculation, (3) OpenAPI definition to describe the API endpoints, request/response formats, and parameters. Fee parameter and fee reference are outputs, not inputs to define. The OpenAPI (Swagger) definition is essential for Power Platform to understand the API structure.',
   },
   {
     id: 5288,
@@ -571,7 +578,7 @@ var pl400Questions5 = [
       'Create an API definition for the Azure Function.',
     ],
     correct: [1, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To connect a Power App to an Azure Function: (1) Create a custom connector that uses the Azure Function API endpoint, (2) Create an API definition (OpenAPI/Swagger) that describes the function\'s inputs, outputs, and authentication. Power Automate flows add unnecessary complexity for direct API calls. Copying JSON code to the app is not how canvas apps integrate with APIs. The API definition enables Power Platform to understand and interact with the Azure Function correctly.',
   },
   {
     id: 5289,
@@ -584,7 +591,7 @@ var pl400Questions5 = [
       'Error message -> throw new InvalidPluginExecutionException("Your error message", ex);',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For validation before data is committed: PreValidation stage runs before the database transaction begins - ideal for blocking invalid operations. Synchronous execution ensures validation completes before the operation proceeds. Pre-image captures current values to compare against new values. InvalidPluginExecutionException displays the error message to the user and rolls back the transaction. PostOperation would be too late. Asynchronous would not block the operation. Trace logging does not display messages to users.',
   },
   {
     id: 5294,
@@ -595,7 +602,7 @@ var pl400Questions5 = [
       'Bing Maps -> API key',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For accounts receivable with client credentials grant type, OAuth 2.0 is required as it supports the client credentials flow for service-to-service authentication. For Bing Maps that uses a unique identifier in query strings, API key authentication is appropriate - the key is passed as a query parameter. Basic authentication is for username/password. No authentication would be insecure. OAuth 2.0 client credentials grant is the standard for secure API-to-API communication.',
   },
   {
     id: 5295,
@@ -607,7 +614,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [0, 1, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Statement 1 (No): If changed to PostOperation, the account would already exist, so checking for missing name and throwing an exception would not prevent creation - the validation would be too late. Statement 2 (Yes): In PreOperation, the validation runs before the record is created, so missing name triggers the InvalidPluginExecutionException and displays the error. Statement 3 (No): In PreOperation stage, modifying InputParameters directly updates the record being created without needing a separate Update call.',
   },
   {
     id: 5297,
@@ -618,7 +625,7 @@ var pl400Questions5 = [
       'Enable Postman calls to be available for the custom connector. -> Open Postman and create collections',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For Microsoft Graph API custom connectors: Register the application in Azure AD and specify Microsoft Graph API permissions to enable OAuth authentication. The connector uses these credentials to authenticate. For Postman collections to be used with the connector, first create the collections in Postman by recording API calls. These collections can then be exported and imported when creating the custom connector. Export solution is for moving connectors between environments, not configuration.',
   },
   {
     id: 5305,
@@ -631,7 +638,7 @@ var pl400Questions5 = [
       'Turn on pagination and set the threshold to 10,000.',
     ],
     correct: [1, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To process 10,000 records: Use pagination with threshold of 10,000, which handles multiple API calls automatically. Alternatively, use @odata.nextLink from the first 5,000 records to retrieve subsequent pages manually. Setting row count to 10,000 alone would fail because Dataverse limits a single request to 5,000 rows. FetchXML account ID option is not a valid pagination mechanism. Pagination settings allow Power Automate to automatically handle the multiple API calls needed.',
   },
   {
     id: 5312,
@@ -642,7 +649,7 @@ var pl400Questions5 = [
       'Validate record values. -> JavaScript',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For REST API updates with manual retry capability, Power Automate is ideal - it has built-in retry options, run history for re-running failed runs, and HTTP connectors for REST APIs. For client-side validation with error messages next to fields, JavaScript provides access to form controls and can display field-level notifications using setNotification(). Plug-ins run server-side and cannot display field-level UI errors. Power Automate cannot display client-side validation messages.',
   },
   {
     id: 5316,
@@ -655,7 +662,7 @@ var pl400Questions5 = [
       'Update the HTTP step settings and set the retry policy to: None.',
     ],
     correct: [0, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To send email when HTTP fails: (1) Add a send email step immediately after the HTTP step (not after Dataverse update, which only runs on HTTP success), (2) Configure the email step to run "only when the previous step fails" using run-after settings. Setting retry policy to None is not necessary and would prevent automatic retry attempts. The run-after configuration is key - it allows branching logic based on the outcome of the HTTP action.',
   },
   {
     id: 5320,
@@ -668,7 +675,7 @@ var pl400Questions5 = [
       'Configure WebhookKey authentication.',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For environment-specific webhook endpoints: (1) Create an environment variable for the URL - this allows different values per environment, (2) Open Plug-in Registration tool to register the webhook, (3) Select Register New Web Hook, (4) Configure WebhookKey authentication (Azure Functions use function keys for authentication). The environment variable approach avoids manual reconfiguration after deployment. HttpHeader is also valid but WebhookKey is more specific for Azure Functions.',
   },
   {
     id: 5328,
@@ -682,7 +689,7 @@ var pl400Questions5 = [
       'Register a step in the webhook',
     ],
     correct: [0, 1, 2, 3, 4],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To replace a slow plug-in with Azure Functions: (1) Create an Azure Function app to host the logic, (2) Refactor the existing plug-in code into the Azure Function, (3) Publish the function to Azure, (4) Register a webhook in the Plug-in Registration tool pointing to the function URL, (5) Register a step on the webhook to trigger it. This moves processing outside Dataverse, improving performance. Azure Functions scale better than synchronous plug-ins for data retrieval operations.',
   },
   {
     id: 5338,
@@ -696,7 +703,7 @@ var pl400Questions5 = [
       'IPluginExecutionContext in XML format',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Webhooks send RemoteExecutionContext (not IPluginExecutionContext) in JSON format. RemoteExecutionContext is a serializable version of the execution context designed for external transmission. JSON is the standard format for webhook payloads - it is human-readable and widely supported. XML and binary formats are not used by Dataverse webhooks. IPluginExecutionContext is an interface used internally by plug-ins, not for external webhook data transfer.',
   },
   {
     id: 5341,
@@ -709,7 +716,7 @@ var pl400Questions5 = [
       'IExecutionContext',
     ],
     correct: [0],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'RemoteExecutionContext is the class used when publishing events to Azure Service Bus ServiceEndpoints. It is a serializable representation of the plug-in execution context that can be transmitted externally. WorkflowContext is for custom workflow activities. PluginExecutionContext and IExecutionContext are interfaces used within plug-ins. RemoteExecutionContext contains all the entity data and context needed for the Azure Function to process the message.',
   },
   {
     id: 5343,
@@ -720,7 +727,7 @@ var pl400Questions5 = [
       'Package the program details -> Register a pre-image for the program create message in the Plug-in Registration tool',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For sending data to a TLS 1.0 website: A plug-in with secure connection can handle the TLS version requirement and make synchronous POST requests. For packaging program details on create, register a pre-image to capture the complete entity data at the time of creation. Azure Functions and webhooks are asynchronous. Power Automate HTTP connector may not support TLS 1.0. Pre-images provide the complete record data needed for the POST request payload.',
   },
   {
     id: 5345,
@@ -734,7 +741,7 @@ var pl400Questions5 = [
       'Multifactor authentication',
     ],
     correct: [3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Microsoft Authentication Library (MSAL) is the modern, recommended library for OAuth authentication with Azure AD in single-page applications. ADAL is deprecated and being replaced by MSAL. NTLM and Kerberos are Windows-based authentication protocols, not suitable for web applications with OAuth. MFA is an authentication factor, not a library. MSAL supports interactive and silent token acquisition, making it ideal for SPAs accessing Dataverse Web API.',
   },
   {
     id: 5358,
@@ -745,7 +752,7 @@ var pl400Questions5 = [
       'Azure Function unreachable -> Message is sent and will retry continually.',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For asynchronous message delivery: If a synchronous plug-in fails before the async service endpoint step, the message is not sent and will not retry because the transaction is rolled back. When the Azure Function is unreachable (returns error), Dataverse retries the message delivery with exponential backoff, continuing to retry. This behavior allows for transient network issues to be handled automatically. Understanding these behaviors is critical for designing reliable integrations.',
   },
   {
     id: 5360,
@@ -756,7 +763,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'No, a synchronous plug-in does not meet this goal. Synchronous plug-ins can check status codes but raising InvalidPluginExecutionException rolls back the entire transaction, preventing the record from being created. For verifying 503 responses, you need the ability to handle the error gracefully. An asynchronous plug-in or Power Automate flow would be more appropriate as they can handle failures without rolling back the original operation.',
   },
   {
     id: 5361,
@@ -767,7 +774,7 @@ var pl400Questions5 = [
       'No',
     ],
     correct: [1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'No, this solution does not meet the goal. Asynchronous plug-ins cannot be configured to retry with InvalidPluginExecutionException. The exception would log the failure but not trigger automatic retries. For retry on 500 errors, use webhooks with Azure Service Bus (which has built-in retry), or Power Automate flows which support configurable retry policies. Async plug-ins run once and failures are logged to the System Job table without automatic retry.',
   },
   {
     id: 5364,
@@ -780,7 +787,7 @@ var pl400Questions5 = [
       'Set the BypassPluginExecution property on the CrmServiceClient.',
     ],
     correct: [0, 2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To disable a plug-in during bulk data load: (1) Send BypassCustomPluginExecution as an optional parameter with each create request - this skips custom plug-ins for that request only, not affecting users, or (2) Disable the plug-in step before loading and re-enable after - but this affects all users during the load. SuppressCallbackRegistrationExpanderJob is for callback registrations, not plug-ins. BypassPluginExecution on CrmServiceClient is deprecated. Option 1 is preferred as it does not affect other users.',
   },
   {
     id: 5379,
@@ -791,7 +798,7 @@ var pl400Questions5 = [
       'Where is the stackOwner property defined? -> apiProperties.json',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For a certified custom connector: Contoso, Ltd. owns the connector because they created and maintain the proprietary service. For Microsoft certification, the publisher/ISV retains ownership. The stackOwner property is defined in apiProperties.json file - this file contains connector metadata including publisher information, icon details, and certification properties. apiDefinition.swagger.json contains the OpenAPI specification. settings.json is not a standard connector file.',
   },
   {
     id: 5383,
@@ -804,7 +811,7 @@ var pl400Questions5 = [
       'Import the solution into Dataverse.',
     ],
     correct: [0, 1, 2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'To add a custom control to a BPF: (1) Add a step to the BPF to define where the control appears, (2) Activate/Update the BPF in the designer to save changes, (3) Copy the custom control (radial knob) configuration to the BPF FormXML - BPFs use their own form XML separate from entity forms, (4) Import the solution to deploy. The Total amount must be a required field in the step to enforce entry before advancing. FormXML modification is required because the BPF designer does not support custom controls directly.',
   },
   {
     id: 5386,
@@ -815,7 +822,7 @@ var pl400Questions5 = [
       'Customer survey -> Power Automate',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For online sales orders automation, Logic Apps provides enterprise-grade integration with e-commerce platforms, supporting complex transformations and having connectors for various e-commerce systems. For customer surveys, Power Automate integrates well with Microsoft Forms and can trigger email follow-ups, send survey links, and process responses. Power Apps is for building applications, not automation. Workflows are legacy and limited in capability compared to Power Automate and Logic Apps.',
   },
   {
     id: 5390,
@@ -828,7 +835,7 @@ var pl400Questions5 = [
       'Power Automate flow',
     ],
     correct: [2, 3],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For automation on referrals: Azure Function with a listener can respond to events (like Service Bus messages or webhooks) when referrals are created/updated. Power Automate flows can trigger on Dataverse events and perform automated actions. The Discovery service is for finding organization URLs, not event handling. Workflow extensions are deprecated. Both Azure Functions with listeners and Power Automate provide event-driven automation capabilities for referral processing.',
   },
   {
     id: 5392,
@@ -841,7 +848,7 @@ var pl400Questions5 = [
       'Plug-in',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Azure Functions are ideal for background check API connections because they can handle external HTTP calls, manage authentication, process responses, and scale as needed. JavaScript in client-side forms should not make external API calls for security reasons. Power Automate flows with custom connectors could work but may have execution time limits. Plug-ins can make HTTP calls but have sandbox restrictions. Azure Functions provide the most flexibility for external API integration with proper error handling.',
   },
   {
     id: 5404,
@@ -852,7 +859,7 @@ var pl400Questions5 = [
       'Propagate data to the Cerner system -> Create a workflow in Dynamics 365 Sales',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Data Integration templates in Power Apps provide pre-built integration patterns for synchronizing data between systems - ideal for pharmacy name synchronization. For propagating data to external systems like Cerner, workflows in Dynamics 365 can trigger on data changes and call external endpoints. Excel exports are manual and not suitable for automation. Custom connectors are for Power Automate, not D365 workflows. Data policies control data sharing, not integration.',
   },
   {
     id: 5406,
@@ -865,7 +872,7 @@ var pl400Questions5 = [
       'Share the flow with a member of the talent department.',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For driving record verification: Azure Logic Apps connectors provide enterprise integration capabilities for external verification services. Alternatively, if the verification service offers its own connector, that pre-built connector simplifies integration. Sharing custom connectors requires connector ownership, not just flow sharing. Sharing flows gives run access but not connector modification rights. Logic Apps and pre-built connectors are complete solutions that work independently.',
   },
   {
     id: 5407,
@@ -876,7 +883,7 @@ var pl400Questions5 = [
       'Perform a driving record check -> Cloud flow',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For driving record checks: Trigger after the address validation field is saved to Dataverse ensures data is persisted before the check runs, allowing for proper error handling without losing user data. Cloud flows are ideal for calling external APIs like driving record services - they support custom connectors, retry logic, and async processing. JavaScript should not make external API calls for security. Plug-ins have sandbox restrictions. Triggering before save could block user operations.',
   },
   {
     id: 5408,
@@ -887,7 +894,7 @@ var pl400Questions5 = [
       'Configure the production environment -> Enable trace log in the environment',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For development environment: Install the plug-in profiler solution to capture and debug plug-in executions interactively. For production environment: Enable trace logging to capture plug-in trace statements without interactive debugging - this allows investigation of issues without impacting users. Compiling in debug mode is a build-time setting, not environment configuration. InvalidPluginExecutionException is for runtime errors, not tracing. Write information to trace log is code-level, not environment configuration.',
   },
   {
     id: 5411,
@@ -900,7 +907,7 @@ var pl400Questions5 = [
       'a plug-in attached to a custom action called from JavaScript',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'A custom connector used in a cloud flow is the appropriate solution for address validation API errors. Custom connectors handle API authentication, request/response formatting, and error handling declaratively. Cloud flows provide retry logic and error notification capabilities. Azure Functions add complexity. JavaScript in forms should not call external APIs. Plug-ins with custom actions require more development and have sandbox network restrictions. Custom connectors are designed specifically for API integrations.',
   },
   {
     id: 5413,
@@ -911,7 +918,7 @@ var pl400Questions5 = [
       'Provide credentials to the API -> Authentication section in the connector configuration',
     ],
     correct: [0, 1],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'For driving record verification API: Basic authentication is appropriate when the API uses username/password credentials (as implied by the scenario). The Authentication section in the connector configuration stores the credentials centrally - they are applied to all API calls without requiring users to enter them each time. Prompting on first use would require each user to have credentials. Passing as parameters exposes credentials in flow history. OAuth 2.0 would need different setup.',
   },
   {
     id: 5417,
@@ -924,6 +931,6 @@ var pl400Questions5 = [
       'Write a Web API to move customizations.',
     ],
     correct: [2],
-    explanation: 'Refer to official Microsoft Power Platform documentation for a detailed explanation of this topic.',
+    explanation: 'Export the solution as a managed solution to deploy to other pharmacies. Managed solutions package all customizations (entities, forms, business rules, plug-ins) into a single deployable unit. Managed solutions prevent direct modification in target environments, maintaining consistency. Recreating customizations manually is error-prone and time-consuming. Custom connectors are for API integrations, not deployment. Web API is for data operations, not customization deployment. Solutions are the standard ALM mechanism in Power Platform.',
   },
 ];
